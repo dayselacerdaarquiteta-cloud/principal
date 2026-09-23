@@ -140,7 +140,7 @@ h1{font-weight:300;font-size:clamp(64px,9vw,96px);line-height:.9;letter-spacing:
 .row:active{transform:scale(.995)}
 @media (hover:hover) and (pointer:fine){.row:hover{background:linear-gradient(90deg,transparent,var(--wash) 12%,var(--wash) 88%,transparent)}}
 .p-name{font-weight:600;font-size:16px}
-.p-now{font-size:13.5px;color:var(--stone);margin-top:2px;overflow-wrap:anywhere}
+.p-now{display:block;font-size:13.5px;color:var(--stone);margin-top:2px;overflow-wrap:anywhere}
 .load{font-family:var(--f-num);font-size:14px;text-align:right;color:var(--stone)}
 .load.atencao{color:var(--ink)}
 .load.critico{color:var(--red);font-weight:600}
@@ -152,7 +152,7 @@ h1{font-weight:300;font-size:clamp(64px,9vw,96px);line-height:.9;letter-spacing:
 .alerts ol{list-style:none;margin:0;padding:0}
 .alert{display:grid;grid-template-columns:12px minmax(0,1fr);gap:3px 14px;padding:14px 0;border-top:1px solid var(--line)}
 .alert .sw{width:10px;height:14px;margin-top:5px;grid-row:span 2}
-.a-type{font-family:var(--f-num);color:var(--stone)}
+.a-type{font-family:var(--f-num)}
 .a-type{color:var(--ink);font-weight:600}
 .alert.critico .a-type{color:var(--red)}
 .a-t{font-weight:500;line-height:1.35}
@@ -830,7 +830,7 @@ function renderTeam() {
     else if (d.hoje[0]) now = `${d.hoje[0].etapa}, ${d.hoje[0].card.title}${d.hoje[0].prazo ? `, até ${dm(d.hoje[0].prazo)}` : ""}`;
     else now = "Nenhuma etapa em andamento ou vencendo nos próximos 2 dias úteis.";
     return `<button type="button" class="row" data-p="${esc(p.key)}" aria-label="${esc(p.full)}: abrir a ficha">
-      <span class="who"><span class="p-name">${esc(p.full)}</span><span class="p-now" style="display:block">${esc(now)}</span></span>
+      <span class="who"><span class="p-name">${esc(p.full)}</span><span class="p-now">${esc(now)}</span></span>
       ${stripHTML(dayStrip(p))}
       <span class="load ${d.carga}">${loadLabel[d.carga]}</span></button>`;
   }).join("");

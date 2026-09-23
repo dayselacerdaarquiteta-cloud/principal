@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-23T00:00:00Z",
+  "title": "Design System: Painel Dayse Lacerda",
+  "extensions": {
+    "colorMeta": {
+      "ink": { "role": "primary", "displayName": "Grafite", "canonical": "oklch(24.9% 0.008 240.2)", "dark": "#E9EBE8", "tonalRamp": ["#080C0E", "#212528", "#3C4044", "#5A5E62", "#797E82", "#9A9FA3", "#C3C8CC", "#EAEFF3"] },
+      "red": { "role": "secondary", "displayName": "Vermelho Tijolo (entrega final)", "canonical": "oklch(51.9% 0.162 29.3)", "dark": "#E26B5D", "tonalRamp": ["#220000", "#4C0000", "#7E0000", "#A6291F", "#CC4E40", "#F27161", "#FFB0A4", "#FFE9E5"] },
+      "orange": { "role": "secondary", "displayName": "Laranja Terracota (apresentação ou aprovação)", "canonical": "oklch(60.8% 0.142 54.2)", "dark": "#E39A55", "tonalRamp": ["#1C0300", "#3D1800", "#642F00", "#904700", "#BC6110", "#E1833E", "#FFB483", "#FEEADD"] },
+      "orange-text": { "role": "secondary", "displayName": "Laranja Queimado (texto)", "canonical": "oklch(50.8% 0.122 53.0)", "dark": "#E39A55", "tonalRamp": ["#1C0300", "#3D1800", "#652E00", "#914600", "#B5662E", "#D98851", "#FEB485", "#FFEADD"] },
+      "blue": { "role": "secondary", "displayName": "Azul Ardósia (reunião)", "canonical": "oklch(47.4% 0.113 256.6)", "dark": "#83A6DC", "tonalRamp": ["#00072C", "#002251", "#0F3E7A", "#305E9C", "#4F7EBF", "#6FA0E4", "#A4CAFE", "#E5EFFE"] },
+      "green": { "role": "secondary", "displayName": "Verde Musgo (produção)", "canonical": "oklch(52.1% 0.087 155.2)", "dark": "#7DBB92", "tonalRamp": ["#001004", "#002D15", "#074D2B", "#2F6C48", "#508D67", "#71AF87", "#99D9AF", "#C5FFD8"] },
+      "ground": { "role": "neutral", "displayName": "Branco-gelo", "canonical": "oklch(96.9% 0.003 247.9)", "dark": "#141617", "tonalRamp": ["#0A0B0D", "#232426", "#3E4041", "#5C5E5F", "#7C7D7F", "#9D9FA0", "#C5C7C9", "#EDEFF1"] },
+      "surface": { "role": "neutral", "displayName": "Branco Papel", "canonical": "oklch(100% 0 0)", "dark": "#1B1E20", "tonalRamp": ["#0B0B0B", "#242424", "#404040", "#5D5D5D", "#7D7D7D", "#9E9E9E", "#C7C7C7", "#EEEEEE"] },
+      "stone": { "role": "neutral", "displayName": "Cinza Pedra", "canonical": "oklch(48.5% 0.012 238.7)", "dark": "#9EA5A9", "tonalRamp": ["#070C10", "#1F2529", "#3A4145", "#585F64", "#777E84", "#98A0A5", "#C1C9CE", "#E8F0F6"] },
+      "line": { "role": "neutral", "displayName": "Filete", "canonical": "oklch(90.7% 0.008 241.7)", "dark": "#2A2E31", "tonalRamp": ["#080C0E", "#212527", "#3C4043", "#5A5E62", "#797E81", "#9A9FA3", "#C3C8CC", "#EAEFF3"] },
+      "line-strong": { "role": "neutral", "displayName": "Filete Forte", "canonical": "oklch(83.2% 0.011 243.7)", "dark": "#3D4246", "tonalRamp": ["#070C10", "#1F2529", "#3B4145", "#585E64", "#787E84", "#999FA5", "#C1C8CE", "#E8F0F6"] },
+      "wash": { "role": "neutral", "displayName": "Névoa", "canonical": "oklch(94.1% 0.006 239.8)", "dark": "#212527", "tonalRamp": ["#090C0D", "#222427", "#3D4043", "#5B5E61", "#7A7E80", "#9B9FA2", "#C4C8CB", "#EBEFF2"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Só o título da página (\"Hoje\"): leve, grande, tracking negativo." },
+      "headline": { "displayName": "Headline", "purpose": "Título do lembrete em destaque e nome na ficha lateral (24px)." },
+      "title": { "displayName": "Title", "purpose": "Títulos de seção." },
+      "body": { "displayName": "Body", "purpose": "Texto corrente; nomes de pessoa em 600, 16px." },
+      "body-small": { "displayName": "Body small", "purpose": "Linha secundária em pedra: detalhe, status, o que a pessoa faz agora." },
+      "label": { "displayName": "Label (Condensed)", "purpose": "Datas, contadores, dias da tira, legenda e carga, sempre com números tabulares." }
+    },
+    "shadows": [
+      { "name": "lift", "value": "0 1px 2px rgba(30,34,37,.05), 0 12px 40px rgba(30,34,37,.10)", "purpose": "Somente a ficha lateral flutuante. Escuro: 0 1px 2px rgba(0,0,0,.4), 0 16px 48px rgba(0,0,0,.5)." },
+      { "name": "swatch-outline", "value": "inset 0 0 0 1px var(--line-strong)", "purpose": "Contorno interno de amostra vazia; variantes de 1.5px em vermelho (prazo, atraso) e azul (registro). Não é elevação." },
+      { "name": "scrim", "value": "rgba(24,27,29,.32)", "purpose": "Véu atrás da ficha. Escuro: rgba(0,0,0,.55)." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(.23,1,.32,1)", "purpose": "Retorno de toque e troca do lembrete." },
+      { "name": "ease-drawer", "value": "cubic-bezier(.32,.72,0,1)", "purpose": "Entrada da ficha lateral (360ms, 40px)." },
+      { "name": "press", "value": "transform: scale(.97) 160ms", "purpose": "Toque em botões (0.94 em icon buttons, 0.995 nas linhas da equipe)." },
+      { "name": "feature-swap", "value": "260ms opacity 0 + blur(3px) + translateY(4px) para repouso", "purpose": "Troca do lembrete em destaque a cada 7s; desligada sob movimento reduzido." },
+      { "name": "state", "value": "160ms ease", "purpose": "Cor de fundo, contorno e texto em hover." }
+    ],
+    "breakpoints": [
+      { "name": "single-column", "value": "960px" },
+      { "name": "mobile", "value": "560px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Button",
+      "kind": "button",
+      "refersTo": "button",
+      "description": "Botão padrão com contorno fino; ações secundárias como Atualizar dados.",
+      "html": "<button class=\"ds-btn\" type=\"button\"><svg viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M13.5 8a5.5 5.5 0 1 1-1.7-4\"/><path d=\"M13.5 2.5v3h-3\"/></svg>Atualizar dados</button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:38px;padding:0 14px;border-radius:4px;border:1px solid var(--line-strong,#C2C9CF);background:transparent;color:var(--ink,#1E2225);font-family:\"Sofia Sans\",\"Avenir Next\",system-ui,sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:transform 160ms cubic-bezier(.23,1,.32,1),border-color 160ms ease}.ds-btn svg{width:15px;height:15px}.ds-btn:hover{border-color:var(--ink,#1E2225)}.ds-btn:active{transform:scale(.97)}.ds-btn:focus-visible{outline:2px solid var(--ink,#1E2225);outline-offset:3px}"
+    },
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Uma ação primária por bloco, preenchida em grafite.",
+      "html": "<button class=\"ds-btn-primary\" type=\"button\">Interpretar</button>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 14px;border-radius:4px;border:1px solid var(--ink,#1E2225);background:var(--ink,#1E2225);color:var(--ground,#F3F5F7);font-family:\"Sofia Sans\",\"Avenir Next\",system-ui,sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:transform 160ms cubic-bezier(.23,1,.32,1),background-color 160ms ease,border-color 160ms ease}.ds-btn-primary:hover{background:var(--stone,#596065);border-color:var(--stone,#596065)}.ds-btn-primary:active{transform:scale(.97)}.ds-btn-primary:focus-visible{outline:2px solid var(--ink,#1E2225);outline-offset:3px}"
+    },
+    {
+      "name": "Icon Button",
+      "kind": "button",
+      "refersTo": "icon-button",
+      "description": "Quadrado de 34px para setas do lembrete e fechar a ficha.",
+      "html": "<button class=\"ds-ib\" type=\"button\" aria-label=\"Próximo\"><svg viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><path d=\"m6 3 5 5-5 5\"/></svg></button>",
+      "css": ".ds-ib{width:34px;height:34px;display:grid;place-items:center;border:1px solid var(--line-strong,#C2C9CF);border-radius:4px;background:transparent;color:var(--ink,#1E2225);cursor:pointer;transition:transform 160ms cubic-bezier(.23,1,.32,1),border-color 160ms ease}.ds-ib svg{width:14px;height:14px}.ds-ib:hover{border-color:var(--ink,#1E2225)}.ds-ib:active{transform:scale(.94)}.ds-ib:focus-visible{outline:2px solid var(--ink,#1E2225);outline-offset:3px}"
+    },
+    {
+      "name": "Textarea",
+      "kind": "input",
+      "refersTo": "textarea",
+      "description": "Campo de atualização em linguagem natural, com rótulo visível.",
+      "html": "<label class=\"ds-lbl\" for=\"ds-ta\">Digite uma atualização</label><textarea id=\"ds-ta\" class=\"ds-textarea\" placeholder=\"O projeto X foi para detalhamento\"></textarea>",
+      "css": ".ds-lbl{display:block;font-family:\"Sofia Sans\",system-ui,sans-serif;font-size:14px;font-weight:500;margin-bottom:8px;color:var(--ink,#1E2225)}.ds-textarea{width:100%;min-height:104px;resize:vertical;border:1px solid var(--line-strong,#C2C9CF);border-radius:4px;background:var(--surface,#FFFFFF);color:var(--ink,#1E2225);padding:14px 16px;font-family:\"Sofia Sans\",system-ui,sans-serif;font-size:16px;line-height:1.5;transition:border-color 160ms ease}.ds-textarea::placeholder{color:var(--stone,#596065)}.ds-textarea:focus{outline:none;border-color:var(--ink,#1E2225);box-shadow:0 0 0 1px var(--ink,#1E2225)}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "description": "Links de texto; o atual em 600 com filete inferior grafite, os indisponíveis em pedra.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Seções\"><a href=\"#\" aria-current=\"page\">Hoje</a><span>Projetos</span><span>Reuniões</span><span>Equipe</span></nav>",
+      "css": ".ds-nav{display:flex;gap:24px;font-family:\"Sofia Sans\",system-ui,sans-serif;font-size:15px;color:var(--ink,#1E2225)}.ds-nav a,.ds-nav span{text-decoration:none;color:inherit;white-space:nowrap;padding-block:4px;border-bottom:1.5px solid transparent}.ds-nav a[aria-current]{border-color:var(--ink,#1E2225);font-weight:600}.ds-nav span{color:var(--stone,#596065)}.ds-nav a:focus-visible{outline:2px solid var(--ink,#1E2225);outline-offset:3px}"
+    },
+    {
+      "name": "Swatch Legend",
+      "kind": "chip",
+      "refersTo": "swatch",
+      "description": "As amostras de demanda com seus rótulos; a cor sempre acompanhada de texto.",
+      "html": "<div class=\"ds-legend\"><span><i class=\"ds-sw ds-entrega\"></i>Entrega final</span><span><i class=\"ds-sw ds-apresentacao\"></i>Apresentação ou aprovação</span><span><i class=\"ds-sw ds-reuniao\"></i>Reunião</span><span><i class=\"ds-sw ds-producao\"></i>Produção</span><span><i class=\"ds-sw ds-prazo\"></i>Prazo em risco</span><span><i class=\"ds-sw ds-atraso\"></i>Atraso</span><span><i class=\"ds-sw\"></i>Sem demanda registrada</span></div>",
+      "css": ".ds-legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:\"Sofia Sans Condensed\",\"Sofia Sans\",sans-serif;font-size:13px;color:var(--stone,#596065)}.ds-legend span{display:inline-flex;align-items:center;gap:7px}.ds-sw{display:inline-block;width:12px;height:16px;border-radius:2px;background:var(--wash,#E8ECEF);box-shadow:inset 0 0 0 1px var(--line-strong,#C2C9CF)}.ds-entrega{background:var(--red,#B3372B);box-shadow:none}.ds-apresentacao{background:var(--orange,#C2671A);box-shadow:none}.ds-reuniao{background:var(--blue,#2E5C9A);box-shadow:none}.ds-producao{background:var(--green,#3B7853);box-shadow:none}.ds-prazo{background:transparent;box-shadow:inset 0 0 0 1.5px var(--red,#B3372B)}.ds-atraso{background:repeating-linear-gradient(135deg,var(--red,#B3372B) 0 2px,transparent 2px 5px);box-shadow:inset 0 0 0 1.5px var(--red,#B3372B)}"
+    },
+    {
+      "name": "Day Strip Row",
+      "kind": "custom",
+      "refersTo": "swatch-strip",
+      "description": "Assinatura: a linha da pessoa com a tira de 10 dias úteis; a linha inteira abre a ficha.",
+      "html": "<button type=\"button\" class=\"ds-row\"><span><span class=\"ds-name\">Pessoa</span><span class=\"ds-now\">Etapa em andamento, projeto</span></span><span class=\"ds-strip\"><i class=\"ds-s ds-p\"></i><i class=\"ds-s ds-p\"></i><i class=\"ds-s ds-b\"></i><i class=\"ds-s\"></i><i class=\"ds-s ds-o\"></i><i class=\"ds-s ds-p\"></i><i class=\"ds-s\"></i><i class=\"ds-s ds-r\"></i><i class=\"ds-s\"></i><i class=\"ds-s\"></i></span><span class=\"ds-load\">Atenção</span></button>",
+      "css": ".ds-row{display:grid;grid-template-columns:minmax(0,1fr) auto 84px;gap:6px 22px;align-items:center;width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--line,#DCE1E5);padding:16px 0;cursor:pointer;color:var(--ink,#1E2225);font-family:\"Sofia Sans\",system-ui,sans-serif;transition:background-color 160ms ease}.ds-row:hover{background:linear-gradient(90deg,transparent,var(--wash,#E8ECEF) 12%,var(--wash,#E8ECEF) 88%,transparent)}.ds-row:active{transform:scale(.995)}.ds-row:focus-visible{outline:2px solid var(--ink,#1E2225);outline-offset:3px}.ds-name{display:block;font-weight:600;font-size:16px}.ds-now{display:block;font-size:13.5px;color:var(--stone,#596065);margin-top:2px}.ds-strip{display:grid;grid-template-columns:repeat(10,14px);gap:5px}.ds-s{display:block;width:14px;height:20px;border-radius:2px;background:var(--wash,#E8ECEF);box-shadow:inset 0 0 0 1px var(--line-strong,#C2C9CF)}.ds-r{background:var(--red,#B3372B);box-shadow:none}.ds-o{background:var(--orange,#C2671A);box-shadow:none}.ds-b{background:var(--blue,#2E5C9A);box-shadow:none}.ds-p{background:var(--green,#3B7853);box-shadow:none}.ds-load{font-family:\"Sofia Sans Condensed\",\"Sofia Sans\",sans-serif;font-size:14px;text-align:right;color:var(--ink,#1E2225)}"
+    },
+    {
+      "name": "Feature Sample",
+      "kind": "custom",
+      "refersTo": "swatch-feature",
+      "description": "Lembrete em destaque: amostra grande com data condensada, título em Headline e metadados em pedra.",
+      "html": "<div class=\"ds-feature\"><div class=\"ds-sample\"><span class=\"ds-big\"></span><span class=\"ds-cap\"><b>24/09</b>qui</span></div><div><div class=\"ds-ftitle\">Apresentação do projeto</div><div class=\"ds-fmeta\"><span class=\"ds-k\">Reunião, hoje.</span> 15h, Google Calendar</div></div></div>",
+      "css": ".ds-feature{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 24px;align-items:start;font-family:\"Sofia Sans\",system-ui,sans-serif;color:var(--ink,#1E2225)}.ds-sample{display:flex;flex-direction:column;gap:8px}.ds-big{display:block;width:64px;height:92px;border-radius:3px;background:var(--orange,#C2671A)}.ds-cap{font-family:\"Sofia Sans Condensed\",\"Sofia Sans\",sans-serif;font-size:13px;color:var(--stone,#596065);line-height:1.25}.ds-cap b{display:block;color:var(--ink,#1E2225);font-weight:600;font-size:15px}.ds-ftitle{font-size:clamp(24px,2.6vw,32px);font-weight:500;line-height:1.18;letter-spacing:-.012em}.ds-fmeta{font-size:15px;color:var(--stone,#596065)}.ds-k{font-family:\"Sofia Sans Condensed\",\"Sofia Sans\",sans-serif;color:var(--ink,#1E2225);font-weight:600}"
+    },
+    {
+      "name": "Before and After Card",
+      "kind": "card",
+      "description": "Único contêiner com caixa: a operação a confirmar, com colunas antes e depois.",
+      "html": "<div class=\"ds-op\"><div class=\"ds-op-h\"><b>Mover card</b><span class=\"ds-tag\">Pronto para gravar</span></div><div class=\"ds-ba\"><div><h4>Antes</h4><dl><dt>Lista</dt><dd>Em andamento</dd></dl></div><div><h4>Depois</h4><dl><dt>Lista</dt><dd class=\"ds-chg\">Detalhamento</dd></dl></div></div></div>",
+      "css": ".ds-op{border:1px solid var(--line,#DCE1E5);border-radius:4px;background:var(--surface,#FFFFFF);color:var(--ink,#1E2225);font-family:\"Sofia Sans\",system-ui,sans-serif}.ds-op-h{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line,#DCE1E5)}.ds-op-h b{font-weight:600}.ds-tag{font-size:12.5px;color:var(--green,#3B7853);font-weight:600}.ds-ba{display:grid;grid-template-columns:1fr 1fr}.ds-ba>div{padding:14px 16px}.ds-ba>div+div{border-left:1px solid var(--line,#DCE1E5)}.ds-ba h4{margin:0 0 8px;font-size:13px;font-weight:500;color:var(--stone,#596065)}.ds-ba dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:5px 12px;font-size:14px}.ds-ba dt{color:var(--stone,#596065)}.ds-ba dd{margin:0}.ds-chg{font-weight:600}"
+    }
+  ],
+  "narrative": {
+    "northStar": "O Mostruário Silencioso",
+    "overview": "O painel é lido como um mostruário de acabamentos de um escritório de arquitetura: um fundo calmo, frio e quase branco, tinta grafite, filetes finos, e cor apenas em pequenas amostras retangulares. Cada demanda do dia é uma amostra; a semana de cada pessoa é uma tira de dez amostras, uma por dia útil. Todo o resto (texto, controles, divisões) fica em escala de cinzas azulados para que a cor tenha significado e nunca decoração.\n\nA densidade é de ferramenta de trabalho, não de vitrine: linhas de lista separadas por filetes, sem cartões em volta de cada bloco, sem barra lateral, títulos em caixa normal. A hierarquia vem do peso e do tamanho de uma única família tipográfica (Sofia Sans), com a largura condensada reservada a números, datas e rótulos. O único gesto grande é o \"Hoje\" em peso leve e corpo enorme, que ancora a página.\n\nO movimento é curto e funcional: o lembrete em destaque troca com esmaecimento e leve desfoque, a ficha da pessoa entra com curva de gaveta, e controles cedem com leve redução de escala ao toque. Tudo respeita `prefers-reduced-motion`. O sistema tem modo escuro completo, por preferência do sistema ou por `data-theme=\"dark\"`.",
+    "keyCharacteristics": [
+      "Cor só nas amostras de demanda; interface em grafite, pedra e filetes.",
+      "Uma família tipográfica, com a versão condensada para números.",
+      "Linhas e filetes em vez de caixas; superfícies planas.",
+      "Cantos quase retos (2 a 4px) em tudo que é da página.",
+      "Movimento curto, com curvas de saída suaves, desligado sob movimento reduzido."
+    ],
+    "rules": [
+      { "name": "The Pigment Rule", "body": "Vermelho, laranja, azul e verde significam tipo de demanda e nada mais. Nunca usar uma delas como cor de marca, fundo de seção, botão ou enfeite.", "section": "colors" },
+      { "name": "The Text-Safe Orange Rule", "body": "O laranja de amostra (`orange`) não é cor de texto. Texto laranja usa sempre `orange-text`.", "section": "colors" },
+      { "name": "The One Family Rule", "body": "Só Sofia Sans e Sofia Sans Condensed. Hierarquia por peso e tamanho, nunca por uma segunda família.", "section": "typography" },
+      { "name": "The Numbers Are Condensed Rule", "body": "Todo número, data ou contador que o olho compara usa a condensada com `tabular-nums lining-nums`.", "section": "typography" },
+      { "name": "The Sentence Case Rule", "body": "Títulos, rótulos e botões em caixa normal. Nada em caixa alta.", "section": "typography" },
+      { "name": "The Only-What-Floats Rule", "body": "Sombra de elevação só em camadas sobrepostas à página (a ficha). Nada que esteja no fluxo da página ganha sombra.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do colocar cor apenas em amostras e em raros textos de estado, sempre com o significado fixo de demanda.",
+      "Do separar conteúdo com filetes de 1px (`line`) e respiro, em vez de caixas.",
+      "Do usar Sofia Sans Condensed com números tabulares para toda data, contador e dia.",
+      "Do manter cantos entre 2px e 4px em tudo que está no fluxo da página.",
+      "Do limitar hover a `(hover:hover) and (pointer:fine)` e dar a todo controle um retorno de toque em escala (0.94 a 0.97) em 160ms.",
+      "Do desligar animações e a rotação do lembrete sob `prefers-reduced-motion`.",
+      "Do definir cada novo valor de cor nos dois modos, claro e escuro."
+    ],
+    "donts": [
+      "Don't usar vermelho, laranja, azul ou verde como cor de marca, fundo ou decoração.",
+      "Don't usar `orange` como cor de texto; use `orange-text`.",
+      "Don't colocar sombra em elementos do fluxo da página; a sombra Lift é exclusiva de camadas flutuantes.",
+      "Don't envolver seções ou itens de lista em cartões; o único contêiner com caixa é o de antes e depois.",
+      "Don't introduzir uma segunda família tipográfica nem títulos em caixa alta.",
+      "Don't deixar a cor ser o único portador de significado; toda amostra tem texto ou `title`."
+    ]
+  }
+}

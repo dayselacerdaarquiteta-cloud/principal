@@ -1,352 +1,351 @@
 <title>Painel Dayse Lacerda</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,300..700;1,400&family=Sofia+Sans+Condensed:wght@400..600&display=swap">
 <style>
 :root{
-  --paper:#F4F4F1;
-  --sheet:#FFFFFF;
-  --ink:#1D2023;
-  --graphite:#4E555B;
-  --concrete:#666C71;
-  --rule:#DDDEDA;
-  --rule-strong:#BBBDB8;
-  --grid:rgba(29,32,35,.045);
-  --hover:#ECECE8;
-  --red:#B42318;   --red-soft:#FBEAE8;
-  --orange:#9C4E05;--orange-soft:#FBEFE3;
-  --blue:#2B59A3;  --blue-soft:#E9EFF9;
-  --green:#2E7549; --green-soft:#E6F2EA;
-  --shadow:0 1px 2px rgba(20,22,24,.06),0 8px 28px rgba(20,22,24,.08);
-  --f-display:"Archivo","Helvetica Neue",Arial,sans-serif;
-  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
-  --r:6px;
+  --ground:#F3F5F7;
+  --surface:#FFFFFF;
+  --ink:#1E2225;
+  --stone:#596065;
+  --line:#DCE1E5;
+  --line-strong:#C2C9CF;
+  --wash:#E8ECEF;
+  --red:#B3372B;
+  --orange:#C2671A;
+  --orange-text:#9A4E0F;
+  --blue:#2E5C9A;
+  --green:#3B7853;
+  --scrim:rgba(24,27,29,.32);
+  --lift:0 1px 2px rgba(30,34,37,.05),0 12px 40px rgba(30,34,37,.10);
+  --f:"Sofia Sans","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-num:"Sofia Sans Condensed","Sofia Sans","Avenir Next Condensed","Arial Narrow",sans-serif;
+  --r:4px;
+  --ease-out:cubic-bezier(.23,1,.32,1);
+  --ease-drawer:cubic-bezier(.32,.72,0,1);
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
     color-scheme:dark;
-    --paper:#131517;--sheet:#1B1E21;--ink:#ECEDEA;--graphite:#B4B9BC;--concrete:#8D9499;
-    --rule:#2B2F33;--rule-strong:#40454A;--grid:rgba(236,237,234,.035);--hover:#23272A;
-    --red:#F07A6E;--red-soft:#3A1F1C;--orange:#E9A25C;--orange-soft:#3A2A19;
-    --blue:#8AAAE8;--blue-soft:#1C2638;--green:#7DC497;--green-soft:#1A2E22;
-    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.45);
+    --ground:#141617;--surface:#1B1E20;--ink:#E9EBE8;--stone:#9EA5A9;--line:#2A2E31;--line-strong:#3D4246;--wash:#212527;
+    --red:#E26B5D;--orange:#E39A55;--orange-text:#E39A55;--blue:#83A6DC;--green:#7DBB92;--scrim:rgba(0,0,0,.55);
+    --lift:0 1px 2px rgba(0,0,0,.4),0 16px 48px rgba(0,0,0,.5);
   }
 }
 :root[data-theme="dark"]{
   color-scheme:dark;
-  --paper:#131517;--sheet:#1B1E21;--ink:#ECEDEA;--graphite:#B4B9BC;--concrete:#8D9499;
-  --rule:#2B2F33;--rule-strong:#40454A;--grid:rgba(236,237,234,.035);--hover:#23272A;
-  --red:#F07A6E;--red-soft:#3A1F1C;--orange:#E9A25C;--orange-soft:#3A2A19;
-  --blue:#8AAAE8;--blue-soft:#1C2638;--green:#7DC497;--green-soft:#1A2E22;
-  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.45);
+  --ground:#141617;--surface:#1B1E20;--ink:#E9EBE8;--stone:#9EA5A9;--line:#2A2E31;--line-strong:#3D4246;--wash:#212527;
+  --red:#E26B5D;--orange:#E39A55;--orange-text:#E39A55;--blue:#83A6DC;--green:#7DBB92;--scrim:rgba(0,0,0,.55);
+  --lift:0 1px 2px rgba(0,0,0,.4),0 16px 48px rgba(0,0,0,.5);
 }
 *,*::before,*::after{box-sizing:border-box}
-body{background:var(--paper);color:var(--ink);font-family:var(--f-display);font-size:15px;line-height:1.5;font-variation-settings:"wdth" 100;-webkit-font-smoothing:antialiased}
+body{background:var(--ground);color:var(--ink);font-family:var(--f);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased;caret-color:var(--ink);accent-color:var(--ink)}
+::selection{background:var(--ink);color:var(--ground)}
 button,input,textarea{font:inherit;color:inherit}
-a{color:inherit}
-:focus-visible{outline:2px solid var(--ink);outline-offset:2px;border-radius:3px}
-.wrap{max-width:1180px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:0 64px}
-.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
-.label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;font-variation-settings:"wdth" 118;color:var(--concrete)}
+a{color:inherit;text-decoration-color:var(--line-strong);text-underline-offset:3px}
+a:hover{text-decoration-color:currentColor}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:2px}
+.num{font-family:var(--f-num);font-variant-numeric:tabular-nums lining-nums;letter-spacing:.01em}
+.muted{color:var(--stone)}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:clamp(16px,4.5vw,56px)}
+h1,h2,h3{text-wrap:balance;margin:0}
+h2{font-size:19px;font-weight:600;letter-spacing:-.005em}
+h3{font-size:14px;font-weight:600}
 
-/* ---------- header ---------- */
-.top{background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:12px 12px;border-bottom:1px solid var(--rule)}
-.top-in{max-width:1180px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:22px 0}
-.brand{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.brand b{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;font-variation-settings:"wdth" 125}
-.head{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;padding-block:28px 22px}
-h1{margin:0;font-size:clamp(44px,7vw,76px);line-height:.92;font-weight:300;letter-spacing:-.02em;font-variation-settings:"wdth" 112}
-.date{margin-top:10px;font-size:17px;color:var(--graphite);text-wrap:balance}
-.stamp{border:1.5px solid var(--ink);background:var(--sheet);display:grid;grid-template-columns:auto auto;font-size:11px;min-width:260px}
-.stamp div{padding:5px 10px;border-bottom:1px solid var(--rule-strong)}
-.stamp div:nth-child(odd){border-right:1px solid var(--rule-strong);color:var(--concrete);letter-spacing:.12em;text-transform:uppercase;font-weight:600;font-variation-settings:"wdth" 118}
-.stamp div:nth-last-child(-n+2){border-bottom:0}
-.stamp .v{font-family:var(--f-mono)}
-.nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+/* cabeçalho */
+.masthead{border-bottom:1px solid var(--line)}
+.masthead .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px 28px;flex-wrap:wrap;padding-block:18px}
+.brand{font-weight:600;font-size:15px;letter-spacing:.005em}
+.brand span{font-weight:400;color:var(--stone)}
+.nav{display:flex;gap:24px;overflow-x:auto;scrollbar-width:none}
 .nav::-webkit-scrollbar{display:none}
-.nav a,.nav span{padding:10px 14px 12px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;font-variation-settings:"wdth" 115;text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap}
-.nav a[aria-current]{border-color:var(--ink)}
-.nav span{color:var(--concrete)}
-.nav span small{font-size:11px;letter-spacing:.06em;margin-left:6px;font-family:var(--f-mono);text-transform:none;font-weight:400}
+.nav a,.nav span{font-size:15px;text-decoration:none;white-space:nowrap;padding-block:4px;border-bottom:1.5px solid transparent}
+.nav a[aria-current]{border-color:var(--ink);font-weight:600}
+.nav span{color:var(--stone)}
 
-/* ---------- toolbar ---------- */
-.bar{display:flex;align-items:center;gap:10px 16px;flex-wrap:wrap;padding-block:18px}
-.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--rule-strong);background:var(--sheet);padding:8px 14px;border-radius:var(--r);cursor:pointer;font-size:14px;font-weight:500;transition:background-color .15s ease,border-color .15s ease,transform .1s ease}
-.btn:hover{background:var(--hover)}
+/* abertura */
+.opening{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:32px 64px;padding-block:52px 44px;align-items:end;border-bottom:1px solid var(--line)}
+h1{font-weight:300;font-size:clamp(64px,9vw,96px);line-height:.9;letter-spacing:-.035em}
+.date{margin-top:14px;font-size:18px;color:var(--stone)}
+.mast-r{display:flex;align-items:center;gap:12px 36px;flex-wrap:wrap}
+.status{display:flex;align-items:center;gap:14px;flex-wrap:wrap;font-size:13.5px;color:var(--stone)}
+.masthead .btn{min-height:34px}
+.status .err{color:var(--red)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:38px;padding:0 14px;border-radius:var(--r);border:1px solid var(--line-strong);background:transparent;cursor:pointer;font-size:14px;font-weight:500;white-space:nowrap;transition:transform 160ms var(--ease-out),background-color 160ms ease,border-color 160ms ease,color 160ms ease}
 .btn:active{transform:scale(.97)}
 .btn[disabled]{opacity:.45;cursor:not-allowed;transform:none}
-.btn.primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.btn.primary:hover{background:var(--graphite);border-color:var(--graphite)}
+.btn.primary{background:var(--ink);border-color:var(--ink);color:var(--ground)}
 .btn svg{width:15px;height:15px}
-.spin svg{animation:spin 1s linear infinite}
+.btn.busy svg{animation:spin .9s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.src{display:flex;gap:8px;flex-wrap:wrap}
-.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:3px 9px;border:1px solid var(--rule);border-radius:99px;color:var(--graphite);background:var(--sheet)}
-.chip i{width:7px;height:7px;border-radius:50%;background:var(--concrete)}
-.chip.ok i{background:var(--green)}
-.chip.err i{background:var(--red)}
-.chip.load i{background:var(--orange)}
-.note{font-size:13px;color:var(--graphite)}
+@media (hover:hover) and (pointer:fine){
+  .btn:hover{border-color:var(--ink)}
+  .btn.primary:hover{background:var(--stone);border-color:var(--stone)}
+}
 
-/* ---------- section heading w/ dimension line ---------- */
-.sh{display:flex;align-items:center;gap:12px;margin:0 0 14px}
-.sh h2{margin:0;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;font-variation-settings:"wdth" 122;white-space:nowrap}
-.sh .dim{flex:1;height:9px;position:relative;min-width:24px}
-.sh .dim::before{content:"";position:absolute;left:0;right:0;top:4px;border-top:1px solid var(--rule-strong)}
-.sh .dim::after{content:"";position:absolute;right:0;top:0;height:9px;border-left:1px solid var(--rule-strong)}
-.sh .count{font-family:var(--f-mono);font-size:12px;color:var(--concrete)}
+/* amostras */
+.sw{display:inline-block;width:12px;height:16px;border-radius:2px;flex:none;vertical-align:middle;background:var(--wash);box-shadow:inset 0 0 0 1px var(--line-strong)}
+.sw.entrega{background:var(--red);box-shadow:none}
+.sw.apresentacao{background:var(--orange);box-shadow:none}
+.sw.reuniao{background:var(--blue);box-shadow:none}
+.sw.producao{background:var(--green);box-shadow:none}
+.sw.atraso{background:repeating-linear-gradient(135deg,var(--red) 0 2px,transparent 2px 5px);box-shadow:inset 0 0 0 1.5px var(--red)}
+.sw.prazo{background:transparent;box-shadow:inset 0 0 0 1.5px var(--red)}
+.sw.carga{background:var(--ink);box-shadow:none}
+.sw.registro{background:transparent;box-shadow:inset 0 0 0 1.5px var(--blue)}
+.sw.big{width:30px;height:42px;border-radius:3px}
 
-/* ---------- reminders ---------- */
-.rem{background:var(--sheet);border:1px solid var(--rule);border-radius:var(--r);display:grid;grid-template-columns:1fr auto;align-items:stretch;min-height:112px}
-.rem-stage{position:relative;padding:18px 22px;overflow:hidden}
-.slide{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:start}
-.slide.enter{animation:slideIn .38s cubic-bezier(.22,1,.36,1)}
-@keyframes slideIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.when{grid-row:span 2;border:1px solid var(--rule-strong);border-radius:4px;text-align:center;min-width:64px;padding:6px 8px 5px}
-.when b{display:block;font-size:24px;line-height:1;font-weight:600;font-variation-settings:"wdth" 100}
-.when span{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--concrete);font-weight:600}
-.slide .kind{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;font-variation-settings:"wdth" 118;display:flex;align-items:center;gap:8px}
-.slide .t{font-size:19px;font-weight:500;line-height:1.3;text-wrap:balance;grid-column:2}
-.slide .m{grid-column:2;font-size:13px;color:var(--graphite)}
-.rem-ctl{display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end;padding:12px 14px;border-left:1px solid var(--rule);gap:8px}
-.arrows{display:flex;gap:4px}
-.ib{width:32px;height:32px;display:grid;place-items:center;border:1px solid var(--rule);background:var(--sheet);border-radius:var(--r);cursor:pointer}
-.ib:hover{background:var(--hover)}
+/* lembrete em destaque */
+.feature{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 24px;align-items:start;min-height:150px}
+.sample{grid-row:span 2;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.sample .sw.big{width:64px;height:92px;border-radius:3px}
+.sample .cap{font-family:var(--f-num);font-size:13px;color:var(--stone);line-height:1.25}
+.sample .cap b{display:block;color:var(--ink);font-weight:600;font-size:15px}
+.f-title{font-size:clamp(24px,2.6vw,32px);font-weight:500;line-height:1.18;letter-spacing:-.012em;margin-top:2px}
+.f-title a{text-decoration:none}
+.f-meta{font-size:15px;color:var(--stone)}
+.f-meta .k{font-family:var(--f-num);color:var(--ink);font-weight:600}
+.f-ctl{grid-column:2;display:flex;align-items:center;gap:14px;margin-top:14px;flex-wrap:wrap}
+.ib{width:34px;height:34px;display:grid;place-items:center;border:1px solid var(--line-strong);border-radius:var(--r);background:transparent;cursor:pointer;transition:transform 160ms var(--ease-out),border-color 160ms ease}
+.ib:active{transform:scale(.94)}
 .ib svg{width:14px;height:14px}
-.pos{font-family:var(--f-mono);font-size:12px;color:var(--concrete)}
-.linkbtn{background:none;border:0;padding:0;font-size:13px;text-decoration:underline;text-underline-offset:3px;cursor:pointer;color:var(--graphite)}
-.all{margin-top:10px;background:var(--sheet);border:1px solid var(--rule);border-radius:var(--r)}
-.all ul{list-style:none;margin:0;padding:0}
-.all li{display:grid;grid-template-columns:92px 1fr auto;gap:12px;padding:10px 16px;border-bottom:1px solid var(--rule);font-size:14px;align-items:baseline}
-.all li:last-child{border-bottom:0}
-.all li .k{font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.ib[disabled]{opacity:.4;cursor:default}
+@media (hover:hover) and (pointer:fine){.ib:hover{border-color:var(--ink)}}
+.linkbtn{background:none;border:0;padding:0;cursor:pointer;font-size:14px;text-decoration:underline;text-decoration-color:var(--line-strong);text-underline-offset:4px;color:var(--ink)}
+.linkbtn:hover{text-decoration-color:currentColor}
+.all{margin-top:28px}
+.all ol{list-style:none;margin:0;padding:0}
+.all li{display:grid;grid-template-columns:auto 64px minmax(0,1fr);gap:4px 14px;padding:11px 0;border-top:1px solid var(--line);align-items:baseline}
+.all li .sw{align-self:center}
+.all li small{display:block;color:var(--stone);font-size:13px}
 
-.dot{width:9px;height:9px;flex:none;display:inline-block}
-.k-reuniao{color:var(--blue)} .k-reuniao .dot,.dot.k-reuniao{background:var(--blue);border-radius:50%}
-.k-entrega{color:var(--red)} .k-entrega .dot,.dot.k-entrega{background:var(--red)}
-.k-prazo{color:var(--orange)} .k-prazo .dot,.dot.k-prazo{background:var(--orange);transform:rotate(45deg)}
-.k-atraso{color:var(--red)} .k-atraso .dot,.dot.k-atraso{border:2px solid var(--red)}
+/* corpo */
+.body{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:48px 64px;padding-block:44px 24px}
+.section-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:18px}
+.section-h .num{color:var(--stone);font-size:14px}
 
-/* ---------- layout ---------- */
-.grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:28px;margin-top:34px;align-items:start}
-.col{display:flex;flex-direction:column;gap:34px;min-width:0}
+/* equipe: tiras */
+.team{display:flex;flex-direction:column}
+.days,.row{display:grid;grid-template-columns:minmax(0,1fr) auto 84px;gap:6px 22px;align-items:center}
+.days{padding-bottom:8px;color:var(--stone);font-size:13px;font-family:var(--f-num)}
+.strip{display:grid;grid-template-columns:repeat(10,14px);gap:5px}
+.strip .sw{width:14px;height:20px}
+.days .strip span,.strip.nums span{text-align:center;font-family:var(--f-num)}
+.strip.nums{display:none;margin-top:5px;font-size:12px;color:var(--stone)}
+.strip.nums .t{color:var(--ink);font-weight:600}
+.days .strip span.t{color:var(--ink);font-weight:600}
+.strip-wrap{display:flex;flex-direction:column}
+.row{width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--line);padding:16px 0;cursor:pointer;color:inherit;transition:background-color 160ms ease}
+.row:active{transform:scale(.995)}
+@media (hover:hover) and (pointer:fine){.row:hover{background:linear-gradient(90deg,transparent,var(--wash) 12%,var(--wash) 88%,transparent)}}
+.p-name{font-weight:600;font-size:16px}
+.p-now{font-size:13.5px;color:var(--stone);margin-top:2px;overflow-wrap:anywhere}
+.load{font-family:var(--f-num);font-size:14px;text-align:right;color:var(--stone)}
+.load.atencao{color:var(--ink)}
+.load.critico{color:var(--red);font-weight:600}
+.legend{font-family:var(--f-num);display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px;font-size:13px;color:var(--stone)}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.legend .sw{width:9px;height:12px}
 
-/* ---------- update box ---------- */
-.upd{background:var(--sheet);border:1px solid var(--rule);border-radius:var(--r);padding:18px}
-.upd textarea{width:100%;min-height:92px;resize:vertical;border:1px solid var(--rule-strong);border-radius:var(--r);background:var(--paper);padding:12px 14px;font-size:16px;line-height:1.45}
-.upd textarea:focus{outline:2px solid var(--ink);outline-offset:0;border-color:transparent}
-.upd-row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:12px}
-.hints{display:flex;gap:6px;flex-wrap:wrap}
-.hint{font-size:12px;border:1px dashed var(--rule-strong);border-radius:99px;padding:3px 10px;background:none;cursor:pointer;color:var(--graphite)}
-.hint:hover{background:var(--hover)}
-.plan{margin-top:16px;border-top:1px solid var(--rule);padding-top:16px;display:flex;flex-direction:column;gap:16px}
-.op{border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
-.op-h{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;background:var(--paper);border-bottom:1px solid var(--rule);flex-wrap:wrap}
-.op-h b{font-size:14px;font-weight:600}
-.tag{font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:2px 8px;border-radius:3px;font-variation-settings:"wdth" 115}
-.tag.crit{background:var(--orange-soft);color:var(--orange)}
-.tag.block{background:var(--red-soft);color:var(--red)}
-.tag.ok{background:var(--green-soft);color:var(--green)}
+/* alertas */
+.alerts ol{list-style:none;margin:0;padding:0}
+.alert{display:grid;grid-template-columns:12px minmax(0,1fr);gap:3px 14px;padding:14px 0;border-top:1px solid var(--line)}
+.alert .sw{width:10px;height:14px;margin-top:5px;grid-row:span 2}
+.a-type{font-family:var(--f-num);color:var(--stone)}
+.a-type{color:var(--ink);font-weight:600}
+.alert.critico .a-type{color:var(--red)}
+.a-t{font-weight:500;line-height:1.35}
+.a-t a,.p-now a{text-decoration:none}
+@media (hover:hover) and (pointer:fine){.a-t a:hover{text-decoration:underline}}
+.a-d{font-size:13.5px;color:var(--stone)}
+.alert{transition:background-color 160ms ease}
+.fine{font-size:12.5px;color:var(--stone);margin-top:14px;line-height:1.5}
+
+/* atualização */
+.update{border-top:1px solid var(--line);padding-block:44px 8px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.65fr);gap:24px 64px}
+.update p{margin:8px 0 0;color:var(--stone);font-size:14px;max-width:44ch}
+label.lbl{display:block;font-size:14px;font-weight:500;margin-bottom:8px}
+textarea{width:100%;min-height:104px;resize:vertical;border:1px solid var(--line-strong);border-radius:var(--r);background:var(--surface);padding:14px 16px;font-size:16px;line-height:1.5;transition:border-color 160ms ease}
+textarea::placeholder{color:var(--stone)}
+textarea:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+.u-row{display:flex;justify-content:space-between;align-items:center;gap:12px 16px;flex-wrap:wrap;margin-top:12px}
+.hints{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13.5px}
+.hint{background:none;border:0;padding:0;cursor:pointer;color:var(--stone);text-decoration:underline;text-decoration-color:var(--line-strong);text-underline-offset:4px}
+.hint:hover{color:var(--ink)}
+.plan{margin-top:22px;display:flex;flex-direction:column;gap:18px}
+.op{border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+.op-h{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 16px;border-bottom:1px solid var(--line)}
+.op-h b{font-weight:600}
+.tag{font-size:12.5px;color:var(--stone)}
+.tag.crit{color:var(--orange-text);font-weight:600}
+.tag.block{color:var(--red);font-weight:600}
+.tag.ok{color:var(--green);font-weight:600}
 .ba{display:grid;grid-template-columns:1fr 1fr}
-.ba>div{padding:12px 14px}
-.ba>div+div{border-left:1px solid var(--rule)}
-.ba h4{margin:0 0 8px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--concrete);font-weight:700}
-.ba dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:13.5px}
-.ba dt{color:var(--concrete)}
+.ba>div{padding:14px 16px}
+.ba>div+div{border-left:1px solid var(--line)}
+.ba h4{margin:0 0 8px;font-size:13px;font-weight:500;color:var(--stone)}
+.ba dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:5px 12px;font-size:14px}
+.ba dt{color:var(--stone)}
 .ba dd{margin:0;overflow-wrap:anywhere}
 .ba dd.chg{font-weight:600}
-.ba dd .miss{color:var(--concrete);font-style:italic;font-weight:400}
-.op-msg{padding:10px 14px;font-size:13.5px;border-top:1px solid var(--rule);color:var(--graphite)}
+.miss{color:var(--stone);font-style:italic;font-weight:400}
+.op-msg{padding:11px 16px;font-size:14px;border-top:1px solid var(--line);color:var(--stone)}
 .op-msg.block{color:var(--red)}
-.check{display:flex;gap:10px;align-items:flex-start;padding:10px 14px;border-top:1px solid var(--rule);font-size:13.5px;background:var(--orange-soft)}
-.check input{margin-top:3px;width:16px;height:16px;accent-color:var(--ink)}
-.qs{background:var(--blue-soft);border-radius:var(--r);padding:10px 14px;font-size:14px}
+.check{display:flex;gap:10px;align-items:flex-start;padding:12px 16px;border-top:1px solid var(--line);font-size:14px}
+.check input{margin-top:3px;width:16px;height:16px}
+.qs{border-left:1px solid var(--blue);padding:4px 0 4px 16px;font-size:14px}
 .qs ul{margin:6px 0 0;padding-left:18px}
-.res{font-size:13.5px;display:flex;flex-direction:column;gap:4px}
+.res{font-size:14px;display:flex;flex-direction:column;gap:4px}
 .res .okl{color:var(--green)} .res .errl{color:var(--red)}
+.errbox{margin-top:18px;padding:12px 16px;border:1px solid var(--red);border-radius:var(--r);color:var(--ink);font-size:14px;background:var(--surface)}
+.empty{color:var(--stone);font-size:14px;padding:14px 0;border-top:1px solid var(--line)}
+.skel{height:14px;border-radius:2px;background:var(--wash);margin:10px 0}
+@media (prefers-reduced-motion:no-preference){.skel{animation:pulse 1.4s ease-in-out infinite alternate}}
+@keyframes pulse{to{opacity:.45}}
+.foot{border-top:1px solid var(--line);margin-top:44px;padding-block:22px 48px;font-size:12.5px;color:var(--stone);line-height:1.6}
+.foot p{max-width:92ch;margin:0}
 
-/* ---------- team ---------- */
-.team{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
-.person{text-align:left;background:var(--sheet);border:1px solid var(--rule);border-radius:var(--r);padding:14px 16px;cursor:pointer;display:flex;flex-direction:column;gap:10px;transition:border-color .15s ease,box-shadow .2s ease,transform .1s ease}
-.person:hover{border-color:var(--rule-strong);box-shadow:var(--shadow)}
-.person:active{transform:scale(.985)}
-.p-top{display:flex;align-items:center;gap:12px}
-.mono-sq{width:38px;height:38px;border:1.5px solid var(--ink);display:grid;place-items:center;font-weight:700;font-size:14px;letter-spacing:.04em;font-variation-settings:"wdth" 120;flex:none}
-.p-name{font-weight:600;font-size:16px;line-height:1.2}
-.p-sub{font-size:12px;color:var(--concrete)}
-.load{margin-left:auto;font-size:11px;letter-spacing:.12em;font-weight:700;padding:2px 7px;border-radius:3px;text-transform:uppercase;font-variation-settings:"wdth" 115}
-.load.normal{background:var(--green-soft);color:var(--green)}
-.load.atencao{background:var(--orange-soft);color:var(--orange)}
-.load.critico{background:var(--red-soft);color:var(--red)}
-.load.na{background:var(--hover);color:var(--concrete)}
-.p-counts{display:flex;gap:14px;font-size:12.5px;color:var(--graphite)}
-.p-counts b{font-family:var(--f-mono);font-weight:500;color:var(--ink);margin-right:3px}
-.p-first{font-size:13.5px;line-height:1.4;border-top:1px solid var(--rule);padding-top:10px}
-.p-first .miss{color:var(--concrete)}
+/* ficha da pessoa */
+dialog.sheet{border:0;padding:0;margin:0 0 0 auto;height:100%;max-height:100%;width:min(540px,100%);background:var(--surface);color:var(--ink);box-shadow:var(--lift)}
+dialog.sheet::backdrop{background:var(--scrim)}
+@media (prefers-reduced-motion:no-preference){
+  dialog.sheet[open]{animation:sheetIn 360ms var(--ease-drawer)}
+  dialog.sheet[open]::backdrop{animation:fade 240ms ease-out}
+}
+@keyframes sheetIn{from{transform:translateX(40px);opacity:0}to{transform:none;opacity:1}}
+@keyframes fade{from{opacity:0}}
+.sheet-h{position:sticky;top:0;background:var(--surface);padding:22px 24px 18px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;z-index:1}
+.sheet-h .p-name{font-size:24px;font-weight:500;letter-spacing:-.01em}
+.sheet-b{padding:22px 24px calc(32px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:30px}
+.sheet-b h3{margin-bottom:10px}
+.bigstrip{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:6px}
+.bigstrip div{font-family:var(--f-num);display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12px;color:var(--stone)}
+.bigstrip .sw{width:100%;height:34px}
+.bigstrip .t{color:var(--ink);font-weight:600}
+.rows{list-style:none;margin:0;padding:0}
+.rows li{display:grid;grid-template-columns:52px minmax(0,1fr);gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:14.5px;align-items:baseline}
+.rows li .d{font-family:var(--f-num);color:var(--stone);font-size:13.5px}
+.rows li .d.late{color:var(--red);font-weight:600}
+.rows li small{display:block;color:var(--stone);font-size:13px}
+.prio{list-style:none;margin:0;padding:0;counter-reset:p}
+.prio li{counter-increment:p;display:grid;grid-template-columns:26px minmax(0,1fr);gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:14.5px}
+.prio li::before{content:counter(p);font-family:var(--f-num);color:var(--stone);font-size:15px}
+.prio small{display:block;color:var(--stone);font-size:13px}
 
-/* ---------- alerts ---------- */
-.alerts{background:var(--sheet);border:1px solid var(--rule);border-radius:var(--r)}
-.alerts ul{list-style:none;margin:0;padding:0}
-.alert{display:grid;grid-template-columns:14px 1fr;gap:4px 12px;padding:13px 16px;border-bottom:1px solid var(--rule)}
-.alert:last-child{border-bottom:0}
-.sym{width:12px;height:12px;margin-top:4px;grid-row:span 3}
-.alert.critico .sym{background:var(--red)}
-.alert.atencao .sym{border:2px solid var(--orange);transform:rotate(45deg) scale(.85)}
-.alert.info .sym{border:2px solid var(--blue);border-radius:50%}
-.a-type{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;font-variation-settings:"wdth" 118}
-.alert.critico .a-type{color:var(--red)} .alert.atencao .a-type{color:var(--orange)} .alert.info .a-type{color:var(--blue)}
-.a-t{font-weight:500;font-size:14.5px;line-height:1.35}
-.a-d{font-size:13px;color:var(--graphite)}
-.a-d a{color:var(--graphite)}
-.legend{font-size:12px;color:var(--concrete);padding:10px 16px;border-top:1px solid var(--rule);line-height:1.5}
-
-.empty{grid-column:1/-1;padding:18px;color:var(--graphite);font-size:14px}
-.errbox{margin-bottom:18px;padding:14px 16px;border:1px solid var(--red);background:var(--red-soft);color:var(--ink);border-radius:var(--r);font-size:14px}
-.skel{height:14px;border-radius:3px;background:linear-gradient(90deg,var(--hover),var(--rule),var(--hover));background-size:200% 100%;animation:sk 1.4s ease infinite}
-@keyframes sk{to{background-position:-200% 0}}
-.foot{margin-top:40px;font-size:12px;color:var(--concrete);line-height:1.6;max-width:72ch}
-
-/* ---------- person sheet ---------- */
-dialog.sheet{border:0;padding:0;margin:0 0 0 auto;height:100%;max-height:100%;width:min(520px,100%);background:var(--sheet);color:var(--ink);box-shadow:var(--shadow)}
-dialog.sheet::backdrop{background:rgba(15,17,19,.38)}
-dialog.sheet[open]{animation:sheetIn .32s cubic-bezier(.22,1,.36,1)}
-@keyframes sheetIn{from{transform:translateX(24px);opacity:0}to{transform:none;opacity:1}}
-.sheet-h{position:sticky;top:0;background:var(--sheet);display:flex;align-items:center;gap:12px;padding:18px 20px;border-bottom:1px solid var(--rule);z-index:1}
-.sheet-b{padding:20px;display:flex;flex-direction:column;gap:26px;padding-bottom:calc(28px + env(safe-area-inset-bottom,0px))}
-.sheet-b h3{margin:0 0 8px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--concrete);font-variation-settings:"wdth" 120}
-.rows{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
-.rows li{display:grid;grid-template-columns:62px 1fr;gap:10px;padding:9px 0;border-bottom:1px solid var(--rule);font-size:14px;align-items:baseline}
-.rows li .d{font-family:var(--f-mono);font-size:12.5px;color:var(--graphite)}
-.rows li .d.late{color:var(--red);font-weight:500}
-.rows li small{display:block;color:var(--concrete);font-size:12px}
-.prio{counter-reset:p;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
-.prio li{counter-increment:p;display:grid;grid-template-columns:28px 1fr;gap:8px;font-size:14px}
-.prio li::before{content:counter(p);font-family:var(--f-mono);font-size:12px;border:1px solid var(--rule-strong);height:22px;display:grid;place-items:center}
-
-@media (max-width:900px){
-  .grid{grid-template-columns:1fr}
-  .head{grid-template-columns:1fr}
-  .stamp{min-width:0;max-width:420px}
+@media (max-width:960px){
+  .opening,.body,.update{grid-template-columns:1fr}
+  .opening{padding-block:36px 32px}
 }
 @media (max-width:560px){
-  .rem{grid-template-columns:1fr}
-  .rem-ctl{flex-direction:row;align-items:center;border-left:0;border-top:1px solid var(--rule)}
+  .days{display:none}
+  .row{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"who load" "strip strip"}
+  .row .who{grid-area:who}.row .strip-wrap{grid-area:strip;margin-top:8px}.row .load{grid-area:load}
+  .strip.nums{display:grid}
   .ba{grid-template-columns:1fr}
-  .ba>div+div{border-left:0;border-top:1px solid var(--rule)}
-  .all li{grid-template-columns:1fr;gap:2px}
-  dialog.sheet{width:100%;height:92%;margin:auto 0 0;border-radius:12px 12px 0 0}
-  dialog.sheet[open]{animation-name:sheetUp}
-  @keyframes sheetUp{from{transform:translateY(30px);opacity:0}to{transform:none;opacity:1}}
-  .slide .t{font-size:17px}
+  .ba>div+div{border-left:0;border-top:1px solid var(--line)}
+  .all li{grid-template-columns:auto minmax(0,1fr)}
+  .all li .when{display:none}
+  dialog.sheet{width:100%;height:94%;margin:auto 0 0;border-radius:10px 10px 0 0}
+  @media (prefers-reduced-motion:no-preference){dialog.sheet[open]{animation-name:sheetUp}}
+  @keyframes sheetUp{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
 }
-@media (hover:none){.person:hover,.btn:hover,.ib:hover,.hint:hover{background:inherit;box-shadow:none}}
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
 
-<header class="top">
-  <div class="top-in">
-    <div class="brand"><b>Dayse Lacerda Arquitetura</b><span class="label">Painel operacional</span></div>
-    <div class="head">
-      <div>
-        <h1>Hoje</h1>
-        <div class="date" id="today-long">&nbsp;</div>
-      </div>
-      <div class="stamp" aria-label="Carimbo da prancha">
-        <div>Prancha</div><div class="v">01 / 04 · Hoje</div>
-        <div>Local</div><div class="v">João Pessoa/PB</div>
-        <div>Fontes</div><div class="v">Trello · Calendar</div>
-        <div>Leitura</div><div class="v" id="stamp-time">—</div>
-      </div>
-    </div>
+<header class="masthead">
+  <div class="wrap">
+    <div class="brand">Dayse Lacerda <span>Arquitetura</span></div>
+    <div class="mast-r">
     <nav class="nav" aria-label="Seções">
       <a href="#hoje" aria-current="page">Hoje</a>
-      <span>Projetos<small>fase 3</small></span>
-      <span>Reuniões<small>fase 4</small></span>
-      <span>Equipe<small>fase 5</small></span>
+      <span title="Chega na fase 3">Projetos</span>
+      <span title="Chega na fase 4">Reuniões</span>
+      <span title="Chega na fase 5">Equipe</span>
     </nav>
+    <div class="status">
+      <span id="status-line" aria-live="polite">Lendo Trello e Calendar…</span>
+      <button class="btn" id="refresh" type="button">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M13.5 8a5.5 5.5 0 1 1-1.7-4"/><path d="M13.5 2.5v3h-3"/></svg>
+        Atualizar dados
+      </button>
+    </div>
+    </div>
   </div>
 </header>
 
-<main class="wrap" id="hoje">
-  <div class="bar">
-    <button class="btn" id="refresh" type="button">
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M13.5 8a5.5 5.5 0 1 1-1.7-4"/><path d="M13.5 2.5v3h-3"/></svg>
-      Atualizar dados
-    </button>
-    <div class="src" id="sources" aria-live="polite">
-      <span class="chip load" id="src-trello"><i></i>Trello</span>
-      <span class="chip load" id="src-cal"><i></i>Calendar</span>
-      <span class="chip" id="src-claude"><i></i>Leitura das etapas</span>
-    </div>
-  </div>
-  <div id="page-err"></div>
-
-  <section aria-labelledby="h-rem">
-    <div class="sh"><h2 id="h-rem">Lembretes</h2><span class="dim"></span><span class="count" id="rem-count"></span></div>
-    <div class="rem" id="rem" aria-roledescription="carrossel">
-      <div class="rem-stage" id="rem-stage" aria-live="polite">
-        <div class="skel" style="width:60%"></div><div class="skel" style="width:35%;margin-top:10px"></div>
+<main id="hoje">
+  <div class="wrap">
+    <section class="opening" aria-label="Resumo de hoje">
+      <div>
+        <h1>Hoje</h1>
+        <div class="date" id="today-long">&nbsp;</div>
+        <div id="page-err"></div>
       </div>
-      <div class="rem-ctl">
-        <div class="arrows">
-          <button class="ib" id="rem-prev" type="button" aria-label="Lembrete anterior"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 3 5 8l5 5"/></svg></button>
-          <button class="ib" id="rem-next" type="button" aria-label="Próximo lembrete"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m6 3 5 5-5 5"/></svg></button>
+      <div>
+        <div class="feature" id="feature" aria-live="polite">
+          <div class="sample"><span class="sw big" aria-hidden="true"></span></div>
+          <div><div class="skel" style="width:75%;height:26px"></div><div class="skel" style="width:55%"></div></div>
         </div>
-        <span class="pos" id="rem-pos"></span>
-        <button class="linkbtn" id="rem-all" type="button" aria-expanded="false">Ver todos</button>
+        <div class="f-ctl" id="feature-ctl" hidden>
+          <button class="ib" id="rem-prev" type="button" aria-label="Lembrete anterior"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3 5 8l5 5"/></svg></button>
+          <button class="ib" id="rem-next" type="button" aria-label="Próximo lembrete"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m6 3 5 5-5 5"/></svg></button>
+          <span class="num muted" id="rem-pos"></span>
+          <button class="linkbtn" id="rem-all" type="button" aria-expanded="false">Ver todos os lembretes</button>
+        </div>
       </div>
-    </div>
+    </section>
     <div class="all" id="rem-list" hidden></div>
-  </section>
 
-  <div class="grid">
-    <div class="col">
-      <section aria-labelledby="h-upd">
-        <div class="sh"><h2 id="h-upd">Atualização</h2><span class="dim"></span></div>
-        <form class="upd" id="upd-form" autocomplete="off">
-          <label for="upd-text" class="label" style="display:block;margin-bottom:8px">Digite uma atualização</label>
-          <textarea id="upd-text" placeholder="Ex.: o projeto X foi para detalhamento"></textarea>
-          <div class="upd-row">
-            <div class="hints" aria-label="Exemplos">
-              <button type="button" class="hint">O projeto X foi para detalhamento</button>
-              <button type="button" class="hint">Troque o responsável do projeto Y para …</button>
-              <button type="button" class="hint">Cliente aprovou a apresentação</button>
-              <button type="button" class="hint">Marque reunião amanhã às 15h</button>
-            </div>
-            <button class="btn primary" id="upd-go" type="submit">Interpretar</button>
-          </div>
-          <div id="plan"></div>
-        </form>
+    <div class="body">
+      <section aria-labelledby="h-team">
+        <div class="section-h"><h2 id="h-team">O que cada um tem para fazer hoje</h2></div>
+        <div class="team" id="team"><div class="skel"></div><div class="skel"></div><div class="skel"></div></div>
+        <div class="legend" aria-label="Legenda das amostras">
+          <span><i class="sw entrega"></i>Entrega final</span>
+          <span><i class="sw apresentacao"></i>Apresentação ou aprovação</span>
+          <span><i class="sw reuniao"></i>Reunião</span>
+          <span><i class="sw producao"></i>Produção</span>
+          <span><i class="sw"></i>Sem demanda registrada</span>
+        </div>
       </section>
 
-      <section aria-labelledby="h-team">
-        <div class="sh"><h2 id="h-team">O que cada um tem para fazer hoje</h2><span class="dim"></span></div>
-        <div class="team" id="team"><div class="skel" style="height:120px"></div><div class="skel" style="height:120px"></div></div>
+      <section aria-labelledby="h-al" class="alerts">
+        <div class="section-h"><h2 id="h-al">Alertas do dia</h2><span class="num" id="al-count"></span></div>
+        <div id="alerts"><div class="skel"></div><div class="skel"></div></div>
       </section>
     </div>
 
-    <aside class="col">
-      <section aria-labelledby="h-al">
-        <div class="sh"><h2 id="h-al">Alertas do dia</h2><span class="dim"></span><span class="count" id="al-count"></span></div>
-        <div class="alerts" id="alerts"><div class="empty"><div class="skel" style="width:80%"></div></div></div>
-      </section>
-    </aside>
-  </div>
+    <section class="update" aria-labelledby="h-upd">
+      <div>
+        <h2 id="h-upd">Registrar atualização</h2>
+        <p>Escreva como falaria com o MAX. Antes de gravar no Trello ou no Calendar, o painel mostra o antes e o depois para você confirmar.</p>
+      </div>
+      <form id="upd-form" autocomplete="off">
+        <label class="lbl" for="upd-text">Digite uma atualização</label>
+        <textarea id="upd-text" placeholder="O projeto X foi para detalhamento"></textarea>
+        <div class="u-row">
+          <div class="hints" aria-label="Exemplos">
+            <button type="button" class="hint">O projeto X foi para detalhamento</button>
+            <button type="button" class="hint">Troque o responsável do projeto Y para …</button>
+            <button type="button" class="hint">Cliente aprovou a apresentação</button>
+            <button type="button" class="hint">Marque reunião amanhã às 15h</button>
+          </div>
+          <button class="btn primary" id="upd-go" type="submit">Interpretar</button>
+        </div>
+        <div id="plan"></div>
+      </form>
+    </section>
 
-  <p class="foot" id="foot">
-    Os dados são lidos do Trello (quadro ESCRITÓRIO DAYSE LACERDA) e do Google Calendar sempre que o painel abre.
-    Um projeto só conta como concluído quando o card está na lista CONCLUÍDO; a marcação de “concluído” do card é ignorada.
-    Dias úteis: segunda a sexta, sem os feriados nacionais do calendário “Feriados no Brasil”. Feriados municipais de João Pessoa ainda não entram no cálculo.
-    Toda alteração feita aqui é gravada no Trello ou no Calendar só depois da sua confirmação, com um comentário datado no card. Nada é apagado.
-  </p>
+    <footer class="foot">
+      <p>Os dados vêm do Trello (quadro ESCRITÓRIO DAYSE LACERDA) e do Google Calendar, lidos sempre que o painel abre. Um projeto só conta como concluído na lista CONCLUÍDO. Dias úteis: segunda a sexta, sem feriados nacionais; feriados de João Pessoa ainda não entram no cálculo. Nada é gravado sem a sua confirmação, e cada alteração vira um comentário datado no card.</p>
+    </footer>
+  </div>
 </main>
 
 <dialog class="sheet" id="sheet" aria-labelledby="sheet-name">
   <div class="sheet-h">
-    <div class="mono-sq" id="sheet-mono"></div>
-    <div><div class="p-name" id="sheet-name"></div><div class="p-sub" id="sheet-sub"></div></div>
-    <span class="load" id="sheet-load"></span>
-    <button class="ib" id="sheet-close" type="button" aria-label="Fechar" style="margin-left:8px"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m4 4 8 8M12 4l-8 8"/></svg></button>
+    <div><div class="p-name" id="sheet-name"></div><div class="p-now" id="sheet-sub"></div></div>
+    <button class="ib" id="sheet-close" type="button" aria-label="Fechar"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m4 4 8 8M12 4l-8 8"/></svg></button>
   </div>
   <div class="sheet-b" id="sheet-body"></div>
 </dialog>
@@ -354,7 +353,6 @@ dialog.sheet[open]{animation:sheetIn .32s cubic-bezier(.22,1,.36,1)}
 <script>
 (() => {
 "use strict";
-
 /* ================= configuração ================= */
 const CONFIG = {
   board: "ari:cloud:trello::board/workspace/65f98d0c29569bce03178e98/6aa5863227ebe5bcdb513a1f",
@@ -449,6 +447,17 @@ function teamFromTitle(name) {
   if (!m) return [];
   return m[1].split("/").map((s) => s.trim()).filter((s) => s && /^[A-ZÀ-Ü][A-ZÀ-Ü\s]+$/.test(s)).map(cap);
 }
+const SMALL = new Set(["de", "da", "do", "das", "dos", "e", "com", "para", "a", "o", "em"]);
+function nice(str) {
+  let first = true;
+  return String(str).split(/(\s+)/).map((w) => {
+    if (/^\s+$/.test(w) || !/[A-Za-zÀ-ÿ]/.test(w)) return w;
+    if (/\d/.test(w)) { first = false; return w; }
+    const lw = w.toLocaleLowerCase("pt-BR");
+    const out = !first && SMALL.has(lw) ? lw : lw.charAt(0).toLocaleUpperCase("pt-BR") + lw.slice(1);
+    first = false; return out;
+  }).join("");
+}
 const cleanName = (n) => String(n).replace(/\s*\([^()]*\)\s*$/, "").trim();
 function meetingClient(n) {
   let s = String(n).replace(/^REUNI[ÃA]O[^—\-–]*[—\-–]\s*/i, "");
@@ -473,7 +482,7 @@ function normCard(c) {
   card.kind = kindOf(card);
   card.done = norm(card.list) === norm(CONFIG.doneList);
   card.team = teamFromTitle(card.name);
-  card.title = card.kind === "reuniao" ? meetingClient(card.name) : cleanName(card.name);
+  card.title = nice(card.kind === "reuniao" ? meetingClient(card.name) : cleanName(card.name));
   const sl = card.url.match(/trello\.com\/c\/([A-Za-z0-9]+)/);
   card.short = sl ? sl[1] : "";
   return card;
@@ -637,11 +646,14 @@ const deliverables = () => state.cards.filter((c) => !c.done && c.dueKey && (c.k
 
 function reminders() {
   const t = today(), lim3 = addBD(t, 3), out = [];
-  for (const m of meetings(t, addDays(t, 7))) out.push({ k: "reuniao", label: "Reunião", key: m.key, title: m.title, meta: `${m.key === t ? "Hoje" : wdShort(m.key) + " " + dm(m.key)} · ${m.time ? m.time : "horário não registrado"} · ${m.src.join(" + ")}`, url: m.url });
+  for (const m of meetings(t, addDays(t, 7))) {
+    const apres = /APRESENTA|APROVA/.test(norm((m.card ? m.card.name : "") + " " + m.title));
+    out.push({ k: "reuniao", apres, label: apres ? "Apresentação" : "Reunião", key: m.key, title: m.title, meta: `${m.time ? "Às " + m.time : "Horário não registrado"}. Fonte: ${m.src.join(" e ")}.`, url: m.url });
+  }
   for (const c of deliverables()) {
-    if (c.dueKey === t) out.push({ k: "entrega", label: "Entrega hoje", key: c.dueKey, title: c.title, meta: `${c.list} · prazo no Trello ${dmy(c.dueKey)}`, url: c.url });
-    else if (c.dueKey > t && c.dueKey <= lim3) out.push({ k: "prazo", label: "Perto do prazo", key: c.dueKey, title: c.title, meta: `${c.list} · em ${bdBetween(t, c.dueKey)} dia(s) útil(eis), ${wdShort(c.dueKey)} ${dmy(c.dueKey)}`, url: c.url });
-    else if (c.dueKey < t) out.push({ k: "atraso", label: "Atrasado", key: c.dueKey, title: c.title, meta: `${c.list} · prazo no Trello ${dmy(c.dueKey)} · ${bdBetween(c.dueKey, t)} dia(s) útil(eis) de atraso`, url: c.url });
+    if (c.dueKey === t) out.push({ k: "entrega", label: "Entrega", key: c.dueKey, title: c.title, meta: `Lista ${c.list}. Prazo no Trello: ${dmy(c.dueKey)}.`, url: c.url });
+    else if (c.dueKey > t && c.dueKey <= lim3) out.push({ k: "prazo", label: "Perto do prazo", key: c.dueKey, title: c.title, meta: `Vence em ${bdBetween(t, c.dueKey)} dia(s) útil(eis). Lista ${c.list}.`, url: c.url });
+    else if (c.dueKey < t) out.push({ k: "atraso", label: "Atrasado", key: c.dueKey, title: c.title, meta: `${bdBetween(c.dueKey, t)} dia(s) útil(eis) de atraso. Lista ${c.list}.`, url: c.url });
   }
   const order = { entrega: 0, reuniao: 1, atraso: 2, prazo: 3 };
   return out.sort((a, b) => order[a.k] - order[b.k] || a.key.localeCompare(b.key));
@@ -673,7 +685,7 @@ function alerts() {
   }
   for (const e of state.etapas || []) {
     if (e.situacao === "concluida" || !e.prazo || e.prazo >= t || e.card.done) continue;
-    out.push({ sev: "atencao", type: "Prazo em risco", title: `${e.etapa} · ${e.card.title}`, d: `Etapa prevista para ${dmy(e.prazo)} (${e.resp || "responsável não registrado"}), sem conclusão registrada no card.`, url: e.card.url, key: e.prazo });
+    out.push({ sev: "atencao", type: "Etapa atrasada", title: `${e.etapa}, ${e.card.title}`, d: `Etapa prevista para ${dmy(e.prazo)} (${e.resp || "responsável não registrado"}), sem conclusão registrada no card.`, url: e.card.url, key: e.prazo });
   }
   if (state.etapas) for (const p of people()) {
     const d = personData(p);
@@ -689,92 +701,138 @@ function alerts() {
   return out.sort((a, b) => o[a.sev] - o[b.sev] || a.key.localeCompare(b.key));
 }
 
+
+/* ================= tira de amostras ================= */
+const ORDER = ["entrega", "apresentacao", "reuniao", "producao"];
+const KIND_LABEL = { entrega: "Entrega final", apresentacao: "Apresentação ou aprovação", reuniao: "Reunião", producao: "Produção" };
+const isApres = (s) => /APRESENTA|APROVA/.test(norm(s));
+function stripDays() {
+  const t = today(), out = [];
+  let d = isBD(t) ? t : addBD(t, 1);
+  for (let i = 0; i < 10; i++) { out.push(d); d = addBD(d, 1); }
+  return out;
+}
+function dayStrip(p) {
+  const days = stripDays(), P = p.key;
+  const dels = deliverables().filter((c) => teamOf(c).map(norm).includes(P));
+  const meets = meetings(days[0], days[days.length - 1]).filter((m) => (m.team || []).map(norm).includes(P));
+  const et = (state.etapas || []).filter((e) => e.keys.includes(P) && e.prazo && !e.card.done && e.situacao !== "concluida" && e.situacao !== "aguardando");
+  return days.map((k) => {
+    const items = [];
+    for (const c of dels) if (c.dueKey === k) items.push({ k: "entrega", t: c.title });
+    for (const m of meets) if (m.key === k) items.push({ k: isApres((m.card ? m.card.name : "") + " " + m.title) ? "apresentacao" : "reuniao", t: m.title + (m.time ? " às " + m.time : "") });
+    for (const e of et) if (e.prazo >= k && (e.situacao === "em_andamento" || bdBetween(k, e.prazo) <= 5)) items.push({ k: "producao", t: `${e.etapa}, ${e.card.title}` });
+    const top = ORDER.find((o) => items.some((i) => i.k === o)) || "";
+    return { key: k, top, items };
+  });
+}
+function swTitle(d) {
+  const head = `${wdShort(d.key)} ${dm(d.key)}`;
+  if (!d.items.length) return `${head}: sem demanda registrada`;
+  return `${head}: ` + d.items.map((i) => `${KIND_LABEL[i.k]} (${i.t})`).join("; ");
+}
+
 /* ================= render ================= */
-function renderSources() {
-  const set = (id, cls, title) => { const el = $(id); el.className = "chip " + cls; el.title = title || ""; };
-  set("src-trello", state.err.trello ? "err" : state.loadedAt ? "ok" : "load", state.err.trello ? mcpMsg(state.err.trello, TRELLO) : "");
-  set("src-cal", state.err.cal ? "err" : state.loadedAt ? "ok" : "load", state.err.cal ? mcpMsg(state.err.cal, CAL) : "");
-  set("src-claude", { ok: "ok", loading: "load", err: "err", off: "err", idle: "" }[state.extract] || "", state.extractErr);
-  $("stamp-time").textContent = state.loadedAt ? fTime.format(state.loadedAt) + " · " + dm(ymd(state.loadedAt)) : "—";
+function renderStatus() {
+  const el = $("status-line"), parts = [];
+  if (!state.loadedAt) { el.textContent = "Lendo Trello e Calendar…"; return; }
+  if (state.err.trello) parts.push(`<span class="err">Trello sem acesso</span>`);
+  if (state.err.cal) parts.push(`<span class="err">Calendar sem acesso</span>`);
+  if (!state.err.trello && !state.err.cal) parts.push(`Atualizado às <span class="num">${fTime.format(state.loadedAt)}</span>`);
+  if (state.extract === "loading") parts.push("lendo as etapas nos cards…");
+  else if (state.extract === "err" || state.extract === "off") parts.push(`<span class="err">etapas não lidas</span>`);
+  el.innerHTML = parts.join(", ");
+  el.title = [state.err.trello && mcpMsg(state.err.trello, TRELLO), state.err.cal && mcpMsg(state.err.cal, CAL), state.extractErr].filter(Boolean).join("\n");
 }
 function renderPageErr() {
-  const box = $("page-err"), msgs = [];
+  const msgs = [];
   if (state.err.trello) msgs.push(mcpMsg(state.err.trello, TRELLO));
   if (state.err.cal) msgs.push(mcpMsg(state.err.cal, CAL));
-  box.innerHTML = msgs.length ? `<div class="errbox" role="alert">${msgs.map(esc).join("<br>")}</div>` : "";
+  $("page-err").innerHTML = msgs.length ? `<div class="errbox" role="alert">${msgs.map(esc).join("<br>")}</div>` : "";
 }
 
 let remIdx = 0, remTimer = null, remItems = [], remPaused = false;
 const reduce = matchMedia("(prefers-reduced-motion: reduce)");
-function slideHTML(r) {
-  const [dd, mm] = [r.key.slice(8, 10), r.key.slice(5, 7)];
-  return `<div class="slide enter">
-    <div class="when"><span>${esc(wdShort(r.key))}</span><b class="mono">${dd}</b><span>${mm}/${r.key.slice(2, 4)}</span></div>
-    <div class="kind k-${r.k}"><span class="dot"></span>${esc(r.label)}</div>
-    <div class="t">${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener" style="text-decoration:none">${esc(r.title)}</a>` : esc(r.title)}</div>
-    <div class="m">${esc(r.meta)}</div></div>`;
+const swClass = (r) => (r.k === "reuniao" && r.apres ? "apresentacao" : r.k);
+function featureHTML(r) {
+  const title = r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title)}</a>` : esc(r.title);
+  const when = r.key === today() ? "hoje" : `${wdShort(r.key)} ${dm(r.key)}`;
+  return `<div class="sample"><span class="sw big ${swClass(r)}" aria-hidden="true"></span><span class="cap"><b>${esc(dm(r.key))}</b>${esc(wdShort(r.key))}</span></div>
+    <div><div class="f-title">${title}</div>
+    <div class="f-meta"><span class="k">${esc(r.label)}, ${esc(when)}.</span> ${esc(r.meta)}</div></div>`;
 }
-function showSlide(i) {
+function showSlide(i, animate) {
   if (!remItems.length) return;
   remIdx = (i + remItems.length) % remItems.length;
-  $("rem-stage").innerHTML = slideHTML(remItems[remIdx]);
-  $("rem-pos").textContent = `${remIdx + 1} / ${remItems.length}`;
+  const box = $("feature");
+  box.innerHTML = featureHTML(remItems[remIdx]);
+  if (animate && !reduce.matches && box.animate) {
+    box.animate([{ opacity: 0, filter: "blur(3px)", transform: "translateY(4px)" }, { opacity: 1, filter: "blur(0)", transform: "none" }], { duration: 260, easing: "cubic-bezier(.23,1,.32,1)" });
+  }
+  $("rem-pos").textContent = `${remIdx + 1} de ${remItems.length}`;
 }
 function startRotation() {
   clearInterval(remTimer);
   if (reduce.matches || remItems.length < 2) return;
-  remTimer = setInterval(() => { if (!remPaused && !document.hidden) showSlide(remIdx + 1); }, 6500);
+  remTimer = setInterval(() => { if (!remPaused && !document.hidden) showSlide(remIdx + 1, true); }, 7000);
 }
 function renderReminders() {
-  if (state.err.trello && state.err.cal) { $("rem-stage").innerHTML = `<div class="empty">Sem acesso ao Trello e ao Calendar.</div>`; $("rem-count").textContent = ""; return; }
   if (!state.loadedAt) return;
-  remItems = reminders();
-  $("rem-count").textContent = remItems.length ? `${remItems.length} itens` : "";
-  const ctl = [$("rem-prev"), $("rem-next"), $("rem-all")];
-  if (!remItems.length) {
-    $("rem-stage").innerHTML = `<div class="empty">Nenhuma reunião, entrega ou prazo próximo registrado no Trello e no Calendar para os próximos dias.</div>`;
-    $("rem-pos").textContent = ""; ctl.forEach((b) => (b.disabled = true)); $("rem-list").hidden = true; return;
+  const ctl = $("feature-ctl");
+  if (state.err.trello && state.err.cal) {
+    $("feature").innerHTML = `<div class="sample"><span class="sw big" aria-hidden="true"></span></div><div><div class="f-title">Não foi possível ler o Trello nem o Calendar.</div><div class="f-meta">Veja o aviso acima para liberar o acesso.</div></div>`;
+    ctl.hidden = true; return;
   }
-  ctl.forEach((b) => (b.disabled = false));
-  showSlide(Math.min(remIdx, remItems.length - 1));
+  remItems = reminders();
+  if (!remItems.length) {
+    $("feature").innerHTML = `<div class="sample"><span class="sw big" aria-hidden="true"></span></div><div><div class="f-title">Nenhuma reunião, entrega ou prazo próximo registrado.</div><div class="f-meta">Os próximos 7 dias estão livres no Trello e no Calendar.</div></div>`;
+    ctl.hidden = true; $("rem-list").hidden = true; return;
+  }
+  ctl.hidden = false;
+  $("rem-prev").disabled = $("rem-next").disabled = remItems.length < 2;
+  showSlide(Math.min(remIdx, remItems.length - 1), false);
   startRotation();
-  $("rem-list").innerHTML = `<ul>${remItems.map((r) => `<li><span class="k k-${r.k}">${esc(r.label)}</span><span>${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title)}</a>` : esc(r.title)}<br><span class="note">${esc(r.meta)}</span></span><span class="mono note">${dm(r.key)}</span></li>`).join("")}</ul>`;
+  $("rem-list").innerHTML = `<ol>${remItems.map((r) => `<li><span class="sw ${swClass(r)}" aria-hidden="true"></span><span class="num muted when">${esc(wdShort(r.key))} ${dm(r.key)}</span><span>${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title)}</a>` : esc(r.title)}<small>${esc(r.label)}. ${esc(r.meta)}</small></span></li>`).join("")}</ol>`;
 }
 
+const ALERT_SW = { "Projeto atrasado": "atraso", "Etapa atrasada": "atraso", "Entrega hoje": "entrega", "Prazo em risco": "prazo", "Sobrecarga": "carga", "Registro pendente": "registro" };
 function renderAlerts() {
   const box = $("alerts");
   if (!state.loadedAt) return;
   if (state.err.trello) { box.innerHTML = `<div class="empty">${esc(mcpMsg(state.err.trello, TRELLO))}</div>`; $("al-count").textContent = ""; return; }
   const list = alerts();
   $("al-count").textContent = list.length ? String(list.length) : "";
-  const legend = `<div class="legend">Sobrecarga: 3 ou mais etapas ativas por pessoa = atenção; 5 ou mais = crítico (critério provisório do painel, contado a partir das etapas escritas nos cards).${state.extract !== "ok" ? " As etapas ainda não foram lidas, então os alertas por etapa e de sobrecarga podem estar incompletos." : ""}</div>`;
-  if (!list.length) { box.innerHTML = `<div class="empty">Nenhum alerta para hoje.</div>` + legend; return; }
-  box.innerHTML = `<ul>${list.map((a) => `<li class="alert ${a.sev}"><span class="sym" aria-hidden="true"></span>
-    <span class="a-type">${esc(a.type)}</span>
-    <span class="a-t">${esc(a.title)}</span>
-    <span class="a-d">${esc(a.d)}${a.url ? ` <a href="${esc(a.url)}" target="_blank" rel="noopener">Abrir no Trello</a>` : ""}</span></li>`).join("")}</ul>` + legend;
+  const fine = `<p class="fine">Sobrecarga é um critério provisório do painel: 3 ou mais etapas ativas por pessoa pedem atenção, 5 ou mais são críticas.${state.extract !== "ok" ? " As etapas ainda não foram lidas, então os alertas por etapa podem estar incompletos." : ""}</p>`;
+  if (!list.length) { box.innerHTML = `<div class="empty">Nenhum alerta hoje.</div>` + fine; return; }
+  box.innerHTML = `<ol>${list.map((a) => `<li class="alert ${a.sev}"><span class="sw ${ALERT_SW[a.type] || ""}" aria-hidden="true"></span>
+    <span class="a-t">${a.url ? `<a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.title)}</a>` : esc(a.title)}</span>
+    <span class="a-d"><span class="a-type">${esc(a.type)}.</span> ${esc(a.d)}</span></li>`).join("")}</ol>` + fine;
 }
 
-const loadLabel = { normal: "Normal", atencao: "Atenção", critico: "Crítico", na: "Sem leitura" };
+const loadLabel = { normal: "", atencao: "Atenção", critico: "Crítico", na: "" };
+function stripHTML(strip) {
+  const t = today();
+  return `<span class="strip-wrap"><span class="strip">${strip.map((d) => `<i class="sw ${d.top}" title="${esc(swTitle(d))}"></i>`).join("")}</span><span class="strip nums" aria-hidden="true">${strip.map((d) => `<span class="${d.key === t ? "t" : ""}">${d.key.slice(8, 10)}</span>`).join("")}</span></span>`;
+}
 function renderTeam() {
   const box = $("team");
   if (!state.loadedAt) return;
   if (state.err.trello) { box.innerHTML = `<div class="empty">${esc(mcpMsg(state.err.trello, TRELLO))}</div>`; return; }
   const ps = people();
-  if (!ps.length) { box.innerHTML = `<div class="empty">Nenhum responsável registrado nos títulos dos cards ativos.</div>`; return; }
-  box.innerHTML = ps.map((p) => {
+  if (!ps.length) { box.innerHTML = `<div class="empty">Nenhum responsável aparece nos títulos dos cards ativos.</div>`; return; }
+  const days = stripDays(), t = today();
+  const head = `<div class="days" aria-hidden="true"><span>Próximos 10 dias úteis</span><span class="strip">${days.map((k) => `<span class="${k === t ? "t" : ""}">${k.slice(8, 10)}</span>`).join("")}</span><span></span></div>`;
+  box.innerHTML = head + ps.map((p) => {
     const d = personData(p);
-    let first;
-    if (state.extract === "loading") first = `<span class="miss">Lendo as etapas nos cards…</span>`;
-    else if (!state.etapas) first = `<span class="miss">${esc(state.extractErr || "Etapas não lidas.")} ${d.projetos.length} projeto(s) no título dos cards.</span>`;
-    else if (d.hoje[0]) first = `${esc(d.hoje[0].etapa)} · ${esc(d.hoje[0].card.title)}${d.hoje[0].prazo ? ` <span class="mono note">até ${dm(d.hoje[0].prazo)}</span>` : ""}`;
-    else first = `<span class="miss">Nenhuma etapa em andamento ou com prazo nos próximos 2 dias úteis.</span>`;
-    return `<button type="button" class="person" data-p="${esc(p.key)}">
-      <div class="p-top"><div class="mono-sq">${esc(p.first.slice(0, 2).toUpperCase())}</div>
-        <div><div class="p-name">${esc(p.full)}</div><div class="p-sub">${d.projetos.length} projeto(s) ativo(s)</div></div>
-        <span class="load ${d.carga}">${loadLabel[d.carga]}</span></div>
-      <div class="p-counts"><span><b>${state.etapas ? d.hoje.length : "–"}</b>tarefas</span><span><b>${d.entregas.length}</b>entregas</span><span><b>${d.reun.length}</b>reuniões</span></div>
-      <div class="p-first">${first}</div></button>`;
+    let now;
+    if (state.extract === "loading") now = "Lendo as etapas nos cards…";
+    else if (!state.etapas) now = `${d.projetos.length} projeto(s) no título dos cards. Etapas não lidas.`;
+    else if (d.hoje[0]) now = `${d.hoje[0].etapa}, ${d.hoje[0].card.title}${d.hoje[0].prazo ? `, até ${dm(d.hoje[0].prazo)}` : ""}`;
+    else now = "Nenhuma etapa em andamento ou vencendo nos próximos 2 dias úteis.";
+    return `<button type="button" class="row" data-p="${esc(p.key)}" aria-label="${esc(p.full)}: abrir a ficha">
+      <span class="who"><span class="p-name">${esc(p.full)}</span><span class="p-now" style="display:block">${esc(now)}</span></span>
+      ${stripHTML(dayStrip(p))}
+      <span class="load ${d.carga}">${loadLabel[d.carga]}</span></button>`;
   }).join("");
 }
 
@@ -782,26 +840,27 @@ function openPerson(key) {
   const p = people().find((x) => x.key === key);
   if (!p) return;
   const d = personData(p), t = today();
-  $("sheet-mono").textContent = p.first.slice(0, 2).toUpperCase();
   $("sheet-name").textContent = p.full;
-  $("sheet-sub").textContent = `${d.projetos.length} projeto(s) ativo(s)`;
-  const ld = $("sheet-load"); ld.className = "load " + d.carga; ld.textContent = loadLabel[d.carga];
-  const row = (k, main, sub, url) => `<li><span class="d ${k && k < t ? "late" : ""}">${k ? dm(k) : "—"}</span><span>${url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(main)}</a>` : esc(main)}${sub ? `<small>${esc(sub)}</small>` : ""}</span></li>`;
-  const sitTxt = { em_andamento: "em andamento", aguardando: "aguardando", nao_iniciada: "não iniciada", nao_informada: "situação não registrada" };
+  $("sheet-sub").textContent = `${d.projetos.length} projeto(s) ativo(s)${d.carga !== "na" ? ". Carga: " + ({ normal: "normal", atencao: "atenção", critico: "crítica" })[d.carga] : ""}`;
+  const row = (k, main, sub, url) => `<li><span class="d ${k && k < t ? "late" : ""}">${k ? dm(k) : "sem data"}</span><span>${url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(main)}</a>` : esc(main)}${sub ? `<small>${esc(sub)}</small>` : ""}</span></li>`;
+  const sitTxt = { em_andamento: "Em andamento", aguardando: "Aguardando", nao_iniciada: "Não iniciada", nao_informada: "Situação não registrada" };
+  const strip = dayStrip(p);
+  const big = `<div class="bigstrip">${strip.map((s) => `<div><i class="sw ${s.top}" title="${esc(swTitle(s))}"></i><span class="${s.key === t ? "t" : ""}">${esc(wdShort(s.key).slice(0, 3))}</span><span class="num">${dm(s.key)}</span></div>`).join("")}</div>`;
   const tarefas = state.etapas
-    ? (d.et.length ? `<ul class="rows">${d.et.sort((a, b) => (a.prazo || "9999").localeCompare(b.prazo || "9999")).map((e) => row(e.prazo, `${e.etapa} · ${e.card.title}`, `${sitTxt[e.situacao] || e.situacao}${e.prazo ? "" : " · prazo da etapa não registrado no Trello"}`, e.card.url)).join("")}</ul>` : `<p class="note">Nenhuma etapa pendente registrada nos cards.</p>`)
-    : `<p class="note">${esc(state.extractErr || "As etapas ainda não foram lidas.")}</p>${d.projetos.length ? `<ul class="rows">${d.projetos.map((c) => row(c.dueKey, c.title, c.list, c.url)).join("")}</ul>` : ""}`;
-  const entregas = d.entregas.length ? `<ul class="rows">${d.entregas.map((c) => row(c.dueKey, c.title, c.kind === "entrega" ? "Entrega final" : c.list, c.url)).join("")}</ul>` : `<p class="note">Nenhuma entrega nos próximos 10 dias úteis.</p>`;
-  const reun = d.reun.length ? `<ul class="rows">${d.reun.map((m) => row(m.key, m.title, `${m.time || "horário não registrado"} · ${m.src.join(" + ")}`, m.url)).join("")}</ul>` : `<p class="note">Nenhuma reunião nos próximos 7 dias ligada aos projetos desta pessoa.</p>`;
+    ? (d.et.length ? `<ul class="rows">${[...d.et].sort((a, b) => (a.prazo || "9999").localeCompare(b.prazo || "9999")).map((e) => row(e.prazo, `${e.etapa}, ${e.card.title}`, `${sitTxt[e.situacao] || e.situacao}${e.prazo ? "" : ". Prazo da etapa não registrado no Trello"}`, e.card.url)).join("")}</ul>` : `<p class="muted">Nenhuma etapa pendente registrada nos cards.</p>`)
+    : `<p class="muted">${esc(state.extractErr || "As etapas ainda não foram lidas.")}</p>${d.projetos.length ? `<ul class="rows">${d.projetos.map((c) => row(c.dueKey, c.title, c.list, c.url)).join("")}</ul>` : ""}`;
+  const entregas = d.entregas.length ? `<ul class="rows">${d.entregas.map((c) => row(c.dueKey, c.title, c.kind === "entrega" ? "Entrega final" : c.list, c.url)).join("")}</ul>` : `<p class="muted">Nenhuma entrega nos próximos 10 dias úteis.</p>`;
+  const reun = d.reun.length ? `<ul class="rows">${d.reun.map((m) => row(m.key, m.title, `${m.time || "Horário não registrado"}, ${m.src.join(" e ")}`, m.url)).join("")}</ul>` : `<p class="muted">Nenhuma reunião nos próximos 7 dias ligada aos projetos desta pessoa.</p>`;
   const prio = state.etapas
-    ? (d.prio.length ? `<ol class="prio">${d.prio.map((e) => `<li><span>${esc(e.etapa)} · ${esc(e.card.title)}<br><span class="note">${e.prazo ? (e.prazo < t ? `Atrasada desde ${dmy(e.prazo)}` : `Até ${wdShort(e.prazo)} ${dmy(e.prazo)}`) : "Em andamento, sem prazo de etapa registrado"}</span></span></li>`).join("")}</ol>` : `<p class="note">Sem etapas com prazo registrado.</p>`)
-    : `<p class="note">Disponível depois da leitura das etapas.</p>`;
-  $("sheet-body").innerHTML = `<section><h3>Prioridades</h3>${prio}</section><section><h3>Tarefas</h3>${tarefas}</section><section><h3>Entregas</h3>${entregas}</section><section><h3>Reuniões</h3>${reun}</section>`;
+    ? (d.prio.length ? `<ol class="prio">${d.prio.map((e) => `<li><span>${esc(e.etapa)}, ${esc(e.card.title)}<small>${e.prazo ? (e.prazo < t ? `Atrasada desde ${dmy(e.prazo)}` : `Até ${esc(wdShort(e.prazo))} ${dmy(e.prazo)}`) : "Em andamento, sem prazo de etapa registrado"}</small></span></li>`).join("")}</ol>` : `<p class="muted">Sem etapas com prazo registrado.</p>`)
+    : `<p class="muted">Disponível depois da leitura das etapas.</p>`;
+  $("sheet-body").innerHTML = `<section><h3>Próximos 10 dias úteis</h3>${big}</section><section><h3>Prioridades</h3>${prio}</section><section><h3>Tarefas</h3>${tarefas}</section><section><h3>Entregas</h3>${entregas}</section><section><h3>Reuniões</h3>${reun}</section>`;
   const dlg = $("sheet");
   if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", "");
 }
 
-function renderAll() { renderSources(); renderPageErr(); renderReminders(); renderAlerts(); renderTeam(); }
+function renderSources() { renderStatus(); }
+function renderAll() { renderStatus(); renderPageErr(); renderReminders(); renderAlerts(); renderTeam(); }
 
 /* ================= atualização inteligente ================= */
 let plan = null;
@@ -852,7 +911,7 @@ function etapaPrazo(c, etapa) {
 function listByName(n) { const N = norm(n); return state.lists.find((l) => norm(l.name) === N) || null; }
 function auditHeader() {
   const now = new Date();
-  return `ATUALIZAÇÃO VIA PAINEL — ${dmy(ymd(now))} ${fTime.format(now)}${state.me ? ` (confirmada por ${state.me})` : " (confirmada no painel)"}`;
+  return `ATUALIZAÇÃO VIA PAINEL - ${dmy(ymd(now))} ${fTime.format(now)}${state.me ? ` (confirmada por ${state.me})` : " (confirmada no painel)"}`;
 }
 function isoAt(key, hhmm) { return new Date(`${key}T${hhmm}:00${CONFIG.offset}`).toISOString(); }
 
@@ -893,7 +952,7 @@ function buildOp(op, idx, original) {
         after.Prazo = `${esc(op.etapa)}: ${dmy(op.prazo)}`; chg.add("Prazo");
         o.msg = "O prazo oficial do card não muda. O novo prazo interno fica registrado em comentário no card.";
         o.exec = async () => {
-          await write(TRELLO, "trelloWriteCard", { action: "add_comment", cardId: c.id, text: comment([`PRAZO INTERNO — ${op.etapa}: ${old ? dmy(old) : "não registrado"} → ${dmy(op.prazo)}`]) });
+          await write(TRELLO, "trelloWriteCard", { action: "add_comment", cardId: c.id, text: comment([`PRAZO INTERNO - ${op.etapa}: ${old ? dmy(old) : "não registrado"} → ${dmy(op.prazo)}`]) });
           return `Prazo interno de ${op.etapa} registrado em ${c.title}.`;
         };
       } else {
@@ -920,7 +979,7 @@ function buildOp(op, idx, original) {
       chg.add("Responsável");
       o.msg = "A troca fica registrada em comentário no card. O texto original da descrição não é apagado.";
       o.exec = async () => {
-        await write(TRELLO, "trelloWriteCard", { action: "add_comment", cardId: c.id, text: comment([`RESPONSÁVEL${op.etapa ? " — " + op.etapa : ""}: ${old || "não registrado"} → ${op.responsavel}`]) });
+        await write(TRELLO, "trelloWriteCard", { action: "add_comment", cardId: c.id, text: comment([`RESPONSÁVEL${op.etapa ? " - " + op.etapa : ""}: ${old || "não registrado"} → ${op.responsavel}`]) });
         return `Novo responsável registrado em ${c.title}.`;
       };
       break;
@@ -932,7 +991,7 @@ function buildOp(op, idx, original) {
       o.critical = true; o.confirmText = "Confirmo que o cliente aprovou de forma clara (não foi só um “gostei”).";
       o.msg = "O painel registra a aprovação no card. A reorganização de datas e etapas continua com o MAX.";
       o.exec = async () => {
-        await write(TRELLO, "trelloWriteCard", { action: "add_comment", cardId: c.id, text: comment([`APROVAÇÃO DO CLIENTE REGISTRADA${op.etapa ? " — " + op.etapa : ""}. Confirmação explícita feita no painel.`, "Próximo passo: MAX reorganiza datas e libera a próxima fase."]) });
+        await write(TRELLO, "trelloWriteCard", { action: "add_comment", cardId: c.id, text: comment([`APROVAÇÃO DO CLIENTE REGISTRADA${op.etapa ? " - " + op.etapa : ""}. Confirmação explícita feita no painel.`, "Próximo passo: MAX reorganiza datas e libera a próxima fase."]) });
         return `Aprovação registrada em ${c.title}.`;
       };
       break;
@@ -1000,12 +1059,12 @@ function buildOp(op, idx, original) {
 
 function dlHTML(obj, chg, side) {
   if (!obj) return "";
-  return `<dl>${Object.entries(obj).map(([k, val]) => `<dt>${esc(k)}</dt><dd class="${side === "after" && chg.has(k) ? "chg" : ""}">${val || "—"}</dd>`).join("")}</dl>`;
+  return `<dl>${Object.entries(obj).map(([k, val]) => `<dt>${esc(k)}</dt><dd class="${side === "after" && chg.has(k) ? "chg" : ""}">${val || "-"}</dd>`).join("")}</dl>`;
 }
 function renderPlan(p) {
   const box = $("plan");
   if (!p) { box.innerHTML = ""; return; }
-  if (p.status === "thinking") { box.innerHTML = `<div class="plan"><p class="note">Interpretando com o Claude…</p></div>`; return; }
+  if (p.status === "thinking") { box.innerHTML = `<div class="plan"><p class="muted">Interpretando com o Claude…</p></div>`; return; }
   if (p.status === "error") { box.innerHTML = `<div class="plan"><div class="errbox">${esc(p.error)}</div></div>`; return; }
   const ops = p.ops.map((o, i) => `<div class="op">
       <div class="op-h"><b>${esc(o.title)}</b>${o.blocked ? `<span class="tag block">Não será feito</span>` : o.critical ? `<span class="tag crit">Exige confirmação extra</span>` : ""}</div>
@@ -1016,9 +1075,9 @@ function renderPlan(p) {
   const qs = p.questions.length ? `<div class="qs"><b>Preciso confirmar:</b><ul>${p.questions.map((q) => `<li>${esc(q)}</li>`).join("")}</ul></div>` : "";
   const runnable = p.ops.filter((o) => o.exec);
   const results = p.results ? `<div class="res">${p.results.map((r) => `<span class="${r.ok ? "okl" : "errl"}">${esc(r.text)}</span>`).join("")}</div>` : "";
-  const actions = p.status === "done" ? `<div class="upd-row"><button class="btn" type="button" id="plan-clear">Nova atualização</button></div>`
-    : runnable.length ? `<div class="upd-row"><span class="note">Nada foi gravado ainda.</span><div style="display:flex;gap:8px"><button class="btn" type="button" id="plan-cancel">Cancelar</button><button class="btn primary" type="button" id="plan-ok">${p.status === "saving" ? "Salvando…" : "Confirmar e salvar"}</button></div></div>`
-    : `<div class="upd-row"><span class="note">Nada para salvar. Ajuste o texto e interprete de novo.</span><button class="btn" type="button" id="plan-cancel">Fechar</button></div>`;
+  const actions = p.status === "done" ? `<div class="u-row"><button class="btn" type="button" id="plan-clear">Nova atualização</button></div>`
+    : runnable.length ? `<div class="u-row"><span class="muted">Nada foi gravado ainda.</span><div style="display:flex;gap:8px"><button class="btn" type="button" id="plan-cancel">Cancelar</button><button class="btn primary" type="button" id="plan-ok">${p.status === "saving" ? "Salvando…" : "Confirmar e salvar"}</button></div></div>`
+    : `<div class="u-row"><span class="muted">Nada para salvar. Ajuste o texto e interprete de novo.</span><button class="btn" type="button" id="plan-cancel">Fechar</button></div>`;
   box.innerHTML = `<div class="plan">${ops || ""}${qs}${results}${actions}</div>`;
   syncConfirm();
 }
@@ -1072,7 +1131,7 @@ let loading = false;
 async function loadAll(forceExtract) {
   if (loading) return;
   loading = true;
-  const btn = $("refresh"); btn.disabled = true; btn.classList.add("spin");
+  const btn = $("refresh"); btn.disabled = true; btn.classList.add("busy");
   $("today-long").textContent = longToday();
   const mcp = await mcpP;
   if (!mcp) {
@@ -1082,25 +1141,30 @@ async function loadAll(forceExtract) {
     await Promise.all([loadCalendar(), loadTrello()]);
     state.loadedAt = new Date();
   }
-  btn.disabled = false; btn.classList.remove("spin");
+  btn.disabled = false; btn.classList.remove("busy");
   loading = false;
   renderAll();
   if (!state.err.trello && mcp) runExtraction(forceExtract);
 }
 
+
 /* ================= eventos ================= */
 $("refresh").addEventListener("click", () => loadAll(true));
-$("rem-prev").addEventListener("click", () => { showSlide(remIdx - 1); startRotation(); });
-$("rem-next").addEventListener("click", () => { showSlide(remIdx + 1); startRotation(); });
-$("rem-all").addEventListener("click", (e) => { const l = $("rem-list"); l.hidden = !l.hidden; e.currentTarget.setAttribute("aria-expanded", String(!l.hidden)); e.currentTarget.textContent = l.hidden ? "Ver todos" : "Ocultar lista"; });
-const rem = $("rem");
-rem.addEventListener("mouseenter", () => (remPaused = true));
-rem.addEventListener("mouseleave", () => (remPaused = false));
-rem.addEventListener("focusin", () => (remPaused = true));
-rem.addEventListener("focusout", () => (remPaused = false));
-reduce.addEventListener && reduce.addEventListener("change", startRotation);
+$("rem-prev").addEventListener("click", () => { showSlide(remIdx - 1, true); startRotation(); });
+$("rem-next").addEventListener("click", () => { showSlide(remIdx + 1, true); startRotation(); });
+$("rem-all").addEventListener("click", (e) => {
+  const l = $("rem-list"); l.hidden = !l.hidden;
+  e.currentTarget.setAttribute("aria-expanded", String(!l.hidden));
+  e.currentTarget.textContent = l.hidden ? "Ver todos os lembretes" : "Ocultar a lista";
+});
+const feat = $("feature").parentElement;
+feat.addEventListener("mouseenter", () => (remPaused = true));
+feat.addEventListener("mouseleave", () => (remPaused = false));
+feat.addEventListener("focusin", () => (remPaused = true));
+feat.addEventListener("focusout", () => (remPaused = false));
+if (reduce.addEventListener) reduce.addEventListener("change", startRotation);
 
-$("team").addEventListener("click", (e) => { const b = e.target.closest(".person"); if (b) openPerson(b.dataset.p); });
+$("team").addEventListener("click", (e) => { const b = e.target.closest(".row"); if (b) openPerson(b.dataset.p); });
 $("sheet-close").addEventListener("click", () => $("sheet").close());
 $("sheet").addEventListener("click", (e) => { if (e.target === e.currentTarget) e.currentTarget.close(); });
 

@@ -1,0 +1,1123 @@
+<title>Painel Dayse Lacerda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F4F4F1;
+  --sheet:#FFFFFF;
+  --ink:#1D2023;
+  --graphite:#4E555B;
+  --concrete:#666C71;
+  --rule:#DDDEDA;
+  --rule-strong:#BBBDB8;
+  --grid:rgba(29,32,35,.045);
+  --hover:#ECECE8;
+  --red:#B42318;   --red-soft:#FBEAE8;
+  --orange:#B45A09;--orange-soft:#FBEFE3;
+  --blue:#2B59A3;  --blue-soft:#E9EFF9;
+  --green:#2E7549; --green-soft:#E6F2EA;
+  --shadow:0 1px 2px rgba(20,22,24,.06),0 8px 28px rgba(20,22,24,.08);
+  --f-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --r:6px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --paper:#131517;--sheet:#1B1E21;--ink:#ECEDEA;--graphite:#B4B9BC;--concrete:#8D9499;
+    --rule:#2B2F33;--rule-strong:#40454A;--grid:rgba(236,237,234,.035);--hover:#23272A;
+    --red:#F07A6E;--red-soft:#3A1F1C;--orange:#E9A25C;--orange-soft:#3A2A19;
+    --blue:#8AAAE8;--blue-soft:#1C2638;--green:#7DC497;--green-soft:#1A2E22;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.45);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#131517;--sheet:#1B1E21;--ink:#ECEDEA;--graphite:#B4B9BC;--concrete:#8D9499;
+  --rule:#2B2F33;--rule-strong:#40454A;--grid:rgba(236,237,234,.035);--hover:#23272A;
+  --red:#F07A6E;--red-soft:#3A1F1C;--orange:#E9A25C;--orange-soft:#3A2A19;
+  --blue:#8AAAE8;--blue-soft:#1C2638;--green:#7DC497;--green-soft:#1A2E22;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.45);
+}
+*,*::before,*::after{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-display);font-size:15px;line-height:1.5;font-variation-settings:"wdth" 100;-webkit-font-smoothing:antialiased}
+button,input,textarea{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px;border-radius:3px}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:0 64px}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;font-variation-settings:"wdth" 118;color:var(--concrete)}
+
+/* ---------- header ---------- */
+.top{background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:12px 12px;border-bottom:1px solid var(--rule)}
+.top-in{max-width:1180px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:22px 0}
+.brand{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.brand b{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;font-variation-settings:"wdth" 125}
+.head{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;padding-block:28px 22px}
+h1{margin:0;font-size:clamp(44px,7vw,76px);line-height:.92;font-weight:300;letter-spacing:-.02em;font-variation-settings:"wdth" 112}
+.date{margin-top:10px;font-size:17px;color:var(--graphite);text-wrap:balance}
+.stamp{border:1.5px solid var(--ink);background:var(--sheet);display:grid;grid-template-columns:auto auto;font-size:11px;min-width:260px}
+.stamp div{padding:5px 10px;border-bottom:1px solid var(--rule-strong)}
+.stamp div:nth-child(odd){border-right:1px solid var(--rule-strong);color:var(--concrete);letter-spacing:.12em;text-transform:uppercase;font-weight:600;font-variation-settings:"wdth" 118}
+.stamp div:nth-last-child(-n+2){border-bottom:0}
+.stamp .v{font-family:var(--f-mono)}
+.nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a,.nav span{padding:10px 14px 12px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;font-variation-settings:"wdth" 115;text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap}
+.nav a[aria-current]{border-color:var(--ink)}
+.nav span{color:var(--concrete)}
+.nav span small{font-size:10px;letter-spacing:.06em;margin-left:6px;font-family:var(--f-mono);text-transform:none;font-weight:400}
+
+/* ---------- toolbar ---------- */
+.bar{display:flex;align-items:center;gap:10px 16px;flex-wrap:wrap;padding-block:18px}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--rule-strong);background:var(--sheet);padding:8px 14px;border-radius:var(--r);cursor:pointer;font-size:14px;font-weight:500;transition:background-color .15s ease,border-color .15s ease,transform .1s ease}
+.btn:hover{background:var(--hover)}
+.btn:active{transform:scale(.97)}
+.btn[disabled]{opacity:.45;cursor:not-allowed;transform:none}
+.btn.primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.btn.primary:hover{background:var(--graphite);border-color:var(--graphite)}
+.btn svg{width:15px;height:15px}
+.spin svg{animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.src{display:flex;gap:8px;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:3px 9px;border:1px solid var(--rule);border-radius:99px;color:var(--graphite);background:var(--sheet)}
+.chip i{width:7px;height:7px;border-radius:50%;background:var(--concrete)}
+.chip.ok i{background:var(--green)}
+.chip.err i{background:var(--red)}
+.chip.load i{background:var(--orange)}
+.note{font-size:13px;color:var(--graphite)}
+
+/* ---------- section heading w/ dimension line ---------- */
+.sh{display:flex;align-items:center;gap:12px;margin:0 0 14px}
+.sh h2{margin:0;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;font-variation-settings:"wdth" 122;white-space:nowrap}
+.sh .dim{flex:1;height:9px;position:relative;min-width:24px}
+.sh .dim::before{content:"";position:absolute;left:0;right:0;top:4px;border-top:1px solid var(--rule-strong)}
+.sh .dim::after{content:"";position:absolute;right:0;top:0;height:9px;border-left:1px solid var(--rule-strong)}
+.sh .count{font-family:var(--f-mono);font-size:12px;color:var(--concrete)}
+
+/* ---------- reminders ---------- */
+.rem{background:var(--sheet);border:1px solid var(--rule);border-radius:var(--r);display:grid;grid-template-columns:1fr auto;align-items:stretch;min-height:112px}
+.rem-stage{position:relative;padding:18px 22px;overflow:hidden}
+.slide{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:start}
+.slide.enter{animation:slideIn .38s cubic-bezier(.22,1,.36,1)}
+@keyframes slideIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.when{grid-row:span 2;border:1px solid var(--rule-strong);border-radius:4px;text-align:center;min-width:64px;padding:6px 8px 5px}
+.when b{display:block;font-size:24px;line-height:1;font-weight:600;font-variation-settings:"wdth" 100}
+.when span{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--concrete);font-weight:600}
+.slide .kind{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;font-variation-settings:"wdth" 118;display:flex;align-items:center;gap:8px}
+.slide .t{font-size:19px;font-weight:500;line-height:1.3;text-wrap:balance;grid-column:2}
+.slide .m{grid-column:2;font-size:13px;color:var(--graphite)}
+.rem-ctl{display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end;padding:12px 14px;border-left:1px solid var(--rule);gap:8px}
+.arrows{display:flex;gap:4px}
+.ib{width:32px;height:32px;display:grid;place-items:center;border:1px solid var(--rule);background:var(--sheet);border-radius:var(--r);cursor:pointer}
+.ib:hover{background:var(--hover)}
+.ib svg{width:14px;height:14px}
+.pos{font-family:var(--f-mono);font-size:12px;color:var(--concrete)}
+.linkbtn{background:none;border:0;padding:0;font-size:13px;text-decoration:underline;text-underline-offset:3px;cursor:pointer;color:var(--graphite)}
+.all{margin-top:10px;background:var(--sheet);border:1px solid var(--rule);border-radius:var(--r)}
+.all ul{list-style:none;margin:0;padding:0}
+.all li{display:grid;grid-template-columns:92px 1fr auto;gap:12px;padding:10px 16px;border-bottom:1px solid var(--rule);font-size:14px;align-items:baseline}
+.all li:last-child{border-bottom:0}
+.all li .k{font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+
+.dot{width:9px;height:9px;flex:none;display:inline-block}
+.k-reuniao{color:var(--blue)} .k-reuniao .dot,.dot.k-reuniao{background:var(--blue);border-radius:50%}
+.k-entrega{color:var(--red)} .k-entrega .dot,.dot.k-entrega{background:var(--red)}
+.k-prazo{color:var(--orange)} .k-prazo .dot,.dot.k-prazo{background:var(--orange);transform:rotate(45deg)}
+.k-atraso{color:var(--red)} .k-atraso .dot,.dot.k-atraso{border:2px solid var(--red)}
+
+/* ---------- layout ---------- */
+.grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:28px;margin-top:34px;align-items:start}
+.col{display:flex;flex-direction:column;gap:34px;min-width:0}
+
+/* ---------- update box ---------- */
+.upd{background:var(--sheet);border:1px solid var(--rule);border-radius:var(--r);padding:18px}
+.upd textarea{width:100%;min-height:92px;resize:vertical;border:1px solid var(--rule-strong);border-radius:var(--r);background:var(--paper);padding:12px 14px;font-size:16px;line-height:1.45}
+.upd textarea:focus{outline:2px solid var(--ink);outline-offset:0;border-color:transparent}
+.upd-row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:12px}
+.hints{display:flex;gap:6px;flex-wrap:wrap}
+.hint{font-size:12px;border:1px dashed var(--rule-strong);border-radius:99px;padding:3px 10px;background:none;cursor:pointer;color:var(--graphite)}
+.hint:hover{background:var(--hover)}
+.plan{margin-top:16px;border-top:1px solid var(--rule);padding-top:16px;display:flex;flex-direction:column;gap:16px}
+.op{border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
+.op-h{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;background:var(--paper);border-bottom:1px solid var(--rule);flex-wrap:wrap}
+.op-h b{font-size:14px;font-weight:600}
+.tag{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:2px 8px;border-radius:3px;font-variation-settings:"wdth" 115}
+.tag.crit{background:var(--orange-soft);color:var(--orange)}
+.tag.block{background:var(--red-soft);color:var(--red)}
+.tag.ok{background:var(--green-soft);color:var(--green)}
+.ba{display:grid;grid-template-columns:1fr 1fr}
+.ba>div{padding:12px 14px}
+.ba>div+div{border-left:1px solid var(--rule)}
+.ba h4{margin:0 0 8px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--concrete);font-weight:700}
+.ba dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:13.5px}
+.ba dt{color:var(--concrete)}
+.ba dd{margin:0;overflow-wrap:anywhere}
+.ba dd.chg{font-weight:600}
+.ba dd .miss{color:var(--concrete);font-style:italic;font-weight:400}
+.op-msg{padding:10px 14px;font-size:13.5px;border-top:1px solid var(--rule);color:var(--graphite)}
+.op-msg.block{color:var(--red)}
+.check{display:flex;gap:10px;align-items:flex-start;padding:10px 14px;border-top:1px solid var(--rule);font-size:13.5px;background:var(--orange-soft)}
+.check input{margin-top:3px;width:16px;height:16px;accent-color:var(--ink)}
+.qs{background:var(--blue-soft);border-radius:var(--r);padding:10px 14px;font-size:14px}
+.qs ul{margin:6px 0 0;padding-left:18px}
+.res{font-size:13.5px;display:flex;flex-direction:column;gap:4px}
+.res .okl{color:var(--green)} .res .errl{color:var(--red)}
+
+/* ---------- team ---------- */
+.team{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.person{text-align:left;background:var(--sheet);border:1px solid var(--rule);border-radius:var(--r);padding:14px 16px;cursor:pointer;display:flex;flex-direction:column;gap:10px;transition:border-color .15s ease,box-shadow .2s ease,transform .1s ease}
+.person:hover{border-color:var(--rule-strong);box-shadow:var(--shadow)}
+.person:active{transform:scale(.985)}
+.p-top{display:flex;align-items:center;gap:12px}
+.mono-sq{width:38px;height:38px;border:1.5px solid var(--ink);display:grid;place-items:center;font-weight:700;font-size:14px;letter-spacing:.04em;font-variation-settings:"wdth" 120;flex:none}
+.p-name{font-weight:600;font-size:16px;line-height:1.2}
+.p-sub{font-size:12px;color:var(--concrete)}
+.load{margin-left:auto;font-size:10px;letter-spacing:.12em;font-weight:700;padding:2px 7px;border-radius:3px;text-transform:uppercase;font-variation-settings:"wdth" 115}
+.load.normal{background:var(--green-soft);color:var(--green)}
+.load.atencao{background:var(--orange-soft);color:var(--orange)}
+.load.critico{background:var(--red-soft);color:var(--red)}
+.load.na{background:var(--hover);color:var(--concrete)}
+.p-counts{display:flex;gap:14px;font-size:12.5px;color:var(--graphite)}
+.p-counts b{font-family:var(--f-mono);font-weight:500;color:var(--ink);margin-right:3px}
+.p-first{font-size:13.5px;line-height:1.4;border-top:1px solid var(--rule);padding-top:10px}
+.p-first .miss{color:var(--concrete)}
+
+/* ---------- alerts ---------- */
+.alerts{background:var(--sheet);border:1px solid var(--rule);border-radius:var(--r)}
+.alerts ul{list-style:none;margin:0;padding:0}
+.alert{display:grid;grid-template-columns:14px 1fr;gap:4px 12px;padding:13px 16px;border-bottom:1px solid var(--rule)}
+.alert:last-child{border-bottom:0}
+.sym{width:12px;height:12px;margin-top:4px;grid-row:span 3}
+.alert.critico .sym{background:var(--red)}
+.alert.atencao .sym{border:2px solid var(--orange);transform:rotate(45deg) scale(.85)}
+.alert.info .sym{border:2px solid var(--blue);border-radius:50%}
+.a-type{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;font-variation-settings:"wdth" 118}
+.alert.critico .a-type{color:var(--red)} .alert.atencao .a-type{color:var(--orange)} .alert.info .a-type{color:var(--blue)}
+.a-t{font-weight:500;font-size:14.5px;line-height:1.35}
+.a-d{font-size:13px;color:var(--graphite)}
+.a-d a{color:var(--graphite)}
+.legend{font-size:12px;color:var(--concrete);padding:10px 16px;border-top:1px solid var(--rule);line-height:1.5}
+
+.empty{grid-column:1/-1;padding:18px;color:var(--graphite);font-size:14px}
+.errbox{margin-bottom:18px;padding:14px 16px;border:1px solid var(--red);background:var(--red-soft);color:var(--ink);border-radius:var(--r);font-size:14px}
+.skel{height:14px;border-radius:3px;background:linear-gradient(90deg,var(--hover),var(--rule),var(--hover));background-size:200% 100%;animation:sk 1.4s ease infinite}
+@keyframes sk{to{background-position:-200% 0}}
+.foot{margin-top:40px;font-size:12px;color:var(--concrete);line-height:1.6;max-width:72ch}
+
+/* ---------- person sheet ---------- */
+dialog.sheet{border:0;padding:0;margin:0 0 0 auto;height:100%;max-height:100%;width:min(520px,100%);background:var(--sheet);color:var(--ink);box-shadow:var(--shadow)}
+dialog.sheet::backdrop{background:rgba(15,17,19,.38)}
+dialog.sheet[open]{animation:sheetIn .32s cubic-bezier(.22,1,.36,1)}
+@keyframes sheetIn{from{transform:translateX(24px);opacity:0}to{transform:none;opacity:1}}
+.sheet-h{position:sticky;top:0;background:var(--sheet);display:flex;align-items:center;gap:12px;padding:18px 20px;border-bottom:1px solid var(--rule);z-index:1}
+.sheet-b{padding:20px;display:flex;flex-direction:column;gap:26px;padding-bottom:calc(28px + env(safe-area-inset-bottom,0px))}
+.sheet-b h3{margin:0 0 8px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--concrete);font-variation-settings:"wdth" 120}
+.rows{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.rows li{display:grid;grid-template-columns:62px 1fr;gap:10px;padding:9px 0;border-bottom:1px solid var(--rule);font-size:14px;align-items:baseline}
+.rows li .d{font-family:var(--f-mono);font-size:12.5px;color:var(--graphite)}
+.rows li .d.late{color:var(--red);font-weight:500}
+.rows li small{display:block;color:var(--concrete);font-size:12px}
+.prio{counter-reset:p;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.prio li{counter-increment:p;display:grid;grid-template-columns:28px 1fr;gap:8px;font-size:14px}
+.prio li::before{content:counter(p);font-family:var(--f-mono);font-size:12px;border:1px solid var(--rule-strong);height:22px;display:grid;place-items:center}
+
+@media (max-width:900px){
+  .grid{grid-template-columns:1fr}
+  .head{grid-template-columns:1fr}
+  .stamp{min-width:0;max-width:420px}
+}
+@media (max-width:560px){
+  .rem{grid-template-columns:1fr}
+  .rem-ctl{flex-direction:row;align-items:center;border-left:0;border-top:1px solid var(--rule)}
+  .ba{grid-template-columns:1fr}
+  .ba>div+div{border-left:0;border-top:1px solid var(--rule)}
+  .all li{grid-template-columns:1fr;gap:2px}
+  dialog.sheet{width:100%;height:92%;margin:auto 0 0;border-radius:12px 12px 0 0}
+  dialog.sheet[open]{animation-name:sheetUp}
+  @keyframes sheetUp{from{transform:translateY(30px);opacity:0}to{transform:none;opacity:1}}
+  .slide .t{font-size:17px}
+}
+@media (hover:none){.person:hover,.btn:hover,.ib:hover,.hint:hover{background:inherit;box-shadow:none}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+
+<header class="top">
+  <div class="top-in">
+    <div class="brand"><b>Dayse Lacerda Arquitetura</b><span class="label">Painel operacional</span></div>
+    <div class="head">
+      <div>
+        <h1>Hoje</h1>
+        <div class="date" id="today-long">&nbsp;</div>
+      </div>
+      <div class="stamp" aria-label="Carimbo da prancha">
+        <div>Prancha</div><div class="v">01 / 04 · Hoje</div>
+        <div>Local</div><div class="v">João Pessoa/PB</div>
+        <div>Fontes</div><div class="v">Trello · Calendar</div>
+        <div>Leitura</div><div class="v" id="stamp-time">—</div>
+      </div>
+    </div>
+    <nav class="nav" aria-label="Seções">
+      <a href="#hoje" aria-current="page">Hoje</a>
+      <span>Projetos<small>fase 3</small></span>
+      <span>Reuniões<small>fase 4</small></span>
+      <span>Equipe<small>fase 5</small></span>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="hoje">
+  <div class="bar">
+    <button class="btn" id="refresh" type="button">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M13.5 8a5.5 5.5 0 1 1-1.7-4"/><path d="M13.5 2.5v3h-3"/></svg>
+      Atualizar dados
+    </button>
+    <div class="src" id="sources" aria-live="polite">
+      <span class="chip load" id="src-trello"><i></i>Trello</span>
+      <span class="chip load" id="src-cal"><i></i>Calendar</span>
+      <span class="chip" id="src-claude"><i></i>Leitura das etapas</span>
+    </div>
+  </div>
+  <div id="page-err"></div>
+
+  <section aria-labelledby="h-rem">
+    <div class="sh"><h2 id="h-rem">Lembretes</h2><span class="dim"></span><span class="count" id="rem-count"></span></div>
+    <div class="rem" id="rem" aria-roledescription="carrossel">
+      <div class="rem-stage" id="rem-stage" aria-live="polite">
+        <div class="skel" style="width:60%"></div><div class="skel" style="width:35%;margin-top:10px"></div>
+      </div>
+      <div class="rem-ctl">
+        <div class="arrows">
+          <button class="ib" id="rem-prev" type="button" aria-label="Lembrete anterior"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 3 5 8l5 5"/></svg></button>
+          <button class="ib" id="rem-next" type="button" aria-label="Próximo lembrete"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m6 3 5 5-5 5"/></svg></button>
+        </div>
+        <span class="pos" id="rem-pos"></span>
+        <button class="linkbtn" id="rem-all" type="button" aria-expanded="false">Ver todos</button>
+      </div>
+    </div>
+    <div class="all" id="rem-list" hidden></div>
+  </section>
+
+  <div class="grid">
+    <div class="col">
+      <section aria-labelledby="h-upd">
+        <div class="sh"><h2 id="h-upd">Atualização</h2><span class="dim"></span></div>
+        <form class="upd" id="upd-form" autocomplete="off">
+          <label for="upd-text" class="label" style="display:block;margin-bottom:8px">Digite uma atualização</label>
+          <textarea id="upd-text" placeholder="Ex.: o projeto X foi para detalhamento"></textarea>
+          <div class="upd-row">
+            <div class="hints" aria-label="Exemplos">
+              <button type="button" class="hint">O projeto X foi para detalhamento</button>
+              <button type="button" class="hint">Troque o responsável do projeto Y para …</button>
+              <button type="button" class="hint">Cliente aprovou a apresentação</button>
+              <button type="button" class="hint">Marque reunião amanhã às 15h</button>
+            </div>
+            <button class="btn primary" id="upd-go" type="submit">Interpretar</button>
+          </div>
+          <div id="plan"></div>
+        </form>
+      </section>
+
+      <section aria-labelledby="h-team">
+        <div class="sh"><h2 id="h-team">O que cada um tem para fazer hoje</h2><span class="dim"></span></div>
+        <div class="team" id="team"><div class="skel" style="height:120px"></div><div class="skel" style="height:120px"></div></div>
+      </section>
+    </div>
+
+    <aside class="col">
+      <section aria-labelledby="h-al">
+        <div class="sh"><h2 id="h-al">Alertas do dia</h2><span class="dim"></span><span class="count" id="al-count"></span></div>
+        <div class="alerts" id="alerts"><div class="empty"><div class="skel" style="width:80%"></div></div></div>
+      </section>
+    </aside>
+  </div>
+
+  <p class="foot" id="foot">
+    Os dados são lidos do Trello (quadro ESCRITÓRIO DAYSE LACERDA) e do Google Calendar sempre que o painel abre.
+    Um projeto só conta como concluído quando o card está na lista CONCLUÍDO; a marcação de “concluído” do card é ignorada.
+    Dias úteis: segunda a sexta, sem os feriados nacionais do calendário “Feriados no Brasil”. Feriados municipais de João Pessoa ainda não entram no cálculo.
+    Toda alteração feita aqui é gravada no Trello ou no Calendar só depois da sua confirmação, com um comentário datado no card. Nada é apagado.
+  </p>
+</main>
+
+<dialog class="sheet" id="sheet" aria-labelledby="sheet-name">
+  <div class="sheet-h">
+    <div class="mono-sq" id="sheet-mono"></div>
+    <div><div class="p-name" id="sheet-name"></div><div class="p-sub" id="sheet-sub"></div></div>
+    <span class="load" id="sheet-load"></span>
+    <button class="ib" id="sheet-close" type="button" aria-label="Fechar" style="margin-left:8px"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m4 4 8 8M12 4l-8 8"/></svg></button>
+  </div>
+  <div class="sheet-b" id="sheet-body"></div>
+</dialog>
+
+<script>
+(() => {
+"use strict";
+
+/* ================= configuração ================= */
+const CONFIG = {
+  board: "ari:cloud:trello::board/workspace/65f98d0c29569bce03178e98/6aa5863227ebe5bcdb513a1f",
+  tz: "America/Fortaleza",
+  offset: "-03:00",
+  holidayCal: "pt-br.brazilian#holiday@group.v.calendar.google.com",
+  meetingList: "REUNIÕES",
+  doneList: "CONCLUÍDO",
+};
+const TRELLO = "Trello", CAL = "Google Calendar";
+
+/* ================= utilidades ================= */
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const norm = (s) => String(s ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().trim();
+const cap = (s) => s.toLowerCase().replace(/(^|\s)\S/g, (m) => m.toUpperCase());
+const fKey = new Intl.DateTimeFormat("en-CA", { timeZone: CONFIG.tz, year: "numeric", month: "2-digit", day: "2-digit" });
+const fTime = new Intl.DateTimeFormat("pt-BR", { timeZone: CONFIG.tz, hour: "2-digit", minute: "2-digit", hour12: false });
+const fLong = new Intl.DateTimeFormat("pt-BR", { timeZone: CONFIG.tz, weekday: "long", day: "numeric", month: "long", year: "numeric" });
+const fWd = new Intl.DateTimeFormat("pt-BR", { timeZone: "UTC", weekday: "short" });
+const ymd = (d) => fKey.format(d);
+const k2d = (k) => new Date(k + "T12:00:00Z");
+const dm = (k) => k ? k.slice(8, 10) + "/" + k.slice(5, 7) : "";
+const dmy = (k) => k ? dm(k) + "/" + k.slice(0, 4) : "";
+const wdShort = (k) => fWd.format(k2d(k)).replace(".", "");
+function addDays(k, n) { const d = k2d(k); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); }
+function isBD(k) { const w = k2d(k).getUTCDay(); return w !== 0 && w !== 6 && !state.holidays.has(k); }
+function addBD(k, n) { let c = k, i = 0, g = 0; while (i < n && g++ < 500) { c = addDays(c, 1); if (isBD(c)) i++; } return c; }
+function bdBetween(a, b) { let c = a, n = 0, g = 0; while (c < b && g++ < 1000) { c = addDays(c, 1); if (isBD(c)) n++; } return n; }
+const today = () => ymd(new Date());
+const longToday = () => { const s = fLong.format(new Date()); return s.charAt(0).toUpperCase() + s.slice(1); };
+const isKey = (s) => typeof s === "string" && /^\d{4}-\d{2}-\d{2}$/.test(s) && !isNaN(k2d(s));
+const STOP = new Set(["REUNIAO", "APRESENTACAO", "PROJETO", "INTERIORES", "ARQUITETONICO", "CLIENTE", "COM", "PARA", "ENTREGA", "FINAL", "SALA", "CASA", "TERREA", "SOBRADO", "COMERCIAL", "CONSTRUTOR", "AVULSOS", "FASE"]);
+const tokens = (s) => norm(s).split(/[^A-Z0-9]+/).filter((t) => t.length >= 3 && !STOP.has(t));
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const MISSING = '<span class="miss">Não registrado no Trello</span>';
+
+/* ================= estado ================= */
+const state = {
+  cards: [], lists: [], events: [], holidays: new Set(),
+  etapas: null, extract: "idle", extractErr: "",
+  err: { trello: null, cal: null }, loadedAt: null, me: "",
+};
+
+/* ================= capacidades ================= */
+const cap$ = (n) => (window.claude && window.claude.use ? window.claude.use(n).catch(() => null) : Promise.resolve(null));
+const mcpP = cap$("mcp"), sampleP = cap$("sample"), userP = cap$("user");
+
+function mcpMsg(e, server) {
+  switch (e && e.code) {
+    case "needs_reauth": return `Reconecte o ${server} em claude.ai → Configurações → Conectores e toque em “Atualizar dados”.`;
+    case "server_not_connected": return `Adicione o conector ${server} em claude.ai → Configurações → Conectores.`;
+    case "selection_required": return `Há mais de um conector ${server}. Escolha qual usar no aviso do claude.ai e atualize.`;
+    case "not_in_manifest": case "consent_required": return `O acesso ao ${server} não foi permitido neste painel. Recarregue a página para permitir.`;
+    case "blocked_by_policy": case "approval_required": return `A organização bloqueou o ${server} para este painel.`;
+    case "server_unavailable": case "rate_limited": return `O ${server} não respondeu agora. Tente “Atualizar dados” em instantes.`;
+    case "tool_error": return `O ${server} recusou o pedido: ${e.message}`;
+    case "not_granted": case "capability_disabled": case "capability_removed": return `Abra este painel no claude.ai para ler o ${server}.`;
+    default: return `Falha ao falar com o ${server} (${(e && e.code) || "erro"}). Tente “Atualizar dados”.`;
+  }
+}
+function sampleMsg(e) {
+  switch (e && e.code) {
+    case "not_granted": case "sampling_disabled": case "not_declared": case "capability_disabled": case "capability_removed":
+      return "O uso do Claude não está liberado neste painel.";
+    case "rate_limited": return "Limite de uso do Claude atingido. Tente de novo mais tarde.";
+    case "session_expired": return "Sua sessão no claude.ai expirou. Entre de novo.";
+    case "invalid_json": case "empty_completion": return "O Claude não devolveu uma resposta legível. Tente de novo.";
+    case "prompt_too_large": return "Há texto demais para o Claude ler de uma vez.";
+    case "refused": return "O Claude recusou este pedido. Reescreva a atualização.";
+    default: return "O Claude não respondeu. Tente de novo.";
+  }
+}
+async function read(server, tool, input) {
+  const mcp = await mcpP;
+  if (!mcp) throw { code: "not_granted" };
+  try { return (await mcp.callTool(server, tool, input)).payload; }
+  catch (e) {
+    if (e && e.retryable) { await sleep(Math.min(e.retryAfterMs || 900 + Math.random() * 700, 8000)); return (await mcp.callTool(server, tool, input)).payload; }
+    throw e;
+  }
+}
+async function write(server, tool, input) {
+  const mcp = await mcpP;
+  if (!mcp) throw { code: "not_granted" };
+  return (await mcp.callTool(server, tool, input, { cache: false })).payload;
+}
+
+/* ================= normalização ================= */
+function teamFromTitle(name) {
+  const m = String(name).match(/\(([^()]+)\)\s*$/);
+  if (!m) return [];
+  return m[1].split("/").map((s) => s.trim()).filter((s) => s && /^[A-ZÀ-Ü][A-ZÀ-Ü\s]+$/.test(s)).map(cap);
+}
+const cleanName = (n) => String(n).replace(/\s*\([^()]*\)\s*$/, "").trim();
+function meetingClient(n) {
+  let s = String(n).replace(/^REUNI[ÃA]O[^—\-–]*[—\-–]\s*/i, "");
+  s = s.replace(/\s*[—\-–]\s*\d{1,2}\/\d{1,2}(\/\d{2,4})?\s*$/, "");
+  return s.trim() || String(n);
+}
+function kindOf(c) {
+  const n = norm(c.name), l = norm(c.list);
+  if (n.startsWith("REUNIAO")) return "reuniao";
+  if (n.startsWith("ENTREGA FINAL") || l === "ENTREGA FINAL") return "entrega";
+  return "projeto";
+}
+function normCard(c) {
+  const due = c.due ? new Date(c.due) : null;
+  const card = {
+    id: c.id, name: c.name || "", desc: c.desc || "",
+    list: (c.list && c.list.name) || "", listId: c.list && c.list.id,
+    url: c.url || c.webUrl || "", due: due && !isNaN(due) ? due : null,
+    comments: (Array.isArray(c.comments) ? c.comments : []).map((x) => ({ text: x.text || (x.data && x.data.text) || "", at: x.createdAt || x.date || "" })).filter((x) => x.text),
+  };
+  card.dueKey = card.due ? ymd(card.due) : null;
+  card.kind = kindOf(card);
+  card.done = norm(card.list) === norm(CONFIG.doneList);
+  card.team = teamFromTitle(card.name);
+  card.title = card.kind === "reuniao" ? meetingClient(card.name) : cleanName(card.name);
+  const sl = card.url.match(/trello\.com\/c\/([A-Za-z0-9]+)/);
+  card.short = sl ? sl[1] : "";
+  return card;
+}
+function linkProjects() {
+  const projs = state.cards.filter((c) => c.kind === "projeto");
+  for (const c of state.cards) {
+    if (c.kind === "projeto") continue;
+    let p = null;
+    const m = c.desc.match(/trello\.com\/c\/([A-Za-z0-9]+)/);
+    if (m) p = projs.find((x) => x.short === m[1]) || null;
+    if (!p) {
+      const t = tokens(c.title);
+      const hits = projs.filter((x) => tokens(x.title).some((y) => t.includes(y)));
+      if (hits.length === 1) p = hits[0];
+      else if (hits.length > 1) p = hits.find((x) => !x.done) || hits[0];
+    }
+    c.project = p;
+    if (p && c.kind === "entrega" && p.dueKey && p.dueKey === c.dueKey) p.coveredBy = c;
+  }
+}
+const teamOf = (c) => (c.team.length ? c.team : c.project ? c.project.team : []);
+function meetingTime(c) {
+  if (!c.due) return null;
+  const t = fTime.format(c.due);
+  if (t === "09:00" && !/hor[aá]rio/i.test(c.desc)) return null;
+  return t;
+}
+function extractCardsPayload(p) {
+  if (p && p.cards && Array.isArray(p.cards.nodes)) {
+    const pi = p.cards.pageInfo || {};
+    return { nodes: p.cards.nodes, next: pi.hasNextPage ? pi.endCursor : null };
+  }
+  if (p && Array.isArray(p.lists)) {
+    return {
+      nodes: p.lists.flatMap((l) => (l.cards || []).map((c) => ({ ...c, list: c.list || { id: l.id, name: l.name } }))),
+      next: p.hasNextPage ? p.nextCursor : null,
+    };
+  }
+  return { nodes: [], next: null };
+}
+
+/* ================= leitura ================= */
+async function loadTrello() {
+  state.err.trello = null;
+  try {
+    const lp = await read(TRELLO, "trelloReadList", { action: "list_by_board", boardId: CONFIG.board, limit: 50 });
+    const lists = (lp && lp.lists) || [];
+    let cursor, nodes = [], guard = 0;
+    do {
+      const input = { action: "list_by_board", boardIdOrUrl: CONFIG.board, limit: 50 };
+      if (cursor) input.cursor = cursor;
+      const r = extractCardsPayload(await read(TRELLO, "trelloReadCard", input));
+      nodes = nodes.concat(r.nodes); cursor = r.next;
+    } while (cursor && ++guard < 8);
+    state.lists = lists.map((l) => ({ id: l.id, name: l.name }));
+    state.cards = nodes.filter((c) => !c.closed).map(normCard);
+    linkProjects();
+  } catch (e) { state.err.trello = e; }
+}
+async function loadCalendar() {
+  state.err.cal = null;
+  const t = today();
+  try {
+    const [ev, hol] = await Promise.all([
+      read(CAL, "list_events", { startTime: `${t}T00:00:00${CONFIG.offset}`, endTime: `${addDays(t, 31)}T00:00:00${CONFIG.offset}`, orderBy: "startTime", pageSize: 100 }),
+      read(CAL, "list_events", { calendarId: CONFIG.holidayCal, startTime: `${addDays(t, -60)}T00:00:00${CONFIG.offset}`, endTime: `${addDays(t, 200)}T00:00:00${CONFIG.offset}`, pageSize: 100 }).catch(() => null),
+    ]);
+    state.events = ((ev && ev.events) || []).filter((e) => e.status !== "cancelled").map((e) => {
+      const dt = e.start && e.start.dateTime, d = e.start && e.start.date;
+      const key = dt ? ymd(new Date(dt)) : d ? String(d).slice(0, 10) : null;
+      return { id: e.id, summary: e.summary || "(sem título)", key, time: dt ? fTime.format(new Date(dt)) : null, link: e.htmlLink || "", desc: e.description || "" };
+    }).filter((e) => e.key);
+    state.holidays = new Set(((hol && hol.events) || [])
+      .filter((h) => /^feriado/i.test(h.description || "") && !/servidor|v[eé]spera/i.test(h.summary || ""))
+      .map((h) => String((h.start && h.start.date) || "").slice(0, 10)).filter(isKey));
+  } catch (e) { state.err.cal = e; }
+}
+
+/* ================= leitura das etapas (Claude) ================= */
+function extractionPrompt(projs) {
+  const t = today();
+  const blocks = projs.map((c, i) => {
+    const com = c.comments.slice(0, 8).map((x) => `- (${x.at ? String(x.at).slice(0, 10) : "s/data"}) ${x.text.slice(0, 600)}`).join("\n");
+    return `[${i + 1}] ${c.name}\nLista no Trello: ${c.list}\nPrazo do card: ${c.dueKey ? dmy(c.dueKey) : "não registrado"}\nDescrição:\n${c.desc.slice(0, 3200)}${com ? "\nComentários (mais recentes primeiro):\n" + com : ""}`;
+  }).join("\n\n---\n\n");
+  return `Você lê cards do Trello de um escritório de arquitetura e extrai as etapas de produção. Hoje é ${dmy(t)}.
+Use SOMENTE o texto abaixo. Nunca invente etapa, responsável, data ou situação.
+
+Responda apenas com JSON neste formato:
+{"etapas":[{"card":1,"etapa":"Ambientação","responsavel":"Alice Barbosa","prazo":"2026-09-25","situacao":"em_andamento"}]}
+
+Regras:
+- "card" é o número entre colchetes.
+- "prazo": só quando o texto dá uma data explícita para aquela etapa, no formato AAAA-MM-DD. Sem data explícita, use null.
+- "situacao": "concluida", "em_andamento", "aguardando" (depende de cliente, aprovação ou outra etapa), "nao_iniciada" ou "nao_informada". Atualizações e comentários mais recentes prevalecem sobre o texto original.
+- Etapas marcadas "não haverá" ficam de fora. Responsável "a definir" vira "a definir".
+- Se uma etapa tem dois responsáveis, repita a etapa uma vez para cada um.
+
+Cards:
+
+${blocks}`;
+}
+async function runExtraction(force) {
+  const sample = await sampleP;
+  const projs = state.cards.filter((c) => c.kind === "projeto" && !c.done);
+  if (!sample) { state.extract = "off"; state.extractErr = "O uso do Claude não está disponível nesta visualização."; renderAll(); return; }
+  if (!projs.length) { state.etapas = []; state.extract = "ok"; renderAll(); return; }
+  state.extract = "loading"; renderSources(); renderTeam();
+  try {
+    const res = await sample.json(extractionPrompt(projs), { cache: { gcTime: 6 * 3600e3, refresh: !!force } });
+    const list = Array.isArray(res && res.etapas) ? res.etapas : [];
+    state.etapas = list.map((e) => {
+      const c = projs[Number(e.card) - 1];
+      if (!c || typeof e.etapa !== "string") return null;
+      const resp = typeof e.responsavel === "string" ? e.responsavel.trim() : "";
+      const keys = resp.split(/\s*(?:\+|,|\/|\be\b|&)\s*/i).map((s) => norm(s.split(/\s+/)[0])).filter((s) => s && s !== "A");
+      const sit = ["concluida", "em_andamento", "aguardando", "nao_iniciada", "nao_informada"].includes(e.situacao) ? e.situacao : "nao_informada";
+      return { card: c, etapa: e.etapa.trim(), resp, keys: /a definir/i.test(resp) ? [] : keys, prazo: isKey(e.prazo) ? e.prazo : null, situacao: sit };
+    }).filter(Boolean);
+    state.extract = "ok";
+  } catch (e) {
+    state.extract = "err"; state.extractErr = sampleMsg(e);
+  }
+  renderAll();
+}
+
+/* ================= derivações ================= */
+function people() {
+  const map = new Map();
+  const add = (first, full) => {
+    const k = norm(first); if (!k || k === "A DEFINIR") return;
+    const cur = map.get(k);
+    if (!cur) map.set(k, { key: k, first: cap(first), full: full || cap(first) });
+    else if (full && full.length > cur.full.length) cur.full = full;
+  };
+  for (const c of state.cards) if (!c.done) for (const p of c.team) add(p);
+  for (const e of state.etapas || []) {
+    if (!e.keys.length) continue;
+    const parts = e.resp.split(/\s*(?:\+|,|\/|\be\b|&)\s*/i);
+    for (const part of parts) { const f = part.split(/\s+/)[0]; if (f && map.has(norm(f))) add(f, cap(part)); }
+  }
+  return [...map.values()].sort((a, b) => a.first.localeCompare(b.first, "pt-BR"));
+}
+function meetings(from, to) {
+  const out = [];
+  for (const c of state.cards) {
+    if (c.kind !== "reuniao" || c.done || !c.dueKey || c.dueKey < from || c.dueKey > to) continue;
+    out.push({ key: c.dueKey, time: meetingTime(c), title: c.title, card: c, url: c.url, src: ["Trello"], tk: tokens(c.title), team: teamOf(c) });
+  }
+  for (const e of state.events) {
+    if (e.key < from || e.key > to) continue;
+    const tk = tokens(e.summary);
+    const m = out.find((o) => o.key === e.key && !o.event && o.tk.some((x) => tk.includes(x)));
+    if (m) { m.event = e; m.src.push("Calendar"); if (e.time) m.time = e.time; }
+    else out.push({ key: e.key, time: e.time, title: e.summary, event: e, url: e.link, src: ["Calendar"], tk, team: ["Dayse"] });
+  }
+  return out.sort((a, b) => (a.key + (a.time || "99")).localeCompare(b.key + (b.time || "99")));
+}
+const deliverables = () => state.cards.filter((c) => !c.done && c.dueKey && (c.kind === "projeto" || c.kind === "entrega") && !c.coveredBy);
+
+function reminders() {
+  const t = today(), lim3 = addBD(t, 3), out = [];
+  for (const m of meetings(t, addDays(t, 7))) out.push({ k: "reuniao", label: "Reunião", key: m.key, title: m.title, meta: `${m.key === t ? "Hoje" : wdShort(m.key) + " " + dm(m.key)} · ${m.time ? m.time : "horário não registrado"} · ${m.src.join(" + ")}`, url: m.url });
+  for (const c of deliverables()) {
+    if (c.dueKey === t) out.push({ k: "entrega", label: "Entrega hoje", key: c.dueKey, title: c.title, meta: `${c.list} · prazo no Trello ${dmy(c.dueKey)}`, url: c.url });
+    else if (c.dueKey > t && c.dueKey <= lim3) out.push({ k: "prazo", label: "Perto do prazo", key: c.dueKey, title: c.title, meta: `${c.list} · em ${bdBetween(t, c.dueKey)} dia(s) útil(eis), ${wdShort(c.dueKey)} ${dmy(c.dueKey)}`, url: c.url });
+    else if (c.dueKey < t) out.push({ k: "atraso", label: "Atrasado", key: c.dueKey, title: c.title, meta: `${c.list} · prazo no Trello ${dmy(c.dueKey)} · ${bdBetween(c.dueKey, t)} dia(s) útil(eis) de atraso`, url: c.url });
+  }
+  const order = { entrega: 0, reuniao: 1, atraso: 2, prazo: 3 };
+  return out.sort((a, b) => order[a.k] - order[b.k] || a.key.localeCompare(b.key));
+}
+
+function personData(p) {
+  const t = today(), P = p.key;
+  const et = (state.etapas || []).filter((e) => e.keys.includes(P) && e.situacao !== "concluida" && !e.card.done);
+  const ativas = et.filter((e) => e.situacao === "em_andamento" || (e.prazo && e.prazo <= addBD(t, 5)));
+  const hoje = et.filter((e) => e.situacao === "em_andamento" || (e.prazo && e.prazo <= addBD(t, 2)))
+    .sort((a, b) => (a.prazo || "9999").localeCompare(b.prazo || "9999"));
+  const entregas = deliverables().filter((c) => teamOf(c).map(norm).includes(P) && c.dueKey <= addBD(t, 10)).sort((a, b) => a.dueKey.localeCompare(b.dueKey));
+  const reun = meetings(t, addDays(t, 7)).filter((m) => (m.team || []).map(norm).includes(P));
+  const projetos = state.cards.filter((c) => c.kind === "projeto" && !c.done && c.team.map(norm).includes(P));
+  let carga = "na";
+  if (state.etapas) carga = ativas.length >= 5 ? "critico" : ativas.length >= 3 ? "atencao" : "normal";
+  const prio = [...et].filter((e) => e.prazo || e.situacao === "em_andamento")
+    .sort((a, b) => (a.prazo || "9999").localeCompare(b.prazo || "9999")).slice(0, 3);
+  return { et, ativas, hoje, entregas, reun, projetos, carga, prio };
+}
+
+function alerts() {
+  const t = today(), lim3 = addBD(t, 3), out = [];
+  for (const c of deliverables()) {
+    const who = teamOf(c).join(", ");
+    if (c.dueKey < t) out.push({ sev: "critico", type: "Projeto atrasado", title: c.title, d: `Prazo no Trello ${dmy(c.dueKey)}, ${bdBetween(c.dueKey, t)} dia(s) útil(eis) de atraso. Lista: ${c.list}.`, url: c.url, key: c.dueKey });
+    else if (c.dueKey === t) out.push({ sev: "atencao", type: "Entrega hoje", title: c.title, d: `Lista: ${c.list}.${who ? " Equipe: " + who + "." : ""}`, url: c.url, key: c.dueKey });
+    else if (c.dueKey <= lim3) out.push({ sev: "atencao", type: "Prazo em risco", title: c.title, d: `Vence ${wdShort(c.dueKey)} ${dmy(c.dueKey)}, em ${bdBetween(t, c.dueKey)} dia(s) útil(eis). Lista: ${c.list}.`, url: c.url, key: c.dueKey });
+  }
+  for (const e of state.etapas || []) {
+    if (e.situacao === "concluida" || !e.prazo || e.prazo >= t || e.card.done) continue;
+    out.push({ sev: "atencao", type: "Prazo em risco", title: `${e.etapa} · ${e.card.title}`, d: `Etapa prevista para ${dmy(e.prazo)} (${e.resp || "responsável não registrado"}), sem conclusão registrada no card.`, url: e.card.url, key: e.prazo });
+  }
+  if (state.etapas) for (const p of people()) {
+    const d = personData(p);
+    if (d.carga === "critico" || d.carga === "atencao")
+      out.push({ sev: d.carga, type: "Sobrecarga", title: p.full, d: `${d.ativas.length} etapas ativas ou com prazo nos próximos 5 dias úteis.`, key: t });
+  }
+  for (const c of state.cards) {
+    if (c.kind !== "reuniao" || c.done || !c.dueKey || c.dueKey >= t || c.dueKey < addDays(t, -21)) continue;
+    if (/\bATA\b/i.test(c.desc) || c.comments.some((x) => /\bATA\b/i.test(x.text))) continue;
+    out.push({ sev: "info", type: "Registro pendente", title: c.title, d: `Reunião de ${dmy(c.dueKey)} sem ata ou resultado registrado no card.`, url: c.url, key: c.dueKey });
+  }
+  const o = { critico: 0, atencao: 1, info: 2 };
+  return out.sort((a, b) => o[a.sev] - o[b.sev] || a.key.localeCompare(b.key));
+}
+
+/* ================= render ================= */
+function renderSources() {
+  const set = (id, cls, title) => { const el = $(id); el.className = "chip " + cls; el.title = title || ""; };
+  set("src-trello", state.err.trello ? "err" : state.loadedAt ? "ok" : "load", state.err.trello ? mcpMsg(state.err.trello, TRELLO) : "");
+  set("src-cal", state.err.cal ? "err" : state.loadedAt ? "ok" : "load", state.err.cal ? mcpMsg(state.err.cal, CAL) : "");
+  set("src-claude", { ok: "ok", loading: "load", err: "err", off: "err", idle: "" }[state.extract] || "", state.extractErr);
+  $("stamp-time").textContent = state.loadedAt ? fTime.format(state.loadedAt) + " · " + dm(ymd(state.loadedAt)) : "—";
+}
+function renderPageErr() {
+  const box = $("page-err"), msgs = [];
+  if (state.err.trello) msgs.push(mcpMsg(state.err.trello, TRELLO));
+  if (state.err.cal) msgs.push(mcpMsg(state.err.cal, CAL));
+  box.innerHTML = msgs.length ? `<div class="errbox" role="alert">${msgs.map(esc).join("<br>")}</div>` : "";
+}
+
+let remIdx = 0, remTimer = null, remItems = [], remPaused = false;
+const reduce = matchMedia("(prefers-reduced-motion: reduce)");
+function slideHTML(r) {
+  const [dd, mm] = [r.key.slice(8, 10), r.key.slice(5, 7)];
+  return `<div class="slide enter">
+    <div class="when"><span>${esc(wdShort(r.key))}</span><b class="mono">${dd}</b><span>${mm}/${r.key.slice(2, 4)}</span></div>
+    <div class="kind k-${r.k}"><span class="dot"></span>${esc(r.label)}</div>
+    <div class="t">${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener" style="text-decoration:none">${esc(r.title)}</a>` : esc(r.title)}</div>
+    <div class="m">${esc(r.meta)}</div></div>`;
+}
+function showSlide(i) {
+  if (!remItems.length) return;
+  remIdx = (i + remItems.length) % remItems.length;
+  $("rem-stage").innerHTML = slideHTML(remItems[remIdx]);
+  $("rem-pos").textContent = `${remIdx + 1} / ${remItems.length}`;
+}
+function startRotation() {
+  clearInterval(remTimer);
+  if (reduce.matches || remItems.length < 2) return;
+  remTimer = setInterval(() => { if (!remPaused && !document.hidden) showSlide(remIdx + 1); }, 6500);
+}
+function renderReminders() {
+  if (state.err.trello && state.err.cal) { $("rem-stage").innerHTML = `<div class="empty">Sem acesso ao Trello e ao Calendar.</div>`; $("rem-count").textContent = ""; return; }
+  if (!state.loadedAt) return;
+  remItems = reminders();
+  $("rem-count").textContent = remItems.length ? `${remItems.length} itens` : "";
+  const ctl = [$("rem-prev"), $("rem-next"), $("rem-all")];
+  if (!remItems.length) {
+    $("rem-stage").innerHTML = `<div class="empty">Nenhuma reunião, entrega ou prazo próximo registrado no Trello e no Calendar para os próximos dias.</div>`;
+    $("rem-pos").textContent = ""; ctl.forEach((b) => (b.disabled = true)); $("rem-list").hidden = true; return;
+  }
+  ctl.forEach((b) => (b.disabled = false));
+  showSlide(Math.min(remIdx, remItems.length - 1));
+  startRotation();
+  $("rem-list").innerHTML = `<ul>${remItems.map((r) => `<li><span class="k k-${r.k}">${esc(r.label)}</span><span>${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title)}</a>` : esc(r.title)}<br><span class="note">${esc(r.meta)}</span></span><span class="mono note">${dm(r.key)}</span></li>`).join("")}</ul>`;
+}
+
+function renderAlerts() {
+  const box = $("alerts");
+  if (!state.loadedAt) return;
+  if (state.err.trello) { box.innerHTML = `<div class="empty">${esc(mcpMsg(state.err.trello, TRELLO))}</div>`; $("al-count").textContent = ""; return; }
+  const list = alerts();
+  $("al-count").textContent = list.length ? String(list.length) : "";
+  const legend = `<div class="legend">Sobrecarga: 3 ou mais etapas ativas por pessoa = atenção; 5 ou mais = crítico (critério provisório do painel, contado a partir das etapas escritas nos cards).${state.extract !== "ok" ? " As etapas ainda não foram lidas, então os alertas por etapa e de sobrecarga podem estar incompletos." : ""}</div>`;
+  if (!list.length) { box.innerHTML = `<div class="empty">Nenhum alerta para hoje.</div>` + legend; return; }
+  box.innerHTML = `<ul>${list.map((a) => `<li class="alert ${a.sev}"><span class="sym" aria-hidden="true"></span>
+    <span class="a-type">${esc(a.type)}</span>
+    <span class="a-t">${esc(a.title)}</span>
+    <span class="a-d">${esc(a.d)}${a.url ? ` <a href="${esc(a.url)}" target="_blank" rel="noopener">Abrir no Trello</a>` : ""}</span></li>`).join("")}</ul>` + legend;
+}
+
+const loadLabel = { normal: "Normal", atencao: "Atenção", critico: "Crítico", na: "Sem leitura" };
+function renderTeam() {
+  const box = $("team");
+  if (!state.loadedAt) return;
+  if (state.err.trello) { box.innerHTML = `<div class="empty">${esc(mcpMsg(state.err.trello, TRELLO))}</div>`; return; }
+  const ps = people();
+  if (!ps.length) { box.innerHTML = `<div class="empty">Nenhum responsável registrado nos títulos dos cards ativos.</div>`; return; }
+  box.innerHTML = ps.map((p) => {
+    const d = personData(p);
+    let first;
+    if (state.extract === "loading") first = `<span class="miss">Lendo as etapas nos cards…</span>`;
+    else if (!state.etapas) first = `<span class="miss">${esc(state.extractErr || "Etapas não lidas.")} ${d.projetos.length} projeto(s) no título dos cards.</span>`;
+    else if (d.hoje[0]) first = `${esc(d.hoje[0].etapa)} · ${esc(d.hoje[0].card.title)}${d.hoje[0].prazo ? ` <span class="mono note">até ${dm(d.hoje[0].prazo)}</span>` : ""}`;
+    else first = `<span class="miss">Nenhuma etapa em andamento ou com prazo nos próximos 2 dias úteis.</span>`;
+    return `<button type="button" class="person" data-p="${esc(p.key)}">
+      <div class="p-top"><div class="mono-sq">${esc(p.first.slice(0, 2).toUpperCase())}</div>
+        <div><div class="p-name">${esc(p.full)}</div><div class="p-sub">${d.projetos.length} projeto(s) ativo(s)</div></div>
+        <span class="load ${d.carga}">${loadLabel[d.carga]}</span></div>
+      <div class="p-counts"><span><b>${state.etapas ? d.hoje.length : "–"}</b>tarefas</span><span><b>${d.entregas.length}</b>entregas</span><span><b>${d.reun.length}</b>reuniões</span></div>
+      <div class="p-first">${first}</div></button>`;
+  }).join("");
+}
+
+function openPerson(key) {
+  const p = people().find((x) => x.key === key);
+  if (!p) return;
+  const d = personData(p), t = today();
+  $("sheet-mono").textContent = p.first.slice(0, 2).toUpperCase();
+  $("sheet-name").textContent = p.full;
+  $("sheet-sub").textContent = `${d.projetos.length} projeto(s) ativo(s)`;
+  const ld = $("sheet-load"); ld.className = "load " + d.carga; ld.textContent = loadLabel[d.carga];
+  const row = (k, main, sub, url) => `<li><span class="d ${k && k < t ? "late" : ""}">${k ? dm(k) : "—"}</span><span>${url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(main)}</a>` : esc(main)}${sub ? `<small>${esc(sub)}</small>` : ""}</span></li>`;
+  const sitTxt = { em_andamento: "em andamento", aguardando: "aguardando", nao_iniciada: "não iniciada", nao_informada: "situação não registrada" };
+  const tarefas = state.etapas
+    ? (d.et.length ? `<ul class="rows">${d.et.sort((a, b) => (a.prazo || "9999").localeCompare(b.prazo || "9999")).map((e) => row(e.prazo, `${e.etapa} · ${e.card.title}`, `${sitTxt[e.situacao] || e.situacao}${e.prazo ? "" : " · prazo da etapa não registrado no Trello"}`, e.card.url)).join("")}</ul>` : `<p class="note">Nenhuma etapa pendente registrada nos cards.</p>`)
+    : `<p class="note">${esc(state.extractErr || "As etapas ainda não foram lidas.")}</p>${d.projetos.length ? `<ul class="rows">${d.projetos.map((c) => row(c.dueKey, c.title, c.list, c.url)).join("")}</ul>` : ""}`;
+  const entregas = d.entregas.length ? `<ul class="rows">${d.entregas.map((c) => row(c.dueKey, c.title, c.kind === "entrega" ? "Entrega final" : c.list, c.url)).join("")}</ul>` : `<p class="note">Nenhuma entrega nos próximos 10 dias úteis.</p>`;
+  const reun = d.reun.length ? `<ul class="rows">${d.reun.map((m) => row(m.key, m.title, `${m.time || "horário não registrado"} · ${m.src.join(" + ")}`, m.url)).join("")}</ul>` : `<p class="note">Nenhuma reunião nos próximos 7 dias ligada aos projetos desta pessoa.</p>`;
+  const prio = state.etapas
+    ? (d.prio.length ? `<ol class="prio">${d.prio.map((e) => `<li><span>${esc(e.etapa)} · ${esc(e.card.title)}<br><span class="note">${e.prazo ? (e.prazo < t ? `Atrasada desde ${dmy(e.prazo)}` : `Até ${wdShort(e.prazo)} ${dmy(e.prazo)}`) : "Em andamento, sem prazo de etapa registrado"}</span></span></li>`).join("")}</ol>` : `<p class="note">Sem etapas com prazo registrado.</p>`)
+    : `<p class="note">Disponível depois da leitura das etapas.</p>`;
+  $("sheet-body").innerHTML = `<section><h3>Prioridades</h3>${prio}</section><section><h3>Tarefas</h3>${tarefas}</section><section><h3>Entregas</h3>${entregas}</section><section><h3>Reuniões</h3>${reun}</section>`;
+  const dlg = $("sheet");
+  if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", "");
+}
+
+function renderAll() { renderSources(); renderPageErr(); renderReminders(); renderAlerts(); renderTeam(); }
+
+/* ================= atualização inteligente ================= */
+let plan = null;
+function cardsForPrompt() {
+  return state.cards.filter((c) => !c.done).map((c, i) => ({ c, i: i + 1 }));
+}
+function interpretPrompt(text, idx) {
+  const t = today();
+  const lines = idx.map(({ c, i }) => `[${i}] ${c.name} | lista: ${c.list} | prazo: ${c.dueKey ? dmy(c.dueKey) : "não registrado"}`).join("\n");
+  const ps = people().map((p) => p.full).join(", ");
+  return `Você interpreta um pedido de atualização do painel de gestão de um escritório de arquitetura. Hoje é ${fLong.format(new Date())} (${t}), fuso de João Pessoa.
+Transforme o pedido em operações. Não invente nada: se faltar informação ou houver mais de um card possível, deixe o campo null e escreva uma pergunta.
+
+Tipos de operação:
+- "mover": muda o status (lista) de um card. Use "lista" com o nome EXATO de uma das listas.
+- "prazo": muda um prazo. "prazoTipo" é "oficial" (prazo do card, compromisso com o cliente) ou "interno" (prazo de uma etapa). Para interno, preencha "etapa".
+- "responsavel": troca o responsável de uma etapa. Preencha "etapa" (ou null se não disser) e "responsavel".
+- "aprovacao": o cliente aprovou algo. Só use se o pedido disser claramente que houve aprovação. "Gostou" ou "achou bonito" não é aprovação.
+- "reuniao": marcar reunião. Preencha "reuniao" com cliente, data (AAAA-MM-DD), hora (HH:MM ou null se não informada) e duracaoMin (60 se não informada).
+- "nota": registro simples no histórico do card.
+- "criar_projeto" ou "excluir": quando o pedido pedir isso.
+
+Listas do quadro: ${state.lists.map((l) => l.name).join(" | ")}
+Equipe: ${ps}
+
+Cards abertos:
+${lines}
+
+Pedido: """${text}"""
+
+Responda apenas JSON:
+{"operacoes":[{"tipo":"mover","card":3,"lista":"FASE DETALHAMENTO EXECUTIVO","prazo":null,"prazoTipo":null,"etapa":null,"responsavel":null,"reuniao":null,"resumo":"frase curta do que muda"}],"perguntas":[]}`;
+}
+
+function cardResp(c, etapa) {
+  if (etapa && state.etapas) {
+    const hits = state.etapas.filter((e) => e.card === c && norm(e.etapa).includes(norm(etapa).slice(0, 6)));
+    if (hits.length) return hits.map((e) => e.resp).filter(Boolean).join(" + ") || null;
+  }
+  const tm = teamOf(c);
+  return tm.length ? tm.join(" / ") : null;
+}
+function etapaPrazo(c, etapa) {
+  if (!etapa || !state.etapas) return null;
+  const e = state.etapas.find((x) => x.card === c && norm(x.etapa).includes(norm(etapa).slice(0, 6)));
+  return e && e.prazo ? e.prazo : null;
+}
+function listByName(n) { const N = norm(n); return state.lists.find((l) => norm(l.name) === N) || null; }
+function auditHeader() {
+  const now = new Date();
+  return `ATUALIZAÇÃO VIA PAINEL — ${dmy(ymd(now))} ${fTime.format(now)}${state.me ? ` (confirmada por ${state.me})` : " (confirmada no painel)"}`;
+}
+function isoAt(key, hhmm) { return new Date(`${key}T${hhmm}:00${CONFIG.offset}`).toISOString(); }
+
+function buildOp(op, idx, original) {
+  const ref = idx.find((x) => x.i === Number(op.card));
+  const c = ref ? ref.c : null;
+  const v = (x) => (x ? esc(x) : MISSING);
+  const before = c ? { Projeto: esc(c.title), Status: esc(c.list), "Responsável": v(cardResp(c, op.etapa)), Prazo: c.dueKey ? dmy(c.dueKey) : MISSING } : null;
+  const after = before ? { ...before } : null;
+  const chg = new Set();
+  const o = { title: op.resumo || op.tipo, before, after, chg, critical: false, confirmText: "", blocked: null, exec: null, msg: "" };
+  const comment = (lines) => `${auditHeader()}\nPedido: "${original}"\n${lines.join("\n")}`;
+  const needCard = () => { if (!c) o.blocked = "Não identifiquei com segurança qual projeto é. Diga o nome do cliente como aparece no Trello."; return !!c; };
+
+  switch (op.tipo) {
+    case "mover": {
+      o.title = "Mudar status";
+      if (!needCard()) break;
+      const l = op.lista ? listByName(op.lista) : null;
+      if (!l) { o.blocked = `A lista “${op.lista || "?"}” não existe no quadro.`; break; }
+      if (l.id === c.listId) { o.blocked = `O card já está em ${l.name}.`; break; }
+      after.Status = esc(l.name); chg.add("Status");
+      o.exec = async () => {
+        await write(TRELLO, "trelloWriteCard", { action: "move", cardId: c.id, listId: l.id });
+        await write(TRELLO, "trelloWriteCard", { action: "add_comment", cardId: c.id, text: comment([`Status: ${c.list} → ${l.name}`]) });
+        return `Status de ${c.title} alterado para ${l.name}.`;
+      };
+      break;
+    }
+    case "prazo": {
+      if (!needCard()) break;
+      if (!isKey(op.prazo)) { o.blocked = "A nova data não ficou clara. Escreva a data completa."; break; }
+      if (op.prazoTipo === "interno") {
+        o.title = "Alterar prazo interno";
+        if (!op.etapa) { o.blocked = "Diga de qual etapa é o prazo interno."; break; }
+        const old = etapaPrazo(c, op.etapa);
+        before.Prazo = `${esc(op.etapa)}: ${old ? dmy(old) : MISSING}`;
+        after.Prazo = `${esc(op.etapa)}: ${dmy(op.prazo)}`; chg.add("Prazo");
+        o.msg = "O prazo oficial do card não muda. O novo prazo interno fica registrado em comentário no card.";
+        o.exec = async () => {
+          await write(TRELLO, "trelloWriteCard", { action: "add_comment", cardId: c.id, text: comment([`PRAZO INTERNO — ${op.etapa}: ${old ? dmy(old) : "não registrado"} → ${dmy(op.prazo)}`]) });
+          return `Prazo interno de ${op.etapa} registrado em ${c.title}.`;
+        };
+      } else {
+        o.title = "Alterar prazo oficial";
+        after.Prazo = dmy(op.prazo); chg.add("Prazo");
+        o.critical = true; o.confirmText = "Confirmo a alteração do prazo oficial, que é o compromisso com o cliente.";
+        if (op.prazo < today()) o.msg = "Atenção: a nova data já passou.";
+        const hh = c.due ? fTime.format(c.due) : "17:00";
+        o.exec = async () => {
+          await write(TRELLO, "trelloWriteCard", { action: "update", cardId: c.id, due: isoAt(op.prazo, hh) });
+          await write(TRELLO, "trelloWriteCard", { action: "add_comment", cardId: c.id, text: comment([`PRAZO OFICIAL: ${c.dueKey ? dmy(c.dueKey) : "não registrado"} → ${dmy(op.prazo)}`]) });
+          return `Prazo oficial de ${c.title} alterado para ${dmy(op.prazo)}.`;
+        };
+      }
+      break;
+    }
+    case "responsavel": {
+      o.title = "Trocar responsável";
+      if (!needCard()) break;
+      if (!op.responsavel) { o.blocked = "Diga quem passa a ser o responsável."; break; }
+      const old = cardResp(c, op.etapa);
+      before["Responsável"] = op.etapa ? `${esc(op.etapa)}: ${old ? esc(old) : MISSING}` : v(old);
+      after["Responsável"] = op.etapa ? `${esc(op.etapa)}: ${esc(op.responsavel)}` : esc(op.responsavel);
+      chg.add("Responsável");
+      o.msg = "A troca fica registrada em comentário no card. O texto original da descrição não é apagado.";
+      o.exec = async () => {
+        await write(TRELLO, "trelloWriteCard", { action: "add_comment", cardId: c.id, text: comment([`RESPONSÁVEL${op.etapa ? " — " + op.etapa : ""}: ${old || "não registrado"} → ${op.responsavel}`]) });
+        return `Novo responsável registrado em ${c.title}.`;
+      };
+      break;
+    }
+    case "aprovacao": {
+      o.title = "Registrar aprovação do cliente";
+      if (!needCard()) break;
+      after.Status = `${esc(c.list)} <span class="tag ok">aprovação registrada</span>`; chg.add("Status");
+      o.critical = true; o.confirmText = "Confirmo que o cliente aprovou de forma clara (não foi só um “gostei”).";
+      o.msg = "O painel registra a aprovação no card. A reorganização de datas e etapas continua com o MAX.";
+      o.exec = async () => {
+        await write(TRELLO, "trelloWriteCard", { action: "add_comment", cardId: c.id, text: comment([`APROVAÇÃO DO CLIENTE REGISTRADA${op.etapa ? " — " + op.etapa : ""}. Confirmação explícita feita no painel.`, "Próximo passo: MAX reorganiza datas e libera a próxima fase."]) });
+        return `Aprovação registrada em ${c.title}.`;
+      };
+      break;
+    }
+    case "reuniao": {
+      o.title = "Marcar reunião";
+      const r = op.reuniao || {};
+      const cli = (r.cliente || (c && c.title) || "").trim();
+      o.before = { Cliente: cli ? esc(cli) : MISSING, "Reunião": "" };
+      o.after = { Cliente: cli ? esc(cli) : MISSING, "Reunião": "" };
+      if (!cli) { o.blocked = "Diga com qual cliente é a reunião."; break; }
+      if (!isKey(r.data)) { o.blocked = "A data da reunião não ficou clara."; break; }
+      if (!r.hora || !/^\d{1,2}:\d{2}$/.test(r.hora)) { o.blocked = "Informe o horário da reunião."; break; }
+      const hh = r.hora.padStart(5, "0"), dur = Number(r.duracaoMin) > 0 ? Number(r.duracaoMin) : 60;
+      const tk = tokens(cli);
+      const dupCard = state.cards.find((x) => x.kind === "reuniao" && x.dueKey === r.data && tokens(x.title).some((y) => tk.includes(y)));
+      const dupEv = state.events.find((e) => e.key === r.data && tokens(e.summary).some((y) => tk.includes(y)));
+      o.before["Reunião"] = dupCard || dupEv ? `Já existe em ${dmy(r.data)}: ${esc((dupCard && dupCard.name) || dupEv.summary)}` : `Nenhuma reunião registrada em ${dmy(r.data)}`;
+      o.after["Reunião"] = `${wdShort(r.data)} ${dmy(r.data)} às ${hh} (${dur} min)`;
+      o.after["Onde grava"] = [dupEv ? null : "Google Calendar", dupCard ? null : `Trello, lista ${CONFIG.meetingList}`].filter(Boolean).join(" + ") || "Nada novo: já registrada";
+      chg.add("Reunião"); chg.add("Onde grava");
+      if (dupCard && dupEv) { o.blocked = "Essa reunião já está no Trello e no Calendar."; break; }
+      const ml = listByName(CONFIG.meetingList);
+      if (!dupCard && !ml) { o.blocked = `A lista ${CONFIG.meetingList} não existe no quadro.`; break; }
+      const start = `${r.data}T${hh}:00${CONFIG.offset}`;
+      const end = new Date(new Date(start).getTime() + dur * 60000);
+      const cardName = `REUNIÃO - ${norm(cli)} - ${dm(r.data)}`;
+      o.exec = async () => {
+        const done = [];
+        if (!dupEv) {
+          await write(CAL, "create_event", { summary: `Reunião - ${cli}`, startTime: start, endTime: `${ymd(end)}T${fTime.format(end)}:00${CONFIG.offset}`, timeZone: CONFIG.tz, description: `Criado pelo Painel Dayse Lacerda. Pedido: "${original}"` });
+          done.push("Calendar");
+        }
+        if (!dupCard) {
+          const desc = `Cliente: ${cli}\nData: ${dmy(r.data)}\nHorário: ${hh}\nTipo de reunião: Necessário confirmar\nParticipantes: Necessário confirmar\nObjetivo: Necessário confirmar\n\n${auditHeader()}\nPedido: "${original}"`;
+          await write(TRELLO, "trelloWriteCard", { action: "create", listId: ml.id, name: cardName, due: new Date(start).toISOString(), desc, pos: "bottom" });
+          done.push("Trello");
+        }
+        return `Reunião com ${cli} registrada (${done.join(" + ")}).`;
+      };
+      break;
+    }
+    case "nota": {
+      o.title = "Registrar no histórico";
+      if (!needCard()) break;
+      o.msg = `Comentário no card: “${original}”`;
+      o.exec = async () => { await write(TRELLO, "trelloWriteCard", { action: "add_comment", cardId: c.id, text: comment(["Registro de histórico."]) }); return `Registro feito em ${c.title}.`; };
+      break;
+    }
+    case "criar_projeto":
+      o.title = "Criar projeto"; o.before = null; o.after = null;
+      o.blocked = "Projetos novos são cadastrados pelo MAX no Claude Desktop, com o fluxo /novo projeto (7 etapas e análise de capacidade). O painel não cria projetos.";
+      break;
+    case "excluir":
+      o.title = "Excluir informação"; o.before = null; o.after = null;
+      o.blocked = "O painel não apaga cards, comentários, arquivos nem histórico.";
+      break;
+    default:
+      o.before = null; o.after = null;
+      o.blocked = "Não entendi que alteração fazer. Reescreva o pedido.";
+  }
+  if (o.blocked) o.exec = null;
+  return o;
+}
+
+function dlHTML(obj, chg, side) {
+  if (!obj) return "";
+  return `<dl>${Object.entries(obj).map(([k, val]) => `<dt>${esc(k)}</dt><dd class="${side === "after" && chg.has(k) ? "chg" : ""}">${val || "—"}</dd>`).join("")}</dl>`;
+}
+function renderPlan(p) {
+  const box = $("plan");
+  if (!p) { box.innerHTML = ""; return; }
+  if (p.status === "thinking") { box.innerHTML = `<div class="plan"><p class="note">Interpretando com o Claude…</p></div>`; return; }
+  if (p.status === "error") { box.innerHTML = `<div class="plan"><div class="errbox">${esc(p.error)}</div></div>`; return; }
+  const ops = p.ops.map((o, i) => `<div class="op">
+      <div class="op-h"><b>${esc(o.title)}</b>${o.blocked ? `<span class="tag block">Não será feito</span>` : o.critical ? `<span class="tag crit">Exige confirmação extra</span>` : ""}</div>
+      ${o.before || o.after ? `<div class="ba"><div><h4>Antes</h4>${dlHTML(o.before, o.chg, "before")}</div><div><h4>Depois</h4>${dlHTML(o.after, o.chg, "after")}</div></div>` : ""}
+      ${o.blocked ? `<div class="op-msg block">${esc(o.blocked)}</div>` : o.msg ? `<div class="op-msg">${esc(o.msg)}</div>` : ""}
+      ${o.critical && !o.blocked ? `<label class="check"><input type="checkbox" id="crit-${i}" data-crit="${i}"><span>${esc(o.confirmText)}</span></label>` : ""}
+    </div>`).join("");
+  const qs = p.questions.length ? `<div class="qs"><b>Preciso confirmar:</b><ul>${p.questions.map((q) => `<li>${esc(q)}</li>`).join("")}</ul></div>` : "";
+  const runnable = p.ops.filter((o) => o.exec);
+  const results = p.results ? `<div class="res">${p.results.map((r) => `<span class="${r.ok ? "okl" : "errl"}">${esc(r.text)}</span>`).join("")}</div>` : "";
+  const actions = p.status === "done" ? `<div class="upd-row"><button class="btn" type="button" id="plan-clear">Nova atualização</button></div>`
+    : runnable.length ? `<div class="upd-row"><span class="note">Nada foi gravado ainda.</span><div style="display:flex;gap:8px"><button class="btn" type="button" id="plan-cancel">Cancelar</button><button class="btn primary" type="button" id="plan-ok">${p.status === "saving" ? "Salvando…" : "Confirmar e salvar"}</button></div></div>`
+    : `<div class="upd-row"><span class="note">Nada para salvar. Ajuste o texto e interprete de novo.</span><button class="btn" type="button" id="plan-cancel">Fechar</button></div>`;
+  box.innerHTML = `<div class="plan">${ops || ""}${qs}${results}${actions}</div>`;
+  syncConfirm();
+}
+function syncConfirm() {
+  const ok = $("plan-ok");
+  if (!ok || !plan) return;
+  const allCrit = plan.ops.every((o, i) => !o.critical || o.blocked || ($("crit-" + i) && $("crit-" + i).checked));
+  ok.disabled = plan.status === "saving" || !allCrit;
+}
+
+async function interpret(text) {
+  const sample = await sampleP;
+  if (!sample) { plan = { status: "error", error: "O uso do Claude não está disponível nesta visualização. Abra o painel no claude.ai." }; renderPlan(plan); return; }
+  if (state.err.trello || !state.loadedAt) { plan = { status: "error", error: "Os dados do Trello ainda não foram carregados. Toque em “Atualizar dados”." }; renderPlan(plan); return; }
+  plan = { status: "thinking" }; renderPlan(plan);
+  $("upd-go").disabled = true;
+  const idx = cardsForPrompt();
+  try {
+    const res = await sample.json(interpretPrompt(text, idx), { cache: false });
+    const ops = (Array.isArray(res && res.operacoes) ? res.operacoes : []).slice(0, 6).map((op) => buildOp(op || {}, idx, text));
+    const questions = (Array.isArray(res && res.perguntas) ? res.perguntas : []).filter((q) => typeof q === "string" && q.trim()).slice(0, 5);
+    if (!ops.length && !questions.length) questions.push("Não identifiquei nenhuma alteração no texto. Pode detalhar?");
+    plan = { status: "review", ops, questions };
+  } catch (e) {
+    plan = { status: "error", error: sampleMsg(e) };
+  }
+  $("upd-go").disabled = false;
+  renderPlan(plan);
+}
+async function savePlan() {
+  if (!plan || plan.status !== "review") return;
+  plan.status = "saving"; renderPlan(plan);
+  const results = [];
+  for (const o of plan.ops) {
+    if (!o.exec) continue;
+    try { results.push({ ok: true, text: "✓ " + (await o.exec()) }); }
+    catch (e) {
+      const amb = e && (e.code === "server_unavailable" || e.code === "upstream_error" || e.code === "cancelled");
+      results.push({ ok: false, text: `✗ ${o.title}: ${mcpMsg(e, e && e.server ? e.server : "serviço")}${amb ? " A gravação pode ter acontecido: atualize os dados e confira antes de tentar de novo." : ""}` });
+      break;
+    }
+  }
+  plan.status = "done"; plan.results = results;
+  renderPlan(plan);
+  const mcp = await mcpP; if (mcp && mcp.invalidate) await mcp.invalidate().catch(() => {});
+  await loadAll();
+}
+
+/* ================= ciclo ================= */
+let loading = false;
+async function loadAll(forceExtract) {
+  if (loading) return;
+  loading = true;
+  const btn = $("refresh"); btn.disabled = true; btn.classList.add("spin");
+  $("today-long").textContent = longToday();
+  const mcp = await mcpP;
+  if (!mcp) {
+    state.err.trello = state.err.cal = { code: "not_granted" };
+    state.loadedAt = new Date(); state.extract = "off"; state.extractErr = "Abra o painel no claude.ai.";
+  } else {
+    await Promise.all([loadCalendar(), loadTrello()]);
+    state.loadedAt = new Date();
+  }
+  btn.disabled = false; btn.classList.remove("spin");
+  loading = false;
+  renderAll();
+  if (!state.err.trello && mcp) runExtraction(forceExtract);
+}
+
+/* ================= eventos ================= */
+$("refresh").addEventListener("click", () => loadAll(true));
+$("rem-prev").addEventListener("click", () => { showSlide(remIdx - 1); startRotation(); });
+$("rem-next").addEventListener("click", () => { showSlide(remIdx + 1); startRotation(); });
+$("rem-all").addEventListener("click", (e) => { const l = $("rem-list"); l.hidden = !l.hidden; e.currentTarget.setAttribute("aria-expanded", String(!l.hidden)); e.currentTarget.textContent = l.hidden ? "Ver todos" : "Ocultar lista"; });
+const rem = $("rem");
+rem.addEventListener("mouseenter", () => (remPaused = true));
+rem.addEventListener("mouseleave", () => (remPaused = false));
+rem.addEventListener("focusin", () => (remPaused = true));
+rem.addEventListener("focusout", () => (remPaused = false));
+reduce.addEventListener && reduce.addEventListener("change", startRotation);
+
+$("team").addEventListener("click", (e) => { const b = e.target.closest(".person"); if (b) openPerson(b.dataset.p); });
+$("sheet-close").addEventListener("click", () => $("sheet").close());
+$("sheet").addEventListener("click", (e) => { if (e.target === e.currentTarget) e.currentTarget.close(); });
+
+document.querySelectorAll(".hint").forEach((h) => h.addEventListener("click", () => { const ta = $("upd-text"); ta.value = h.textContent.replace("…", "").trim() + " "; ta.focus(); }));
+$("upd-form").addEventListener("submit", (e) => { e.preventDefault(); const t = $("upd-text").value.trim(); if (t) interpret(t.slice(0, 1500)); });
+$("upd-text").addEventListener("keydown", (e) => { if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) { e.preventDefault(); $("upd-form").requestSubmit(); } });
+$("plan").addEventListener("change", (e) => { if (e.target.matches("[data-crit]")) syncConfirm(); });
+$("plan").addEventListener("click", (e) => {
+  const id = e.target.id;
+  if (id === "plan-ok") savePlan();
+  else if (id === "plan-cancel") { plan = null; renderPlan(null); }
+  else if (id === "plan-clear") { plan = null; renderPlan(null); $("upd-text").value = ""; $("upd-text").focus(); }
+});
+
+userP.then(async (u) => { if (!u || !u.me) return; try { const m = await u.me(); state.me = (m && m.name) || ""; } catch (_) {} });
+
+$("today-long").textContent = longToday();
+loadAll(false);
+})();
+</script>

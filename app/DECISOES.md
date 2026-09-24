@@ -136,3 +136,9 @@ As especificações dos agentes devem ficar em Google Docs nessas pastas e ser a
 - Pedido de projeto novo mostra o botão que abre o assistente "Novo projeto".
 - A conversa fica salva no aparelho de cada pessoa (últimas 40 mensagens). "Nova conversa" apaga só essa conversa local; nada no Trello. Propostas não confirmadas não sobrevivem ao fechar o painel e aparecem como "não confirmada".
 - Cada mensagem usa o Claude da conta de quem está conversando.
+
+## Destaque dos projetos urgentes (aba Projetos)
+- Atrasado: capa em terracota avermelhado, contorno e brilho vermelhos e fundo do card levemente rosado.
+- Atenção (prazo em até 5 dias úteis ou etapa atrasada): capa em âmbar/laranja queimado, contorno laranja e fundo levemente alaranjado.
+- Os demais mantêm a capa pela cor do tipo de projeto.
+- Correção: o texto do botão "Novo projeto" ficava escuro no tema claro; agora é branco nos dois temas.

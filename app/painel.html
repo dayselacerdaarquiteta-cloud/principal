@@ -313,6 +313,12 @@ h1,h2,h3,h4{margin:0;text-wrap:balance;letter-spacing:-.01em}
 .proj .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:12px}
 .proj h3{font-size:17px;font-weight:750;line-height:1.25}
 .proj.late{box-shadow:inset 0 1px 0 var(--glass-line),0 0 0 1.5px color-mix(in srgb,var(--red) 60%,transparent),0 20px 44px -20px color-mix(in srgb,var(--red) 55%,transparent)}
+.proj.late .cover{--cv1:#A2412F;--cv2:#4B2226}
+.proj.warn .cover{--cv1:#B8702C;--cv2:#5E3D26}
+.proj.late .body{background:linear-gradient(180deg,color-mix(in srgb,var(--red) 9%,transparent),transparent 75%)}
+.proj.warn .body{background:linear-gradient(180deg,color-mix(in srgb,var(--orange) 9%,transparent),transparent 75%)}
+.proj.warn{box-shadow:inset 0 1px 0 var(--glass-line),0 0 0 1.5px color-mix(in srgb,var(--orange) 50%,transparent),0 20px 44px -20px color-mix(in srgb,var(--orange) 45%,transparent)}
+.proj.late .cover .health.h-late{background:#fff;color:#A2412F;box-shadow:0 4px 12px -6px rgba(0,0,0,.35)}
 .prog{display:flex;flex-direction:column;gap:6px;font-size:12.5px;color:var(--muted);font-weight:600}
 .pbar{display:flex;gap:3px}
 .pbar i{flex:1;height:6px;border-radius:99px;background:var(--gray-soft)}
@@ -458,7 +464,7 @@ dialog.sheet{border:0;padding:0;margin:0 0 0 auto;height:100%;max-height:100%;wi
 .st-chip{background:var(--petrol-soft);color:var(--petrol)}
 
 /* novo projeto */
-.btn-new{background:linear-gradient(145deg,var(--brand1),var(--brand2));color:#fff;border-color:transparent;box-shadow:var(--glow)}
+.btn.btn-new{background:linear-gradient(145deg,var(--brand1),var(--brand2));color:#fff;border-color:transparent;box-shadow:var(--glow)}
 .btn-new .lu{width:18px;height:18px;stroke-width:2.2}
 .greet .btn-new{margin-bottom:6px}
 dialog.wiz{width:min(780px,calc(100% - 32px));display:none;flex-direction:column;padding:0;-webkit-backdrop-filter:blur(30px) saturate(1.2);backdrop-filter:blur(30px) saturate(1.2)}
@@ -783,7 +789,7 @@ dialog.chatd[open]{display:flex}
     <section class="glass calw" id="eq-cal" aria-live="polite"></section>
   </section>
 
-  <p class="foot">Dados do Trello (quadro ESCRITÓRIO DAYSE LACERDA), do Google Calendar e do Google Drive, lidos ao abrir e a cada 2 minutos. Um projeto só conta como concluído na lista CONCLUÍDO. Dias úteis: segunda a sexta, sem feriados nacionais; feriados de João Pessoa ainda não entram. Datas marcadas como estimadas são calculadas pelo painel a partir do início do projeto e das durações escritas no card, em dias úteis; não são gravadas no Trello. Nada é gravado sem a sua confirmação, e cada alteração vira um comentário datado no card. <b class="ver">Versão 18 do painel (24/09/2026).</b></p>
+  <p class="foot">Dados do Trello (quadro ESCRITÓRIO DAYSE LACERDA), do Google Calendar e do Google Drive, lidos ao abrir e a cada 2 minutos. Um projeto só conta como concluído na lista CONCLUÍDO. Dias úteis: segunda a sexta, sem feriados nacionais; feriados de João Pessoa ainda não entram. Datas marcadas como estimadas são calculadas pelo painel a partir do início do projeto e das durações escritas no card, em dias úteis; não são gravadas no Trello. Nada é gravado sem a sua confirmação, e cada alteração vira um comentário datado no card. <b class="ver">Versão 19 do painel (24/09/2026).</b></p>
 </main>
 
 <nav class="dock glass" aria-label="Seções">
@@ -1721,7 +1727,7 @@ function projCard(c, h, i) {
   else etTxt = `<span class="miss">Não registrada</span>`;
   const bars = ets.map((e) => `<i class="${e.situacao === "concluida" ? "d" : e.prazo && e.prazo < t ? "l" : e.situacao === "em_andamento" ? "a" : e.situacao === "aguardando" ? "w" : ""}" title="${esc(e.etapa)}"></i>`).join("");
   const doneN = ets.filter((e) => e.situacao === "concluida").length;
-  return `<button type="button" class="glass proj lift press${h.k === "late" ? " late" : ""}${enterAttr(i)}" data-proj="${esc(c.id)}">
+  return `<button type="button" class="glass proj lift press${h.k === "late" ? " late" : h.k === "warn" ? " warn" : ""}${enterAttr(i)}" data-proj="${esc(c.id)}">
     <div class="cover ${coverClass(c)}"><span class="cv-ic">${svgI(typeIcon(c))}</span>${healthChip(h, true)}</div>
     <div class="body">
       <div><h3>${esc(clienteOf(c))}</h3><div class="muted" style="font-size:13.5px">${esc(tipoOf(c) || "Tipo não registrado")}</div></div>

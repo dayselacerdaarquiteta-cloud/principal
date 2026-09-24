@@ -212,7 +212,7 @@ h1,h2,h3,h4{margin:0;text-wrap:balance;letter-spacing:-.01em}
 .f-meta{font-size:13.5px;color:var(--muted)}
 .rem-ctl{display:flex;align-items:center;gap:10px;margin-top:14px}
 .dots{display:flex;gap:6px;flex-wrap:wrap;margin-right:auto}
-.dots button{width:8px;height:8px;border-radius:99px;border:0;padding:0;background:var(--line);cursor:pointer;transition:width 240ms var(--ease),background-color 200ms ease}
+.dots button{width:8px;height:8px;border-radius:99px;border:0;padding:0;background:var(--line);cursor:pointer;transition:background-color 200ms ease}
 .dots button[aria-current="true"]{width:22px;background:var(--petrol)}
 .rbtn{width:34px;height:34px;border-radius:10px;border:1px solid var(--line);background:var(--glass-strong);display:grid;place-items:center;cursor:pointer;transition:transform 160ms var(--ease)}
 .rbtn:active{transform:scale(.94)}
@@ -468,7 +468,7 @@ dialog.wiz[open]{display:flex}
 .wiz-h p{margin:2px 0 0;font-size:13px;color:var(--muted);font-weight:600}
 .wiz-h .ibtn{margin-left:auto}
 .wiz-prog{height:4px;background:var(--gray-soft);margin:0 24px;border-radius:99px;overflow:hidden}
-.wiz-prog i{display:block;height:100%;width:var(--p,0%);background:linear-gradient(90deg,var(--brand1),var(--petrol));border-radius:99px;transition:width 360ms var(--ease)}
+.wiz-prog i{display:block;height:100%;width:100%;transform:scaleX(var(--p,0));transform-origin:left center;background:linear-gradient(90deg,var(--brand1),var(--petrol));transition:transform 360ms var(--ease)}
 .wiz-b{padding:22px 24px 12px;min-height:340px;overflow:auto}
 .wq{font-size:23px;font-weight:800;letter-spacing:-.015em;margin:0 0 16px}
 .wq2{font-size:15px;font-weight:750;margin:22px 0 10px}
@@ -2100,9 +2100,9 @@ function wNext() {
 }
 function renderWizard() {
   const box = $("wiz-body");
-  if (W.status === "done" || W.status === "creating" || W.status === "failed") { box.innerHTML = wResultHTML(); $("wiz-bar").style.setProperty("--p", "100%"); $("wiz-steps").textContent = W.status === "creating" ? "Criando…" : W.status === "done" ? "Concluído" : "Interrompido"; $("wiz-foot").hidden = true; return; }
+  if (W.status === "done" || W.status === "creating" || W.status === "failed") { box.innerHTML = wResultHTML(); $("wiz-bar").style.setProperty("--p", "1"); $("wiz-steps").textContent = W.status === "creating" ? "Criando…" : W.status === "done" ? "Concluído" : "Interrompido"; $("wiz-foot").hidden = true; return; }
   $("wiz-foot").hidden = false;
-  $("wiz-bar").style.setProperty("--p", `${Math.round(((W.step + 1) / WSTEPS.length) * 100)}%`);
+  $("wiz-bar").style.setProperty("--p", String((W.step + 1) / WSTEPS.length));
   $("wiz-steps").textContent = `Etapa ${W.step + 1} de ${WSTEPS.length} · ${WSTEPS[W.step]}`;
   box.innerHTML = wStepHTML();
   const last = W.step === WSTEPS.length - 1;

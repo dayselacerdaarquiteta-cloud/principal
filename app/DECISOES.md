@@ -86,3 +86,15 @@ As especificações dos agentes devem ficar em Google Docs nessas pastas e ser a
 - Gerador de atas: o Claude organiza resumo, decisões, aprovações (aprovado, não aprovado, pendente, com o trecho que comprova), alterações, pendências com responsável e prazo, impactos e sinalizações para LUISA, MAX e CHARLES. Nada inventado; o que falta aparece como "Necessário confirmar".
 - A ata pode ser copiada ou salva como comentário no card da reunião. Se houver aprovação marcada como aprovada, salvar exige confirmar que o cliente aprovou claramente.
 - Salvar a ata no Drive fica pendente até definir a pasta de atas (00_REUNIOES/03_ATAS ainda não existe nos projetos).
+
+## Redesign premium (referências de glassmorphism enviadas pela direção)
+- Visual: vidro fosco sobre luz ambiente (petróleo, areia e oliva) e grade de planta sutil; tema claro em branco quente e tema escuro em petróleo profundo. Fonte Manrope. Cantos de 20px nos cards.
+- Hoje: saudação com o nome de quem abre, 4 indicadores (entregas hoje, projetos em andamento, alertas críticos, reuniões em 7 dias), Prioridades do dia (atrasados no topo com borda vermelha e dias úteis de atraso), Lembretes (entregas, reuniões, projetos críticos e pendências), Fale com o MAX (mesmo fluxo de antes, com confirmação) e Equipe hoje.
+- Alertas críticos = projetos com prazo oficial vencido + etapas com prazo registrado vencido.
+- Saúde do projeto: Atrasado (prazo oficial vencido), Atenção (prazo em até 5 dias úteis ou etapa atrasada), A iniciar (lista A INICIAR), Em andamento/Saudável (demais).
+- Carga da equipe: mostrada em 3 níveis (Normal, Atenção, Crítica), sem porcentagem, porque não há capacidade registrada.
+- Datas estimadas: quando o card traz INÍCIO e a duração da etapa em dias úteis, o painel calcula a data em sequência pelas regras do MAX (dias úteis, feriados nacionais). A cadeia para em etapa sem data nem duração, aguardando cliente ou concluída sem data. Aparecem com contorno tracejado e a marca "estimada"; nunca são gravadas no Trello.
+- Prioridade das tarefas (critério do painel): Alta se atrasada ou em até 2 dias úteis; Média em até 5; Baixa depois disso.
+- Linha do tempo do projeto: Briefing, Estudo, Projeto, Detalhamento (a partir das etapas do card), Apresentação (cards de reunião ligados) e Entrega (card de entrega ou prazo oficial). Fase sem etapa correspondente aparece como "Sem registro".
+- Capa dos projetos: tipográfica, com o ícone do tipo de projeto. Imagem de render do Drive fica pendente (a página não pode carregar imagens direto do Drive).
+- Celular: barra de abas fixa no rodapé e botão do MAX; indicadores e pessoas em faixa rolável para o lado.

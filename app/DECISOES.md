@@ -127,3 +127,12 @@ As especificações dos agentes devem ficar em Google Docs nessas pastas e ser a
 - Correção: depois da atualização automática a cada 2 minutos, as etapas perdiam a ligação com os cards recarregados. Agora são religadas a cada leitura.
 - **Etapas guardadas no aparelho:** depois da primeira leitura, as etapas ficam salvas no navegador de cada pessoa. Ao abrir o painel, aparecem na hora. O Claude só lê de novo os cards quando algum card de projeto mudou (lista, prazo, descrição ou comentários); enquanto isso, o painel mostra "Conferindo se há etapas novas no card…". As marcações do checklist vêm sempre do Trello, a cada leitura.
 - O rodapé mostra a versão do painel, para conferir no celular se a versão aberta é a mais recente.
+
+## Bate-papo com o MAX
+- A caixa "Fale com o MAX" da aba Hoje abre uma conversa (tela cheia no celular). O botão flutuante do MAX e o "Falar com o MAX sobre este projeto" da ficha também abrem a conversa.
+- O MAX responde enquanto escreve, com os dados do painel a cada mensagem: cards abertos (lista e prazo), etapas com responsável, prazo e situação, pendências, carga da equipe e reuniões dos próximos 21 dias. Ele não lê a descrição inteira dos cards, só o que o painel já extraiu.
+- Regras passadas ao MAX em toda mensagem: não inventar nada ("Não registrado no Trello" quando faltar), nunca apagar, aprovação só quando for clara, prazo oficial é compromisso com o cliente, tabela de prazos em dias úteis, datas estimadas ditas como estimativa.
+- Pedidos de alteração viram uma proposta dentro da conversa, com antes e depois, e só são gravados com "Confirmar e salvar". Prazo oficial e aprovação continuam pedindo a confirmação extra. Os tipos são os mesmos de antes: status, prazo, responsável, aprovação, reunião e registro no histórico.
+- Pedido de projeto novo mostra o botão que abre o assistente "Novo projeto".
+- A conversa fica salva no aparelho de cada pessoa (últimas 40 mensagens). "Nova conversa" apaga só essa conversa local; nada no Trello. Propostas não confirmadas não sobrevivem ao fechar o painel e aparecem como "não confirmada".
+- Cada mensagem usa o Claude da conta de quem está conversando.

@@ -549,6 +549,45 @@ button.gi-main{cursor:pointer}
 .gi-lock .lu{width:15px;height:15px;flex:none;margin-top:2px}
 @media (max-width:560px){.gi-main{grid-template-columns:auto minmax(0,1fr)}.gi-tag{grid-column:2;justify-self:start}.gi-conf{padding-left:14px}.gi-more{margin-left:14px}.cp-stats{grid-template-columns:1fr 1fr}.cp-stats div:nth-child(2){grid-column:1/-1;order:3}.dd-row{grid-template-columns:auto minmax(0,1fr)}.dd-row .chip{grid-column:2;justify-self:start}}
 .p-chk{display:flex;flex-direction:column;gap:22px}
+/* conversa com o MAX */
+.composer.launch{flex-direction:row;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:62px;padding:8px 8px 8px 16px;cursor:text;text-align:left;font:inherit;color:inherit}
+.composer.launch .ph{color:var(--muted);font-size:15px;line-height:1.4}
+.composer.launch .btn{pointer-events:none;flex:none}
+@media (hover:hover) and (pointer:fine){.composer.launch:hover{border-color:color-mix(in srgb,var(--petrol) 50%,transparent)}}
+.max-last{display:block;width:100%;margin-top:10px;padding:0;border:0;background:none;text-align:left;font:inherit;font-size:13px;line-height:1.45;color:var(--ink2);cursor:pointer}
+.max-last b{color:var(--petrol);white-space:nowrap}
+dialog.chatd{width:min(760px,calc(100% - 32px));height:min(860px,calc(100dvh - 48px));display:none;flex-direction:column;overflow:hidden;-webkit-backdrop-filter:blur(30px) saturate(1.2);backdrop-filter:blur(30px) saturate(1.2)}
+dialog.chatd[open]{display:flex}
+.chat-h{display:flex;align-items:center;gap:12px;padding:16px 18px 14px 20px;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 92%,transparent)}
+.chat-t{flex:1;min-width:0}.chat-t h2{font-size:18px;font-weight:800;line-height:1.2}.chat-t p{margin:2px 0 0;font-size:12.5px;color:var(--muted)}
+.chat-h .btn{min-height:36px;padding:0 14px;font-size:13px}
+.chat-b{flex:1;overflow:auto;overscroll-behavior:contain;padding:22px 20px;display:flex;flex-direction:column;gap:14px}
+.msg{display:flex;gap:10px;align-items:flex-end;min-width:0;flex-shrink:0}
+.msg.me{justify-content:flex-end}
+.bub{padding:11px 15px;font-size:15px;line-height:1.55;overflow-wrap:anywhere;min-width:0}
+.msg.me .bub{background:var(--petrol);color:var(--on-petrol);border-radius:18px 18px 6px 18px;max-width:78%}
+.msg.max .bub{background:var(--glass-strong);border:1px solid var(--line);border-radius:18px 18px 18px 6px;max-width:min(580px,88%);box-shadow:var(--shadow)}
+.bub p{margin:0}.bub p+p,.bub ul+p,.bub p+ul,.bub ul+ul{margin-top:8px}
+.bub ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:3px}
+.bub .plan{margin-top:12px}.bub .plan::before{content:none}
+.avatar.sm{width:30px;height:30px;border-radius:10px}.avatar.sm .lu{width:16px;height:16px}
+.avatar.lg{width:58px;height:58px;border-radius:18px}.avatar.lg .lu{width:28px;height:28px}
+.typing{display:flex;gap:5px;padding:6px 2px}
+.typing i{width:7px;height:7px;border-radius:50%;background:var(--muted);opacity:.3}
+@media (prefers-reduced-motion:no-preference){.typing i{animation:blink 1.2s ease-in-out infinite}.typing i:nth-child(2){animation-delay:.18s}.typing i:nth-child(3){animation-delay:.36s}}
+@keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:.9}}
+.bub-err{color:var(--red);font-size:13px;font-weight:600;margin-top:8px!important}
+.bub-note{font-size:12.5px;color:var(--muted);margin-top:10px!important;padding-top:8px;border-top:1px dashed var(--line)}
+.chat-empty{margin:auto;max-width:470px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;padding:10px 0}
+.chat-empty h3{font-size:20px;font-weight:800;margin:6px 0 0}.chat-empty p{margin:0;font-size:14.5px}
+.chat-empty .sugg{justify-content:center}
+.chat-f{display:flex;align-items:flex-end;gap:10px;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);background:color-mix(in srgb,var(--bg) 92%,transparent)}
+.chat-f textarea{flex:1;min-width:0;resize:none;border:1px solid var(--line);border-radius:16px;background:var(--glass-strong);color:var(--ink);padding:11px 14px;font:inherit;font-size:16px;line-height:1.4;max-height:160px;outline:none;transition:border-color 160ms ease,box-shadow 160ms ease}
+.chat-f textarea:focus{border-color:var(--petrol);box-shadow:0 0 0 4px var(--petrol-soft)}
+.chat-f .btn{min-height:46px;flex:none}
+.chat-f .btn.stop{background:var(--ink);color:var(--bg)}
+@media (max-width:560px){dialog.chatd{width:100%;max-width:100%;height:100dvh;max-height:100dvh;border-radius:0}.chat-t p{display:none}.chat-f .btn span{display:none}.chat-f .btn{width:46px;padding:0;justify-content:center}.msg.max .bub{max-width:92%}.chat-b{padding:18px 14px}}
+.op-act{padding:0 14px 14px}
 [hidden]{display:none!important}
 .wiz .links{margin-bottom:18px}
 .wdone{display:flex;align-items:center;gap:16px;margin-bottom:18px}
@@ -662,22 +701,19 @@ button.gi-main{cursor:pointer}
         <section class="glass max" id="max" aria-labelledby="h-max">
           <div class="max-h">
             <span class="avatar" aria-hidden="true"><svg class="lu" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/> <path d="M20 3v4"/> <path d="M22 5h-4"/> <path d="M4 17v2"/> <path d="M5 18H3"/></svg></span>
-            <div><h2 id="h-max">Fale com o MAX</h2><p>Nada é gravado sem você conferir e confirmar.</p></div>
+            <div><h2 id="h-max">Fale com o MAX</h2><p>Ele responde com os dados do Trello. Nada é gravado sem você confirmar.</p></div>
           </div>
-          <form id="upd-form" autocomplete="off">
-            <label for="upd-text" class="sr">Digite uma atualização do escritório</label>
-            <div class="composer">
-              <textarea id="upd-text" placeholder="Digite uma atualização do escritório…"></textarea>
-              <div class="row"><button class="btn primary" id="upd-go" type="submit"><svg class="lu" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/> <path d="m21.854 2.147-10.94 10.939"/></svg>Analisar atualização</button></div>
-            </div>
-            <div class="sugg" aria-label="Exemplos">
-              <button type="button" class="hint">O projeto X foi para detalhamento</button>
-              <button type="button" class="hint">Troque o responsável do projeto Y para …</button>
-              <button type="button" class="hint">Cliente aprovou a apresentação</button>
-              <button type="button" class="hint">Marque reunião amanhã às 15h</button>
-            </div>
-            <div id="plan"></div>
-          </form>
+          <button type="button" class="composer launch" id="max-open" aria-haspopup="dialog">
+            <span class="ph">Converse com o MAX…</span>
+            <span class="btn primary"><svg class="lu" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/> <path d="m21.854 2.147-10.94 10.939"/></svg>Conversar</span>
+          </button>
+          <button type="button" class="max-last" id="max-last" hidden></button>
+          <div class="sugg" aria-label="Exemplos">
+            <button type="button" class="hint" data-say="Como está a semana da equipe?">Como está a semana da equipe?</button>
+            <button type="button" class="hint" data-fill="O projeto … foi para detalhamento">O projeto X foi para detalhamento</button>
+            <button type="button" class="hint" data-fill="Cliente … aprovou a apresentação">Cliente aprovou a apresentação</button>
+            <button type="button" class="hint" data-fill="Marque reunião com … amanhã às 15h">Marque reunião amanhã às 15h</button>
+          </div>
         </section>
       </div>
     </div>
@@ -747,7 +783,7 @@ button.gi-main{cursor:pointer}
     <section class="glass calw" id="eq-cal" aria-live="polite"></section>
   </section>
 
-  <p class="foot">Dados do Trello (quadro ESCRITÓRIO DAYSE LACERDA), do Google Calendar e do Google Drive, lidos ao abrir e a cada 2 minutos. Um projeto só conta como concluído na lista CONCLUÍDO. Dias úteis: segunda a sexta, sem feriados nacionais; feriados de João Pessoa ainda não entram. Datas marcadas como estimadas são calculadas pelo painel a partir do início do projeto e das durações escritas no card, em dias úteis; não são gravadas no Trello. Nada é gravado sem a sua confirmação, e cada alteração vira um comentário datado no card. <b class="ver">Versão 17 do painel (24/09/2026).</b></p>
+  <p class="foot">Dados do Trello (quadro ESCRITÓRIO DAYSE LACERDA), do Google Calendar e do Google Drive, lidos ao abrir e a cada 2 minutos. Um projeto só conta como concluído na lista CONCLUÍDO. Dias úteis: segunda a sexta, sem feriados nacionais; feriados de João Pessoa ainda não entram. Datas marcadas como estimadas são calculadas pelo painel a partir do início do projeto e das durações escritas no card, em dias úteis; não são gravadas no Trello. Nada é gravado sem a sua confirmação, e cada alteração vira um comentário datado no card. <b class="ver">Versão 18 do painel (24/09/2026).</b></p>
 </main>
 
 <nav class="dock glass" aria-label="Seções">
@@ -758,6 +794,20 @@ button.gi-main{cursor:pointer}
 </nav>
 <button class="fab" id="fab" type="button" aria-label="Fale com o MAX"><svg class="lu" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/> <path d="M20 3v4"/> <path d="M22 5h-4"/> <path d="M4 17v2"/> <path d="M5 18H3"/></svg></button>
 
+<dialog class="page chatd" id="chat" aria-labelledby="chat-title">
+  <div class="chat-h">
+    <span class="avatar" aria-hidden="true"><svg class="lu" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/> <path d="M20 3v4"/> <path d="M22 5h-4"/> <path d="M4 17v2"/> <path d="M5 18H3"/></svg></span>
+    <div class="chat-t"><h2 id="chat-title">MAX</h2><p>Diretor Geral · responde com os dados do Trello</p></div>
+    <button class="btn" id="chat-new" type="button">Nova conversa</button>
+    <button class="ibtn" id="chat-close" type="button" aria-label="Fechar"><svg class="lu" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/> <path d="m6 6 12 12"/></svg></button>
+  </div>
+  <div class="chat-b" id="chat-log" role="log" aria-live="polite" aria-label="Conversa com o MAX"></div>
+  <form class="chat-f" id="chat-form" autocomplete="off">
+    <label for="chat-in" class="sr">Mensagem para o MAX</label>
+    <textarea id="chat-in" rows="1" placeholder="Escreva para o MAX…" enterkeyhint="send"></textarea>
+    <button class="btn primary" id="chat-send" type="submit"></button>
+  </form>
+</dialog>
 <dialog class="sheet" id="sheet" aria-labelledby="sheet-name">
   <div class="sheet-h">
     <div class="sheet-t"><button class="ibtn" id="sheet-back" type="button" aria-label="Voltar" hidden><svg class="lu" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button><div><div class="t" id="sheet-name"></div><div class="muted" id="sheet-sub" style="font-size:13.5px"></div></div></div>
@@ -2556,7 +2606,6 @@ function renderAll() {
 }
 
 /* ================= atualização inteligente ================= */
-let plan = null;
 function cardsForPrompt() {
   return state.cards.filter((c) => !c.done).map((c, i) => ({ c, i: i + 1 }));
 }
@@ -2736,7 +2785,7 @@ function buildOp(op, idx, original) {
     }
     case "criar_projeto":
       o.title = "Criar projeto"; o.before = null; o.after = null;
-      o.blocked = "Projetos novos são cadastrados pelo MAX no Claude Desktop, com o fluxo /novo projeto (7 etapas e análise de capacidade). O painel não cria projetos.";
+      o.blocked = "Use o botão Novo projeto do painel: o cadastro segue as regras do MAX, com resumo e confirmação.";
       break;
     case "excluir":
       o.title = "Excluir informação"; o.before = null; o.after = null;
@@ -2754,57 +2803,219 @@ function dlHTML(obj, chg, side) {
   if (!obj) return "";
   return `<dl>${Object.entries(obj).map(([k, val]) => `<dt>${esc(k)}</dt><dd class="${side === "after" && chg.has(k) ? "chg" : ""}">${val || "-"}</dd>`).join("")}</dl>`;
 }
-function renderPlan(p) {
-  const box = $("plan");
-  if (!p) { box.innerHTML = ""; return; }
-  if (p.status === "thinking") { box.innerHTML = `<div class="plan"><p class="muted">Interpretando com o Claude…</p></div>`; return; }
-  if (p.status === "error") { box.innerHTML = `<div class="plan"><div class="errbox">${esc(p.error)}</div></div>`; return; }
-  const ops = p.ops.map((o, i) => `<div class="op">
+/* ================= conversa com o MAX ================= */
+const CHAT_KEY = "painel-dl.max-chat.v1", OPS_MARK = "<<<OPERACOES>>>";
+let chat = loadChat(), chatCtl = null, chatBusy = false;
+function loadChat() {
+  try {
+    const a = JSON.parse(localStorage.getItem(CHAT_KEY) || "[]");
+    return Array.isArray(a) ? a.filter((m) => m && typeof m.text === "string" && (m.role === "user" || m.role === "max")).slice(-40)
+      .map((m) => ({ role: m.role, text: m.text, at: m.at || 0, note: typeof m.note === "string" ? m.note : "" })) : [];
+  } catch (_) { return []; }
+}
+function saveChat() {
+  try {
+    localStorage.setItem(CHAT_KEY, JSON.stringify(chat.filter((m) => !m.pending).slice(-40).map((m) => ({ role: m.role, text: m.text, at: m.at, note: planNote(m) }))));
+  } catch (_) {}
+}
+function planNote(m) {
+  if (m.note && !m.plan) return m.note;
+  const p = m.plan;
+  if (!p || !p.ops.length) return "";
+  if (p.status === "done") return `Gravado no Trello: ${p.results.map((r) => r.text.replace(/^[✓✗] /, "")).join(" ")}`;
+  if (p.status === "cancelled") return "Proposta cancelada. Nada foi gravado.";
+  return "Proposta não confirmada. Nada foi gravado.";
+}
+
+function maxSnapshot(idx) {
+  const t = today();
+  const cards = idx.map(({ c, i }) => {
+    let s = `[${i}] ${c.name} | ${c.kind === "projeto" ? "projeto" : c.kind === "reuniao" ? "reunião" : "entrega"} | lista: ${c.list} | prazo do card: ${c.dueKey ? dmy(c.dueKey) : "não registrado"}`;
+    if (c.kind === "projeto") {
+      const r = projResp(c); if (r) s += `\n   responsável principal: ${r}`;
+      if (inicioOf(c)) s += `\n   início: ${dmy(inicioOf(c))}`;
+      const gs = etapaGroups(c);
+      if (gs.length) s += "\n   etapas: " + gs.map((g) => `${g.name} (${g.resps.join(", ") || "responsável não registrado"}; ${g.key ? (g.est ? "estimada " : "") + dmy(g.key) : "sem prazo"}; ${g.done ? "concluída" : g.lateDays ? `atrasada ${g.lateDays} du` : SIT_TXT[g.sit] || "situação não registrada"})`).join("; ");
+      else s += `\n   etapas: ${state.etapas ? "nenhuma registrada" : "ainda não lidas"}`;
+      const pl = state.pend && state.pend.get(c.id); if (pl && pl.length) s += "\n   pendências: " + pl.slice(0, 5).join("; ");
+    }
+    return s;
+  }).join("\n").slice(0, 36000);
+  const carga = people().map((p) => { const d = personData(p); return `${p.full}: carga ${({ critico: "crítica", atencao: "atenção", normal: "normal", na: "não calculada" })[d.carga]}, ${d.ativas.length} etapa(s) ativa(s), ${d.projetos.length} projeto(s)`; }).join("\n");
+  const reun = meetings(t, addDays(t, 21)).map((m) => `${dmy(m.key)}${m.time ? " " + m.time : ""}: ${m.title} (${m.src.join(" e ")})`).join("\n");
+  return { cards, carga, reun };
+}
+function maxRules(idx) {
+  const snap = maxSnapshot(idx);
+  return `Você é o MAX, Diretor Geral do escritório Dayse Lacerda Arquitetura (João Pessoa/PB). Está conversando pelo painel do escritório com ${state.me || "uma pessoa da equipe"}. Hoje é ${fLong.format(new Date())} (${today()}).
+
+Seu papel: responder perguntas sobre projetos, prazos, etapas, equipe e reuniões, orientar prioridades e preparar alterações que o painel grava no Trello SÓ depois que a pessoa confere e confirma.
+
+Regras que nunca podem ser quebradas:
+- Use SOMENTE os dados abaixo e o que a pessoa disser na conversa. Nunca invente informação, prazo, aprovação, responsável ou etapa. Quando faltar, diga "Não registrado no Trello".
+- Você não grava nada. Quando a pessoa pede uma alteração, você monta a proposta; o painel mostra antes e depois e a pessoa confirma.
+- Nunca proponha apagar cards, comentários, arquivos ou histórico.
+- Aprovação do cliente só quando a pessoa disser claramente que o cliente aprovou. "Gostou" ou "achou bonito" não é aprovação.
+- Prazo oficial é compromisso com o cliente: ao propor mudança, diga o impacto.
+- Prazos oficiais do MAX em dias úteis (segunda a sexta, sem feriados nacionais; o dia de início conta como dia 1): Arquitetônico Construtor 10, Arquitetônico Cliente Final 15, Arquitetônico Comercial 15, Interiores Casa Térrea 25, Interiores Sobrado 40, Interiores Comercial 30. Interiores Avulsos não tem prazo fixo. Arquitetônico + Interiores usa o prazo do arquitetônico na Fase 1.
+- Datas marcadas "estimada" são estimativas do painel: diga isso quando usar.
+- Cadastro de projeto novo é feito pelo assistente "Novo projeto" do painel: use a operação criar_projeto para oferecer o botão.
+
+Estilo: português do Brasil, direto e cordial, como um diretor experiente. Respostas curtas. Use "- " para listas e **negrito** só para destacar o essencial. Sem tabelas e sem títulos.
+
+Formato da resposta:
+1. Escreva a resposta da conversa.
+2. SOMENTE quando a pessoa pedir uma alteração com dados suficientes, termine com uma linha contendo exatamente ${OPS_MARK} e, na linha seguinte, só este JSON:
+{"operacoes":[{"tipo":"mover","card":3,"lista":"NOME EXATO DA LISTA","prazo":null,"prazoTipo":null,"etapa":null,"responsavel":null,"reuniao":null,"resumo":"frase curta"}]}
+Se faltar dado (qual projeto, data, horário), não monte a operação: pergunte na resposta. No texto, diga que a proposta aparece abaixo para conferir e confirmar; nunca diga que já gravou.
+Tipos: "mover" (muda a lista; "lista" com o nome EXATO), "prazo" ("prazoTipo" "oficial" = prazo do card, ou "interno" = prazo de uma etapa, com "etapa"; "prazo" em AAAA-MM-DD), "responsavel" ("etapa" ou null, e "responsavel"), "aprovacao", "reuniao" ("reuniao": {"cliente","data":"AAAA-MM-DD","hora":"HH:MM","duracaoMin":60}), "nota" (registro no histórico do card), "criar_projeto". "card" é o número entre colchetes.
+
+Listas do quadro: ${state.lists.map((l) => l.name).join(" | ")}
+
+Equipe e carga (critério do painel: 3+ etapas ativas = atenção, 5+ = crítica):
+${snap.carga || "Não registrado"}
+
+Reuniões nos próximos 21 dias:
+${snap.reun || "Nenhuma registrada"}
+
+Cards abertos no Trello:
+${snap.cards}`;
+}
+
+function mdLite(s) {
+  const inline = (x) => esc(x).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
+  const out = []; let list = null;
+  for (const raw of String(s).split("\n")) {
+    const line = raw.trimEnd(), li = line.match(/^\s*(?:[-•*]|\d+[.)])\s+(.*)$/);
+    if (li) { if (!list) { list = []; out.push(list); } list.push(inline(li[1])); continue; }
+    list = null;
+    if (!line.trim()) { out.push(""); continue; }
+    out.push(inline(line.replace(/^#+\s*/, "")));
+  }
+  let html = "", para = [];
+  const flush = () => { if (para.length) { html += `<p>${para.join("<br>")}</p>`; para = []; } };
+  for (const b of out) {
+    if (Array.isArray(b)) { flush(); html += `<ul>${b.map((x) => `<li>${x}</li>`).join("")}</ul>`; }
+    else if (b === "") flush();
+    else para.push(b);
+  }
+  flush();
+  return html;
+}
+const visibleText = (t) => String(t).split(OPS_MARK)[0].replace(/<{1,3}[A-Z]*$/, "").trimEnd();
+function parseOps(t) {
+  const i = String(t).indexOf(OPS_MARK);
+  if (i < 0) return [];
+  const rest = t.slice(i + OPS_MARK.length), a = rest.indexOf("{"), b = rest.lastIndexOf("}");
+  if (a < 0 || b <= a) return [];
+  try { const j = JSON.parse(rest.slice(a, b + 1)); return Array.isArray(j && j.operacoes) ? j.operacoes.slice(0, 6) : []; } catch (_) { return []; }
+}
+
+function planHTML(p, mi) {
+  const ops = p.ops.map((o, i) => o.wizard
+    ? `<div class="op"><div class="op-h"><b>Cadastrar novo projeto</b></div><div class="op-msg">O cadastro é feito pelo assistente Novo projeto, com resumo e confirmação no final.</div><div class="op-act"><button class="btn primary" type="button" data-open-wizard>${svgI("plus")}Abrir cadastro de novo projeto</button></div></div>`
+    : `<div class="op">
       <div class="op-h"><b>${esc(o.title)}</b>${o.blocked ? `<span class="tag block">Não será feito</span>` : o.critical ? `<span class="tag crit">Exige confirmação extra</span>` : ""}</div>
       ${o.before || o.after ? `<div class="ba"><div><h4>Antes</h4>${dlHTML(o.before, o.chg, "before")}</div><div><h4>Depois</h4>${dlHTML(o.after, o.chg, "after")}</div></div>` : ""}
       ${o.blocked ? `<div class="op-msg block">${esc(o.blocked)}</div>` : o.msg ? `<div class="op-msg">${esc(o.msg)}</div>` : ""}
-      ${o.critical && !o.blocked ? `<label class="check"><input type="checkbox" id="crit-${i}" data-crit="${i}"><span>${esc(o.confirmText)}</span></label>` : ""}
+      ${o.critical && !o.blocked && p.status === "review" ? `<label class="check"><input type="checkbox" data-crit="${mi}:${i}"${p.crit[i] ? " checked" : ""}><span>${esc(o.confirmText)}</span></label>` : ""}
     </div>`).join("");
-  const qs = p.questions.length ? `<div class="qs"><b>Preciso confirmar:</b><ul>${p.questions.map((q) => `<li>${esc(q)}</li>`).join("")}</ul></div>` : "";
   const runnable = p.ops.filter((o) => o.exec);
+  const allCrit = p.ops.every((o, i) => !o.critical || o.blocked || p.crit[i]);
   const results = p.results ? `<div class="res">${p.results.map((r) => `<span class="${r.ok ? "okl" : "errl"}">${esc(r.text)}</span>`).join("")}</div>` : "";
-  const actions = p.status === "done" ? `<div class="u-row"><button class="btn" type="button" id="plan-clear">Nova atualização</button></div>`
-    : runnable.length ? `<div class="u-row"><span class="muted">Nada foi gravado ainda.</span><div style="display:flex;gap:8px"><button class="btn" type="button" id="plan-cancel">Cancelar</button><button class="btn primary" type="button" id="plan-ok">${p.status === "saving" ? "Salvando…" : "Confirmar e salvar"}</button></div></div>`
-    : `<div class="u-row"><span class="muted">Nada para salvar. Ajuste o texto e interprete de novo.</span><button class="btn" type="button" id="plan-cancel">Fechar</button></div>`;
-  box.innerHTML = `<div class="plan">${ops || ""}${qs}${results}${actions}</div>`;
-  syncConfirm();
+  const actions = p.status === "done" ? "" : p.status === "cancelled" ? `<p class="muted" style="margin:0">Proposta cancelada. Nada foi gravado.</p>`
+    : runnable.length ? `<div class="u-row"><span class="muted">Nada foi gravado ainda.</span><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn" type="button" data-pcancel="${mi}"${p.status === "saving" ? " disabled" : ""}>Cancelar</button><button class="btn primary" type="button" data-pok="${mi}"${p.status === "saving" || !allCrit ? " disabled" : ""}>${p.status === "saving" ? "Salvando…" : "Confirmar e salvar"}</button></div></div>` : "";
+  return `<div class="plan">${ops}${results}${actions}</div>`;
 }
-function syncConfirm() {
-  const ok = $("plan-ok");
-  if (!ok || !plan) return;
-  const allCrit = plan.ops.every((o, i) => !o.critical || o.blocked || ($("crit-" + i) && $("crit-" + i).checked));
-  ok.disabled = plan.status === "saving" || !allCrit;
+function bubbleHTML(m, mi) {
+  if (m.role === "user") return `<div class="msg me"><div class="bub">${mdLite(m.text)}</div></div>`;
+  const body = m.pending && !m.text ? `<div class="typing" aria-label="MAX está escrevendo"><i></i><i></i><i></i></div>` : mdLite(m.text);
+  const err = m.err ? `<p class="bub-err">${esc(m.err)}${m.retry ? ` <button type="button" class="lnk" data-retry>Tentar de novo</button>` : ""}</p>` : "";
+  const plan = m.plan && m.plan.ops.length ? planHTML(m.plan, mi) : m.note ? `<p class="bub-note">${esc(m.note)}</p>` : "";
+  return `<div class="msg max"><span class="avatar sm" aria-hidden="true">${svgI("sparkles")}</span><div class="bub">${body}${err}${plan}</div></div>`;
 }
+function chatEmptyHTML() {
+  const first = (state.me || "").trim().split(/\s+/)[0];
+  const sug = ["Como está a semana da equipe?", "Quais projetos estão atrasados?", "O que vence nos próximos 7 dias?", "Quem está com a carga mais alta?"];
+  return `<div class="chat-empty"><span class="avatar lg" aria-hidden="true">${svgI("sparkles")}</span>
+    <h3>${first ? `Olá, ${esc(first)}.` : "Olá."} Sou o MAX.</h3>
+    <p class="muted">Pergunte sobre projetos, prazos, equipe e reuniões, ou peça uma alteração. Eu respondo com os dados do Trello e nada é gravado sem você confirmar.</p>
+    <div class="sugg">${sug.map((s) => `<button type="button" class="hint" data-say="${esc(s)}">${esc(s)}</button>`).join("")}</div></div>`;
+}
+function renderChat(stick) {
+  const log = $("chat-log");
+  const near = log.scrollHeight - log.scrollTop - log.clientHeight < 120;
+  log.innerHTML = chat.length ? chat.map(bubbleHTML).join("") : chatEmptyHTML();
+  if (stick || near) log.scrollTop = log.scrollHeight;
+  const send = $("chat-send");
+  send.innerHTML = chatBusy ? `${svgI("x")}<span>Parar</span>` : `${svgI("send")}<span>Enviar</span>`;
+  send.classList.toggle("stop", chatBusy);
+  $("chat-new").disabled = chatBusy || !chat.length;
+  renderMaxPreview();
+}
+function renderMaxPreview() {
+  const el = $("max-last"); if (!el) return;
+  const last = [...chat].reverse().find((m) => m.role === "max" && m.text);
+  el.hidden = !last;
+  if (last) el.innerHTML = `<span class="muted">Última resposta do MAX:</span> ${esc(visibleText(last.text).replace(/\*\*/g, "").slice(0, 140))}${last.text.length > 140 ? "…" : ""} <b>Continuar conversa</b>`;
+}
+function openChat(text) {
+  const d = $("chat");
+  renderChat(true);
+  if (!d.open) { if (d.showModal) d.showModal(); else d.setAttribute("open", ""); }
+  const inp = $("chat-in");
+  if (typeof text === "string" && text) { inp.value = text; }
+  autoGrow(inp);
+  setTimeout(() => { inp.focus({ preventScroll: true }); inp.setSelectionRange(inp.value.length, inp.value.length); $("chat-log").scrollTop = $("chat-log").scrollHeight; }, reduce.matches ? 0 : 60);
+}
+function autoGrow(el) { el.style.height = "auto"; el.style.height = Math.min(el.scrollHeight, 160) + "px"; }
 
-async function interpret(text) {
+async function sendChat(text) {
+  text = String(text || "").trim().slice(0, 1500);
+  if (!text || chatBusy) return;
   const sample = await sampleP;
-  if (!sample) { plan = { status: "error", error: "O uso do Claude não está disponível nesta visualização. Abra o painel no claude.ai." }; renderPlan(plan); return; }
-  if (state.err.trello || !state.loadedAt) { plan = { status: "error", error: "Os dados do Trello ainda não foram carregados. Toque em “Atualizar dados”." }; renderPlan(plan); return; }
-  plan = { status: "thinking" }; renderPlan(plan);
-  $("upd-go").disabled = true;
-  const idx = cardsForPrompt();
-  try {
-    const res = await sample.json(interpretPrompt(text, idx), { cache: false });
-    const ops = (Array.isArray(res && res.operacoes) ? res.operacoes : []).slice(0, 6).map((op) => buildOp(op || {}, idx, text));
-    const questions = (Array.isArray(res && res.perguntas) ? res.perguntas : []).filter((q) => typeof q === "string" && q.trim()).slice(0, 5);
-    if (!ops.length && !questions.length) questions.push("Não identifiquei nenhuma alteração no texto. Pode detalhar?");
-    plan = { status: "review", ops, questions };
-  } catch (e) {
-    plan = { status: "error", error: sampleMsg(e) };
-  }
-  $("upd-go").disabled = false;
-  renderPlan(plan);
+  chat.push({ role: "user", text, at: Date.now() });
+  const m = { role: "max", text: "", at: Date.now(), pending: true };
+  chat.push(m);
+  $("chat-in").value = ""; autoGrow($("chat-in"));
+  if (!sample) { m.pending = false; m.err = "O uso do Claude não está disponível nesta visualização. Abra o painel no claude.ai."; renderChat(true); return; }
+  if (state.err.trello || !state.loadedAt) { m.pending = false; m.err = "Os dados do Trello ainda não foram carregados. Toque em atualizar e tente de novo."; m.retry = true; renderChat(true); return; }
+  await askMax(m);
 }
-async function savePlan() {
-  if (!plan || plan.status !== "review") return;
-  plan.status = "saving"; renderPlan(plan);
+async function askMax(m) {
+  const sample = await sampleP;
+  chatBusy = true; m.pending = true; m.err = ""; m.retry = false; m.text = ""; m.plan = null;
+  renderChat(true);
+  const idx = cardsForPrompt();
+  const hist = chat.slice(0, chat.indexOf(m)).slice(-16).map((x) => ({ role: x.role === "user" ? "user" : "assistant", content: x.role === "user" ? x.text : (visibleText(x.text) || "(sem resposta)") + (planNote(x) ? `\n[Painel: ${planNote(x)}]` : "") }));
+  while (hist.length && hist[0].role !== "user") hist.shift();
+  const turns = [{ role: "user", content: maxRules(idx) }, ...hist];
+  chatCtl = new AbortController();
+  const original = [...chat].slice(0, chat.indexOf(m)).reverse().find((x) => x.role === "user");
+  try {
+    const res = await sample(turns, { cache: false, signal: chatCtl.signal, onText: ({ text }) => { m.text = visibleText(text); m.raw = text; renderChat(); } });
+    m.text = visibleText(res.text) || "Não consegui responder agora.";
+    const ops = parseOps(res.text).map((op) => {
+      if (op && op.tipo === "criar_projeto") return { wizard: true };
+      return buildOp(op || {}, idx, original ? original.text : "");
+    });
+    if (ops.length) m.plan = { status: "review", ops, crit: {}, results: null };
+    if (res.truncated) m.err = "A resposta foi cortada. Peça algo mais curto.";
+  } catch (e) {
+    m.text = e && e.text ? visibleText(e.text) : "";
+    if (e && e.code !== "cancelled") { m.err = sampleMsg(e); m.retry = !["not_granted", "sampling_disabled", "not_declared", "capability_disabled", "capability_removed"].includes(e.code); }
+    else if (!m.text) m.text = "(interrompido)";
+  }
+  m.pending = false; chatBusy = false; chatCtl = null;
+  saveChat(); renderChat();
+}
+async function savePlanMsg(mi) {
+  const m = chat[mi], p = m && m.plan;
+  if (!p || p.status !== "review") return;
+  if (!p.ops.every((o, i) => !o.critical || o.blocked || p.crit[i])) return;
+  p.status = "saving"; renderChat();
   const results = [];
-  for (const o of plan.ops) {
+  for (const o of p.ops) {
     if (!o.exec) continue;
     try { results.push({ ok: true, text: "✓ " + (await o.exec()) }); }
     catch (e) {
@@ -2813,8 +3024,8 @@ async function savePlan() {
       break;
     }
   }
-  plan.status = "done"; plan.results = results;
-  renderPlan(plan);
+  p.status = "done"; p.results = results;
+  saveChat(); renderChat();
   const mcp = await mcpP; if (mcp && mcp.invalidate) await mcp.invalidate().catch(() => {});
   await loadAll();
 }
@@ -2921,13 +3132,7 @@ $("sheet-body").addEventListener("click", (e) => {
   if (e.target.closest("#st-ok")) saveStatus(x, $("st-ok").dataset.st);
   if (e.target.closest("#st-cancel")) { $("st-confirm").innerHTML = ""; document.querySelectorAll(".st-seg .picked").forEach((b) => b.classList.remove("picked")); }
 });
-function focusMax(text) {
-  if (state.view !== "hoje") go("hoje");
-  const ta = $("upd-text");
-  if (text !== undefined) ta.value = text;
-  $("max").scrollIntoView({ behavior: smooth(), block: "center" });
-  setTimeout(() => ta.focus({ preventScroll: true }), reduce.matches ? 0 : 350);
-}
+function focusMax(text) { openChat(text); }
 $("ppage").addEventListener("click", (e) => {
   if (e.target === e.currentTarget || e.target.closest("[data-close]")) { $("ppage").close(); return; }
   const box = e.target.closest("#p-chkbox");
@@ -2992,17 +3197,30 @@ $("ata-out").addEventListener("click", async (e) => {
   }
 });
 
-document.querySelectorAll(".hint").forEach((h) => h.addEventListener("click", () => { const ta = $("upd-text"); ta.value = h.textContent.replace("…", "").trim() + " "; ta.focus(); }));
-$("upd-form").addEventListener("submit", (e) => { e.preventDefault(); const t = $("upd-text").value.trim(); if (t) interpret(t.slice(0, 1500)); });
-$("upd-text").addEventListener("keydown", (e) => { if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) { e.preventDefault(); $("upd-form").requestSubmit(); } });
-$("plan").addEventListener("change", (e) => { if (e.target.matches("[data-crit]")) syncConfirm(); });
-$("plan").addEventListener("click", (e) => {
-  const id = e.target.closest("button") && e.target.closest("button").id;
-  if (id === "plan-ok") savePlan();
-  else if (id === "plan-cancel") { plan = null; renderPlan(null); }
-  else if (id === "plan-clear") { plan = null; renderPlan(null); $("upd-text").value = ""; $("upd-text").focus(); }
+$("max-open").addEventListener("click", () => openChat());
+$("max-last").addEventListener("click", () => openChat());
+$("max").addEventListener("click", (e) => {
+  const h = e.target.closest(".hint"); if (!h) return;
+  if (h.dataset.say) { openChat(); sendChat(h.dataset.say); } else openChat(h.dataset.fill || h.textContent);
 });
-
+$("chat-close").addEventListener("click", () => $("chat").close());
+$("chat").addEventListener("click", (e) => { if (e.target === e.currentTarget) e.currentTarget.close(); });
+$("chat-new").addEventListener("click", () => { if (chatBusy) return; chat = []; saveChat(); renderChat(true); $("chat-in").focus(); });
+$("chat-form").addEventListener("submit", (e) => { e.preventDefault(); if (chatBusy) { if (chatCtl) chatCtl.abort(); return; } sendChat($("chat-in").value); });
+$("chat-in").addEventListener("input", (e) => autoGrow(e.target));
+$("chat-in").addEventListener("keydown", (e) => { if (e.key === "Enter" && !e.shiftKey && !e.isComposing && !matchMedia("(pointer:coarse)").matches) { e.preventDefault(); $("chat-form").requestSubmit(); } });
+$("chat-log").addEventListener("change", (e) => {
+  const c = e.target.closest("[data-crit]"); if (!c) return;
+  const [mi, i] = c.dataset.crit.split(":").map(Number);
+  if (chat[mi] && chat[mi].plan) { chat[mi].plan.crit[i] = c.checked; renderChat(); }
+});
+$("chat-log").addEventListener("click", (e) => {
+  const say = e.target.closest("[data-say]"); if (say) { sendChat(say.dataset.say); return; }
+  const ok = e.target.closest("[data-pok]"); if (ok) { savePlanMsg(Number(ok.dataset.pok)); return; }
+  const cc = e.target.closest("[data-pcancel]"); if (cc) { const m = chat[Number(cc.dataset.pcancel)]; if (m && m.plan && m.plan.status === "review") { m.plan.status = "cancelled"; saveChat(); renderChat(); } return; }
+  if (e.target.closest("[data-open-wizard]")) { $("chat").close(); openWizard(); return; }
+  if (e.target.closest("[data-retry]")) { const m = chat[chat.length - 1]; if (m && m.role === "max" && !chatBusy) askMax(m); }
+});
 const routeFromHash = () => showView((location.hash || "#hoje").slice(1), false);
 window.addEventListener("hashchange", routeFromHash);
 routeFromHash();
@@ -3010,8 +3228,9 @@ routeFromHash();
 userP.then(async (u) => { if (!u || !u.me) return; try { const m = await u.me(); state.me = (m && m.name) || ""; renderGreet(); } catch (_) {} });
 
 renderGreet();
+renderChat();
 loadAll(false);
-const busyNow = () => loading || (plan && (plan.status === "thinking" || plan.status === "saving")) || state.extract === "loading";
+const busyNow = () => loading || chatBusy || chat.some((m) => m.plan && m.plan.status === "saving") || state.extract === "loading";
 setInterval(() => { if (!document.hidden && !busyNow()) loadAll(false); }, AUTO_MS);
 document.addEventListener("visibilitychange", () => {
   if (!document.hidden && state.loadedAt && Date.now() - state.loadedAt.getTime() > 60000 && !busyNow()) loadAll(false);

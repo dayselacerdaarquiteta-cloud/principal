@@ -457,6 +457,61 @@ dialog.sheet{border:0;padding:0;margin:0 0 0 auto;height:100%;max-height:100%;wi
 .pr-baixa{background:var(--gray-soft);color:var(--muted)}
 .st-chip{background:var(--petrol-soft);color:var(--petrol)}
 
+/* novo projeto */
+.btn-new{background:linear-gradient(145deg,var(--brand1),var(--brand2));color:#fff;border-color:transparent;box-shadow:var(--glow)}
+.btn-new .lu{width:18px;height:18px;stroke-width:2.2}
+.greet .btn-new{margin-bottom:6px}
+dialog.wiz{width:min(780px,calc(100% - 32px));display:none;flex-direction:column;padding:0;-webkit-backdrop-filter:blur(30px) saturate(1.2);backdrop-filter:blur(30px) saturate(1.2)}
+dialog.wiz[open]{display:flex}
+.wiz-h{display:flex;align-items:center;gap:14px;padding:20px 24px 14px}
+.wiz-h h2{font-size:20px;font-weight:800}
+.wiz-h p{margin:2px 0 0;font-size:13px;color:var(--muted);font-weight:600}
+.wiz-h .ibtn{margin-left:auto}
+.wiz-prog{height:4px;background:var(--gray-soft);margin:0 24px;border-radius:99px;overflow:hidden}
+.wiz-prog i{display:block;height:100%;width:var(--p,0%);background:linear-gradient(90deg,var(--brand1),var(--petrol));border-radius:99px;transition:width 360ms var(--ease)}
+.wiz-b{padding:22px 24px 12px;min-height:340px;overflow:auto}
+.wq{font-size:23px;font-weight:800;letter-spacing:-.015em;margin:0 0 16px}
+.wq2{font-size:15px;font-weight:750;margin:22px 0 10px}
+.opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.opts.two-col{grid-template-columns:repeat(2,minmax(0,1fr));max-width:420px}
+.opts.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.opt{display:flex;align-items:center;gap:12px;min-height:64px;padding:10px 14px;border-radius:16px;border:1px solid var(--line);background:var(--glass);text-align:left;cursor:pointer;font-weight:700;font-size:15px;color:var(--ink);transition:transform 160ms var(--ease),border-color 160ms ease,background-color 160ms ease,box-shadow 200ms ease}
+.opt small{display:block;font-size:12.5px;font-weight:600;color:var(--muted);margin-top:2px}
+.opt:active{transform:scale(.98)}
+.opt.on{border-color:var(--petrol);background:var(--petrol-soft);box-shadow:inset 0 0 0 1px var(--petrol)}
+@media (hover:hover) and (pointer:fine){.opt:not(.on):hover{border-color:color-mix(in srgb,var(--petrol) 40%,transparent)}}
+.wf{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.wf span{font-size:13px;font-weight:700;color:var(--ink2)}
+.wf input,.wf textarea{border:1px solid var(--line);border-radius:14px;background:var(--glass-strong);padding:12px 14px;font-size:16px;color:var(--ink);min-height:48px;width:100%}
+.wf textarea{resize:vertical;line-height:1.5}
+.wf input:focus,.wf textarea:focus{outline:none;border-color:var(--petrol);box-shadow:0 0 0 4px var(--petrol-soft)}
+.wgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.wchip{border:1px solid var(--line);background:var(--glass);border-radius:999px;padding:8px 14px;font-size:13.5px;font-weight:700;cursor:pointer;color:var(--ink);transition:transform 160ms var(--ease),background-color 160ms ease}
+.wchip:active{transform:scale(.96)}
+.wchip.on{background:var(--petrol);color:var(--on-petrol);border-color:transparent}
+.wnote{font-size:13.5px;color:var(--muted);margin:12px 0 0}
+.wwarn{display:flex;gap:10px;align-items:flex-start;margin:14px 0 0;padding:12px 14px;border-radius:14px;background:var(--orange-soft);color:var(--ink);font-size:14px;font-weight:600}
+.wwarn .lu{color:var(--orange-text);margin-top:1px}
+.wwarn.col{flex-direction:column}.wwarn.col span{display:flex;gap:10px}
+.wcalc{display:flex;gap:10px;align-items:flex-start;margin:14px 0 4px;padding:12px 14px;border-radius:14px;background:var(--petrol-soft);font-size:14px}
+.wcalc .lu{color:var(--petrol);margin-top:1px}
+.wsum{border:1px solid var(--line);border-radius:18px;background:var(--glass-strong);padding:16px 18px;display:flex;flex-direction:column;gap:14px}
+.wsum-h{display:flex;align-items:center;gap:12px}
+.wsum-h b{display:block;font-size:17px;font-weight:800}
+.wsum-h span:not(.chip){font-size:13.5px;color:var(--muted)}
+.wsum-h .chip{margin-left:auto}
+.wcreate{margin-top:14px;padding:14px 16px;border-radius:14px;border:1px dashed var(--line);font-size:14px}
+.wcreate ul{margin:8px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
+.wlog{list-style:none;margin:14px 0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:14px}
+.wlog li{display:flex;gap:10px;align-items:flex-start}
+.wlog li .lu{color:var(--muted);margin-top:1px}
+.wlog li.ok .lu{color:var(--olive)}.wlog li.err{color:var(--red);font-weight:600}.wlog li.err .lu{color:var(--red)}
+[hidden]{display:none!important}
+.wiz .links{margin-bottom:18px}
+.wdone{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+.wiz-f{position:sticky;bottom:0;display:flex;align-items:center;gap:10px;padding:14px 24px calc(16px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);background:var(--glass-strong)}
+
 /* rodapé e dock */
 .foot{margin-top:40px;font-size:12.5px;color:var(--muted);line-height:1.6;max-width:92ch}
 .dock,.fab{display:none}
@@ -479,6 +534,11 @@ dialog.sheet{border:0;padding:0;margin:0 0 0 auto;height:100%;max-height:100%;wi
   .kpi{flex:0 0 72%;scroll-snap-align:start}
   .prio-grid{grid-template-columns:1fr}
   .two,.ata-sec .grid2{grid-template-columns:1fr}
+  .wgrid,.opts.three{grid-template-columns:1fr}
+  .opts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .wiz-b{padding:18px 16px 10px}.wiz-h{padding:16px}.wiz-prog{margin:0 16px}.wiz-f{padding:12px 16px calc(14px + env(safe-area-inset-bottom,0px))}
+  .wq{font-size:20px}
+  .greet .btn-new{width:100%}
   .ba{grid-template-columns:1fr}.ba>div+div{border-left:0;border-top:1px solid var(--line)}
   .timeline{grid-template-columns:1fr;gap:0}
   .tl{flex-direction:row;text-align:left;align-items:center;gap:12px;padding:6px 0}
@@ -494,6 +554,7 @@ dialog.sheet{border:0;padding:0;margin:0 0 0 auto;height:100%;max-height:100%;wi
   .day .ev{display:none}.evdots{display:flex;justify-content:center}
   .wd{text-align:center;padding:2px 0;font-size:11px}
   dialog.page{width:100%;max-height:100dvh;height:100dvh;border-radius:0}
+  dialog.wiz{width:100%;max-width:100%}.wiz-b{flex:1}
   dialog.sheet{width:100%;height:92dvh;margin:auto 0 0;border-radius:24px 24px 0 0}
   @media (prefers-reduced-motion:no-preference){dialog.sheet[open]{animation-name:sheetUp}}
   @keyframes sheetUp{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
@@ -535,6 +596,7 @@ dialog.sheet{border:0;padding:0;margin:0 0 0 auto;height:100%;max-height:100%;wi
         <p class="date" id="today-long">&nbsp;</p>
         <h1 id="greet">Olá</h1>
       </div>
+      <button class="btn btn-new press" type="button" data-action="new-project"><svg class="lu" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/> <path d="M12 5v14"/></svg>Novo projeto</button>
     </div>
     <div class="kpis" id="kpis"><div class="skel" style="min-height:78px"></div><div class="skel" style="min-height:78px"></div><div class="skel" style="min-height:78px"></div><div class="skel" style="min-height:78px"></div></div>
     <div class="hoje-grid">
@@ -588,6 +650,7 @@ dialog.sheet{border:0;padding:0;margin:0 0 0 auto;height:100%;max-height:100%;wi
     <div class="page-h">
       <div><h1>Projetos</h1><p id="proj-count">&nbsp;</p></div>
       <div class="filters">
+        <button class="btn btn-new press" type="button" data-action="new-project"><svg class="lu" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/> <path d="M12 5v14"/></svg>Novo projeto</button>
         <div class="seg" role="radiogroup" aria-label="Situação dos projetos">
           <button type="button" role="radio" aria-checked="true" data-scope="ativos">Ativos<span class="num" id="n-ativos"></span></button>
           <button type="button" role="radio" aria-checked="false" data-scope="concluidos">Concluídos<span class="num" id="n-concl"></span></button>
@@ -659,6 +722,13 @@ dialog.sheet{border:0;padding:0;margin:0 0 0 auto;height:100%;max-height:100%;wi
     <button class="ibtn" id="sheet-close" type="button" aria-label="Fechar"><svg class="lu" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/> <path d="m6 6 12 12"/></svg></button>
   </div>
   <div class="sheet-b" id="sheet-body"></div>
+</dialog>
+
+<dialog class="page wiz" id="wizard" aria-labelledby="wiz-title">
+  <div class="wiz-h"><span class="avatar" aria-hidden="true"><svg class="lu" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/> <path d="M20 3v4"/> <path d="M22 5h-4"/> <path d="M4 17v2"/> <path d="M5 18H3"/></svg></span><div><h2 id="wiz-title">Novo projeto</h2><p id="wiz-steps"></p></div><button class="ibtn" id="wiz-close" type="button" aria-label="Fechar"><svg class="lu" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/> <path d="m6 6 12 12"/></svg></button></div>
+  <div class="wiz-prog" aria-hidden="true"><i id="wiz-bar"></i></div>
+  <div class="wiz-b" id="wiz-body" aria-live="polite"></div>
+  <div class="wiz-f" id="wiz-foot"><button class="btn" id="wiz-back" type="button"><svg class="lu" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 19-7-7 7-7"/> <path d="M19 12H5"/></svg>Voltar</button><span style="flex:1"></span><button class="btn" id="wiz-edit" type="button" hidden><svg class="lu" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/> <path d="m15 5 4 4"/></svg>Editar</button><button class="btn primary" id="wiz-next" type="button">Continuar</button></div>
 </dialog>
 
 <dialog class="page" id="ppage" aria-labelledby="pg-title"><div id="ppage-body"></div></dialog>
@@ -1061,7 +1131,7 @@ function alerts() {
 
 
 /* Ícones: Lucide v0.460.0, licença ISC (lucide.dev) */
-const LUCIDE = {"arrow-right": "<path d=\"M5 12h14\"/> <path d=\"m12 5 7 7-7 7\"/>", "building-2": "<path d=\"M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z\"/> <path d=\"M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2\"/> <path d=\"M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2\"/> <path d=\"M10 6h4\"/> <path d=\"M10 10h4\"/> <path d=\"M10 14h4\"/> <path d=\"M10 18h4\"/>", "calendar-days": "<path d=\"M8 2v4\"/> <path d=\"M16 2v4\"/> <rect width=\"18\" height=\"18\" x=\"3\" y=\"4\" rx=\"2\"/> <path d=\"M3 10h18\"/> <path d=\"M8 14h.01\"/> <path d=\"M12 14h.01\"/> <path d=\"M16 14h.01\"/> <path d=\"M8 18h.01\"/> <path d=\"M12 18h.01\"/> <path d=\"M16 18h.01\"/>", "check": "<path d=\"M20 6 9 17l-5-5\"/>", "chevron-down": "<path d=\"m6 9 6 6 6-6\"/>", "chevron-left": "<path d=\"m15 18-6-6 6-6\"/>", "chevron-right": "<path d=\"m9 18 6-6-6-6\"/>", "circle-check": "<circle cx=\"12\" cy=\"12\" r=\"10\"/> <path d=\"m9 12 2 2 4-4\"/>", "circle-dashed": "<path d=\"M10.1 2.182a10 10 0 0 1 3.8 0\"/> <path d=\"M13.9 21.818a10 10 0 0 1-3.8 0\"/> <path d=\"M17.609 3.721a10 10 0 0 1 2.69 2.7\"/> <path d=\"M2.182 13.9a10 10 0 0 1 0-3.8\"/> <path d=\"M20.279 17.609a10 10 0 0 1-2.7 2.69\"/> <path d=\"M21.818 10.1a10 10 0 0 1 0 3.8\"/> <path d=\"M3.721 6.391a10 10 0 0 1 2.7-2.69\"/> <path d=\"M6.391 20.279a10 10 0 0 1-2.69-2.7\"/>", "clock": "<circle cx=\"12\" cy=\"12\" r=\"10\"/> <polyline points=\"12 6 12 12 16 14\"/>", "external-link": "<path d=\"M15 3h6v6\"/> <path d=\"M10 14 21 3\"/> <path d=\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"/>", "file-pen-line": "<path d=\"m18 5-2.414-2.414A2 2 0 0 0 14.172 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2\"/> <path d=\"M21.378 12.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z\"/> <path d=\"M8 18h1\"/>", "flag": "<path d=\"M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z\"/> <line x1=\"4\" x2=\"4\" y1=\"22\" y2=\"15\"/>", "folder": "<path d=\"M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z\"/>", "folder-open": "<path d=\"m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2\"/>", "hourglass": "<path d=\"M5 22h14\"/> <path d=\"M5 2h14\"/> <path d=\"M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22\"/> <path d=\"M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2\"/>", "house": "<path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\"/> <path d=\"M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/>", "layout-grid": "<rect width=\"7\" height=\"7\" x=\"3\" y=\"3\" rx=\"1\"/> <rect width=\"7\" height=\"7\" x=\"14\" y=\"3\" rx=\"1\"/> <rect width=\"7\" height=\"7\" x=\"14\" y=\"14\" rx=\"1\"/> <rect width=\"7\" height=\"7\" x=\"3\" y=\"14\" rx=\"1\"/>", "presentation": "<path d=\"M2 3h20\"/> <path d=\"M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3\"/> <path d=\"m7 21 5-5 5 5\"/>", "refresh-cw": "<path d=\"M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8\"/> <path d=\"M21 3v5h-5\"/> <path d=\"M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16\"/> <path d=\"M8 16H3v5\"/>", "send": "<path d=\"M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z\"/> <path d=\"m21.854 2.147-10.94 10.939\"/>", "sofa": "<path d=\"M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3\"/> <path d=\"M2 16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v1.5a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5V11a2 2 0 0 0-4 0z\"/> <path d=\"M4 18v2\"/> <path d=\"M20 18v2\"/> <path d=\"M12 4v9\"/>", "sparkles": "<path d=\"M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z\"/> <path d=\"M20 3v4\"/> <path d=\"M22 5h-4\"/> <path d=\"M4 17v2\"/> <path d=\"M5 18H3\"/>", "triangle-alert": "<path d=\"m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3\"/> <path d=\"M12 9v4\"/> <path d=\"M12 17h.01\"/>", "users": "<path d=\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\"/> <circle cx=\"9\" cy=\"7\" r=\"4\"/> <path d=\"M22 21v-2a4 4 0 0 0-3-3.87\"/> <path d=\"M16 3.13a4 4 0 0 1 0 7.75\"/>", "x": "<path d=\"M18 6 6 18\"/> <path d=\"m6 6 12 12\"/>"};
+const LUCIDE = {"arrow-right": "<path d=\"M5 12h14\"/> <path d=\"m12 5 7 7-7 7\"/>", "building-2": "<path d=\"M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z\"/> <path d=\"M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2\"/> <path d=\"M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2\"/> <path d=\"M10 6h4\"/> <path d=\"M10 10h4\"/> <path d=\"M10 14h4\"/> <path d=\"M10 18h4\"/>", "calendar-days": "<path d=\"M8 2v4\"/> <path d=\"M16 2v4\"/> <rect width=\"18\" height=\"18\" x=\"3\" y=\"4\" rx=\"2\"/> <path d=\"M3 10h18\"/> <path d=\"M8 14h.01\"/> <path d=\"M12 14h.01\"/> <path d=\"M16 14h.01\"/> <path d=\"M8 18h.01\"/> <path d=\"M12 18h.01\"/> <path d=\"M16 18h.01\"/>", "check": "<path d=\"M20 6 9 17l-5-5\"/>", "chevron-down": "<path d=\"m6 9 6 6 6-6\"/>", "chevron-left": "<path d=\"m15 18-6-6 6-6\"/>", "chevron-right": "<path d=\"m9 18 6-6-6-6\"/>", "circle-check": "<circle cx=\"12\" cy=\"12\" r=\"10\"/> <path d=\"m9 12 2 2 4-4\"/>", "circle-dashed": "<path d=\"M10.1 2.182a10 10 0 0 1 3.8 0\"/> <path d=\"M13.9 21.818a10 10 0 0 1-3.8 0\"/> <path d=\"M17.609 3.721a10 10 0 0 1 2.69 2.7\"/> <path d=\"M2.182 13.9a10 10 0 0 1 0-3.8\"/> <path d=\"M20.279 17.609a10 10 0 0 1-2.7 2.69\"/> <path d=\"M21.818 10.1a10 10 0 0 1 0 3.8\"/> <path d=\"M3.721 6.391a10 10 0 0 1 2.7-2.69\"/> <path d=\"M6.391 20.279a10 10 0 0 1-2.69-2.7\"/>", "clock": "<circle cx=\"12\" cy=\"12\" r=\"10\"/> <polyline points=\"12 6 12 12 16 14\"/>", "external-link": "<path d=\"M15 3h6v6\"/> <path d=\"M10 14 21 3\"/> <path d=\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"/>", "file-pen-line": "<path d=\"m18 5-2.414-2.414A2 2 0 0 0 14.172 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2\"/> <path d=\"M21.378 12.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z\"/> <path d=\"M8 18h1\"/>", "flag": "<path d=\"M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z\"/> <line x1=\"4\" x2=\"4\" y1=\"22\" y2=\"15\"/>", "folder": "<path d=\"M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z\"/>", "folder-open": "<path d=\"m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2\"/>", "hourglass": "<path d=\"M5 22h14\"/> <path d=\"M5 2h14\"/> <path d=\"M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22\"/> <path d=\"M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2\"/>", "house": "<path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\"/> <path d=\"M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/>", "layout-grid": "<rect width=\"7\" height=\"7\" x=\"3\" y=\"3\" rx=\"1\"/> <rect width=\"7\" height=\"7\" x=\"14\" y=\"3\" rx=\"1\"/> <rect width=\"7\" height=\"7\" x=\"14\" y=\"14\" rx=\"1\"/> <rect width=\"7\" height=\"7\" x=\"3\" y=\"14\" rx=\"1\"/>", "presentation": "<path d=\"M2 3h20\"/> <path d=\"M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3\"/> <path d=\"m7 21 5-5 5 5\"/>", "refresh-cw": "<path d=\"M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8\"/> <path d=\"M21 3v5h-5\"/> <path d=\"M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16\"/> <path d=\"M8 16H3v5\"/>", "send": "<path d=\"M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z\"/> <path d=\"m21.854 2.147-10.94 10.939\"/>", "sofa": "<path d=\"M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3\"/> <path d=\"M2 16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v1.5a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5V11a2 2 0 0 0-4 0z\"/> <path d=\"M4 18v2\"/> <path d=\"M20 18v2\"/> <path d=\"M12 4v9\"/>", "sparkles": "<path d=\"M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z\"/> <path d=\"M20 3v4\"/> <path d=\"M22 5h-4\"/> <path d=\"M4 17v2\"/> <path d=\"M5 18H3\"/>", "triangle-alert": "<path d=\"m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3\"/> <path d=\"M12 9v4\"/> <path d=\"M12 17h.01\"/>", "users": "<path d=\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\"/> <circle cx=\"9\" cy=\"7\" r=\"4\"/> <path d=\"M22 21v-2a4 4 0 0 0-3-3.87\"/> <path d=\"M16 3.13a4 4 0 0 1 0 7.75\"/>", "x": "<path d=\"M18 6 6 18\"/> <path d=\"m6 6 12 12\"/>", "plus": "<path d=\"M5 12h14\"/> <path d=\"M12 5v14\"/>", "user-round": "<circle cx=\"12\" cy=\"8\" r=\"5\"/> <path d=\"M20 21a8 8 0 0 0-16 0\"/>", "hammer": "<path d=\"m15 12-8.373 8.373a1 1 0 1 1-3-3L12 9\"/> <path d=\"m18 15 4-4\"/> <path d=\"m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172V7l-2.26-2.26a6 6 0 0 0-4.202-1.756L9 2.96l.92.82A6.18 6.18 0 0 1 12 8.4V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5\"/>", "trees": "<path d=\"M10 10v.2A3 3 0 0 1 8.9 16H5a3 3 0 0 1-1-5.8V10a3 3 0 0 1 6 0Z\"/> <path d=\"M7 16v6\"/> <path d=\"M13 19v3\"/> <path d=\"M12 19h8.3a1 1 0 0 0 .7-1.7L18 14h.3a1 1 0 0 0 .7-1.7L16 9h.2a1 1 0 0 0 .8-1.7L13 3l-1.4 1.5\"/>", "messages-square": "<path d=\"M14 9a2 2 0 0 1-2 2H6l-4 4V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2z\"/> <path d=\"M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1\"/>", "store": "<path d=\"m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7\"/> <path d=\"M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8\"/> <path d=\"M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4\"/> <path d=\"M2 7h20\"/> <path d=\"M22 7v3a2 2 0 0 1-2 2a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12a2 2 0 0 1-2-2V7\"/>", "utensils": "<path d=\"M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2\"/> <path d=\"M7 2v20\"/> <path d=\"M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7\"/>", "stethoscope": "<path d=\"M11 2v2\"/> <path d=\"M5 2v2\"/> <path d=\"M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1\"/> <path d=\"M8 15a6 6 0 0 0 12 0v-3\"/> <circle cx=\"20\" cy=\"10\" r=\"2\"/>", "briefcase": "<path d=\"M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16\"/> <rect width=\"20\" height=\"14\" x=\"2\" y=\"6\" rx=\"2\"/>", "shapes": "<path d=\"M8.3 10a.7.7 0 0 1-.626-1.079L11.4 3a.7.7 0 0 1 1.198-.043L16.3 8.9a.7.7 0 0 1-.572 1.1Z\"/> <rect x=\"3\" y=\"14\" width=\"7\" height=\"7\" rx=\"1\"/> <circle cx=\"17.5\" cy=\"17.5\" r=\"3.5\"/>", "ruler": "<path d=\"M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z\"/> <path d=\"m14.5 12.5 2-2\"/> <path d=\"m11.5 9.5 2-2\"/> <path d=\"m8.5 6.5 2-2\"/> <path d=\"m17.5 15.5 2-2\"/>", "pencil": "<path d=\"M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z\"/> <path d=\"m15 5 4 4\"/>", "arrow-left": "<path d=\"m12 19-7-7 7-7\"/> <path d=\"M19 12H5\"/>"};
 const svgI = (n) => `<svg class="lu" viewBox="0 0 24 24" aria-hidden="true">${LUCIDE[n] || LUCIDE.folder}</svg>`;
 const icBadge = (n, tone, size) => `<span class="ic${size ? " " + size : ""} ${tone || ""}" aria-hidden="true">${svgI(n)}</span>`;
 function typeIcon(card) {
@@ -1815,6 +1885,323 @@ function openMeeting(m) {
   if (!dlg.open) { if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", ""); }
 }
 
+
+/* ================= novo projeto (cadastro guiado pelas regras do MAX) ================= */
+const MAX_TIPOS = {
+  "Interiores": [
+    { id: "INT_TERREA", label: "Casa Térrea", tipo: "Interiores Casa Térrea", du: 25 },
+    { id: "INT_SOBRADO", label: "Sobrado", tipo: "Interiores Sobrado", du: 40 },
+    { id: "INT_COMERCIAL", label: "Comercial", tipo: "Interiores Comercial", du: 30 },
+    { id: "INT_AVULSOS", label: "Avulsos (poucos ambientes)", tipo: "Interiores Avulsos", du: null },
+  ],
+  "Arquitetônico": [
+    { id: "ARQ_CONSTRUTOR", label: "Construtor", tipo: "Arquitetônico Construtor", du: 10 },
+    { id: "ARQ_CLIENTE", label: "Cliente Final", tipo: "Arquitetônico Cliente Final", du: 15 },
+    { id: "ARQ_COMERCIAL", label: "Comercial", tipo: "Arquitetônico Comercial", du: 15 },
+  ],
+};
+MAX_TIPOS["Arquitetônico + Interiores"] = MAX_TIPOS["Arquitetônico"].map((x) => ({ ...x, id: "AI_" + x.id, label: `Fase 1: ${x.label}`, tipo: "Arquitetônico + Interiores", fase1: x.tipo }));
+const CATS = [["Interiores", "sofa"], ["Arquitetônico", "building-2"], ["Arquitetônico + Interiores", "house"], ["Reforma", "hammer"], ["Paisagismo", "trees"], ["Consultoria", "messages-square"], ["Outro", "shapes"]];
+const PERFIS = [["Residencial", "house"], ["Corporativo", "briefcase"], ["Loja", "store"], ["Restaurante", "utensils"], ["Clínica", "stethoscope"], ["Área externa", "trees"], ["Outro", "shapes"]];
+const FASES = ["Novo cliente", "Briefing realizado", "Levantamento iniciado", "Estudo preliminar", "Projeto em andamento", "Revisão", "Finalização"];
+const TAMANHOS = ["Pequeno", "Médio", "Grande", "Alto padrão"];
+const AMBIENTES = ["Sala", "Cozinha", "Área gourmet", "Quarto", "Suíte", "Closet", "Banheiro", "Área de serviço", "Escritório", "Fachada", "Recepção", "Área externa"];
+const PRIOS = [["Alta", "t-crit"], ["Média", "t-orange"], ["Baixa", "t-olive"]];
+const SUBPASTAS = ["01_BRIEFING", "02_EXECUTIVOS", "03_DETALHAMENTOS", "04_3D", "05_RENDERS", "06_ARQUIVOS_FINAIS"];
+const WSTEPS = ["Cliente", "Tipo", "Perfil", "Fase", "Responsável", "Equipe", "Prazos", "Prioridade", "Tamanho", "Observações", "Resumo"];
+let W = null;
+function newW() { return { step: 0, nome: "", empresa: "", tel: "", email: "", cat: "", catOutro: "", sub: "", perfil: "", perfilOutro: "", fase: "", resp: "", respOutro: "", equipe: [], inicio: "", temCliente: "", prazoCliente: "", temInterno: "", prazoInterno: "", prio: "", tam: "", amb: [], escopo: "", obs: "", dupOk: false, status: "edit", log: [], result: null }; }
+const wSub = () => (W.sub && MAX_TIPOS[W.cat] ? MAX_TIPOS[W.cat].find((x) => x.id === W.sub) : null);
+function wTipo() {
+  const s = wSub();
+  if (s) return s.tipo;
+  return W.cat === "Outro" ? W.catOutro.trim() : W.cat;
+}
+function wRespName() { return W.resp === "__outro" ? W.respOutro.trim() : (people().find((p) => p.key === W.resp) || {}).full || ""; }
+function wTeamNames() {
+  const ps = people();
+  const names = W.equipe.map((k) => (ps.find((p) => p.key === k) || {}).full).filter(Boolean);
+  const r = wRespName();
+  if (r && !names.some((n) => norm(n) === norm(r))) names.unshift(r);
+  return names;
+}
+function wStart() { return W.inicio ? (isBD(W.inicio) ? W.inicio : addBD(W.inicio, 1)) : ""; }
+function wMaxPrazo() {
+  const s = wSub();
+  if (!s || !s.du || !W.inicio) return null;
+  return { du: s.du, key: addBD(wStart(), s.du - 1), fase1: s.fase1 || "" };
+}
+function wPrazoOficial() {
+  if (W.temCliente === "sim" && isKey(W.prazoCliente)) return { key: W.prazoCliente, fonte: "cliente" };
+  const m = wMaxPrazo();
+  return m ? { key: m.key, fonte: "max", du: m.du } : null;
+}
+function wEspecial() {
+  const m = wMaxPrazo();
+  return m && W.temCliente === "sim" && isKey(W.prazoCliente) && W.prazoCliente < m.key ? m : null;
+}
+function wLista() {
+  const arq = /ARQUITET/.test(norm(wTipo())) && !/INTERIOR/.test(norm(wTipo()));
+  const map = { "Novo cliente": "A INICIAR", "Briefing realizado": "A INICIAR", "Levantamento iniciado": "A INICIAR", "Estudo preliminar": arq ? "FASE PLANTA BAIXA" : "FASE AMBIENTAÇÕES", "Projeto em andamento": arq ? "FASE PLANTA BAIXA" : "FASE DETALHAMENTO EXECUTIVO", "Revisão": "FASE FINALIZAÇÃO", "Finalização": "FASE FINALIZAÇÃO" };
+  return map[W.fase] || "A INICIAR";
+}
+function wDup() {
+  const n = norm(W.nome);
+  if (!n) return null;
+  return state.cards.find((c) => c.kind === "projeto" && !c.done && norm(c.name).startsWith(n)) || null;
+}
+function wCapacity() {
+  const ps = people(), out = [];
+  for (const nm of wTeamNames()) {
+    const p = ps.find((x) => norm(x.full) === norm(nm));
+    if (!p) continue;
+    const d = personData(p);
+    if (d.carga === "atencao" || d.carga === "critico") out.push(`${p.full}: carga ${d.carga === "critico" ? "crítica" : "em atenção"} (${d.ativas.length} etapas ativas)`);
+  }
+  return out;
+}
+function wValid(i) {
+  switch (i) {
+    case 0: return W.nome.trim().length >= 2;
+    case 1: return W.cat && (W.cat !== "Outro" || W.catOutro.trim()) && (!MAX_TIPOS[W.cat] || W.sub);
+    case 2: return W.perfil && (W.perfil !== "Outro" || W.perfilOutro.trim());
+    case 3: return !!W.fase;
+    case 4: return W.resp && (W.resp !== "__outro" || W.respOutro.trim());
+    case 5: return wTeamNames().length > 0;
+    case 6: return (W.temCliente === "nao" || (W.temCliente === "sim" && isKey(W.prazoCliente))) && (W.temInterno === "nao" || (W.temInterno === "sim" && isKey(W.prazoInterno))) && (!W.inicio || isKey(W.inicio));
+    case 7: return !!W.prio;
+    case 8: return !!W.tam;
+    default: return true;
+  }
+}
+const opt = (group, val, label, icon, on, tone, sub) => `<button type="button" class="opt${on ? " on" : ""}" data-w="${group}" data-v="${esc(val)}" aria-pressed="${on}">${icon ? icBadge(icon, tone || (on ? "t-petrol" : ""), "sm") : ""}<span>${esc(label)}${sub ? `<small>${esc(sub)}</small>` : ""}</span></button>`;
+const yn = (group, cur) => `<div class="opts two-col">${opt(group, "sim", "Sim", "check", cur === "sim")}${opt(group, "nao", "Não", "x", cur === "nao")}</div>`;
+const inp = (id, label, val, type, ph) => `<label class="wf"><span>${esc(label)}</span><input id="${id}" data-f="${id.slice(2)}" type="${type || "text"}" value="${esc(val)}" placeholder="${esc(ph || "")}" autocomplete="off"></label>`;
+function wStepHTML() {
+  const t = today();
+  switch (W.step) {
+    case 0: return `<h3 class="wq">Quem é o cliente?</h3>
+      ${inp("w-nome", "Nome do cliente", W.nome, "text", "Ex.: Maria Silva")}
+      <div class="wgrid">${inp("w-empresa", "Empresa (opcional)", W.empresa)}${inp("w-tel", "Telefone (opcional)", W.tel, "tel")}${inp("w-email", "E-mail (opcional)", W.email, "email")}</div>
+      ${wDup() ? `<p class="wwarn">${svgI("triangle-alert")}Já existe um projeto ativo com esse nome no Trello: ${esc(wDup().title)}. Confira antes de continuar.</p>` : ""}`;
+    case 1: {
+      const subs = MAX_TIPOS[W.cat];
+      return `<h3 class="wq">Qual tipo de projeto?</h3><div class="opts">${CATS.map(([c, ic]) => opt("cat", c, c, ic, W.cat === c)).join("")}</div>
+        ${W.cat === "Outro" ? inp("w-catOutro", "Digite o tipo", W.catOutro) : ""}
+        ${subs ? `<h4 class="wq2">Tipo oficial do MAX</h4><div class="opts">${subs.map((s) => opt("sub", s.id, s.label, "", W.sub === s.id, "", s.du ? `Prazo padrão: ${s.du} dias úteis` : "Prazo calculado pelos ambientes, com o MAX")).join("")}</div>` : ""}
+        ${W.cat && !subs ? `<p class="wnote">${esc(W.cat === "Outro" ? "Tipo sem tabela de prazo no MAX" : W.cat + " não tem tabela de prazo no MAX")}: o prazo oficial vem só da data do cliente.</p>` : ""}`;
+    }
+    case 2: return `<h3 class="wq">Qual é o perfil do projeto?</h3><div class="opts">${PERFIS.map(([p, ic]) => opt("perfil", p, p, ic, W.perfil === p)).join("")}</div>${W.perfil === "Outro" ? inp("w-perfilOutro", "Digite o perfil", W.perfilOutro) : ""}`;
+    case 3: return `<h3 class="wq">Em qual etapa o projeto está entrando?</h3><div class="opts">${FASES.map((f, i) => opt("fase", f, f, "", W.fase === f, "", "")).join("")}</div>${W.fase ? `<p class="wnote">O card entra na lista <b>${esc(wLista())}</b> do Trello.</p>` : ""}`;
+    case 4: {
+      const ps = people();
+      return `<h3 class="wq">Quem será responsável pelo projeto?</h3><div class="opts">${ps.map((p) => opt("resp", p.key, p.full, "user-round", W.resp === p.key)).join("")}${opt("resp", "__outro", "Outra pessoa", "user-round", W.resp === "__outro")}</div>
+        ${W.resp === "__outro" ? inp("w-respOutro", "Nome completo", W.respOutro) + `<p class="wnote">Essa pessoa ainda não aparece nos cards do Trello. Confira o nome antes de criar.</p>` : ""}`;
+    }
+    case 5: {
+      const ps = people();
+      return `<h3 class="wq">Quem participa deste projeto?</h3><p class="wnote" style="margin-top:0">Pode marcar mais de uma pessoa.</p><div class="opts">${ps.map((p) => opt("eq", p.key, p.full, W.equipe.includes(p.key) ? "check" : "user-round", W.equipe.includes(p.key) || p.key === W.resp)).join("")}</div>`;
+    }
+    case 6: {
+      const m = wMaxPrazo(), sp = wEspecial(), s = wSub();
+      return `<h3 class="wq">Datas do projeto</h3>
+        ${inp("w-inicio", "Data de início (usada no cálculo do MAX)", W.inicio, "date")}
+        <h4 class="wq2">Existe prazo definido pelo cliente?</h4>${yn("temCliente", W.temCliente)}
+        ${W.temCliente === "sim" ? inp("w-prazoCliente", "Data de entrega combinada", W.prazoCliente, "date") : ""}
+        <div class="wcalc">${m ? `${svgI("sparkles")}<span>Prazo pelas regras do MAX: <b>${m.du} dias úteis</b>${m.fase1 ? " (Fase 1, arquitetônico)" : ""} a partir de ${dmy(wStart())} = <b>${wdShort(m.key)} ${dmy(m.key)}</b>.</span>` : `${svgI("calendar-days")}<span>${s && !s.du ? "Esse tipo não tem prazo fixo no MAX." : !s ? "Esse tipo não tem tabela de prazo no MAX." : "Informe a data de início para o MAX calcular o prazo."}${W.temCliente !== "sim" ? " Sem data do cliente, o projeto fica sem prazo oficial até o MAX definir." : ""}</span>`}</div>
+        ${sp ? `<p class="wwarn">${svgI("triangle-alert")}ATENÇÃO: PRAZO ESPECIAL. A data do cliente (${dmy(W.prazoCliente)}) é menor que o prazo padrão do MAX (${dmy(sp.key)}).</p>` : ""}
+        <h4 class="wq2">Existe prazo interno?</h4>${yn("temInterno", W.temInterno)}
+        ${W.temInterno === "sim" ? inp("w-prazoInterno", "Data do prazo interno", W.prazoInterno, "date") : ""}`;
+    }
+    case 7: return `<h3 class="wq">Qual prioridade?</h3><div class="opts three">${PRIOS.map(([p, tone]) => opt("prio", p, p, p === "Alta" ? "triangle-alert" : p === "Média" ? "flag" : "circle-check", W.prio === p, tone)).join("")}</div>`;
+    case 8: return `<h3 class="wq">Qual o tamanho do projeto?</h3><div class="opts">${TAMANHOS.map((x) => opt("tam", x, x, "ruler", W.tam === x)).join("")}</div>
+      <h4 class="wq2">Ambientes do escopo (opcional)</h4><div class="chips">${AMBIENTES.map((a) => `<button type="button" class="wchip${W.amb.includes(a) ? " on" : ""}" data-w="amb" data-v="${esc(a)}" aria-pressed="${W.amb.includes(a)}">${esc(a)}</button>`).join("")}</div>
+      ${inp("w-escopo", "Detalhe do escopo (opcional)", W.escopo, "text", "Ex.: 2 quartos e cozinha")}`;
+    case 9: return `<h3 class="wq">Algo importante que o MAX precisa saber?</h3><label class="wf"><span>Observações (opcional)</span><textarea id="w-obs" data-f="obs" rows="5" placeholder="Ex.: cliente quer entrega antes do Natal">${esc(W.obs)}</textarea></label>`;
+    default: return wSummaryHTML();
+  }
+}
+function wRows() {
+  const po = wPrazoOficial();
+  return [
+    ["Cliente", W.nome.trim() + (W.empresa.trim() ? ` (${W.empresa.trim()})` : "")],
+    ["Contato", [W.tel.trim(), W.email.trim()].filter(Boolean).join(" · ") || "Não informado"],
+    ["Tipo", wTipo()],
+    ["Perfil", W.perfil === "Outro" ? W.perfilOutro.trim() : W.perfil],
+    ["Fase inicial", `${W.fase} (lista ${wLista()})`],
+    ["Responsável", wRespName()],
+    ["Equipe", wTeamNames().join(", ")],
+    ["Início", W.inicio ? dmy(W.inicio) : "Não informado"],
+    ["Prazo oficial", po ? `${dmy(po.key)} (${po.fonte === "cliente" ? "data do cliente" : `calculado pelas regras do MAX, ${po.du} dias úteis`})` : "Sem prazo: o MAX define depois"],
+    ["Prazo interno", W.temInterno === "sim" ? dmy(W.prazoInterno) : "Não definido"],
+    ["Prioridade", W.prio],
+    ["Tamanho", W.tam],
+    ["Escopo", [W.amb.join(", "), W.escopo.trim()].filter(Boolean).join(". ") || "A definir"],
+    ["Observações", W.obs.trim() || "Nenhuma"],
+  ];
+}
+function wSummaryHTML() {
+  const cap = wCapacity(), sp = wEspecial(), dup = wDup();
+  const risks = [...cap.map((x) => `ATENÇÃO DE CAPACIDADE. ${x}`), sp ? `PRAZO ESPECIAL: cliente ${dmy(W.prazoCliente)}, padrão do MAX ${dmy(sp.key)}.` : ""].filter(Boolean);
+  return `<h3 class="wq">Confira antes de criar</h3>
+    <div class="wsum"><div class="wsum-h">${icBadge(typeIcon({ kind: "projeto", name: wTipo(), desc: "" }), "t-petrol")}<div><b>${esc(W.nome.trim().toUpperCase())}</b><span>${esc(wTipo())}</span></div><span class="chip ${W.prio === "Alta" ? "pr-alta" : W.prio === "Média" ? "pr-media" : "pr-baixa"}">Prioridade ${esc(W.prio.toLowerCase())}</span></div>
+    <dl class="facts" style="font-size:14px;gap:8px 18px">${wRows().map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("")}</dl></div>
+    ${risks.length ? `<div class="wwarn col">${risks.map((r) => `<span>${svgI("triangle-alert")}${esc(r)}</span>`).join("")}</div>` : ""}
+    <div class="wcreate"><b>Ao confirmar, o painel cria:</b><ul>
+      <li>Card principal na lista ${esc(wLista())} do quadro ESCRITÓRIO DAYSE LACERDA</li>
+      <li>Card de apresentação na lista APRESENTAÇÃO (data oficial definida depois pelo MAX)</li>
+      <li>Card na lista ENTREGA FINAL${wPrazoOficial() ? ` com data ${dmy(wPrazoOficial().key)}` : " (sem data até o MAX definir)"}</li>
+      <li>Pasta "${esc(wFolderName())}" em ESC. DAYSE LACERDA / ${esc(wYear())}, com ${SUBPASTAS.join(", ")}</li></ul></div>
+    ${dup ? `<label class="check" style="border-radius:14px">${"<input type=\"checkbox\" id=\"w-dupok\"" + (W.dupOk ? " checked" : "") + ">"}<span>Já existe o projeto "${esc(dup.title)}" no Trello. Confirmo que este é um projeto novo.</span></label>` : ""}`;
+}
+const wFolderName = () => `${W.nome.trim().toUpperCase().replace(/[\\/:*?"<>|]/g, "").replace(/\s+/g, " ")} - ${wTipo().toUpperCase()}`;
+const wYear = () => (W.inicio || today()).slice(0, 4);
+function wCardName() {
+  const team = wTeamNames().map((n) => norm(n.split(/\s+/)[0]));
+  return `${W.nome.trim().toUpperCase()} - ${wTipo().toUpperCase()}${team.length ? ` (${team.join("/")})` : ""}`;
+}
+function wDesc(cardUrl) {
+  const po = wPrazoOficial(), sp = wEspecial(), cap = wCapacity(), now = new Date();
+  const L = [
+    `TIPO: ${wTipo()}`,
+    `CLIENTE: ${W.nome.trim()}`,
+    W.empresa.trim() ? `EMPRESA: ${W.empresa.trim()}` : "",
+    (W.tel.trim() || W.email.trim()) ? `CONTATO: ${[W.tel.trim(), W.email.trim()].filter(Boolean).join(" / ")}` : "",
+    `PERFIL: ${W.perfil === "Outro" ? W.perfilOutro.trim() : W.perfil}`,
+    `INÍCIO: ${W.inicio ? dmy(W.inicio) : "não informado"}`,
+    `PRAZO OFICIAL: ${po ? (po.fonte === "cliente" ? `data combinada com o cliente` : `${po.du} dias úteis (calculado pelas regras do MAX${wMaxPrazo() && wMaxPrazo().fase1 ? ", Fase 1 arquitetônico" : ""})`) : "a definir pelo MAX"}`,
+    `ENTREGA PREVISTA: ${po ? dmy(po.key) : "a definir"}`,
+    `PRAZO INTERNO: ${W.temInterno === "sim" ? dmy(W.prazoInterno) : "não definido"}`,
+    `ESCOPO/AMBIENTES: ${[W.amb.join(", "), W.escopo.trim()].filter(Boolean).join(". ") || "A definir"}`,
+    `TAMANHO: ${W.tam}`,
+    "",
+    `RESPONSÁVEL PRINCIPAL: ${wRespName()}`,
+    `EQUIPE: ${wTeamNames().join(", ")}`,
+    `RESPONSÁVEIS POR ETAPA: a definir com o MAX`,
+    "",
+    `FASE INICIAL: ${W.fase}`,
+    `URGÊNCIA/PRIORIDADE: ${W.prio}`,
+    `OBSERVAÇÕES: ${W.obs.trim() || "Sem observações."}`,
+  ];
+  const risks = [...cap, sp ? `Prazo especial: data do cliente ${dmy(W.prazoCliente)} menor que o padrão do MAX (${dmy(sp.key)}).` : "", "Prazo calculado sem feriados municipais de João Pessoa."].filter(Boolean);
+  L.push("", `RISCO REGISTRADO NA CRIAÇÃO (${dmy(ymd(now))}):`, ...risks.map((r) => `- ${r}`));
+  L.push("", `CADASTRO: via Painel em ${dmy(ymd(now))} ${fTime.format(now)}${state.me ? ` (confirmado por ${state.me})` : ""}.`);
+  return L.filter((x, i, a) => x !== "" || (i > 0 && a[i - 1] !== "")).join("\n");
+}
+function wNext() {
+  const out = [];
+  if (W.fase === "Novo cliente") out.push("Agendar a reunião de briefing com o cliente. A LUISA organiza o briefing depois.");
+  if (W.fase === "Briefing realizado") out.push("Consolidar o briefing com a LUISA antes de iniciar a produção.");
+  if (!wPrazoOficial()) out.push("Definir o prazo oficial com o MAX.");
+  if (wEspecial()) out.push("Confirmar o prazo especial com a direção.");
+  out.push(`Pedir ao MAX a data oficial da apresentação e os responsáveis por etapa (/cliente ${W.nome.trim()}).`);
+  if (wCapacity().length) out.push("Rever a carga da equipe com o MAX (/capacidade).");
+  return out;
+}
+function renderWizard() {
+  const box = $("wiz-body");
+  if (W.status === "done" || W.status === "creating" || W.status === "failed") { box.innerHTML = wResultHTML(); $("wiz-bar").style.setProperty("--p", "100%"); $("wiz-steps").textContent = W.status === "creating" ? "Criando…" : W.status === "done" ? "Concluído" : "Interrompido"; $("wiz-foot").hidden = true; return; }
+  $("wiz-foot").hidden = false;
+  $("wiz-bar").style.setProperty("--p", `${Math.round(((W.step + 1) / WSTEPS.length) * 100)}%`);
+  $("wiz-steps").textContent = `Etapa ${W.step + 1} de ${WSTEPS.length} · ${WSTEPS[W.step]}`;
+  box.innerHTML = wStepHTML();
+  const last = W.step === WSTEPS.length - 1;
+  $("wiz-back").hidden = W.step === 0;
+  const nx = $("wiz-next");
+  nx.innerHTML = last ? `${svgI("check")}Confirmar criação` : `Continuar${svgI("arrow-right")}`;
+  nx.classList.toggle("primary", true);
+  nx.disabled = last ? !!(wDup() && !W.dupOk) || !!state.err.trello : !wValid(W.step);
+  $("wiz-edit").hidden = !last;
+  if (!reduce.matches && box.animate) box.animate([{ opacity: 0, transform: "translateX(12px)" }, { opacity: 1, transform: "none" }], { duration: 240, easing: "cubic-bezier(.23,1,.32,1)" });
+}
+function wResultHTML() {
+  const r = W.result || {};
+  const logs = W.log.map((x) => `<li class="${x.ok ? "ok" : x.ok === false ? "err" : ""}">${svgI(x.ok ? "circle-check" : x.ok === false ? "triangle-alert" : "sparkles")}<span>${esc(x.t)}</span></li>`).join("");
+  if (W.status === "creating") return `<h3 class="wq">Criando o projeto…</h3><ul class="wlog">${logs}</ul>`;
+  if (W.status === "failed") return `<h3 class="wq">A criação parou no meio</h3><ul class="wlog">${logs}</ul>
+    <p class="wwarn">${svgI("triangle-alert")}Nada foi desfeito. Confira no Trello e no Drive o que já foi criado antes de tentar de novo, para não duplicar. Se preferir, peça ao MAX para completar.</p>
+    <div class="links">${r.cardUrl ? `<a href="${esc(r.cardUrl)}" target="_blank" rel="noopener">${svgI("external-link")}Card no Trello</a>` : ""}${r.folderUrl ? `<a href="${esc(r.folderUrl)}" target="_blank" rel="noopener">${svgI("folder-open")}Pasta no Drive</a>` : ""}</div>
+    <div class="u-row" style="margin-top:8px"><button class="btn" type="button" data-wclose>Fechar</button></div>`;
+  return `<div class="wdone">${icBadge("circle-check", "t-olive", "big")}<div><h3 class="wq" style="margin:0">Projeto criado com sucesso.</h3><p class="muted" style="margin:4px 0 0">${esc(W.nome.trim())} · ${esc(wTipo())}</p></div></div>
+    <div class="links">${r.cardUrl ? `<a href="${esc(r.cardUrl)}" target="_blank" rel="noopener">${svgI("external-link")}Card no Trello</a>` : ""}${r.folderUrl ? `<a href="${esc(r.folderUrl)}" target="_blank" rel="noopener">${svgI("folder-open")}Pasta no Drive</a>` : ""}</div>
+    <dl class="facts" style="font-size:14.5px;gap:8px 18px"><dt>Responsável</dt><dd>${esc(wRespName())}</dd><dt>Prazo oficial</dt><dd>${wPrazoOficial() ? dmy(wPrazoOficial().key) : "A definir pelo MAX"}</dd><dt>Lista no Trello</dt><dd>${esc(wLista())}</dd></dl>
+    <div class="wcreate"><b>Próxima ação recomendada (regras do MAX)</b><ul>${wNext().map((x) => `<li>${esc(x)}</li>`).join("")}</ul></div>
+    <ul class="wlog">${logs}</ul>
+    <div class="u-row"><button class="btn primary" type="button" data-wclose>Concluir</button></div>`;
+}
+function findUrl(o, rx) {
+  if (!o) return "";
+  if (typeof o === "string") return rx.test(o) ? o : "";
+  if (typeof o === "object") for (const v of Object.values(o)) { const u = findUrl(v, rx); if (u) return u; }
+  return "";
+}
+async function wCreate() {
+  W.status = "creating"; W.log = []; W.result = {};
+  const step = (t) => { W.log.push({ t, ok: null }); renderWizard(); return W.log.length - 1; };
+  const done = (i, t) => { W.log[i] = { t, ok: true }; renderWizard(); };
+  const fail = (i, e, srv) => { W.log[i] = { t: `${W.log[i].t.replace("…", "")}: ${mcpMsg(e, srv)}`, ok: false }; W.status = "failed"; renderWizard(); };
+  const po = wPrazoOficial(), due = po ? isoAt(po.key, "17:00") : null;
+  const lst = listByName(wLista()), apL = listByName("APRESENTAÇÃO"), enL = listByName("ENTREGA FINAL");
+  renderWizard();
+  let i = step("Criando o card principal no Trello…"), main;
+  try {
+    if (!lst) throw { code: "tool_error", message: `lista ${wLista()} não encontrada` };
+    const input = { action: "create", listId: lst.id, name: wCardName(), desc: wDesc(), pos: "bottom" };
+    if (due) input.due = due;
+    main = await write(TRELLO, "trelloWriteCard", input);
+    W.result.cardUrl = findUrl(main, /trello\.com\/c\//);
+    W.result.cardId = (main && (main.id || (main.card && main.card.id) || (main.data && main.data.id))) || ((W.result.cardUrl.match(/trello\.com\/c\/([^/?#]+)/) || [])[1] || "");
+    done(i, "Card principal criado no Trello.");
+  } catch (e) { return fail(i, e, TRELLO); }
+  const link = W.result.cardUrl ? `\nProjeto principal: ${W.result.cardUrl}` : "";
+  i = step("Criando o card de apresentação…");
+  try {
+    if (!apL) throw { code: "tool_error", message: "lista APRESENTAÇÃO não encontrada" };
+    await write(TRELLO, "trelloWriteCard", { action: "create", listId: apL.id, name: `REUNIÃO DE APRESENTAÇÃO — ${W.nome.trim().toUpperCase()}`, desc: `Cliente: ${W.nome.trim()}\nTipo: ${wTipo()}${link}\nDATA OFICIAL: a definir pelo MAX.\nCriado pelo Painel no cadastro do projeto.`, pos: "bottom" });
+    done(i, "Card de apresentação criado.");
+  } catch (e) { return fail(i, e, TRELLO); }
+  i = step("Criando o card de entrega final…");
+  try {
+    if (!enL) throw { code: "tool_error", message: "lista ENTREGA FINAL não encontrada" };
+    const inp2 = { action: "create", listId: enL.id, name: `ENTREGA FINAL — ${W.nome.trim().toUpperCase()}`, desc: `Cliente: ${W.nome.trim()}\nTipo: ${wTipo()}${link}\nEntrega prevista: ${po ? dmy(po.key) + (po.fonte === "cliente" ? " (data do cliente)" : ` (${po.du} dias úteis, regras do MAX)`) : "a definir pelo MAX"}.`, pos: "bottom" };
+    if (due) inp2.due = due;
+    await write(TRELLO, "trelloWriteCard", inp2);
+    done(i, "Card de entrega final criado.");
+  } catch (e) { return fail(i, e, TRELLO); }
+  i = step("Criando a pasta no Google Drive…");
+  try {
+    const roots = (await driveList(`mimeType = '${FOLDER}' and title = '${qEsc(CONFIG.driveRoot)}'`)).filter((f) => norm(f.title) === norm(CONFIG.driveRoot));
+    if (!roots.length) throw { code: "tool_error", message: `pasta ${CONFIG.driveRoot} não encontrada` };
+    const root = roots[0], yr = wYear();
+    let year = (await driveList(`parentId = '${qEsc(root.id)}' and mimeType = '${FOLDER}' and title = '${yr}'`)).find((f) => String(f.title).trim() === yr);
+    if (!year) year = await write(DRIVE, "create_file", { title: yr, contentMimeType: FOLDER, parentId: root.id });
+    const name = wFolderName();
+    let proj = (await driveList(`parentId = '${qEsc(year.id)}' and mimeType = '${FOLDER}' and title = '${qEsc(name)}'`)).find((f) => norm(f.title) === norm(name));
+    const existed = !!proj;
+    if (!proj) proj = await write(DRIVE, "create_file", { title: name, contentMimeType: FOLDER, parentId: year.id });
+    const kids = existed ? await driveList(`parentId = '${qEsc(proj.id)}' and mimeType = '${FOLDER}'`) : [];
+    for (const sp of SUBPASTAS) if (!kids.some((k) => norm(k.title) === norm(sp))) await write(DRIVE, "create_file", { title: sp, contentMimeType: FOLDER, parentId: proj.id });
+    W.result.folderUrl = proj.viewUrl || "";
+    done(i, existed ? "A pasta já existia no Drive; as subpastas que faltavam foram criadas." : "Pasta e subpastas criadas no Drive.");
+  } catch (e) { return fail(i, e, DRIVE); }
+  if (W.result.cardId && W.result.folderUrl) {
+    i = step("Registrando a pasta no card…");
+    try { await write(TRELLO, "trelloWriteCard", { action: "add_comment", cardId: W.result.cardId, text: `${auditHeader()}\nPASTA NO DRIVE: ${W.result.folderUrl}` }); done(i, "Link da pasta registrado no card."); }
+    catch (e) { return fail(i, e, TRELLO); }
+  }
+  W.status = "done"; renderWizard();
+  const mcp = await mcpP; if (mcp && mcp.invalidate) await mcp.invalidate().catch(() => {});
+  loadAll(false);
+}
+function openWizard() {
+  if (!state.loadedAt || state.err.trello) { $("page-err").innerHTML = `<div class="errbox" role="alert">O Trello precisa estar carregado para cadastrar um projeto. Toque em atualizar e tente de novo.</div>`; return; }
+  W = newW();
+  const d = $("wizard");
+  renderWizard();
+  if (!d.open) { if (d.showModal) d.showModal(); else d.setAttribute("open", ""); }
+  setTimeout(() => { const f = $("w-nome"); if (f) f.focus(); }, 60);
+}
+
 /* ---------- navegação ---------- */
 const VIEWS = ["hoje", "projetos", "reunioes", "equipe"];
 function showView(v, animate) {
@@ -2212,6 +2599,38 @@ $("ppage").addEventListener("click", (e) => {
   }
 });
 $("fab").addEventListener("click", () => focusMax());
+document.querySelectorAll('[data-action="new-project"]').forEach((b) => b.addEventListener("click", openWizard));
+const wizD = $("wizard");
+function wRefreshNext() { if (!W || W.status !== "edit") return; const last = W.step === WSTEPS.length - 1; $("wiz-next").disabled = last ? !!(wDup() && !W.dupOk) || !!state.err.trello : !wValid(W.step); }
+wizD.addEventListener("click", (e) => {
+  if (!W) return;
+  if (e.target.closest("#wiz-close") || e.target.closest("[data-wclose]")) { if (W.status !== "creating") wizD.close(); return; }
+  const o = e.target.closest("[data-w]");
+  if (o) {
+    const g = o.dataset.w, v = o.dataset.v;
+    if (g === "cat") { if (W.cat !== v) W.sub = ""; W.cat = v; }
+    else if (g === "eq") W.equipe = W.equipe.includes(v) ? W.equipe.filter((x) => x !== v) : [...W.equipe, v];
+    else if (g === "amb") W.amb = W.amb.includes(v) ? W.amb.filter((x) => x !== v) : [...W.amb, v];
+    else if (g === "resp") { W.resp = v; if (v !== "__outro" && !W.equipe.includes(v)) W.equipe = [...W.equipe, v]; }
+    else W[g] = v;
+    renderWizard(); return;
+  }
+  if (e.target.closest("#wiz-back")) { if (W.step > 0) { W.step--; renderWizard(); } return; }
+  if (e.target.closest("#wiz-edit")) { W.step = 0; renderWizard(); return; }
+  if (e.target.closest("#wiz-next")) {
+    if (W.step === WSTEPS.length - 1) { if (!(wDup() && !W.dupOk)) wCreate(); return; }
+    if (wValid(W.step)) { W.step++; renderWizard(); const f = $("wiz-body").querySelector("input,textarea"); if (f && !matchMedia("(max-width:760px)").matches) f.focus(); }
+  }
+});
+wizD.addEventListener("input", (e) => { const f = e.target.dataset && e.target.dataset.f; if (f && W) { W[f] = e.target.value; wRefreshNext(); } });
+wizD.addEventListener("change", (e) => {
+  if (!W) return;
+  if (e.target.id === "w-dupok") { W.dupOk = e.target.checked; wRefreshNext(); return; }
+  const f = e.target.dataset && e.target.dataset.f;
+  if (f && (e.target.type === "date" || f === "nome")) { W[f] = e.target.value; const id = e.target.id; renderWizard(); const el = $(id); if (el && f !== "nome") el.focus({ preventScroll: true }); }
+});
+wizD.addEventListener("keydown", (e) => { if (e.key === "Enter" && e.target.tagName === "INPUT" && W && W.status === "edit") { e.preventDefault(); const f = e.target.dataset.f; if (f) W[f] = e.target.value; $("wiz-next").click(); } });
+wizD.addEventListener("cancel", (e) => { if (W && W.status === "creating") e.preventDefault(); });
 
 document.querySelectorAll(".seg [data-scope]").forEach((b) => b.addEventListener("click", () => { state.filters.scope = b.dataset.scope; renderProjects(); }));
 $("f-status").addEventListener("change", (e) => { state.filters.status = e.target.value; renderProjects(); });

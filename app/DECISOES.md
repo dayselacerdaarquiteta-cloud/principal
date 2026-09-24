@@ -37,7 +37,7 @@ A direção pediu que o Claude decidisse os pontos abertos da Fase 1. Estas são
 ## Gravações (travas de segurança)
 - Nada é gravado sem a tela ANTES / DEPOIS e o botão "Confirmar e salvar".
 - Prazo oficial e aprovação do cliente pedem uma confirmação extra, em caixa de seleção.
-- Criar projeto: bloqueado no painel. Continua com o MAX (/novo projeto).
+- Criar projeto: pelo assistente "Novo projeto" (ver seção própria), só depois do resumo e do botão "Confirmar criação".
 - Excluir qualquer coisa: bloqueado.
 - Todo histórico é gravado como **comentário novo no card**, com data, hora, o pedido original e o antes → depois. A descrição original nunca é reescrita.
 - Alteração de prazo após reunião: o painel **sempre pede confirmação**. A reorganização automática continua sendo exceção do MAX no Claude Desktop.
@@ -98,3 +98,17 @@ As especificações dos agentes devem ficar em Google Docs nessas pastas e ser a
 - Linha do tempo do projeto: Briefing, Estudo, Projeto, Detalhamento (a partir das etapas do card), Apresentação (cards de reunião ligados) e Entrega (card de entrega ou prazo oficial). Fase sem etapa correspondente aparece como "Sem registro".
 - Capa dos projetos: tipográfica, com o ícone do tipo de projeto. Imagem de render do Drive fica pendente (a página não pode carregar imagens direto do Drive).
 - Celular: barra de abas fixa no rodapé e botão do MAX; indicadores e pessoas em faixa rolável para o lado.
+
+## Novo projeto (assistente de cadastro)
+- Botão "Novo projeto" na aba Hoje e na aba Projetos. Só abre com o Trello carregado.
+- Etapas: Cliente, Tipo, Perfil, Fase inicial, Responsável, Equipe, Prazos, Prioridade, Tamanho, Observações e Resumo. Nada é gravado antes de "Confirmar criação"; "Editar" volta às etapas.
+- Tipo em duas escolhas: categoria e depois o tipo oficial do MAX (Interiores Casa Térrea 25, Sobrado 40, Comercial 30, Avulsos sem prazo fixo; Arquitetônico Construtor 10, Cliente Final 15, Comercial 15; Arquitetônico + Interiores usa o prazo do arquitetônico na Fase 1). Reforma, Paisagismo, Consultoria e Outro não têm tabela de prazo no MAX.
+- Prazo oficial: a data do cliente, quando existe; senão, o prazo do MAX em dias úteis contado da data de início (o dia de início conta como dia 1). Sem data do cliente e sem tabela, o projeto fica sem prazo até o MAX definir. Data do cliente menor que o padrão gera "ATENÇÃO: PRAZO ESPECIAL".
+- Responsável e equipe: só as pessoas que já aparecem nos cards. "Outra pessoa" exige o nome completo e mostra aviso.
+- Cliente com projeto ativo de mesmo nome: aviso na etapa 1 e confirmação obrigatória no resumo.
+- Capacidade: se o responsável ou alguém da equipe já está com carga Atenção ou Crítica, o resumo mostra "ATENÇÃO DE CAPACIDADE" e o texto vai para o card como risco.
+- Fase inicial → lista do Trello: Novo cliente, Briefing realizado e Levantamento iniciado → A INICIAR; Estudo preliminar → FASE PLANTA BAIXA (arquitetônico) ou FASE AMBIENTAÇÕES; Projeto em andamento → FASE PLANTA BAIXA (arquitetônico) ou FASE DETALHAMENTO EXECUTIVO; Revisão e Finalização → FASE FINALIZAÇÃO.
+- Ao confirmar, o painel cria, nesta ordem: card principal (nome `CLIENTE - TIPO (EQUIPE)`, descrição no formato do MAX, data = prazo oficial às 17h); card "REUNIÃO DE APRESENTAÇÃO — CLIENTE" em APRESENTAÇÃO, sem data (o MAX define); card "ENTREGA FINAL — CLIENTE" com o prazo oficial; pasta `CLIENTE - TIPO` em ESC. DAYSE LACERDA / ano, com 01_BRIEFING, 02_EXECUTIVOS, 03_DETALHAMENTOS, 04_3D, 05_RENDERS e 06_ARQUIVOS_FINAIS; comentário no card principal com o link da pasta.
+- Pasta do ano ou do projeto que já existe é reaproveitada; só as subpastas que faltam são criadas.
+- Se uma etapa falha, a criação para e nada é desfeito. A tela mostra o que já foi criado, para conferir antes de tentar de novo.
+- Responsáveis por etapa e data da apresentação ficam "a definir com o MAX". O painel não inventa essas datas.

@@ -196,6 +196,7 @@ h1,h2,h3,h4{margin:0;text-wrap:balance;letter-spacing:-.01em}
 .health .lu{width:14px;height:14px;stroke-width:2.2}
 .h-late{background:var(--red);color:var(--on-crit)}
 .h-warn{background:var(--orange-soft);color:var(--orange-text)}
+.h-today{background:var(--olive-soft);color:var(--olive)}
 .h-ok{background:var(--olive-soft);color:var(--olive)}
 .h-idle{background:var(--gray-soft);color:var(--muted)}
 .h-done{background:var(--gray-soft);color:var(--ink2)}
@@ -315,6 +316,11 @@ h1,h2,h3,h4{margin:0;text-wrap:balance;letter-spacing:-.01em}
 .proj.late{box-shadow:inset 0 1px 0 var(--glass-line),0 0 0 1.5px color-mix(in srgb,var(--red) 60%,transparent),0 20px 44px -20px color-mix(in srgb,var(--red) 55%,transparent)}
 .proj.late .cover{--cv1:#A2412F;--cv2:#4B2226}
 .proj.warn .cover{--cv1:#B8702C;--cv2:#5E3D26}
+.proj.today .cover{--cv1:#6F8C3B;--cv2:#2E4221}
+.proj.today .body{background:linear-gradient(180deg,color-mix(in srgb,var(--olive-fill) 13%,transparent),transparent 75%)}
+.proj.today,.pcard.today{box-shadow:inset 0 1px 0 var(--glass-line),0 0 0 1.5px color-mix(in srgb,var(--olive-fill) 60%,transparent),0 20px 44px -20px color-mix(in srgb,var(--olive-fill) 55%,transparent)}
+.pcard.today{background:linear-gradient(180deg,color-mix(in srgb,var(--olive-fill) 11%,var(--glass)),var(--glass) 70%)}
+.cover .health.h-today{color:#3F5220}
 .proj.late .body{background:linear-gradient(180deg,color-mix(in srgb,var(--red) 9%,transparent),transparent 75%)}
 .proj.warn .body{background:linear-gradient(180deg,color-mix(in srgb,var(--orange) 9%,transparent),transparent 75%)}
 .proj.warn{box-shadow:inset 0 1px 0 var(--glass-line),0 0 0 1.5px color-mix(in srgb,var(--orange) 50%,transparent),0 20px 44px -20px color-mix(in srgb,var(--orange) 45%,transparent)}
@@ -789,7 +795,7 @@ dialog.chatd[open]{display:flex}
     <section class="glass calw" id="eq-cal" aria-live="polite"></section>
   </section>
 
-  <p class="foot">Dados do Trello (quadro ESCRITÓRIO DAYSE LACERDA), do Google Calendar e do Google Drive, lidos ao abrir e a cada 2 minutos. Um projeto só conta como concluído na lista CONCLUÍDO. Dias úteis: segunda a sexta, sem feriados nacionais; feriados de João Pessoa ainda não entram. Datas marcadas como estimadas são calculadas pelo painel a partir do início do projeto e das durações escritas no card, em dias úteis; não são gravadas no Trello. Nada é gravado sem a sua confirmação, e cada alteração vira um comentário datado no card. <b class="ver">Versão 19 do painel (24/09/2026).</b></p>
+  <p class="foot">Dados do Trello (quadro ESCRITÓRIO DAYSE LACERDA), do Google Calendar e do Google Drive, lidos ao abrir e a cada 2 minutos. Um projeto só conta como concluído na lista CONCLUÍDO. Dias úteis: segunda a sexta, sem feriados nacionais; feriados de João Pessoa ainda não entram. Datas marcadas como estimadas são calculadas pelo painel a partir do início do projeto e das durações escritas no card, em dias úteis; não são gravadas no Trello. Nada é gravado sem a sua confirmação, e cada alteração vira um comentário datado no card. <b class="ver">Versão 20 do painel (24/09/2026).</b></p>
 </main>
 
 <nav class="dock glass" aria-label="Seções">
@@ -1540,6 +1546,7 @@ function healthOf(c) {
   if (c.done) return { k: "done", rank: 9, label: "Concluído", icon: "circle-check", cls: "h-done" };
   if (c.dueKey && c.dueKey < t) return { k: "late", rank: 0, label: "Atrasado", icon: "triangle-alert", cls: "h-late", days: bdBetween(c.dueKey, t) };
   const lateEt = etapasOf(c).find((e) => e.prazo && e.prazo < t && e.situacao !== "concluida");
+  if (c.dueKey === t) return { k: "today", rank: 1, label: "Entrega hoje", icon: "flag", cls: "h-today", why: "Entrega hoje" };
   if (c.dueKey && bdBetween(t, c.dueKey) <= 5) return { k: "warn", rank: 1, label: "Atenção", icon: "hourglass", cls: "h-warn", why: c.dueKey === t ? "Entrega hoje" : `Prazo em ${bdBetween(t, c.dueKey)} dia(s) útil(eis)` };
   if (lateEt) return { k: "warn", rank: 1, label: "Atenção", icon: "hourglass", cls: "h-warn", why: `${lateEt.etapa} atrasada desde ${dm(lateEt.prazo)}` };
   if (norm(c.list) === "A INICIAR") return { k: "idle", rank: 2, label: "A iniciar", icon: "circle-dashed", cls: "h-idle" };
@@ -1613,7 +1620,7 @@ function prioCard(c, h, i) {
   if (h.k === "late") extra = `<dt>Atraso</dt><dd class="late-txt">${h.days} dia(s) útil(eis)</dd>`;
   else if (h.why) extra = `<dt>Atenção</dt><dd>${esc(h.why)}</dd>`;
   else if (c.dueKey) extra = `<dt>Faltam</dt><dd>${bdBetween(t, c.dueKey)} dia(s) útil(eis)</dd>`;
-  return `<button type="button" class="glass pcard lift press${h.k === "late" ? " late" : ""}${enterAttr(i)}" data-proj="${esc(c.id)}">
+  return `<button type="button" class="glass pcard lift press${h.k === "late" ? " late" : h.k === "today" ? " today" : ""}${enterAttr(i)}" data-proj="${esc(c.id)}">
     <div class="top">${healthChip(h)}${icBadge(typeIcon(c), h.k === "late" ? "t-crit" : "t-petrol", "sm")}</div>
     <div><h3>${esc(clienteOf(c))}</h3><div class="sub">${esc(tipoOf(c) || "Tipo não registrado")}</div></div>
     <dl class="facts"><dt>Status</dt><dd>${esc(nice(c.list))}</dd><dt>Responsável</dt><dd>${resp ? esc(resp) : `<span class="miss">Não registrado</span>`}</dd><dt>Prazo</dt><dd${h.k === "late" ? ' class="late-txt"' : ""}>${due}</dd>${extra}</dl>
@@ -1727,7 +1734,7 @@ function projCard(c, h, i) {
   else etTxt = `<span class="miss">Não registrada</span>`;
   const bars = ets.map((e) => `<i class="${e.situacao === "concluida" ? "d" : e.prazo && e.prazo < t ? "l" : e.situacao === "em_andamento" ? "a" : e.situacao === "aguardando" ? "w" : ""}" title="${esc(e.etapa)}"></i>`).join("");
   const doneN = ets.filter((e) => e.situacao === "concluida").length;
-  return `<button type="button" class="glass proj lift press${h.k === "late" ? " late" : h.k === "warn" ? " warn" : ""}${enterAttr(i)}" data-proj="${esc(c.id)}">
+  return `<button type="button" class="glass proj lift press${h.k === "late" ? " late" : h.k === "warn" ? " warn" : h.k === "today" ? " today" : ""}${enterAttr(i)}" data-proj="${esc(c.id)}">
     <div class="cover ${coverClass(c)}"><span class="cv-ic">${svgI(typeIcon(c))}</span>${healthChip(h, true)}</div>
     <div class="body">
       <div><h3>${esc(clienteOf(c))}</h3><div class="muted" style="font-size:13.5px">${esc(tipoOf(c) || "Tipo não registrado")}</div></div>

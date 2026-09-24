@@ -834,7 +834,7 @@ dialog.chatd[open]{display:flex}
     <section class="glass calw" id="eq-cal" aria-live="polite"></section>
   </section>
 
-  <p class="foot">Dados do Trello (quadro ESCRITÓRIO DAYSE LACERDA), do Google Calendar e do Google Drive, lidos ao abrir e a cada 2 minutos. Um projeto só conta como concluído na lista CONCLUÍDO. Dias úteis: segunda a sexta, sem feriados nacionais; feriados de João Pessoa ainda não entram. Datas marcadas como estimadas são calculadas pelo painel a partir do início do projeto e das durações escritas no card, em dias úteis; não são gravadas no Trello. Nada é gravado sem a sua confirmação, e cada alteração vira um comentário datado no card. <b class="ver">Versão 22 do painel (24/09/2026).</b></p>
+  <p class="foot">Dados do Trello (quadro ESCRITÓRIO DAYSE LACERDA), do Google Calendar e do Google Drive, lidos ao abrir e a cada 2 minutos. Um projeto só conta como concluído na lista CONCLUÍDO. Dias úteis: segunda a sexta, sem feriados nacionais; feriados de João Pessoa ainda não entram. Datas marcadas como estimadas são calculadas pelo painel a partir do início do projeto e das durações escritas no card, em dias úteis; não são gravadas no Trello. Nada é gravado sem a sua confirmação, e cada alteração vira um comentário datado no card. <b class="ver">Versão 23 do painel (24/09/2026).</b></p>
 </main>
 
 <nav class="dock glass" aria-label="Seções">
@@ -3193,7 +3193,6 @@ $("team").addEventListener("click", (e) => { const b = e.target.closest(".person
 $("eq-list").addEventListener("click", (e) => {
   const b = e.target.closest(".person"); if (!b) return;
   state.eq.person = b.dataset.p; state.eq.day = ""; renderEquipe();
-  if (matchMedia("(max-width:760px)").matches) $("eq-cal").scrollIntoView({ behavior: smooth(), block: "start" });
 });
 $("eq-today").addEventListener("click", (e) => {
   const b = e.target.closest("[data-day-item]"); if (!b) return;

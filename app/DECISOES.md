@@ -7,6 +7,7 @@ A direção pediu que o Claude decidisse os pontos abertos da Fase 1. Estas são
 
 ## Fontes de dados
 - Trello: quadro **ESCRITÓRIO DAYSE LACERDA** (workspace "Projetos - Dayse Lacerda"). O quadro SOARES E CORTES ADVOCACIA fica fora do painel.
+- Atualização: o painel lê Trello e Calendar ao abrir, a cada 2 minutos enquanto está aberto e visível, e ao voltar para a aba depois de 1 minuto fora. A leitura das etapas pelo Claude só roda de novo quando algum card de projeto mudou.
 - Google Calendar: agenda principal da Dayse, mais a agenda pública "Feriados no Brasil" para o cálculo de dias úteis.
 - Google Drive: entra na Fase 3 (Projetos), para os links das pastas.
 - Nenhum dado de projeto fica gravado no código. Tudo é lido quando a página abre e ao tocar em "Atualizar dados".
@@ -25,7 +26,7 @@ A direção pediu que o Claude decidisse os pontos abertos da Fase 1. Estas são
 - Uma reunião do Trello com horário 09:00 e sem "Horário" na descrição aparece como "horário não registrado". 09:00 é o horário padrão do Trello quando nenhum horário é informado.
 
 ## Equipe
-- Dayse Lacerda, Alice Barbosa, Mirella e Rafael Lopes. Os nomes vêm dos títulos dos cards ("(ALICE/MIRELLA/RAFAEL)") e dos responsáveis escritos nas descrições.
+- Dayse Lacerda, Alice Barbosa, Mirella e Rafael Lopes. Os nomes vêm só dos títulos dos cards de projeto ("(ALICE/MIRELLA/RAFAEL)"), com uma palavra por nome; termos como INTERIORES ou SOBRADO entre parênteses não contam como pessoa, e dos responsáveis escritos nas descrições.
 - As etapas, os responsáveis e os prazos internos existem só como texto nas descrições. O painel pede ao Claude para lê-los, com a instrução de não inventar nada. Sem data explícita, a etapa fica sem prazo.
 - **Sobrecarga (critério provisório do painel):** 3 ou mais etapas ativas por pessoa = atenção; 5 ou mais = crítico. Conta como ativa a etapa em andamento ou com prazo nos próximos 5 dias úteis.
 - Cores das demandas: vermelho = entrega final, laranja = apresentação/aprovação, azul = reunião, verde = produção.

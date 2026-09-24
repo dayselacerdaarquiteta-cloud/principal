@@ -337,7 +337,7 @@ dialog.sheet::backdrop{background:var(--scrim)}
     </section>
 
     <footer class="foot">
-      <p>Os dados vêm do Trello (quadro ESCRITÓRIO DAYSE LACERDA) e do Google Calendar, lidos sempre que o painel abre. Um projeto só conta como concluído na lista CONCLUÍDO. Dias úteis: segunda a sexta, sem feriados nacionais; feriados de João Pessoa ainda não entram no cálculo. Nada é gravado sem a sua confirmação, e cada alteração vira um comentário datado no card.</p>
+      <p>Os dados vêm do Trello (quadro ESCRITÓRIO DAYSE LACERDA) e do Google Calendar, lidos quando o painel abre e de novo a cada 2 minutos enquanto ele está aberto. Um projeto só conta como concluído na lista CONCLUÍDO. Dias úteis: segunda a sexta, sem feriados nacionais; feriados de João Pessoa ainda não entram no cálculo. Nada é gravado sem a sua confirmação, e cada alteração vira um comentário datado no card.</p>
     </footer>
   </div>
 </main>
@@ -442,10 +442,11 @@ async function write(server, tool, input) {
 }
 
 /* ================= normalização ================= */
+const NOT_PEOPLE = new Set(["INTERIORES", "ARQUITETONICO", "SOBRADO", "TERREA", "CASA", "COMERCIAL", "AVULSOS", "CONSTRUTOR", "CLIENTE", "FINAL", "CLOSET", "ESCADA", "FACHADA", "RENDERS", "RENDER", "MEMORIAL", "REUNIAO", "ENTREGA", "APRESENTACAO", "PROJETO", "ARQUITETURA"]);
 function teamFromTitle(name) {
   const m = String(name).match(/\(([^()]+)\)\s*$/);
   if (!m) return [];
-  return m[1].split("/").map((s) => s.trim()).filter((s) => s && /^[A-ZÀ-Ü][A-ZÀ-Ü\s]+$/.test(s)).map(cap);
+  return m[1].split("/").map((s) => s.trim()).filter((s) => /^[A-ZÀ-Ü]{2,}$/.test(s) && !NOT_PEOPLE.has(norm(s))).map(cap);
 }
 const SMALL = new Set(["de", "da", "do", "das", "dos", "e", "com", "para", "a", "o", "em"]);
 function nice(str) {
@@ -481,7 +482,7 @@ function normCard(c) {
   card.dueKey = card.due ? ymd(card.due) : null;
   card.kind = kindOf(card);
   card.done = norm(card.list) === norm(CONFIG.doneList);
-  card.team = teamFromTitle(card.name);
+  card.team = card.kind === "projeto" ? teamFromTitle(card.name) : [];
   card.title = nice(card.kind === "reuniao" ? meetingClient(card.name) : cleanName(card.name));
   const sl = card.url.match(/trello\.com\/c\/([A-Za-z0-9]+)/);
   card.short = sl ? sl[1] : "";
@@ -738,7 +739,7 @@ function renderStatus() {
   if (!state.loadedAt) { el.textContent = "Lendo Trello e Calendar…"; return; }
   if (state.err.trello) parts.push(`<span class="err">Trello sem acesso</span>`);
   if (state.err.cal) parts.push(`<span class="err">Calendar sem acesso</span>`);
-  if (!state.err.trello && !state.err.cal) parts.push(`Atualizado às <span class="num">${fTime.format(state.loadedAt)}</span>`);
+  if (!state.err.trello && !state.err.cal) parts.push(`Atualizado às <span class="num">${fTime.format(state.loadedAt)}</span>, de novo a cada 2 min`);
   if (state.extract === "loading") parts.push("lendo as etapas nos cards…");
   else if (state.extract === "err" || state.extract === "off") parts.push(`<span class="err">etapas não lidas</span>`);
   el.innerHTML = parts.join(", ");
@@ -1127,7 +1128,11 @@ async function savePlan() {
 }
 
 /* ================= ciclo ================= */
-let loading = false;
+let loading = false, lastSig = "";
+const AUTO_MS = 2 * 60 * 1000;
+function projectSig() {
+  return state.cards.filter((c) => c.kind === "projeto" && !c.done).map((c) => c.id + c.list + c.dueKey + c.desc.length + ":" + c.comments.length).join("|");
+}
 async function loadAll(forceExtract) {
   if (loading) return;
   loading = true;
@@ -1144,7 +1149,10 @@ async function loadAll(forceExtract) {
   btn.disabled = false; btn.classList.remove("busy");
   loading = false;
   renderAll();
-  if (!state.err.trello && mcp) runExtraction(forceExtract);
+  if (!state.err.trello && mcp) {
+    const sig = projectSig();
+    if (forceExtract || sig !== lastSig || !state.etapas) { lastSig = sig; runExtraction(forceExtract); }
+  }
 }
 
 
@@ -1183,5 +1191,10 @@ userP.then(async (u) => { if (!u || !u.me) return; try { const m = await u.me();
 
 $("today-long").textContent = longToday();
 loadAll(false);
+const busyNow = () => loading || (plan && (plan.status === "thinking" || plan.status === "saving")) || state.extract === "loading";
+setInterval(() => { if (!document.hidden && !busyNow()) loadAll(false); }, AUTO_MS);
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden && state.loadedAt && Date.now() - state.loadedAt.getTime() > 60000 && !busyNow()) loadAll(false);
+});
 })();
 </script>

@@ -21,6 +21,7 @@
   --f:"Sofia Sans","Avenir Next","Segoe UI",system-ui,sans-serif;
   --f-num:"Sofia Sans Condensed","Sofia Sans","Avenir Next Condensed","Arial Narrow",sans-serif;
   --r:4px;
+  --chev:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23596065' stroke-width='1.4'/%3E%3C/svg%3E");
   --ease-out:cubic-bezier(.23,1,.32,1);
   --ease-drawer:cubic-bezier(.32,.72,0,1);
 }
@@ -28,14 +29,14 @@
   :root:not([data-theme="light"]){
     color-scheme:dark;
     --ground:#141617;--surface:#1B1E20;--ink:#E9EBE8;--stone:#9EA5A9;--line:#2A2E31;--line-strong:#3D4246;--wash:#212527;
-    --red:#E26B5D;--orange:#E39A55;--orange-text:#E39A55;--blue:#83A6DC;--green:#7DBB92;--scrim:rgba(0,0,0,.55);
+    --red:#E26B5D;--orange:#E39A55;--orange-text:#E39A55;--chev:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%239EA5A9' stroke-width='1.4'/%3E%3C/svg%3E");--blue:#83A6DC;--green:#7DBB92;--scrim:rgba(0,0,0,.55);
     --lift:0 1px 2px rgba(0,0,0,.4),0 16px 48px rgba(0,0,0,.5);
   }
 }
 :root[data-theme="dark"]{
   color-scheme:dark;
   --ground:#141617;--surface:#1B1E20;--ink:#E9EBE8;--stone:#9EA5A9;--line:#2A2E31;--line-strong:#3D4246;--wash:#212527;
-  --red:#E26B5D;--orange:#E39A55;--orange-text:#E39A55;--blue:#83A6DC;--green:#7DBB92;--scrim:rgba(0,0,0,.55);
+  --red:#E26B5D;--orange:#E39A55;--orange-text:#E39A55;--chev:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%239EA5A9' stroke-width='1.4'/%3E%3C/svg%3E");--blue:#83A6DC;--green:#7DBB92;--scrim:rgba(0,0,0,.55);
   --lift:0 1px 2px rgba(0,0,0,.4),0 16px 48px rgba(0,0,0,.5);
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -206,6 +207,50 @@ textarea:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 1px var(--i
 .foot{border-top:1px solid var(--line);margin-top:44px;padding-block:22px 48px;font-size:12.5px;color:var(--stone);line-height:1.6}
 .foot p{max-width:92ch;margin:0}
 
+/* abas */
+.view[hidden]{display:none!important}
+
+/* projetos */
+.p-open{align-items:end}
+.filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 16px;align-items:end}
+.filters .seg{grid-column:1/-1;justify-self:start}
+.filters #f-clear{grid-column:1/-1;justify-self:start}
+.seg{display:inline-flex;border:1px solid var(--line-strong);border-radius:var(--r);padding:2px;gap:2px}
+.seg button{border:0;background:transparent;border-radius:3px;padding:0 12px;min-height:32px;cursor:pointer;font-size:14px;color:var(--stone);transition:background-color 160ms ease,color 160ms ease,transform 160ms var(--ease-out)}
+.seg button:active{transform:scale(.97)}
+.seg button[aria-checked="true"]{background:var(--ink);color:var(--ground);font-weight:500}
+.seg .num{margin-left:4px;opacity:.8}
+.fld{display:flex;flex-direction:column;gap:5px}
+.fld span{font-family:var(--f-num);font-size:13px;color:var(--stone)}
+.fld select{appearance:none;-webkit-appearance:none;min-height:36px;width:100%;max-width:100%;border:1px solid var(--line-strong);border-radius:var(--r);background:var(--surface) var(--chev) no-repeat right 10px center/10px 6px;padding:0 30px 0 10px;font-size:14px;color:var(--ink);cursor:pointer}
+.fld select:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.plist{padding-block:36px 8px}
+.phead,.prow{display:grid;grid-template-columns:minmax(0,2.3fr) minmax(0,1.35fr) minmax(0,1.1fr) 96px minmax(0,1.6fr) 118px;gap:6px 20px;align-items:center}
+.phead{font-family:var(--f-num);font-size:13px;color:var(--stone);padding-bottom:8px}
+.prow{width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--line);padding:15px 0;cursor:pointer;color:inherit;font-size:14.5px;transition:background-color 160ms ease}
+.prow:active{transform:scale(.997)}
+@media (hover:hover) and (pointer:fine){.prow:hover{background:linear-gradient(90deg,transparent,var(--wash) 10%,var(--wash) 90%,transparent)}}
+.pc-name{font-weight:600;font-size:16px;display:block}
+.pc-type,.pc-sub{display:block;font-size:13.5px;color:var(--stone)}
+.pc-date{font-family:var(--f-num);font-variant-numeric:tabular-nums}
+.pc-date.late{color:var(--red);font-weight:600}
+.pc-miss{color:var(--stone);font-style:italic;font-size:13.5px}
+.estrip{display:flex;flex-wrap:wrap;gap:4px}
+.estrip .sw{width:10px;height:15px}
+.sw.done{background:var(--ink);box-shadow:none}
+.sw.wait{background:transparent;box-shadow:inset 0 0 0 1.5px var(--orange)}
+.pc-lbl{display:none}
+.p-links{display:flex;flex-wrap:wrap;gap:10px 20px;font-size:14.5px}
+.hist{list-style:none;margin:0;padding:0}
+.hist li{padding:12px 0;border-top:1px solid var(--line)}
+.hist .h-head{font-size:13.5px;font-weight:600}
+.hist .h-head .num{color:var(--stone);font-weight:400;margin-right:8px}
+.hist .h-body{margin:6px 0 0;font-size:13.5px;color:var(--stone);white-space:pre-line;overflow-wrap:anywhere}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;margin:0;font-size:14.5px}
+.facts dt{color:var(--stone)}
+.facts dd{margin:0}
+.pend{margin:0;padding-left:18px;font-size:14.5px;display:flex;flex-direction:column;gap:6px}
+
 /* ficha da pessoa */
 dialog.sheet{border:0;padding:0;margin:0 0 0 auto;height:100%;max-height:100%;width:min(540px,100%);background:var(--surface);color:var(--ink);box-shadow:var(--lift)}
 dialog.sheet::backdrop{background:var(--scrim)}
@@ -237,8 +282,16 @@ dialog.sheet::backdrop{background:var(--scrim)}
   .opening,.body,.update{grid-template-columns:1fr}
   .opening{padding-block:36px 32px}
 }
+@media (max-width:860px){
+  .phead{display:none}
+  .prow{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"name date" "st st" "team team" "etapa etapa" "strip strip";gap:6px 16px}
+  .prow .c-name{grid-area:name}.prow .c-st{grid-area:st}.prow .c-team{grid-area:team}.prow .c-due{grid-area:date;text-align:right}.prow .c-et{grid-area:etapa}.prow .c-strip{grid-area:strip;margin-top:4px}
+  .pc-lbl{display:inline;color:var(--stone);font-family:var(--f-num);font-size:13px;margin-right:6px}
+  .c-due .pc-lbl{display:block;margin:0}
+}
 @media (max-width:560px){
   .days{display:none}
+  .filters{grid-template-columns:repeat(2,minmax(0,1fr))}
   .row{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"who load" "strip strip"}
   .row .who{grid-area:who}.row .strip-wrap{grid-area:strip;margin-top:8px}.row .load{grid-area:load}
   .strip.nums{display:grid}
@@ -257,8 +310,8 @@ dialog.sheet::backdrop{background:var(--scrim)}
     <div class="brand">Dayse Lacerda <span>Arquitetura</span></div>
     <div class="mast-r">
     <nav class="nav" aria-label="Seções">
-      <a href="#hoje" aria-current="page">Hoje</a>
-      <span title="Chega na fase 3">Projetos</span>
+      <a href="#hoje" data-view="hoje" aria-current="page">Hoje</a>
+      <a href="#projetos" data-view="projetos">Projetos</a>
       <span title="Chega na fase 4">Reuniões</span>
       <span title="Chega na fase 5">Equipe</span>
     </nav>
@@ -273,13 +326,14 @@ dialog.sheet::backdrop{background:var(--scrim)}
   </div>
 </header>
 
-<main id="hoje">
+<main id="app">
   <div class="wrap">
+    <div id="page-err"></div>
+    <div class="view" id="v-hoje">
     <section class="opening" aria-label="Resumo de hoje">
       <div>
         <h1>Hoje</h1>
         <div class="date" id="today-long">&nbsp;</div>
-        <div id="page-err"></div>
       </div>
       <div>
         <div class="feature" id="feature" aria-live="polite">
@@ -314,6 +368,43 @@ dialog.sheet::backdrop{background:var(--scrim)}
         <div id="alerts"><div class="skel"></div><div class="skel"></div></div>
       </section>
     </div>
+    </div>
+
+    <div class="view" id="v-projetos" hidden>
+      <section class="opening p-open" aria-label="Projetos e filtros">
+        <div>
+          <h1>Projetos</h1>
+          <div class="date" id="proj-count">&nbsp;</div>
+        </div>
+        <div class="filters">
+          <div class="seg" role="radiogroup" aria-label="Situação dos projetos">
+            <button type="button" role="radio" aria-checked="true" data-scope="ativos">Ativos<span class="num" id="n-ativos"></span></button>
+            <button type="button" role="radio" aria-checked="false" data-scope="concluidos">Concluídos<span class="num" id="n-concl"></span></button>
+          </div>
+          <label class="fld"><span>Status</span><select id="f-status"><option value="">Todos</option></select></label>
+          <label class="fld"><span>Responsável</span><select id="f-resp"><option value="">Todos</option></select></label>
+          <label class="fld"><span>Prazo oficial</span><select id="f-prazo">
+            <option value="">Qualquer prazo</option>
+            <option value="atrasados">Atrasados</option>
+            <option value="semana">Vencem esta semana</option>
+            <option value="mes">Vencem este mês</option>
+            <option value="sem">Sem prazo registrado</option>
+          </select></label>
+          <button class="linkbtn" id="f-clear" type="button" hidden>Limpar filtros</button>
+        </div>
+      </section>
+      <section class="plist" aria-label="Lista de projetos">
+        <div class="phead" aria-hidden="true"><span>Projeto</span><span>Status no Trello</span><span>Equipe</span><span>Prazo oficial</span><span>Etapa atual e prazo interno</span><span>Etapas</span></div>
+        <div id="projects"><div class="skel"></div><div class="skel"></div><div class="skel"></div></div>
+        <div class="legend" aria-label="Legenda das etapas">
+          <span><i class="sw done"></i>Concluída</span>
+          <span><i class="sw producao"></i>Em andamento</span>
+          <span><i class="sw wait"></i>Aguardando</span>
+          <span><i class="sw atraso"></i>Atrasada</span>
+          <span><i class="sw"></i>Não iniciada ou sem registro</span>
+        </div>
+      </section>
+    </div>
 
     <section class="update" aria-labelledby="h-upd">
       <div>
@@ -337,7 +428,7 @@ dialog.sheet::backdrop{background:var(--scrim)}
     </section>
 
     <footer class="foot">
-      <p>Os dados vêm do Trello (quadro ESCRITÓRIO DAYSE LACERDA) e do Google Calendar, lidos quando o painel abre e de novo a cada 2 minutos enquanto ele está aberto. Um projeto só conta como concluído na lista CONCLUÍDO. Dias úteis: segunda a sexta, sem feriados nacionais; feriados de João Pessoa ainda não entram no cálculo. Nada é gravado sem a sua confirmação, e cada alteração vira um comentário datado no card.</p>
+      <p>Os dados vêm do Trello (quadro ESCRITÓRIO DAYSE LACERDA), do Google Calendar e do Google Drive (pastas dos projetos), lidos quando o painel abre e de novo a cada 2 minutos enquanto ele está aberto. Um projeto só conta como concluído na lista CONCLUÍDO. Dias úteis: segunda a sexta, sem feriados nacionais; feriados de João Pessoa ainda não entram no cálculo. Nada é gravado sem a sua confirmação, e cada alteração vira um comentário datado no card.</p>
     </footer>
   </div>
 </main>
@@ -361,8 +452,9 @@ const CONFIG = {
   holidayCal: "pt-br.brazilian#holiday@group.v.calendar.google.com",
   meetingList: "REUNIÕES",
   doneList: "CONCLUÍDO",
+  driveRoot: "ESC. DAYSE LACERDA",
 };
-const TRELLO = "Trello", CAL = "Google Calendar";
+const TRELLO = "Trello", CAL = "Google Calendar", DRIVE = "Google Drive";
 
 /* ================= utilidades ================= */
 const $ = (id) => document.getElementById(id);
@@ -394,7 +486,9 @@ const MISSING = '<span class="miss">Não registrado no Trello</span>';
 const state = {
   cards: [], lists: [], events: [], holidays: new Set(),
   etapas: null, extract: "idle", extractErr: "",
-  err: { trello: null, cal: null }, loadedAt: null, me: "",
+  err: { trello: null, cal: null, drive: null }, loadedAt: null, me: "",
+  drive: { folders: [], loaded: false }, pend: null, view: "hoje",
+  filters: { scope: "ativos", status: "", resp: "", prazo: "" },
 };
 
 /* ================= capacidades ================= */
@@ -544,6 +638,36 @@ async function loadTrello() {
     linkProjects();
   } catch (e) { state.err.trello = e; }
 }
+const FOLDER = "application/vnd.google-apps.folder";
+const qEsc = (v) => String(v).replace(/\\/g, "\\\\").replace(/'/g, "\\'");
+async function driveList(query) {
+  let token, files = [], guard = 0;
+  do {
+    const input = { query, pageSize: 100, excludeContentSnippets: true };
+    if (token) input.pageToken = token;
+    const r = await read(DRIVE, "search_files", input);
+    files = files.concat((r && r.files) || []);
+    token = r && r.nextPageToken;
+  } while (token && ++guard < 6);
+  return files;
+}
+async function loadDrive() {
+  state.err.drive = null;
+  try {
+    const roots = (await driveList(`mimeType = '${FOLDER}' and title = '${qEsc(CONFIG.driveRoot)}'`)).filter((f) => norm(f.title) === norm(CONFIG.driveRoot));
+    if (!roots.length) throw { code: "tool_error", message: `pasta ${CONFIG.driveRoot} não encontrada` };
+    const folders = [];
+    for (const root of roots) {
+      const years = (await driveList(`parentId = '${qEsc(root.id)}' and mimeType = '${FOLDER}'`)).filter((f) => /^\d{4}$/.test(String(f.title).trim()));
+      years.sort((a, b) => String(b.title).localeCompare(String(a.title)));
+      for (const y of years) {
+        const kids = await driveList(`parentId = '${qEsc(y.id)}' and mimeType = '${FOLDER}'`);
+        for (const k of kids) folders.push({ title: String(k.title || ""), url: k.viewUrl || "", year: String(y.title).trim() });
+      }
+    }
+    state.drive = { folders, loaded: true };
+  } catch (e) { state.err.drive = e; }
+}
 async function loadCalendar() {
   state.err.cal = null;
   const t = today();
@@ -574,7 +698,7 @@ function extractionPrompt(projs) {
 Use SOMENTE o texto abaixo. Nunca invente etapa, responsável, data ou situação.
 
 Responda apenas com JSON neste formato:
-{"etapas":[{"card":1,"etapa":"Ambientação","responsavel":"Alice Barbosa","prazo":"2026-09-25","situacao":"em_andamento"}]}
+{"etapas":[{"card":1,"etapa":"Ambientação","responsavel":"Alice Barbosa","prazo":"2026-09-25","situacao":"em_andamento"}],"pendencias":[{"card":1,"texto":"Especificar qual projeto complementar"}]}
 
 Regras:
 - "card" é o número entre colchetes.
@@ -582,6 +706,7 @@ Regras:
 - "situacao": "concluida", "em_andamento", "aguardando" (depende de cliente, aprovação ou outra etapa), "nao_iniciada" ou "nao_informada". Atualizações e comentários mais recentes prevalecem sobre o texto original.
 - Etapas marcadas "não haverá" ficam de fora. Responsável "a definir" vira "a definir".
 - Se uma etapa tem dois responsáveis, repita a etapa uma vez para cada um.
+- "pendencias": só o que o texto trata como ainda em aberto (pendência, a definir, a confirmar, aguardando decisão ou retorno). Frase curta, fiel ao texto. Pendências já resolvidas em atualizações posteriores ficam de fora.
 
 Cards:
 
@@ -604,6 +729,14 @@ async function runExtraction(force) {
       const sit = ["concluida", "em_andamento", "aguardando", "nao_iniciada", "nao_informada"].includes(e.situacao) ? e.situacao : "nao_informada";
       return { card: c, etapa: e.etapa.trim(), resp, keys: /a definir/i.test(resp) ? [] : keys, prazo: isKey(e.prazo) ? e.prazo : null, situacao: sit };
     }).filter(Boolean);
+    const pl = Array.isArray(res && res.pendencias) ? res.pendencias : [];
+    state.pend = new Map();
+    for (const x of pl) {
+      const c = projs[Number(x && x.card) - 1];
+      if (!c || typeof x.texto !== "string" || !x.texto.trim()) continue;
+      if (!state.pend.has(c.id)) state.pend.set(c.id, []);
+      state.pend.get(c.id).push(x.texto.trim().slice(0, 300));
+    }
     state.extract = "ok";
   } catch (e) {
     state.extract = "err"; state.extractErr = sampleMsg(e);
@@ -739,11 +872,12 @@ function renderStatus() {
   if (!state.loadedAt) { el.textContent = "Lendo Trello e Calendar…"; return; }
   if (state.err.trello) parts.push(`<span class="err">Trello sem acesso</span>`);
   if (state.err.cal) parts.push(`<span class="err">Calendar sem acesso</span>`);
+  if (state.err.drive && state.view === "projetos") parts.push(`<span class="err">Drive sem acesso</span>`);
   if (!state.err.trello && !state.err.cal) parts.push(`Atualizado às <span class="num">${fTime.format(state.loadedAt)}</span>, de novo a cada 2 min`);
   if (state.extract === "loading") parts.push("lendo as etapas nos cards…");
   else if (state.extract === "err" || state.extract === "off") parts.push(`<span class="err">etapas não lidas</span>`);
   el.innerHTML = parts.join(", ");
-  el.title = [state.err.trello && mcpMsg(state.err.trello, TRELLO), state.err.cal && mcpMsg(state.err.cal, CAL), state.extractErr].filter(Boolean).join("\n");
+  el.title = [state.err.trello && mcpMsg(state.err.trello, TRELLO), state.err.cal && mcpMsg(state.err.cal, CAL), state.err.drive && mcpMsg(state.err.drive, DRIVE), state.extractErr].filter(Boolean).join("\n");
 }
 function renderPageErr() {
   const msgs = [];
@@ -860,8 +994,191 @@ function openPerson(key) {
   if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", "");
 }
 
+/* ================= projetos ================= */
+const TYPE_RX = /ARQUITET|INTERIOR/;
+function descField(c, rx) { const m = c.desc.match(rx); return m ? m[1].split(/\s+[—–]\s+|\s*\(/)[0].trim() : ""; }
+function tipoOf(c) {
+  const d = descField(c, /^TIPO:\s*(.+)$/mi);
+  if (d) return nice(d);
+  const segs = cleanName(c.name).split(/\s+-\s+/);
+  const last = segs[segs.length - 1] || "";
+  return TYPE_RX.test(norm(last)) ? nice(last) : "";
+}
+function clienteOf(c) {
+  const d = descField(c, /^CLIENTE(?:\/EMPRESA)?:\s*(.+)$/mi);
+  if (d) return nice(d);
+  const segs = cleanName(c.name).split(/\s+-\s+/);
+  if (segs.length > 1 && TYPE_RX.test(norm(segs[segs.length - 1]))) segs.pop();
+  return nice(segs.join(" - "));
+}
+function brDateKey(s) { const m = String(s).match(/(\d{2})\/(\d{2})\/(\d{4})/); return m ? `${m[3]}-${m[2]}-${m[1]}` : null; }
+function inicioOf(c) { const m = c.desc.match(/IN[IÍ]CIO:\s*(\d{2}\/\d{2}\/\d{4})/i); return m ? brDateKey(m[1]) : null; }
+function sentence(line) {
+  const out = String(line).trim().replace(/:$/, "").split(/(\s+)/).map((w) => (/^[A-ZÀ-Ü]{2,}[.,;:)]*$/.test(w) && !/\d/.test(w) ? w.toLocaleLowerCase("pt-BR") : w)).join("");
+  return out.charAt(0).toLocaleUpperCase("pt-BR") + out.slice(1);
+}
+const HIST_HEAD = /^(?:STATUS ATUALIZADO|ATUALIZA[ÇC][ÃA]O|ALTERA[ÇC][ÃA]O|CORRE[ÇC][ÃA]O|SIMULA[ÇC][ÃA]O|CONFIRMA[ÇC][ÃA]O|ATA PROCESSADA|RISCO REGISTRADO|PEND[ÊE]NCIA)[^\n]*?(\d{2}\/\d{2}\/\d{4})/i;
+function historyOf(c) {
+  const out = []; let cur = null;
+  for (const ln of c.desc.split("\n")) {
+    const m = ln.match(HIST_HEAD);
+    if (m) { if (cur) out.push(cur); cur = { key: brDateKey(m[1]), head: sentence(ln), body: [] }; }
+    else if (cur) cur.body.push(ln);
+  }
+  if (cur) out.push(cur);
+  for (const x of c.comments) {
+    const d = x.at ? new Date(x.at) : null;
+    out.push({ key: d && !isNaN(d) ? ymd(d) : null, head: "Comentário no card", body: [x.text] });
+  }
+  return out.map((h) => ({ ...h, body: h.body.join("\n").trim() })).sort((a, b) => (b.key || "").localeCompare(a.key || ""));
+}
+function driveFolderFor(c) {
+  if (!state.drive.folders.length) return null;
+  const segs = cleanName(c.name).split(/\s+-\s+/).map(norm);
+  const cli = norm(clienteOf(c)), tipo = norm(tipoOf(c));
+  let best = null;
+  for (const f of state.drive.folders) {
+    const fs = cleanName(f.title).split(/\s+-\s+/).map(norm);
+    const fClient = fs[0], fType = fs.slice(1).join(" - ");
+    if (!(segs.includes(fClient) || fClient === cli)) continue;
+    if (fType && tipo && !(fType === tipo || fType.startsWith(tipo) || tipo.startsWith(fType))) continue;
+    const score = (fType ? 2 : 0) + (c.dueKey && c.dueKey.slice(0, 4) === f.year ? 1 : 0);
+    if (!best || score > best.score) best = { f, score };
+  }
+  return best ? best.f : null;
+}
+function etapasOf(c) {
+  const rank = (e) => (e.situacao === "concluida" ? 0 : 1);
+  return (state.etapas || []).filter((e) => e.card === c).map((e, i) => ({ e, i }))
+    .sort((a, b) => rank(a.e) - rank(b.e) || (a.e.prazo || "9999").localeCompare(b.e.prazo || "9999") || a.i - b.i).map((x) => x.e);
+}
+function etapaAtual(c) {
+  const et = etapasOf(c).filter((e) => e.situacao !== "concluida");
+  return et.find((e) => e.situacao === "em_andamento") || [...et].filter((e) => e.prazo).sort((a, b) => a.prazo.localeCompare(b.prazo))[0] || et[0] || null;
+}
+function etapaSw(e) {
+  if (e.situacao === "concluida") return "done";
+  if (e.prazo && e.prazo < today()) return "atraso";
+  if (e.situacao === "em_andamento") return "producao";
+  if (e.situacao === "aguardando") return "wait";
+  return "";
+}
+const SIT_TXT = { concluida: "Concluída", em_andamento: "Em andamento", aguardando: "Aguardando", nao_iniciada: "Não iniciada", nao_informada: "Situação não registrada" };
+function endOfWeek(k) { let d = k; for (let i = 0; i < 7 && k2d(d).getUTCDay() !== 0; i++) d = addDays(d, 1); return d; }
+function projectList() {
+  const t = today(), f = state.filters;
+  const all = state.cards.filter((c) => c.kind === "projeto");
+  const pool = all.filter((c) => (f.scope === "concluidos" ? c.done : !c.done));
+  const list = pool.filter((c) => {
+    if (f.status && c.list !== f.status) return false;
+    if (f.resp) {
+      const inTitle = c.team.map(norm).includes(f.resp);
+      const inEt = etapasOf(c).some((e) => e.keys.includes(f.resp));
+      if (!inTitle && !inEt) return false;
+    }
+    if (f.prazo === "atrasados" && !(c.dueKey && c.dueKey < t)) return false;
+    if (f.prazo === "semana" && !(c.dueKey && c.dueKey >= t && c.dueKey <= endOfWeek(t))) return false;
+    if (f.prazo === "mes" && !(c.dueKey && c.dueKey >= t && c.dueKey.slice(0, 7) === t.slice(0, 7))) return false;
+    if (f.prazo === "sem" && c.dueKey) return false;
+    return true;
+  });
+  list.sort((a, b) => (a.dueKey || "9999").localeCompare(b.dueKey || "9999"));
+  return { all, list, ativos: all.filter((c) => !c.done).length, concl: all.filter((c) => c.done).length };
+}
+function fillSelect(el, opts, cur) {
+  const html = `<option value="">Todos</option>` + opts.map(([v, l]) => `<option value="${esc(v)}"${v === cur ? " selected" : ""}>${esc(l)}</option>`).join("");
+  if (el.innerHTML !== html) el.innerHTML = html;
+  el.value = cur;
+}
+function renderProjects() {
+  const box = $("projects");
+  if (!state.loadedAt) return;
+  if (state.err.trello) { box.innerHTML = `<div class="empty">${esc(mcpMsg(state.err.trello, TRELLO))}</div>`; return; }
+  const f = state.filters, t = today();
+  const { list, ativos, concl } = projectList();
+  $("n-ativos").textContent = ativos; $("n-concl").textContent = concl;
+  document.querySelectorAll(".seg [data-scope]").forEach((b) => b.setAttribute("aria-checked", String(b.dataset.scope === f.scope)));
+  const lists = state.lists.map((l) => l.name).filter((n) => state.cards.some((c) => c.kind === "projeto" && c.list === n));
+  fillSelect($("f-status"), lists.map((n) => [n, nice(n)]), f.status);
+  fillSelect($("f-resp"), people().map((p) => [p.key, p.full]), f.resp);
+  $("f-prazo").value = f.prazo;
+  $("f-clear").hidden = !(f.status || f.resp || f.prazo);
+  $("proj-count").textContent = `${list.length} de ${f.scope === "concluidos" ? concl : ativos} ${f.scope === "concluidos" ? "concluído(s)" : "ativo(s)"}`;
+  if (!list.length) {
+    box.innerHTML = `<div class="empty">${f.status || f.resp || f.prazo ? "Nenhum projeto com esses filtros." : f.scope === "concluidos" ? "Nenhum projeto na lista CONCLUÍDO." : "Nenhum projeto ativo no Trello."}</div>`;
+    return;
+  }
+  box.innerHTML = list.map((c) => {
+    const tipo = tipoOf(c), et = etapaAtual(c), ets = etapasOf(c);
+    let etTxt;
+    if (c.done) etTxt = `<span class="pc-miss">Projeto concluído</span>`;
+    else if (state.extract === "loading") etTxt = `<span class="pc-miss">Lendo as etapas…</span>`;
+    else if (!state.etapas) etTxt = `<span class="pc-miss">Etapas não lidas</span>`;
+    else if (et) etTxt = `${esc(et.etapa)}<span class="pc-sub">${et.prazo ? `<span class="pc-date${et.prazo < t ? " late" : ""}">até ${dm(et.prazo)}</span>` : "Prazo interno não registrado no Trello"}${et.resp ? `, ${esc(et.resp)}` : ""}</span>`;
+    else etTxt = `<span class="pc-miss">Nenhuma etapa pendente registrada</span>`;
+    const strip = ets.length ? `<span class="estrip">${ets.map((e) => `<i class="sw ${etapaSw(e)}" title="${esc(`${e.etapa}: ${SIT_TXT[e.situacao] || ""}${e.prazo ? ", até " + dmy(e.prazo) : ""}${e.resp ? " (" + e.resp + ")" : ""}`)}"></i>`).join("")}</span>` : `<span class="pc-miss">${c.done ? "" : "-"}</span>`;
+    return `<button type="button" class="prow" data-id="${esc(c.id)}" aria-label="${esc(clienteOf(c))}: abrir a ficha do projeto">
+      <span class="c-name"><span class="pc-name">${esc(clienteOf(c))}</span><span class="pc-type">${tipo ? esc(tipo) : "Tipo não registrado no Trello"}</span></span>
+      <span class="c-st"><span class="pc-lbl">Status</span>${esc(nice(c.list))}</span>
+      <span class="c-team"><span class="pc-lbl">Equipe</span>${c.team.length ? esc(c.team.join(", ")) : `<span class="pc-miss">Não registrada no título</span>`}</span>
+      <span class="c-due"><span class="pc-lbl">Prazo oficial</span>${c.dueKey ? `<span class="pc-date${!c.done && c.dueKey < t ? " late" : ""}">${dmy(c.dueKey)}</span>` : `<span class="pc-miss">Não registrado</span>`}</span>
+      <span class="c-et"><span class="pc-lbl">Etapa atual</span>${etTxt}</span>
+      <span class="c-strip">${strip}</span></button>`;
+  }).join("");
+}
+
+function openProject(id) {
+  const c = state.cards.find((x) => x.id === id);
+  if (!c) return;
+  const t = today(), tipo = tipoOf(c), cli = clienteOf(c);
+  $("sheet-name").textContent = cli;
+  $("sheet-sub").textContent = `${tipo || "Tipo não registrado no Trello"}. Status: ${nice(c.list)}`;
+  const folder = driveFolderFor(c);
+  const driveTxt = folder ? `<a href="${esc(folder.url)}" target="_blank" rel="noopener">Pasta no Google Drive</a>`
+    : state.err.drive ? `<span class="muted">Drive sem acesso</span>`
+    : !state.drive.loaded ? `<span class="muted">Procurando a pasta no Drive…</span>`
+    : `<span class="muted">Pasta não encontrada no Drive</span>`;
+  const links = `<div class="p-links"><a href="${esc(c.url)}" target="_blank" rel="noopener">Card no Trello</a>${driveTxt}<button type="button" class="linkbtn" id="p-update" data-id="${esc(c.id)}">Registrar atualização deste projeto</button></div>`;
+  const linked = state.cards.filter((x) => x.project === c && x.kind !== "projeto");
+  const d = (k) => (k ? `<span class="pc-date${!c.done && k < t ? " late" : ""}">${wdShort(k)} ${dmy(k)}</span>` : MISSING);
+  const et = etapaAtual(c);
+  const facts = [
+    ["Início", inicioOf(c) ? `<span class="pc-date">${dmy(inicioOf(c))}</span>` : MISSING],
+    ["Prazo oficial", d(c.dueKey)],
+    ["Prazo interno", et && et.prazo ? `${esc(et.etapa)}: ${d(et.prazo)}` : state.etapas ? MISSING : `<span class="miss">Etapas não lidas</span>`],
+    ...linked.filter((x) => x.kind === "reuniao").map((x) => [x.title && /APRESENTA/i.test(norm(x.name)) ? "Apresentação" : "Reunião", d(x.dueKey)]),
+    ...linked.filter((x) => x.kind === "entrega").map((x) => ["Entrega final", d(x.dueKey)]),
+    ["Equipe", c.team.length ? esc(c.team.join(", ")) : MISSING],
+  ];
+  const ets = etapasOf(c);
+  const etapas = c.done && !ets.length ? `<p class="muted">Projeto concluído. As etapas de projetos concluídos não são lidas.</p>`
+    : !state.etapas ? `<p class="muted">${esc(state.extractErr || "As etapas ainda não foram lidas.")}</p>`
+    : ets.length ? `<ul class="rows">${ets.map((e) => `<li><span class="d ${e.prazo && e.prazo < t && e.situacao !== "concluida" ? "late" : ""}">${e.prazo ? dm(e.prazo) : "sem data"}</span><span><i class="sw ${etapaSw(e)}" style="margin-right:8px;width:9px;height:13px"></i>${esc(e.etapa)}<small>${esc(SIT_TXT[e.situacao] || "")}${e.resp ? ", " + esc(e.resp) : ""}${e.prazo ? "" : ". Prazo não registrado no Trello"}</small></span></li>`).join("")}</ul>`
+    : `<p class="muted">Nenhuma etapa registrada na descrição do card.</p>`;
+  const pl = state.pend && state.pend.get(c.id);
+  const pend = !state.etapas ? `<p class="muted">Disponível depois da leitura das etapas.</p>` : pl && pl.length ? `<ul class="pend">${pl.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : `<p class="muted">Nenhuma pendência em aberto registrada no card.</p>`;
+  const hist = historyOf(c);
+  const histHTML = hist.length ? `<ol class="hist">${hist.map((h) => `<li><div class="h-head"><span class="num">${h.key ? dmy(h.key) : ""}</span>${esc(h.head)}</div>${h.body ? `<p class="h-body">${esc(h.body)}</p>` : ""}</li>`).join("")}</ol>` : `<p class="muted">Nenhuma atualização datada no card.</p>`;
+  $("sheet-body").innerHTML = `<section>${links}</section>
+    <section><h3>Datas</h3><dl class="facts">${facts.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${v}</dd>`).join("")}</dl></section>
+    <section><h3>Etapas</h3>${etapas}</section>
+    <section><h3>Pendências</h3>${pend}</section>
+    <section><h3>Histórico</h3>${histHTML}</section>`;
+  const dlg = $("sheet");
+  if (!dlg.open) { if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", ""); }
+  $("sheet-body").scrollTop = 0;
+}
+
+function showView(v) {
+  state.view = v === "projetos" ? "projetos" : "hoje";
+  $("v-hoje").hidden = state.view !== "hoje";
+  $("v-projetos").hidden = state.view !== "projetos";
+  document.querySelectorAll(".nav a[data-view]").forEach((a) => { if (a.dataset.view === state.view) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
+  renderStatus();
+}
+
 function renderSources() { renderStatus(); }
-function renderAll() { renderStatus(); renderPageErr(); renderReminders(); renderAlerts(); renderTeam(); }
+function renderAll() { renderStatus(); renderPageErr(); renderReminders(); renderAlerts(); renderTeam(); renderProjects(); }
 
 /* ================= atualização inteligente ================= */
 let plan = null;
@@ -1143,7 +1460,7 @@ async function loadAll(forceExtract) {
     state.err.trello = state.err.cal = { code: "not_granted" };
     state.loadedAt = new Date(); state.extract = "off"; state.extractErr = "Abra o painel no claude.ai.";
   } else {
-    await Promise.all([loadCalendar(), loadTrello()]);
+    await Promise.all([loadCalendar(), loadTrello(), (forceExtract || !state.drive.loaded) ? loadDrive() : null]);
     state.loadedAt = new Date();
   }
   btn.disabled = false; btn.classList.remove("busy");
@@ -1173,6 +1490,29 @@ feat.addEventListener("focusout", () => (remPaused = false));
 if (reduce.addEventListener) reduce.addEventListener("change", startRotation);
 
 $("team").addEventListener("click", (e) => { const b = e.target.closest(".row"); if (b) openPerson(b.dataset.p); });
+$("projects").addEventListener("click", (e) => { const b = e.target.closest(".prow"); if (b) openProject(b.dataset.id); });
+document.querySelectorAll(".seg [data-scope]").forEach((b) => b.addEventListener("click", () => { state.filters.scope = b.dataset.scope; renderProjects(); }));
+$("f-status").addEventListener("change", (e) => { state.filters.status = e.target.value; renderProjects(); });
+$("f-resp").addEventListener("change", (e) => { state.filters.resp = e.target.value; renderProjects(); });
+$("f-prazo").addEventListener("change", (e) => { state.filters.prazo = e.target.value; renderProjects(); });
+$("f-clear").addEventListener("click", () => { Object.assign(state.filters, { status: "", resp: "", prazo: "" }); renderProjects(); });
+$("sheet-body").addEventListener("click", (e) => {
+  if (e.target.id !== "p-update") return;
+  const c = state.cards.find((x) => x.id === e.target.dataset.id);
+  $("sheet").close();
+  const ta = $("upd-text");
+  ta.value = c ? `${clienteOf(c)} (${tipoOf(c) || "projeto"}): ` : "";
+  ta.scrollIntoView({ behavior: reduce.matches ? "auto" : "smooth", block: "center" });
+  ta.focus({ preventScroll: true });
+});
+const routeFromHash = () => showView(location.hash === "#projetos" ? "projetos" : "hoje");
+window.addEventListener("hashchange", routeFromHash);
+document.querySelectorAll(".nav a[data-view]").forEach((a) => a.addEventListener("click", (e) => {
+  e.preventDefault();
+  try { history.replaceState(null, "", "#" + a.dataset.view); } catch (_) {}
+  showView(a.dataset.view);
+}));
+routeFromHash();
 $("sheet-close").addEventListener("click", () => $("sheet").close());
 $("sheet").addEventListener("click", (e) => { if (e.target === e.currentTarget) e.currentTarget.close(); });
 

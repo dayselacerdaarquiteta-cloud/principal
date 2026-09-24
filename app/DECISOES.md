@@ -62,3 +62,13 @@ ESC. DAYSE LACERDA/
 └── 2026/CLIENTE - TIPO DE PROJETO/ …
 ```
 As especificações dos agentes devem ficar em Google Docs nessas pastas e ser adicionadas ao conhecimento de cada projeto do Claude Desktop pela integração com o Drive.
+
+## Fase 3: aba Projetos
+- Lista os projetos ativos (cards de projeto fora da lista CONCLUÍDO). Os concluídos ficam no filtro "Concluídos".
+- Cliente e tipo vêm das linhas "CLIENTE:" e "TIPO:" da descrição; sem elas, do título do card.
+- Prazo oficial = data do card no Trello. Prazo interno = prazo da etapa atual lido da descrição; sem data, "Não registrado no Trello".
+- Etapa atual: a etapa em andamento; sem ela, a pendente com prazo mais próximo.
+- Filtros: situação (ativos/concluídos), status, responsável e prazo oficial (atrasados, vencem esta semana, vencem este mês, sem prazo).
+- Ficha: links do Trello e do Drive, datas (início, prazos, apresentação e entrega final dos cards ligados), etapas, pendências (lidas pelo Claude, só as que o texto trata como em aberto) e histórico (blocos datados da descrição e comentários, copiados do card, do mais recente para o mais antigo).
+- Drive: só leitura. A pasta é procurada em ESC. DAYSE LACERDA / ano. O link só aparece quando o cliente e o tipo da pasta batem com o card; na dúvida, mostra "Pasta não encontrada no Drive".
+- As pastas do Drive são lidas ao abrir o painel e ao tocar em "Atualizar dados", não a cada 2 minutos.

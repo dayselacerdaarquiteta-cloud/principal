@@ -14,6 +14,8 @@
   --red:#B3372B;
   --orange:#C2671A;
   --orange-text:#9A4E0F;
+  --hero:#FFFFFF;--hero-line:#DCE1E5;
+  --red-soft:#F8E6E3;--orange-soft:#F8EBDD;--blue-soft:#E4EBF5;--green-soft:#E3EFE7;--on-crit:#FFFFFF;
   --blue:#2E5C9A;
   --green:#3B7853;
   --scrim:rgba(24,27,29,.32);
@@ -29,14 +31,14 @@
   :root:not([data-theme="light"]){
     color-scheme:dark;
     --ground:#141617;--surface:#1B1E20;--ink:#E9EBE8;--stone:#9EA5A9;--line:#2A2E31;--line-strong:#3D4246;--wash:#212527;
-    --red:#E26B5D;--orange:#E39A55;--orange-text:#E39A55;--chev:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%239EA5A9' stroke-width='1.4'/%3E%3C/svg%3E");--blue:#83A6DC;--green:#7DBB92;--scrim:rgba(0,0,0,.55);
+    --red:#E26B5D;--orange:#E39A55;--orange-text:#E39A55;--hero:#1C2631;--hero-line:#2C3A47;--red-soft:#3A2220;--orange-soft:#3A2C1C;--blue-soft:#1E2A3D;--green-soft:#1C2E24;--on-crit:#141617;--chev:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%239EA5A9' stroke-width='1.4'/%3E%3C/svg%3E");--blue:#83A6DC;--green:#7DBB92;--scrim:rgba(0,0,0,.55);
     --lift:0 1px 2px rgba(0,0,0,.4),0 16px 48px rgba(0,0,0,.5);
   }
 }
 :root[data-theme="dark"]{
   color-scheme:dark;
   --ground:#141617;--surface:#1B1E20;--ink:#E9EBE8;--stone:#9EA5A9;--line:#2A2E31;--line-strong:#3D4246;--wash:#212527;
-  --red:#E26B5D;--orange:#E39A55;--orange-text:#E39A55;--chev:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%239EA5A9' stroke-width='1.4'/%3E%3C/svg%3E");--blue:#83A6DC;--green:#7DBB92;--scrim:rgba(0,0,0,.55);
+  --red:#E26B5D;--orange:#E39A55;--orange-text:#E39A55;--hero:#1C2631;--hero-line:#2C3A47;--red-soft:#3A2220;--orange-soft:#3A2C1C;--blue-soft:#1E2A3D;--green-soft:#1C2E24;--on-crit:#141617;--chev:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%239EA5A9' stroke-width='1.4'/%3E%3C/svg%3E");--blue:#83A6DC;--green:#7DBB92;--scrim:rgba(0,0,0,.55);
   --lift:0 1px 2px rgba(0,0,0,.4),0 16px 48px rgba(0,0,0,.5);
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -65,7 +67,7 @@ h3{font-size:14px;font-weight:600}
 .nav span{color:var(--stone)}
 
 /* abertura */
-.opening{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:32px 64px;padding-block:52px 44px;align-items:start;border-bottom:1px solid var(--line)}
+.opening{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:32px 64px;margin-top:28px;padding:44px clamp(20px,4vw,48px) 40px;align-items:start;background:var(--hero);border:1px solid var(--hero-line);border-radius:8px}
 h1{font-weight:300;font-size:clamp(64px,9vw,96px);line-height:.9;letter-spacing:-.035em}
 .date{margin-top:14px;font-size:18px;color:var(--stone)}
 .mast-r{display:flex;align-items:center;gap:12px 36px;flex-wrap:wrap}
@@ -97,10 +99,28 @@ h1{font-weight:300;font-size:clamp(64px,9vw,96px);line-height:.9;letter-spacing:
 .sw.registro{background:transparent;box-shadow:inset 0 0 0 1.5px var(--blue)}
 .sw.big{width:30px;height:42px;border-radius:3px}
 
+/* ícones */
+.lu{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.ic{display:inline-grid;place-items:center;width:32px;height:32px;border-radius:8px;flex:none;background:var(--wash);color:var(--stone)}
+.ic.big{width:64px;height:64px;border-radius:14px}
+.ic.big .lu{width:30px;height:30px;stroke-width:1.5}
+.ic.sm{width:26px;height:26px;border-radius:7px}
+.ic.sm .lu{width:15px;height:15px}
+.t-crit{background:var(--red);color:var(--on-crit)}
+.t-red{background:var(--red-soft);color:var(--red)}
+.t-orange{background:var(--orange-soft);color:var(--orange-text)}
+.t-blue{background:var(--blue-soft);color:var(--blue)}
+.t-green{background:var(--green-soft);color:var(--green)}
+.ug{display:inline-flex;align-items:center;gap:5px}
+.ug .lu{width:14px;height:14px;stroke-width:2}
+.ug.t-crit,.ug.t-red{color:var(--red);background:none}
+.ug.t-orange{color:var(--orange-text);background:none}
+.ug.t-blue{color:var(--blue);background:none}
+
 /* lembrete em destaque */
 .feature{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 24px;align-items:start;min-height:150px}
 .sample{grid-row:span 2;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
-.sample .sw.big{width:64px;height:92px;border-radius:3px}
+.sample .sw.big{width:64px;height:64px;border-radius:14px}
 .sample .cap{font-family:var(--f-num);font-size:13px;color:var(--stone);line-height:1.25}
 .sample .cap b{display:block;color:var(--ink);font-weight:600;font-size:15px}
 .f-title{font-size:clamp(24px,2.6vw,32px);font-weight:500;line-height:1.18;letter-spacing:-.012em;margin-top:2px}
@@ -117,8 +137,8 @@ h1{font-weight:300;font-size:clamp(64px,9vw,96px);line-height:.9;letter-spacing:
 .linkbtn:hover{text-decoration-color:currentColor}
 .all{margin-top:28px}
 .all ol{list-style:none;margin:0;padding:0}
-.all li{display:grid;grid-template-columns:auto 64px minmax(0,1fr);gap:4px 14px;padding:11px 0;border-top:1px solid var(--line);align-items:baseline}
-.all li .sw{align-self:center}
+.all li{display:grid;grid-template-columns:32px 64px minmax(0,1fr);gap:4px 14px;padding:11px 0;border-top:1px solid var(--line);align-items:baseline}
+.all li .ic{align-self:center}
 .all li small{display:block;color:var(--stone);font-size:13px}
 
 /* corpo */
@@ -151,8 +171,8 @@ h1{font-weight:300;font-size:clamp(64px,9vw,96px);line-height:.9;letter-spacing:
 
 /* alertas */
 .alerts ol{list-style:none;margin:0;padding:0}
-.alert{display:grid;grid-template-columns:12px minmax(0,1fr);gap:3px 14px;padding:14px 0;border-top:1px solid var(--line)}
-.alert .sw{width:10px;height:14px;margin-top:5px;grid-row:span 2}
+.alert{display:grid;grid-template-columns:32px minmax(0,1fr);gap:3px 14px;padding:14px 0;border-top:1px solid var(--line)}
+.alert .ic{margin-top:1px;grid-row:span 2}
 .a-type{font-family:var(--f-num)}
 .a-type{color:var(--ink);font-weight:600}
 .alert.critico .a-type{color:var(--red)}
@@ -297,8 +317,8 @@ textarea:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 1px var(--i
 .st-confirm .row2{display:flex;gap:8px;flex-wrap:wrap}
 
 /* reuniões */
-.mt{display:grid;grid-template-columns:12px 64px minmax(0,1fr) auto;gap:4px 14px;align-items:baseline;width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--line);padding:13px 0;color:inherit;font-size:14.5px;cursor:pointer}
-.mt .sw{width:10px;height:14px;align-self:center}
+.mt{display:grid;grid-template-columns:26px 64px minmax(0,1fr) auto;gap:4px 14px;align-items:baseline;width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--line);padding:13px 0;color:inherit;font-size:14.5px;cursor:pointer}
+.mt .ic{align-self:center}
 .mt small{display:block;color:var(--stone);font-size:13px}
 .mt .when{font-family:var(--f-num);color:var(--stone);font-size:13.5px}
 .mt .tag{text-align:right}
@@ -336,7 +356,7 @@ dialog.sheet::backdrop{background:var(--scrim)}
 
 @media (max-width:960px){
   .opening,.body,.update{grid-template-columns:1fr}
-  .opening{padding-block:36px 32px}
+  .opening{padding:28px 20px 26px;margin-top:18px}
 }
 @media (max-width:860px){
   .eq{grid-template-columns:1fr;gap:20px}
@@ -892,12 +912,12 @@ function reminders() {
   const t = today(), lim3 = addBD(t, 3), out = [];
   for (const m of meetings(t, addDays(t, 7))) {
     const apres = /APRESENTA|APROVA/.test(norm((m.card ? m.card.name : "") + " " + m.title));
-    out.push({ k: "reuniao", apres, label: apres ? "Apresentação" : "Reunião", key: m.key, title: m.title, meta: `${m.time ? "Às " + m.time : "Horário não registrado"}. Fonte: ${m.src.join(" e ")}.`, url: m.url });
+    out.push({ k: "reuniao", apres, card: m.card ? m.card.project || null : null, label: apres ? "Apresentação" : "Reunião", key: m.key, title: m.title, meta: `${m.time ? "Às " + m.time : "Horário não registrado"}. Fonte: ${m.src.join(" e ")}.`, url: m.url });
   }
   for (const c of deliverables()) {
-    if (c.dueKey === t) out.push({ k: "entrega", label: "Entrega", key: c.dueKey, title: c.title, meta: `Lista ${c.list}. Prazo no Trello: ${dmy(c.dueKey)}.`, url: c.url });
-    else if (c.dueKey > t && c.dueKey <= lim3) out.push({ k: "prazo", label: "Perto do prazo", key: c.dueKey, title: c.title, meta: `Vence em ${bdBetween(t, c.dueKey)} dia(s) útil(eis). Lista ${c.list}.`, url: c.url });
-    else if (c.dueKey < t) out.push({ k: "atraso", label: "Atrasado", key: c.dueKey, title: c.title, meta: `${bdBetween(c.dueKey, t)} dia(s) útil(eis) de atraso. Lista ${c.list}.`, url: c.url });
+    if (c.dueKey === t) out.push({ k: "entrega", card: c, label: "Entrega", key: c.dueKey, title: c.title, meta: `Lista ${c.list}. Prazo no Trello: ${dmy(c.dueKey)}.`, url: c.url });
+    else if (c.dueKey > t && c.dueKey <= lim3) out.push({ k: "prazo", card: c, label: "Perto do prazo", key: c.dueKey, title: c.title, meta: `Vence em ${bdBetween(t, c.dueKey)} dia(s) útil(eis). Lista ${c.list}.`, url: c.url });
+    else if (c.dueKey < t) out.push({ k: "atraso", card: c, label: "Atrasado", key: c.dueKey, title: c.title, meta: `${bdBetween(c.dueKey, t)} dia(s) útil(eis) de atraso. Lista ${c.list}.`, url: c.url });
   }
   const order = { entrega: 0, reuniao: 1, atraso: 2, prazo: 3 };
   return out.sort((a, b) => order[a.k] - order[b.k] || a.key.localeCompare(b.key));
@@ -923,13 +943,13 @@ function alerts() {
   const t = today(), lim3 = addBD(t, 3), out = [];
   for (const c of deliverables()) {
     const who = teamOf(c).join(", ");
-    if (c.dueKey < t) out.push({ sev: "critico", type: "Projeto atrasado", title: c.title, d: `Prazo no Trello ${dmy(c.dueKey)}, ${bdBetween(c.dueKey, t)} dia(s) útil(eis) de atraso. Lista: ${c.list}.`, url: c.url, key: c.dueKey });
-    else if (c.dueKey === t) out.push({ sev: "atencao", type: "Entrega hoje", title: c.title, d: `Lista: ${c.list}.${who ? " Equipe: " + who + "." : ""}`, url: c.url, key: c.dueKey });
-    else if (c.dueKey <= lim3) out.push({ sev: "atencao", type: "Prazo em risco", title: c.title, d: `Vence ${wdShort(c.dueKey)} ${dmy(c.dueKey)}, em ${bdBetween(t, c.dueKey)} dia(s) útil(eis). Lista: ${c.list}.`, url: c.url, key: c.dueKey });
+    if (c.dueKey < t) out.push({ sev: "critico", card: c, type: "Projeto atrasado", title: c.title, d: `Prazo no Trello ${dmy(c.dueKey)}, ${bdBetween(c.dueKey, t)} dia(s) útil(eis) de atraso. Lista: ${c.list}.`, url: c.url, key: c.dueKey });
+    else if (c.dueKey === t) out.push({ sev: "atencao", card: c, type: "Entrega hoje", title: c.title, d: `Lista: ${c.list}.${who ? " Equipe: " + who + "." : ""}`, url: c.url, key: c.dueKey });
+    else if (c.dueKey <= lim3) out.push({ sev: "atencao", card: c, type: "Prazo em risco", title: c.title, d: `Vence ${wdShort(c.dueKey)} ${dmy(c.dueKey)}, em ${bdBetween(t, c.dueKey)} dia(s) útil(eis). Lista: ${c.list}.`, url: c.url, key: c.dueKey });
   }
   for (const e of state.etapas || []) {
     if (e.situacao === "concluida" || !e.prazo || e.prazo >= t || e.card.done) continue;
-    out.push({ sev: "atencao", type: "Etapa atrasada", title: `${e.etapa}, ${e.card.title}`, d: `Etapa prevista para ${dmy(e.prazo)} (${e.resp || "responsável não registrado"}), sem conclusão registrada no card.`, url: e.card.url, key: e.prazo });
+    out.push({ sev: "atencao", card: e.card, type: "Etapa atrasada", title: `${e.etapa}, ${e.card.title}`, d: `Etapa prevista para ${dmy(e.prazo)} (${e.resp || "responsável não registrado"}), sem conclusão registrada no card.`, url: e.card.url, key: e.prazo });
   }
   if (state.etapas) for (const p of people()) {
     const d = personData(p);
@@ -939,13 +959,25 @@ function alerts() {
   for (const c of state.cards) {
     if (c.kind !== "reuniao" || c.done || !c.dueKey || c.dueKey >= t || c.dueKey < addDays(t, -21)) continue;
     if (/\bATA\b/i.test(c.desc) || c.comments.some((x) => /\bATA\b/i.test(x.text))) continue;
-    out.push({ sev: "info", type: "Registro pendente", title: c.title, d: `Reunião de ${dmy(c.dueKey)} sem ata ou resultado registrado no card.`, url: c.url, key: c.dueKey });
+    out.push({ sev: "info", card: c, type: "Registro pendente", title: c.title, d: `Reunião de ${dmy(c.dueKey)} sem ata ou resultado registrado no card.`, url: c.url, key: c.dueKey });
   }
   const o = { critico: 0, atencao: 1, info: 2 };
   return out.sort((a, b) => o[a.sev] - o[b.sev] || a.key.localeCompare(b.key));
 }
 
 
+/* Ícones: Lucide v0.460.0, licença ISC (lucide.dev) */
+const LUCIDE = {"building-2": "<path d=\"M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z\"/> <path d=\"M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2\"/> <path d=\"M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2\"/> <path d=\"M10 6h4\"/> <path d=\"M10 10h4\"/> <path d=\"M10 14h4\"/> <path d=\"M10 18h4\"/>", "sofa": "<path d=\"M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3\"/> <path d=\"M2 16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v1.5a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5V11a2 2 0 0 0-4 0z\"/> <path d=\"M4 18v2\"/> <path d=\"M20 18v2\"/> <path d=\"M12 4v9\"/>", "house": "<path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\"/> <path d=\"M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/>", "calendar-days": "<path d=\"M8 2v4\"/> <path d=\"M16 2v4\"/> <rect width=\"18\" height=\"18\" x=\"3\" y=\"4\" rx=\"2\"/> <path d=\"M3 10h18\"/> <path d=\"M8 14h.01\"/> <path d=\"M12 14h.01\"/> <path d=\"M16 14h.01\"/> <path d=\"M8 18h.01\"/> <path d=\"M12 18h.01\"/> <path d=\"M16 18h.01\"/>", "presentation": "<path d=\"M2 3h20\"/> <path d=\"M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3\"/> <path d=\"m7 21 5-5 5 5\"/>", "flag": "<path d=\"M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z\"/> <line x1=\"4\" x2=\"4\" y1=\"22\" y2=\"15\"/>", "hourglass": "<path d=\"M5 22h14\"/> <path d=\"M5 2h14\"/> <path d=\"M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22\"/> <path d=\"M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2\"/>", "triangle-alert": "<path d=\"m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3\"/> <path d=\"M12 9v4\"/> <path d=\"M12 17h.01\"/>", "users": "<path d=\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\"/> <circle cx=\"9\" cy=\"7\" r=\"4\"/> <path d=\"M22 21v-2a4 4 0 0 0-3-3.87\"/> <path d=\"M16 3.13a4 4 0 0 1 0 7.75\"/>", "file-pen-line": "<path d=\"m18 5-2.414-2.414A2 2 0 0 0 14.172 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2\"/> <path d=\"M21.378 12.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z\"/> <path d=\"M8 18h1\"/>", "clock": "<circle cx=\"12\" cy=\"12\" r=\"10\"/> <polyline points=\"12 6 12 12 16 14\"/>", "folder": "<path d=\"M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z\"/>"};
+const svgI = (n) => `<svg class="lu" viewBox="0 0 24 24" aria-hidden="true">${LUCIDE[n] || LUCIDE.folder}</svg>`;
+const icBadge = (n, tone, size) => `<span class="ic${size ? " " + size : ""} ${tone}" aria-hidden="true">${svgI(n)}</span>`;
+const ug = (n, tone, txt) => `<span class="ug ${tone}">${svgI(n)}${txt}</span>`;
+function typeIcon(card) {
+  if (!card) return "folder";
+  const base = card.kind === "projeto" ? card : card.project || card;
+  const t = norm((typeof tipoOf === "function" ? tipoOf(base) : "") + " " + base.name);
+  const a = /ARQUITET/.test(t), i = /INTERIOR/.test(t);
+  return a && i ? "house" : i ? "sofa" : a ? "building-2" : "folder";
+}
 /* ================= tira de amostras ================= */
 const ORDER = ["entrega", "apresentacao", "reuniao", "producao"];
 const KIND_LABEL = { entrega: "Entrega final", apresentacao: "Apresentação ou aprovação", reuniao: "Reunião", producao: "Produção" };
@@ -999,12 +1031,19 @@ function renderPageErr() {
 let remIdx = 0, remTimer = null, remItems = [], remPaused = false;
 const reduce = matchMedia("(prefers-reduced-motion: reduce)");
 const swClass = (r) => (r.k === "reuniao" && r.apres ? "apresentacao" : r.k);
+function remVis(r) {
+  if (r.k === "reuniao") return r.apres ? { icon: "presentation", tone: "t-orange", g: "clock" } : { icon: "calendar-days", tone: "t-blue", g: "clock" };
+  if (r.k === "atraso") return { icon: typeIcon(r.card), tone: "t-crit", g: "triangle-alert", gt: "t-crit" };
+  if (r.k === "entrega") return { icon: typeIcon(r.card), tone: "t-red", g: "flag", gt: "t-red" };
+  return { icon: typeIcon(r.card), tone: "t-orange", g: "hourglass", gt: "t-orange" };
+}
 function featureHTML(r) {
   const title = r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title)}</a>` : esc(r.title);
   const when = r.key === today() ? "hoje" : `${wdShort(r.key)} ${dm(r.key)}`;
-  return `<div class="sample"><span class="sw big ${swClass(r)}" aria-hidden="true"></span><span class="cap"><b>${esc(dm(r.key))}</b>${esc(wdShort(r.key))}</span></div>
+  const v = remVis(r);
+  return `<div class="sample">${icBadge(v.icon, v.tone, "big")}<span class="cap"><b>${esc(dm(r.key))}</b>${esc(wdShort(r.key))}</span></div>
     <div><div class="f-title">${title}</div>
-    <div class="f-meta"><span class="k">${esc(r.label)}, ${esc(when)}.</span> ${esc(r.meta)}</div></div>`;
+    <div class="f-meta"><span class="k">${ug(v.g, v.gt || v.tone, esc(r.label) + ", " + esc(when) + ".")}</span> ${esc(r.meta)}</div></div>`;
 }
 function showSlide(i, animate) {
   if (!remItems.length) return;
@@ -1037,9 +1076,19 @@ function renderReminders() {
   $("rem-prev").disabled = $("rem-next").disabled = remItems.length < 2;
   showSlide(Math.min(remIdx, remItems.length - 1), false);
   startRotation();
-  $("rem-list").innerHTML = `<ol>${remItems.map((r) => `<li><span class="sw ${swClass(r)}" aria-hidden="true"></span><span class="num muted when">${esc(wdShort(r.key))} ${dm(r.key)}</span><span>${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title)}</a>` : esc(r.title)}<small>${esc(r.label)}. ${esc(r.meta)}</small></span></li>`).join("")}</ol>`;
+  $("rem-list").innerHTML = `<ol>${remItems.map((r) => `<li>${(() => { const v = remVis(r); return icBadge(v.icon, v.tone); })()}<span class="num muted when">${esc(wdShort(r.key))} ${dm(r.key)}</span><span>${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title)}</a>` : esc(r.title)}<small>${esc(r.label)}. ${esc(r.meta)}</small></span></li>`).join("")}</ol>`;
 }
 
+function alertVis(a) {
+  switch (a.type) {
+    case "Projeto atrasado": case "Etapa atrasada": return { icon: typeIcon(a.card), tone: "t-crit", g: "triangle-alert" };
+    case "Entrega hoje": return { icon: typeIcon(a.card), tone: "t-red", g: "flag" };
+    case "Prazo em risco": return { icon: typeIcon(a.card), tone: "t-orange", g: "hourglass" };
+    case "Sobrecarga": return { icon: "users", tone: a.sev === "critico" ? "t-crit" : "t-orange", g: "triangle-alert" };
+    case "Registro pendente": return { icon: "file-pen-line", tone: "t-blue", g: "clock" };
+    default: return { icon: "folder", tone: "", g: "clock" };
+  }
+}
 const ALERT_SW = { "Projeto atrasado": "atraso", "Etapa atrasada": "atraso", "Entrega hoje": "entrega", "Prazo em risco": "prazo", "Sobrecarga": "carga", "Registro pendente": "registro" };
 function renderAlerts() {
   const box = $("alerts");
@@ -1049,9 +1098,9 @@ function renderAlerts() {
   $("al-count").textContent = list.length ? String(list.length) : "";
   const fine = `<p class="fine">Sobrecarga é um critério provisório do painel: 3 ou mais etapas ativas por pessoa pedem atenção, 5 ou mais são críticas.${state.extract !== "ok" ? " As etapas ainda não foram lidas, então os alertas por etapa podem estar incompletos." : ""}</p>`;
   if (!list.length) { box.innerHTML = `<div class="empty">Nenhum alerta hoje.</div>` + fine; return; }
-  box.innerHTML = `<ol>${list.map((a) => `<li class="alert ${a.sev}"><span class="sw ${ALERT_SW[a.type] || ""}" aria-hidden="true"></span>
+  box.innerHTML = `<ol>${list.map((a) => `<li class="alert ${a.sev}">${icBadge(alertVis(a).icon, alertVis(a).tone)}
     <span class="a-t">${a.url ? `<a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.title)}</a>` : esc(a.title)}</span>
-    <span class="a-d"><span class="a-type">${esc(a.type)}.</span> ${esc(a.d)}</span></li>`).join("")}</ol>` + fine;
+    <span class="a-d"><span class="a-type">${ug(alertVis(a).g, alertVis(a).tone, esc(a.type) + ".")}</span> ${esc(a.d)}</span></li>`).join("")}</ol>` + fine;
 }
 
 const loadLabel = { normal: "", atencao: "Atenção", critico: "Crítico", na: "" };
@@ -1415,7 +1464,7 @@ function renderReunioes() {
   if (state.err.trello && state.err.cal) { $("re-next").innerHTML = $("re-prev").innerHTML = `<div class="empty">Sem acesso ao Trello e ao Calendar.</div>`; return; }
   reItems = [];
   const next = meetings(t, addDays(t, 30));
-  const row = (m, tag) => { reItems.push(m); const ap = isApres((m.card ? m.card.name : "") + " " + m.title); return `<button type="button" class="mt" data-re="${reItems.length - 1}"><i class="sw ${ap ? "apresentacao" : "reuniao"}"></i><span class="when">${esc(wdShort(m.key))} ${dm(m.key)}</span><span>${esc(m.title)}<small>${m.time ? "Às " + esc(m.time) : "Horário não registrado"}. ${esc((m.src || ["Trello"]).join(" e "))}</small></span><span class="tag">${tag}</span></button>`; };
+  const row = (m, tag) => { reItems.push(m); const ap = isApres((m.card ? m.card.name : "") + " " + m.title); return `<button type="button" class="mt" data-re="${reItems.length - 1}">${icBadge(ap ? "presentation" : "calendar-days", ap ? "t-orange" : "t-blue", "sm")}<span class="when">${esc(wdShort(m.key))} ${dm(m.key)}</span><span>${esc(m.title)}<small>${m.time ? "Às " + esc(m.time) : "Horário não registrado"}. ${esc((m.src || ["Trello"]).join(" e "))}</small></span><span class="tag">${tag}</span></button>`; };
   $("re-next").innerHTML = next.length ? next.map((m) => row(m, isApres((m.card ? m.card.name : "") + " " + m.title) ? "Apresentação" : "Reunião")).join("") : `<div class="empty">Nenhuma reunião nos próximos 30 dias no Trello ou no Calendar.</div>`;
   const prev = state.cards.filter((c) => c.kind === "reuniao" && c.dueKey && c.dueKey < t && c.dueKey >= addDays(t, -60)).sort((a, b) => b.dueKey.localeCompare(a.dueKey));
   const hasAta = (c) => /\bATA\b/i.test(c.desc) || c.comments.some((x) => /\bATA\b/i.test(x.text));

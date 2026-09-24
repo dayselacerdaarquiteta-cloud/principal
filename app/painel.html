@@ -367,7 +367,7 @@ dialog.page::backdrop,dialog.sheet::backdrop{background:var(--scrim);-webkit-bac
 dialog.sheet{border:0;padding:0;margin:0 0 0 auto;height:100%;max-height:100%;width:min(500px,100%);background:var(--glass-strong);color:var(--ink);box-shadow:var(--shadow-up);border-radius:24px 0 0 24px;overscroll-behavior:contain}
 @media (prefers-reduced-motion:no-preference){dialog.sheet[open]{animation:sheetIn 360ms var(--ease-drawer)}}
 @keyframes sheetIn{from{transform:translateX(40px);opacity:0}to{transform:none;opacity:1}}
-.sheet-h{position:sticky;top:0;z-index:1;background:var(--glass-strong);padding:22px 22px 16px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px}
+.sheet-h{position:sticky;top:0;z-index:2;background:color-mix(in srgb,var(--bg) 97%,transparent);-webkit-backdrop-filter:blur(24px) saturate(1.2);backdrop-filter:blur(24px) saturate(1.2);padding:22px 22px 16px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px}
 .sheet-h .t{font-size:21px;font-weight:750;letter-spacing:-.01em;line-height:1.25}
 .sheet-b{padding:20px 22px calc(32px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:24px}
 .sheet-b h3{font-size:15px;font-weight:750;margin-bottom:10px}
@@ -507,6 +507,47 @@ dialog.wiz[open]{display:flex}
 .wlog li{display:flex;gap:10px;align-items:flex-start}
 .wlog li .lu{color:var(--muted);margin-top:1px}
 .wlog li.ok .lu{color:var(--olive)}.wlog li.err{color:var(--red);font-weight:600}.wlog li.err .lu{color:var(--red)}
+/* checklist de etapas */
+.sheet-t{display:flex;align-items:flex-start;gap:10px;min-width:0}.sheet-t>div{min-width:0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.evp{display:block;font-size:10.5px;font-weight:800;letter-spacing:.02em;color:var(--muted);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.tasks.one{grid-template-columns:1fr}
+.dd-card{padding:18px;display:flex;flex-direction:column;gap:14px;border-radius:20px}
+.dd-h{display:flex;gap:12px;align-items:center}.dd-h div{display:flex;flex-direction:column;min-width:0}.dd-h b{font-size:16px;font-weight:750;line-height:1.3}.dd-h small{color:var(--muted);font-size:13px;font-weight:600}
+.dd-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.dd-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:4px 12px;align-items:start;padding:12px;border-radius:14px;background:var(--glass-strong);border:1px solid var(--line)}
+.dd-row span{display:flex;flex-direction:column;gap:2px;min-width:0}.dd-row b{font-weight:700}.dd-row small{color:var(--muted);font-size:12.5px}
+.dd-row .chip{align-self:center}
+.dd-go{align-self:flex-start}
+.chk-prog{padding:18px 20px;border-radius:20px;display:flex;flex-direction:column;gap:12px}
+.cp-top{display:flex;align-items:baseline;gap:10px}.cp-pct{font-size:34px;font-weight:800;letter-spacing:-.02em;line-height:1;color:var(--petrol)}
+.cp-bar{height:10px;border-radius:99px;background:var(--gray-soft);overflow:hidden}
+.cp-bar i{display:block;height:100%;width:100%;transform:scaleX(var(--p,0));transform-origin:left center;background:linear-gradient(90deg,var(--olive-fill),var(--petrol));border-radius:99px;transition:transform 480ms var(--ease)}
+.cp-stats{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px}
+.cp-stats div{display:flex;flex-direction:column;gap:2px;min-width:0}.cp-stats small{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}.cp-stats b{font-size:15px;font-weight:750;overflow-wrap:anywhere}
+.glist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;counter-reset:g}
+.gi{border-radius:16px;border:1px solid var(--line);background:var(--glass-strong);overflow:hidden;transition:border-color 200ms ease,box-shadow 200ms ease}
+.gi-main{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:12px;width:100%;padding:13px 14px;text-align:left;background:none;border:0;color:inherit;font:inherit}
+button.gi-main{cursor:pointer}
+@media (hover:hover) and (pointer:fine){.gi:has(button.gi-main):hover{border-color:color-mix(in srgb,var(--petrol) 45%,transparent)}}
+.gi-mark{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;border:2px solid color-mix(in srgb,var(--muted) 55%,transparent);flex:none;transition:background-color 200ms ease,border-color 200ms ease}
+.gi-mark .lu{width:15px;height:15px}
+.gi-t{display:flex;flex-direction:column;gap:2px;min-width:0}.gi-t b{font-weight:700;line-height:1.3}.gi-t small{color:var(--muted);font-size:12.5px}
+.gi-tag{font-size:12px;font-weight:700;padding:4px 10px;border-radius:99px;background:var(--gray-soft);color:var(--muted);white-space:nowrap}
+.gi.done .gi-mark{background:var(--olive-fill);border-color:var(--olive-fill);color:#fff}
+.gi.done .gi-tag.ok,.gi.ms .gi-tag.ok{background:var(--olive-soft);color:var(--olive)}
+.gi.late{border-color:color-mix(in srgb,var(--red) 45%,transparent);box-shadow:inset 3px 0 0 var(--red)}
+.gi.late .gi-mark{border-color:var(--red);color:var(--red)}
+.gi.late .gi-tag{background:var(--red-soft);color:var(--red)}
+.gi.open{border-color:var(--petrol);box-shadow:0 0 0 3px var(--petrol-soft)}
+.gi.ms{border-style:dashed;background:transparent}
+.gi-conf{padding:0 14px 14px 52px;display:flex;flex-direction:column;gap:8px;font-size:14px}
+.gi-conf p{margin:0}
+.gi-act{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.gi-more{margin:-6px 0 8px 52px;font-size:12.5px;padding:2px 0}
+.gi-lock{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--muted);margin:0 0 10px;padding:10px 12px;border-radius:12px;background:var(--gray-soft)}
+.gi-lock .lu{width:15px;height:15px;flex:none;margin-top:2px}
+@media (max-width:560px){.gi-main{grid-template-columns:auto minmax(0,1fr)}.gi-tag{grid-column:2;justify-self:start}.gi-conf{padding-left:14px}.gi-more{margin-left:14px}.cp-stats{grid-template-columns:1fr 1fr}.cp-stats div:nth-child(2){grid-column:1/-1;order:3}.dd-row{grid-template-columns:auto minmax(0,1fr)}.dd-row .chip{grid-column:2;justify-self:start}}
 [hidden]{display:none!important}
 .wiz .links{margin-bottom:18px}
 .wdone{display:flex;align-items:center;gap:16px;margin-bottom:18px}
@@ -551,11 +592,11 @@ dialog.wiz[open]{display:flex}
   .calw{padding:14px}
   .cal{gap:4px}
   .day{min-height:56px;padding:6px 4px;border-radius:10px;align-items:center}
-  .day .ev{display:none}.evdots{display:flex;justify-content:center}
+  .day .ev,.day .evp{display:none}.evdots{display:flex;justify-content:center}
   .wd{text-align:center;padding:2px 0;font-size:11px}
-  dialog.page{width:100%;max-height:100dvh;height:100dvh;border-radius:0}
+  dialog.page{width:100%;max-width:100%;max-height:100dvh;height:100dvh;border-radius:0}
   dialog.wiz{width:100%;max-width:100%}.wiz-b{flex:1}
-  dialog.sheet{width:100%;height:92dvh;margin:auto 0 0;border-radius:24px 24px 0 0}
+  dialog.sheet{width:100%;max-width:100%;height:92dvh;margin:auto 0 0;border-radius:24px 24px 0 0}
   @media (prefers-reduced-motion:no-preference){dialog.sheet[open]{animation-name:sheetUp}}
   @keyframes sheetUp{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
   .dock{display:flex;position:fixed;left:12px;right:84px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:30;padding:6px;border-radius:22px;justify-content:space-around}
@@ -718,7 +759,7 @@ dialog.wiz[open]{display:flex}
 
 <dialog class="sheet" id="sheet" aria-labelledby="sheet-name">
   <div class="sheet-h">
-    <div><div class="t" id="sheet-name"></div><div class="muted" id="sheet-sub" style="font-size:13.5px"></div></div>
+    <div class="sheet-t"><button class="ibtn" id="sheet-back" type="button" aria-label="Voltar" hidden><svg class="lu" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button><div><div class="t" id="sheet-name"></div><div class="muted" id="sheet-sub" style="font-size:13.5px"></div></div></div>
     <button class="ibtn" id="sheet-close" type="button" aria-label="Fechar"><svg class="lu" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/> <path d="m6 6 12 12"/></svg></button>
   </div>
   <div class="sheet-b" id="sheet-body"></div>
@@ -865,6 +906,10 @@ function normCard(c) {
     list: (c.list && c.list.name) || "", listId: c.list && c.list.id,
     url: c.url || c.webUrl || "", due: due && !isNaN(due) ? due : null,
     comments: (Array.isArray(c.comments) ? c.comments : []).map((x) => ({ text: x.text || (x.data && x.data.text) || "", at: x.createdAt || x.date || "" })).filter((x) => x.text),
+    checklists: (Array.isArray(c.checklists) ? c.checklists : []).filter((l) => l && l.id).map((l) => ({
+      id: l.id, name: l.name || "",
+      items: (Array.isArray(l.items) ? l.items : Array.isArray(l.checkItems) ? l.checkItems : []).map((i) => ({ id: i.id, name: String(i.name || i.text || "").trim(), done: i.checked === true || /^complete/i.test(String(i.state || "")) })).filter((i) => i.id && i.name),
+    })),
   };
   card.dueKey = card.due ? ymd(card.due) : null;
   card.kind = kindOf(card);
@@ -996,6 +1041,7 @@ Responda apenas com JSON neste formato:
 Regras:
 - "card" é o número entre colchetes.
 - "prazo": só quando o texto dá uma data explícita para aquela etapa, no formato AAAA-MM-DD. Sem data explícita, use null.
+- Etapa com período (ex.: "25/09 a 02/10"): "prazo" é a data final do período. Um cronograma marcado como vigente ou atualizado prevalece sobre prazos antigos do mesmo card.
 - "duracao": número de dias úteis da etapa, só quando o texto diz explicitamente (ex.: "4 dias úteis", "2 du"). Sem duração explícita, use null. Liste as etapas na ordem em que aparecem no card.
 - "situacao": "concluida", "em_andamento", "aguardando" (depende de cliente, aprovação ou outra etapa), "nao_iniciada" ou "nao_informada". Atualizações e comentários mais recentes prevalecem sobre o texto original.
 - Etapas marcadas "não haverá" ficam de fora. Responsável "a definir" vira "a definir".
@@ -1021,7 +1067,7 @@ async function runExtraction(force) {
       const resp = typeof e.responsavel === "string" ? e.responsavel.trim() : "";
       const keys = resp.split(/\s*(?:\+|,|\/|\be\b|&)\s*/i).map((s) => norm(s.split(/\s+/)[0])).filter((s) => s && s !== "A");
       const sit = ["concluida", "em_andamento", "aguardando", "nao_iniciada", "nao_informada"].includes(e.situacao) ? e.situacao : "nao_informada";
-      return { card: c, etapa: e.etapa.trim(), resp, keys: /a definir/i.test(resp) ? [] : keys, prazo: isKey(e.prazo) ? e.prazo : null, dur: Number.isInteger(e.duracao) && e.duracao > 0 && e.duracao < 200 ? e.duracao : null, situacao: sit };
+      return { card: c, etapa: e.etapa.trim(), resp, keys: /a definir/i.test(resp) ? [] : keys, prazo: isKey(e.prazo) ? e.prazo : null, dur: Number.isInteger(e.duracao) && e.duracao > 0 && e.duracao < 200 ? e.duracao : null, situacao: sit, sit0: sit };
     }).filter(Boolean);
     const pl = Array.isArray(res && res.pendencias) ? res.pendencias : [];
     state.pend = new Map();
@@ -1032,6 +1078,7 @@ async function runExtraction(force) {
       state.pend.get(c.id).push(x.texto.trim().slice(0, 300));
     }
     state.extract = "ok";
+    applyChecklists();
   } catch (e) {
     state.extract = "err"; state.extractErr = sampleMsg(e);
   }
@@ -1131,7 +1178,7 @@ function alerts() {
 
 
 /* Ícones: Lucide v0.460.0, licença ISC (lucide.dev) */
-const LUCIDE = {"arrow-right": "<path d=\"M5 12h14\"/> <path d=\"m12 5 7 7-7 7\"/>", "building-2": "<path d=\"M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z\"/> <path d=\"M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2\"/> <path d=\"M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2\"/> <path d=\"M10 6h4\"/> <path d=\"M10 10h4\"/> <path d=\"M10 14h4\"/> <path d=\"M10 18h4\"/>", "calendar-days": "<path d=\"M8 2v4\"/> <path d=\"M16 2v4\"/> <rect width=\"18\" height=\"18\" x=\"3\" y=\"4\" rx=\"2\"/> <path d=\"M3 10h18\"/> <path d=\"M8 14h.01\"/> <path d=\"M12 14h.01\"/> <path d=\"M16 14h.01\"/> <path d=\"M8 18h.01\"/> <path d=\"M12 18h.01\"/> <path d=\"M16 18h.01\"/>", "check": "<path d=\"M20 6 9 17l-5-5\"/>", "chevron-down": "<path d=\"m6 9 6 6 6-6\"/>", "chevron-left": "<path d=\"m15 18-6-6 6-6\"/>", "chevron-right": "<path d=\"m9 18 6-6-6-6\"/>", "circle-check": "<circle cx=\"12\" cy=\"12\" r=\"10\"/> <path d=\"m9 12 2 2 4-4\"/>", "circle-dashed": "<path d=\"M10.1 2.182a10 10 0 0 1 3.8 0\"/> <path d=\"M13.9 21.818a10 10 0 0 1-3.8 0\"/> <path d=\"M17.609 3.721a10 10 0 0 1 2.69 2.7\"/> <path d=\"M2.182 13.9a10 10 0 0 1 0-3.8\"/> <path d=\"M20.279 17.609a10 10 0 0 1-2.7 2.69\"/> <path d=\"M21.818 10.1a10 10 0 0 1 0 3.8\"/> <path d=\"M3.721 6.391a10 10 0 0 1 2.7-2.69\"/> <path d=\"M6.391 20.279a10 10 0 0 1-2.69-2.7\"/>", "clock": "<circle cx=\"12\" cy=\"12\" r=\"10\"/> <polyline points=\"12 6 12 12 16 14\"/>", "external-link": "<path d=\"M15 3h6v6\"/> <path d=\"M10 14 21 3\"/> <path d=\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"/>", "file-pen-line": "<path d=\"m18 5-2.414-2.414A2 2 0 0 0 14.172 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2\"/> <path d=\"M21.378 12.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z\"/> <path d=\"M8 18h1\"/>", "flag": "<path d=\"M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z\"/> <line x1=\"4\" x2=\"4\" y1=\"22\" y2=\"15\"/>", "folder": "<path d=\"M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z\"/>", "folder-open": "<path d=\"m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2\"/>", "hourglass": "<path d=\"M5 22h14\"/> <path d=\"M5 2h14\"/> <path d=\"M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22\"/> <path d=\"M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2\"/>", "house": "<path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\"/> <path d=\"M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/>", "layout-grid": "<rect width=\"7\" height=\"7\" x=\"3\" y=\"3\" rx=\"1\"/> <rect width=\"7\" height=\"7\" x=\"14\" y=\"3\" rx=\"1\"/> <rect width=\"7\" height=\"7\" x=\"14\" y=\"14\" rx=\"1\"/> <rect width=\"7\" height=\"7\" x=\"3\" y=\"14\" rx=\"1\"/>", "presentation": "<path d=\"M2 3h20\"/> <path d=\"M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3\"/> <path d=\"m7 21 5-5 5 5\"/>", "refresh-cw": "<path d=\"M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8\"/> <path d=\"M21 3v5h-5\"/> <path d=\"M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16\"/> <path d=\"M8 16H3v5\"/>", "send": "<path d=\"M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z\"/> <path d=\"m21.854 2.147-10.94 10.939\"/>", "sofa": "<path d=\"M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3\"/> <path d=\"M2 16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v1.5a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5V11a2 2 0 0 0-4 0z\"/> <path d=\"M4 18v2\"/> <path d=\"M20 18v2\"/> <path d=\"M12 4v9\"/>", "sparkles": "<path d=\"M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z\"/> <path d=\"M20 3v4\"/> <path d=\"M22 5h-4\"/> <path d=\"M4 17v2\"/> <path d=\"M5 18H3\"/>", "triangle-alert": "<path d=\"m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3\"/> <path d=\"M12 9v4\"/> <path d=\"M12 17h.01\"/>", "users": "<path d=\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\"/> <circle cx=\"9\" cy=\"7\" r=\"4\"/> <path d=\"M22 21v-2a4 4 0 0 0-3-3.87\"/> <path d=\"M16 3.13a4 4 0 0 1 0 7.75\"/>", "x": "<path d=\"M18 6 6 18\"/> <path d=\"m6 6 12 12\"/>", "plus": "<path d=\"M5 12h14\"/> <path d=\"M12 5v14\"/>", "user-round": "<circle cx=\"12\" cy=\"8\" r=\"5\"/> <path d=\"M20 21a8 8 0 0 0-16 0\"/>", "hammer": "<path d=\"m15 12-8.373 8.373a1 1 0 1 1-3-3L12 9\"/> <path d=\"m18 15 4-4\"/> <path d=\"m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172V7l-2.26-2.26a6 6 0 0 0-4.202-1.756L9 2.96l.92.82A6.18 6.18 0 0 1 12 8.4V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5\"/>", "trees": "<path d=\"M10 10v.2A3 3 0 0 1 8.9 16H5a3 3 0 0 1-1-5.8V10a3 3 0 0 1 6 0Z\"/> <path d=\"M7 16v6\"/> <path d=\"M13 19v3\"/> <path d=\"M12 19h8.3a1 1 0 0 0 .7-1.7L18 14h.3a1 1 0 0 0 .7-1.7L16 9h.2a1 1 0 0 0 .8-1.7L13 3l-1.4 1.5\"/>", "messages-square": "<path d=\"M14 9a2 2 0 0 1-2 2H6l-4 4V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2z\"/> <path d=\"M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1\"/>", "store": "<path d=\"m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7\"/> <path d=\"M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8\"/> <path d=\"M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4\"/> <path d=\"M2 7h20\"/> <path d=\"M22 7v3a2 2 0 0 1-2 2a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12a2 2 0 0 1-2-2V7\"/>", "utensils": "<path d=\"M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2\"/> <path d=\"M7 2v20\"/> <path d=\"M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7\"/>", "stethoscope": "<path d=\"M11 2v2\"/> <path d=\"M5 2v2\"/> <path d=\"M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1\"/> <path d=\"M8 15a6 6 0 0 0 12 0v-3\"/> <circle cx=\"20\" cy=\"10\" r=\"2\"/>", "briefcase": "<path d=\"M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16\"/> <rect width=\"20\" height=\"14\" x=\"2\" y=\"6\" rx=\"2\"/>", "shapes": "<path d=\"M8.3 10a.7.7 0 0 1-.626-1.079L11.4 3a.7.7 0 0 1 1.198-.043L16.3 8.9a.7.7 0 0 1-.572 1.1Z\"/> <rect x=\"3\" y=\"14\" width=\"7\" height=\"7\" rx=\"1\"/> <circle cx=\"17.5\" cy=\"17.5\" r=\"3.5\"/>", "ruler": "<path d=\"M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z\"/> <path d=\"m14.5 12.5 2-2\"/> <path d=\"m11.5 9.5 2-2\"/> <path d=\"m8.5 6.5 2-2\"/> <path d=\"m17.5 15.5 2-2\"/>", "pencil": "<path d=\"M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z\"/> <path d=\"m15 5 4 4\"/>", "arrow-left": "<path d=\"m12 19-7-7 7-7\"/> <path d=\"M19 12H5\"/>"};
+const LUCIDE = {"list-checks": "<path d=\"m3 17 2 2 4-4\" /> <path d=\"m3 7 2 2 4-4\" /> <path d=\"M13 6h8\" /> <path d=\"M13 12h8\" /> <path d=\"M13 18h8\" />", "lock": "<rect width=\"18\" height=\"11\" x=\"3\" y=\"11\" rx=\"2\" ry=\"2\" /> <path d=\"M7 11V7a5 5 0 0 1 10 0v4\" />", "circle": "<circle cx=\"12\" cy=\"12\" r=\"10\" />", "arrow-right": "<path d=\"M5 12h14\"/> <path d=\"m12 5 7 7-7 7\"/>", "building-2": "<path d=\"M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z\"/> <path d=\"M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2\"/> <path d=\"M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2\"/> <path d=\"M10 6h4\"/> <path d=\"M10 10h4\"/> <path d=\"M10 14h4\"/> <path d=\"M10 18h4\"/>", "calendar-days": "<path d=\"M8 2v4\"/> <path d=\"M16 2v4\"/> <rect width=\"18\" height=\"18\" x=\"3\" y=\"4\" rx=\"2\"/> <path d=\"M3 10h18\"/> <path d=\"M8 14h.01\"/> <path d=\"M12 14h.01\"/> <path d=\"M16 14h.01\"/> <path d=\"M8 18h.01\"/> <path d=\"M12 18h.01\"/> <path d=\"M16 18h.01\"/>", "check": "<path d=\"M20 6 9 17l-5-5\"/>", "chevron-down": "<path d=\"m6 9 6 6 6-6\"/>", "chevron-left": "<path d=\"m15 18-6-6 6-6\"/>", "chevron-right": "<path d=\"m9 18 6-6-6-6\"/>", "circle-check": "<circle cx=\"12\" cy=\"12\" r=\"10\"/> <path d=\"m9 12 2 2 4-4\"/>", "circle-dashed": "<path d=\"M10.1 2.182a10 10 0 0 1 3.8 0\"/> <path d=\"M13.9 21.818a10 10 0 0 1-3.8 0\"/> <path d=\"M17.609 3.721a10 10 0 0 1 2.69 2.7\"/> <path d=\"M2.182 13.9a10 10 0 0 1 0-3.8\"/> <path d=\"M20.279 17.609a10 10 0 0 1-2.7 2.69\"/> <path d=\"M21.818 10.1a10 10 0 0 1 0 3.8\"/> <path d=\"M3.721 6.391a10 10 0 0 1 2.7-2.69\"/> <path d=\"M6.391 20.279a10 10 0 0 1-2.69-2.7\"/>", "clock": "<circle cx=\"12\" cy=\"12\" r=\"10\"/> <polyline points=\"12 6 12 12 16 14\"/>", "external-link": "<path d=\"M15 3h6v6\"/> <path d=\"M10 14 21 3\"/> <path d=\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"/>", "file-pen-line": "<path d=\"m18 5-2.414-2.414A2 2 0 0 0 14.172 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2\"/> <path d=\"M21.378 12.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z\"/> <path d=\"M8 18h1\"/>", "flag": "<path d=\"M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z\"/> <line x1=\"4\" x2=\"4\" y1=\"22\" y2=\"15\"/>", "folder": "<path d=\"M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z\"/>", "folder-open": "<path d=\"m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2\"/>", "hourglass": "<path d=\"M5 22h14\"/> <path d=\"M5 2h14\"/> <path d=\"M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22\"/> <path d=\"M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2\"/>", "house": "<path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\"/> <path d=\"M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/>", "layout-grid": "<rect width=\"7\" height=\"7\" x=\"3\" y=\"3\" rx=\"1\"/> <rect width=\"7\" height=\"7\" x=\"14\" y=\"3\" rx=\"1\"/> <rect width=\"7\" height=\"7\" x=\"14\" y=\"14\" rx=\"1\"/> <rect width=\"7\" height=\"7\" x=\"3\" y=\"14\" rx=\"1\"/>", "presentation": "<path d=\"M2 3h20\"/> <path d=\"M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3\"/> <path d=\"m7 21 5-5 5 5\"/>", "refresh-cw": "<path d=\"M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8\"/> <path d=\"M21 3v5h-5\"/> <path d=\"M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16\"/> <path d=\"M8 16H3v5\"/>", "send": "<path d=\"M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z\"/> <path d=\"m21.854 2.147-10.94 10.939\"/>", "sofa": "<path d=\"M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3\"/> <path d=\"M2 16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v1.5a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5V11a2 2 0 0 0-4 0z\"/> <path d=\"M4 18v2\"/> <path d=\"M20 18v2\"/> <path d=\"M12 4v9\"/>", "sparkles": "<path d=\"M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z\"/> <path d=\"M20 3v4\"/> <path d=\"M22 5h-4\"/> <path d=\"M4 17v2\"/> <path d=\"M5 18H3\"/>", "triangle-alert": "<path d=\"m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3\"/> <path d=\"M12 9v4\"/> <path d=\"M12 17h.01\"/>", "users": "<path d=\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\"/> <circle cx=\"9\" cy=\"7\" r=\"4\"/> <path d=\"M22 21v-2a4 4 0 0 0-3-3.87\"/> <path d=\"M16 3.13a4 4 0 0 1 0 7.75\"/>", "x": "<path d=\"M18 6 6 18\"/> <path d=\"m6 6 12 12\"/>", "plus": "<path d=\"M5 12h14\"/> <path d=\"M12 5v14\"/>", "user-round": "<circle cx=\"12\" cy=\"8\" r=\"5\"/> <path d=\"M20 21a8 8 0 0 0-16 0\"/>", "hammer": "<path d=\"m15 12-8.373 8.373a1 1 0 1 1-3-3L12 9\"/> <path d=\"m18 15 4-4\"/> <path d=\"m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172V7l-2.26-2.26a6 6 0 0 0-4.202-1.756L9 2.96l.92.82A6.18 6.18 0 0 1 12 8.4V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5\"/>", "trees": "<path d=\"M10 10v.2A3 3 0 0 1 8.9 16H5a3 3 0 0 1-1-5.8V10a3 3 0 0 1 6 0Z\"/> <path d=\"M7 16v6\"/> <path d=\"M13 19v3\"/> <path d=\"M12 19h8.3a1 1 0 0 0 .7-1.7L18 14h.3a1 1 0 0 0 .7-1.7L16 9h.2a1 1 0 0 0 .8-1.7L13 3l-1.4 1.5\"/>", "messages-square": "<path d=\"M14 9a2 2 0 0 1-2 2H6l-4 4V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2z\"/> <path d=\"M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1\"/>", "store": "<path d=\"m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7\"/> <path d=\"M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8\"/> <path d=\"M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4\"/> <path d=\"M2 7h20\"/> <path d=\"M22 7v3a2 2 0 0 1-2 2a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12a2 2 0 0 1-2-2V7\"/>", "utensils": "<path d=\"M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2\"/> <path d=\"M7 2v20\"/> <path d=\"M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7\"/>", "stethoscope": "<path d=\"M11 2v2\"/> <path d=\"M5 2v2\"/> <path d=\"M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1\"/> <path d=\"M8 15a6 6 0 0 0 12 0v-3\"/> <circle cx=\"20\" cy=\"10\" r=\"2\"/>", "briefcase": "<path d=\"M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16\"/> <rect width=\"20\" height=\"14\" x=\"2\" y=\"6\" rx=\"2\"/>", "shapes": "<path d=\"M8.3 10a.7.7 0 0 1-.626-1.079L11.4 3a.7.7 0 0 1 1.198-.043L16.3 8.9a.7.7 0 0 1-.572 1.1Z\"/> <rect x=\"3\" y=\"14\" width=\"7\" height=\"7\" rx=\"1\"/> <circle cx=\"17.5\" cy=\"17.5\" r=\"3.5\"/>", "ruler": "<path d=\"M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z\"/> <path d=\"m14.5 12.5 2-2\"/> <path d=\"m11.5 9.5 2-2\"/> <path d=\"m8.5 6.5 2-2\"/> <path d=\"m17.5 15.5 2-2\"/>", "pencil": "<path d=\"M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z\"/> <path d=\"m15 5 4 4\"/>", "arrow-left": "<path d=\"m12 19-7-7 7-7\"/> <path d=\"M19 12H5\"/>"};
 const svgI = (n) => `<svg class="lu" viewBox="0 0 24 24" aria-hidden="true">${LUCIDE[n] || LUCIDE.folder}</svg>`;
 const icBadge = (n, tone, size) => `<span class="ic${size ? " " + size : ""} ${tone || ""}" aria-hidden="true">${svgI(n)}</span>`;
 function typeIcon(card) {
@@ -1265,17 +1312,20 @@ function projectList() {
 function askStatus(x, novo) {
   const e = x.et, box = $("st-confirm");
   document.querySelectorAll(".st-seg [data-st]").forEach((b) => b.classList.toggle("picked", b.dataset.st === novo && novo !== e.situacao));
+  if (!canEdit(e.keys)) { box.innerHTML = `<p class="gi-lock">${svgI("lock")}<span>${esc(lockMsg())}</span></p>`; return; }
   if (novo === e.situacao) { box.innerHTML = `<p class="muted" style="margin-top:12px">Esse já é o status registrado.</p>`; return; }
   box.innerHTML = `<div class="st-confirm"><div><b>Antes:</b> ${esc(STATUS_LBL[e.situacao] || "Não registrado")}<br><b>Depois:</b> ${esc(STATUS_LBL[novo])}</div>
-    <div class="muted">Fica registrado como comentário no card "${esc(e.card.title)}". O texto do card não é apagado.</div>
+    <div class="muted">Fica registrado como comentário no card "${esc(e.card.title)}". O texto do card não é apagado.${novo === "concluida" ? ` A etapa também é marcada no checklist ${CHK_NAME} do card${chkList(e.card) ? "" : " (o painel cria o checklist com as etapas registradas)"}.` : chkItem(e.card, e.etapa) && chkItem(e.card, e.etapa).item.done ? ` A etapa é desmarcada no checklist ${CHK_NAME} do card.` : ""}</div>
     <div class="row2"><button class="btn primary" type="button" id="st-ok" data-st="${novo}">Confirmar e salvar</button><button class="btn" type="button" id="st-cancel">Cancelar</button></div></div>`;
 }
 async function saveStatus(x, novo) {
   const e = x.et, antigo = e.situacao, ok = $("st-ok");
   if (ok) { ok.disabled = true; ok.textContent = "Salvando…"; }
   try {
+    if (!canEdit(e.keys)) throw { code: "tool_error", message: lockMsg() };
+    await syncChecklist(e.card, e.etapa, novo === "concluida");
     await write(TRELLO, "trelloWriteCard", { action: "add_comment", cardId: e.card.id, text: `${auditHeader()}\nETAPA: ${e.etapa}${e.resp ? " (" + e.resp + ")" : ""}\nStatus da etapa: ${STATUS_LBL[antigo] || "não registrado"} → ${STATUS_LBL[novo]}` });
-    e.situacao = novo;
+    for (const y of state.etapas || []) if (y.card === e.card && norm(y.etapa) === norm(e.etapa)) y.sit0 = y.situacao = novo;
     lastSig = "";
     renderAll();
     openTask(x);
@@ -1704,7 +1754,7 @@ function openProject(id) {
     </div>
     <div class="pg-body">
       <section><h3>Linha do tempo</h3><div class="timeline">${phases.map((p) => `<div class="tl s-${p.s}"><span class="nd">${svgI(PH_ICON[p.s])}</span><span class="tx"><b>${esc(p.name)}</b><small>${esc(p.txt)}</small></span></div>`).join("")}</div></section>
-      <div class="links"><a href="${esc(c.url)}" target="_blank" rel="noopener">${svgI("external-link")}Card no Trello</a>${driveBtn}<button type="button" id="p-update" data-id="${esc(c.id)}">${svgI("sparkles")}Falar com o MAX sobre este projeto</button></div>
+      <div class="links"><a href="${esc(c.url)}" target="_blank" rel="noopener">${svgI("external-link")}Card no Trello</a>${driveBtn}<button type="button" id="p-chk" data-id="${esc(c.id)}">${svgI("list-checks")}Checklist de etapas</button><button type="button" id="p-update" data-id="${esc(c.id)}">${svgI("sparkles")}Falar com o MAX sobre este projeto</button></div>
       <div class="two">
         <section><h3>Datas</h3><dl class="facts" style="font-size:14.5px;gap:10px 18px">${datas.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${v}</dd>`).join("")}</dl></section>
         <section><h3>Pendências</h3>${pend}</section>
@@ -1778,7 +1828,14 @@ function renderEquipe() {
   while (d <= end && guard++ < 50) {
     const ids = byDay.get(d) || [], items = ids.map((i) => eqTasks[i]);
     const out = d.slice(0, 7) !== ym, off = !isBD(d);
-    const evs = items.slice(0, 3).map((x) => `<span class="ev k-${x.k}${x.est ? " estim" : ""}">${esc(x.type === "etapa" ? x.title : x.title + " · " + x.sub)}</span>`).join("") + (items.length > 3 ? `<span class="ev more">+${items.length - 3}</span>` : "");
+    const lines = [], seen = new Set();
+    for (const x of items) {
+      if (x.type === "etapa") {
+        if (!seen.has(x.et.card)) { seen.add(x.et.card); lines.push(`<span class="evp">${esc(x.et.card.title)}</span>`); }
+        lines.push(`<span class="ev k-${x.k}${x.est ? " estim" : ""}">${esc(x.title)}</span>`);
+      } else lines.push(`<span class="ev k-${x.k}${x.est ? " estim" : ""}">${esc(x.title + " · " + x.sub)}</span>`);
+    }
+    const evs = lines.slice(0, 4).join("") + (lines.length > 4 ? `<span class="ev more">+${items.length - lines.slice(0, 4).filter((l) => l.startsWith('<span class="ev ')).length} demanda(s)</span>` : "");
     const dots = items.length ? `<span class="evdots">${items.slice(0, 5).map((x) => `<i class="k-${x.k}${x.est ? " estim" : ""}"></i>`).join("")}</span>` : "";
     const label = `${Number(d.slice(8, 10))} de ${MONTHS[Number(d.slice(5, 7)) - 1]}: ${items.length ? items.length + " tarefa(s)" : "sem tarefas"}`;
     cells += `<button type="button" class="day${out ? " out" : ""}${off ? " off" : ""}${d === t ? " today" : ""}" data-day="${d}" aria-pressed="${d === state.eq.day}" aria-label="${esc(label)}"${items.length ? "" : " disabled"}><span class="dn">${Number(d.slice(8, 10))}</span>${evs}${dots}</button>`;
@@ -1787,9 +1844,7 @@ function renderEquipe() {
   const wds = ["seg", "ter", "qua", "qui", "sex", "sáb", "dom"].map((w) => `<div class="wd" aria-hidden="true">${w}</div>`).join("");
   let dayHTML = "";
   if (!state.etapas && state.extract !== "ok") dayHTML = `<p class="muted">${state.extract === "loading" ? "Lendo as etapas nos cards…" : esc(state.extractErr || "As etapas ainda não foram lidas.")} Entregas e reuniões já aparecem no calendário.</p>`;
-  const sel = state.eq.day && byDay.get(state.eq.day);
-  if (sel && sel.length) dayHTML += `<h3>${esc(wdShort(state.eq.day))}, ${Number(state.eq.day.slice(8, 10))} de ${MONTHS[Number(state.eq.day.slice(5, 7)) - 1]}</h3><div class="tasks">${sel.map((i) => taskCard(eqTasks[i], i)).join("")}</div>`;
-  else if (!dayHTML) dayHTML = `<p class="muted">Toque num dia marcado para ver as tarefas.</p>`;
+  if (!dayHTML) dayHTML = `<p class="muted">Toque num dia marcado para ver os projetos e as etapas daquela data.</p>`;
   const nodate = (state.etapas || []).filter((e) => e.keys.includes(p.key) && !dataOf(e) && !e.card.done && e.situacao !== "concluida");
   let nodateHTML = "";
   if (nodate.length) {
@@ -1817,7 +1872,8 @@ function openTask(x) {
       <dt>Data limite</dt><dd>${k ? `<span${k < t && e.situacao !== "concluida" ? ' class="late-txt"' : ""}>${wdShort(k)} ${dmy(k)}</span>${e.est ? `<span class="est">estimada pelas regras do MAX</span>` : ""}` : MISSING}</dd>
       <dt>Prioridade</dt><dd>${pr ? `<span class="chip ${pr[1]}">${pr[0]}</span>` : "-"}</dd>
       <dt>Status atual</dt><dd id="st-now">${esc(STATUS_LBL[e.situacao] || "Não registrado no Trello")}</dd></dl></section>
-      <section><h3>Marcar status</h3><div class="st-grid st-seg" role="radiogroup" aria-label="Status da tarefa">${STATUS.map(([v, l, ic, tone]) => `<button type="button" role="radio" data-st="${v}" aria-checked="${v === e.situacao}">${icBadge(ic, tone, "sm")}${esc(l)}</button>`).join("")}</div>
+      ${canEdit(e.keys) ? "" : `<p class="gi-lock">${svgI("lock")}<span>${esc(lockMsg())}</span></p>`}
+      <section${canEdit(e.keys) ? "" : " hidden"}><h3>Marcar status</h3><div class="st-grid st-seg" role="radiogroup" aria-label="Status da tarefa">${STATUS.map(([v, l, ic, tone]) => `<button type="button" role="radio" data-st="${v}" aria-checked="${v === e.situacao}">${icBadge(ic, tone, "sm")}${esc(l)}</button>`).join("")}</div>
       <div id="st-confirm"></div></section>`;
   } else if (x.type === "entrega") {
     body += `<section><dl class="facts" style="font-size:14.5px;gap:10px 18px"><dt>Projeto</dt><dd><a href="${esc(x.card.url)}" target="_blank" rel="noopener">${esc(x.sub)}</a></dd><dt>Data</dt><dd>${dmy(x.key)}</dd><dt>Lista no Trello</dt><dd>${esc(nice(x.card.list))}</dd></dl></section>
@@ -1827,10 +1883,229 @@ function openTask(x) {
     body += `<section><dl class="facts" style="font-size:14.5px;gap:10px 18px"><dt>Data</dt><dd>${wdShort(m.key)} ${dmy(m.key)}</dd><dt>Horário</dt><dd>${m.time ? esc(m.time) : MISSING}</dd><dt>Fonte</dt><dd>${esc(m.src.join(" e "))}</dd></dl></section>
       ${m.url ? `<div class="links"><a href="${esc(m.url)}" target="_blank" rel="noopener">${svgI("external-link")}Abrir ${m.card ? "card no Trello" : "evento no Calendar"}</a></div>` : ""}`;
   }
+  if (x.type === "etapa") body += `<button type="button" class="btn dd-go" data-chk="${esc(x.et.card.id)}">${svgI("list-checks")}Ver etapas do projeto</button>`;
   $("sheet-body").innerHTML = body;
-  $("sheet-body").dataset.task = String(eqTasks.indexOf(x));
-  const dlg = $("sheet");
-  if (!dlg.open) { if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", ""); }
+  sheetTask = x;
+  $("sheet-back").hidden = sheetStack.length < 2;
+  sheetOpen();
+}
+
+/* ---------- checklist de etapas (Trello) ---------- */
+const CHK_NAME = "ETAPAS DO PROJETO";
+const GESTAO = ["DAYSE"];
+function viewer() {
+  const toks = norm(state.me || "").split(/\s+/).filter(Boolean);
+  if (!toks.length) return null;
+  const p = people().find((x) => toks.includes(x.key));
+  if (p) return { key: p.key, full: p.full, gestao: GESTAO.includes(p.key) };
+  const g = GESTAO.find((x) => toks.includes(x));
+  return g ? { key: g, full: state.me, gestao: true } : { key: "", full: state.me, gestao: false };
+}
+function canEdit(keys) { const v = viewer(); return !!v && (v.gestao || (!!v.key && keys.includes(v.key))); }
+function lockMsg() {
+  const v = viewer();
+  if (!v) return "Não foi possível identificar quem está usando o painel. Para concluir etapas, abra o painel com a sua conta do claude.ai.";
+  if (!v.key) return `A conta ${v.full} não corresponde a ninguém da equipe nos cards. Só visualização.`;
+  return "Você conclui as etapas em que é responsável. As demais ficam só para visualização; a gestão pode alterar todas.";
+}
+function chkList(c) { return (c.checklists || []).find((l) => norm(l.name) === norm(CHK_NAME)) || null; }
+function chkItem(c, name) {
+  const n = norm(name);
+  for (const l of c.checklists || []) { const it = l.items.find((i) => norm(i.name) === n); if (it) return { list: l, item: it }; }
+  return null;
+}
+function applyChecklists() {
+  if (!state.etapas) return;
+  const byId = new Map(state.cards.map((c) => [c.id, c]));
+  state.etapas = state.etapas.filter((e) => byId.has(e.card.id));
+  for (const e of state.etapas) {
+    e.card = byId.get(e.card.id);
+    const hit = chkItem(e.card, e.etapa);
+    e.chk = hit ? hit.item.done : null;
+    e.situacao = !hit ? e.sit0 : hit.item.done ? "concluida" : e.sit0 === "concluida" ? "nao_informada" : e.sit0;
+  }
+}
+function etapaGroups(c) {
+  const out = [], idx = new Map(), t = today();
+  for (const e of (state.etapas || []).filter((x) => x.card === c)) {
+    const k = norm(e.etapa);
+    let g = idx.get(k);
+    if (!g) { g = { name: e.etapa, ets: [], keys: [], resps: [] }; idx.set(k, g); out.push(g); }
+    g.ets.push(e);
+    for (const x of e.keys) if (!g.keys.includes(x)) g.keys.push(x);
+    if (e.resp && !g.resps.includes(e.resp)) g.resps.push(e.resp);
+  }
+  for (const l of c.checklists || []) for (const it of l.items) {
+    const k = norm(it.name);
+    if (!idx.has(k)) { const g = { name: it.name, ets: [], keys: [], resps: [], onlyTrello: true }; idx.set(k, g); out.push(g); }
+  }
+  for (const g of out) {
+    const hit = chkItem(c, g.name);
+    g.inTrello = !!hit;
+    g.done = hit ? hit.item.done : g.ets.length > 0 && g.ets.every((e) => e.situacao === "concluida");
+    const reg = g.ets.map((e) => e.prazo).filter(Boolean).sort(), est = g.ets.map((e) => e.est).filter(Boolean).sort();
+    g.key = reg.length ? reg[reg.length - 1] : est.length ? est[est.length - 1] : null;
+    g.est = !reg.length && !!g.key;
+    g.lateDays = !g.done && reg.length && g.key < t ? bdBetween(g.key, t) : 0;
+    const sits = g.ets.map((e) => e.situacao);
+    g.sit = g.done ? "concluida" : ["em_andamento", "aguardando", "nao_iniciada"].find((s) => sits.includes(s)) || "nao_informada";
+  }
+  return out.map((g, i) => ({ g, i })).sort((a, b) => (a.g.key || "9999").localeCompare(b.g.key || "9999") || a.i - b.i).map((x) => x.g);
+}
+function projResp(c) {
+  const m = c.desc.match(/RESPONS[AÁ]VEL (?:PRINCIPAL|T[EÉ]CNICO)\s*:\s*([^\n]+)/i);
+  return m ? m[1].trim() : "";
+}
+function milestonesOf(c, groups) {
+  const out = [], has = (rx) => groups.some((g) => rx.test(norm(g.name)));
+  if (!has(/APRESENTA/)) for (const r of state.cards.filter((x) => x.kind === "reuniao" && x.project === c && isApres(x.name))) out.push({ icon: "presentation", tone: "t-orange", name: "Apresentação ao cliente", key: r.dueKey, done: r.done, card: r });
+  if (!has(/ENTREGA/)) {
+    const en = state.cards.find((x) => x.kind === "entrega" && x.project === c);
+    out.push({ icon: "flag", tone: "t-red", name: en ? "Entrega final" : "Entrega final (prazo oficial do card)", key: en ? en.dueKey : c.dueKey, done: en ? en.done : c.done, card: en || c });
+  }
+  return out;
+}
+const pickId = (o) => (!o || typeof o !== "object" ? "" : typeof o.id === "string" ? o.id : Object.values(o).map((v) => (v && typeof v === "object" && typeof v.id === "string" ? v.id : "")).find(Boolean) || "");
+async function chkAddItem(l, text) {
+  const r = await write(TRELLO, "trelloWriteChecklist", { action: "add_item", checklistId: l.id, text, pos: "bottom" });
+  const it = { id: pickId(r), name: text, done: false };
+  if (!it.id) throw { code: "tool_error", message: "o Trello não devolveu o item criado no checklist" };
+  l.items.push(it); return it;
+}
+async function chkSet(l, it, v) { await write(TRELLO, "trelloWriteChecklist", { action: "update_item", checklistId: l.id, itemId: it.id, checked: v }); it.done = v; }
+async function syncChecklist(c, name, checked, log) {
+  let hit = chkItem(c, name);
+  if (!hit && !checked) return;
+  if (!hit) {
+    let l = chkList(c);
+    if (!l) {
+      const groups = etapaGroups(c);
+      const r = await write(TRELLO, "trelloWriteChecklist", { action: "create", cardId: c.id, name: CHK_NAME, pos: "top" });
+      l = { id: pickId(r), name: CHK_NAME, items: [] };
+      if (!l.id) throw { code: "tool_error", message: "o Trello não devolveu o checklist criado" };
+      c.checklists = [...(c.checklists || []), l];
+      if (log) log(`Checklist ${CHK_NAME} criado no card.`);
+      for (const g of groups) { const it = await chkAddItem(l, g.name); if (g.done && norm(g.name) !== norm(name)) await chkSet(l, it, true); }
+      if (log) log(`${groups.length} etapa(s) incluídas no checklist.`);
+    } else { await chkAddItem(l, name); if (log) log("Etapa incluída no checklist."); }
+    hit = chkItem(c, name);
+  }
+  if (hit && hit.item.done !== checked) await chkSet(hit.list, hit.item, checked);
+  if (log) log(checked ? "Etapa marcada no checklist do Trello." : "Etapa desmarcada no checklist do Trello.");
+}
+
+/* ---------- painel lateral: dia e projeto ---------- */
+let sheetStack = [], sheetTask = null, chkUI = { card: "", pend: "", busy: false, log: [], err: "", ok: "" };
+function sheetOpen() { const d = $("sheet"); if (!d.open) { if (d.showModal) d.showModal(); else d.setAttribute("open", ""); } }
+function pushSheet(v) { sheetStack.push(v); renderSheet(); sheetOpen(); $("sheet").scrollTop = 0; const b = $("sheet-body"); if (b) b.scrollTop = 0; }
+function popSheet() { sheetStack.pop(); if (!sheetStack.length) { $("sheet").close(); return; } renderSheet(); }
+function renderSheet() {
+  const v = sheetStack[sheetStack.length - 1];
+  $("sheet-back").hidden = sheetStack.length < 2;
+  if (!v) return;
+  if (v.type === "task") return openTask(v.x);
+  sheetTask = null;
+  if (v.type === "day") return renderDay(v.key);
+  if (v.type === "chk") return renderChecklist(v.id);
+}
+function renderDay(key) {
+  const items = eqTasks.filter((x) => x.key === key);
+  const p = people().find((x) => x.key === state.eq.person);
+  $("sheet-name").textContent = `${cap(wdShort(key))}, ${dmy(key)}`;
+  $("sheet-sub").textContent = `Demandas do dia${p ? " · " + p.full : ""}`;
+  const byCard = new Map(), other = [];
+  for (const x of items) {
+    const c = x.type === "etapa" ? x.et.card : x.type === "entrega" ? (x.card.kind === "projeto" ? x.card : x.card.project) : null;
+    if (x.type === "reuniao" || !c) { other.push(x); continue; }
+    if (!byCard.has(c)) byCard.set(c, []);
+    byCard.get(c).push(x);
+  }
+  let html = "";
+  for (const [c, xs] of byCard) {
+    const rows = xs.map((x) => {
+      if (x.type !== "etapa") return `<li class="dd-row">${icBadge("flag", "t-red", "sm")}<span><b>${esc(x.title)}</b><small>Lista no Trello: ${esc(nice(x.card.list))}</small></span></li>`;
+      const e = x.et, done = e.situacao === "concluida", late = !done && e.prazo && e.prazo < today();
+      return `<li class="dd-row">${icBadge(done ? "circle-check" : late ? "triangle-alert" : "sparkles", done ? "t-olive" : late ? "t-crit" : "t-petrol", "sm")}<span><b>${esc(e.etapa)}</b>
+        <small>Responsável: ${e.resp ? esc(e.resp) : "Não registrado no Trello"}</small>
+        <small>Prazo da etapa: ${dmy(x.key)}${x.est ? " (estimada)" : ""}${late ? ` · <span class="late-txt">atrasada há ${bdBetween(e.prazo, today())} dia(s) útil(eis)</span>` : ""}</small></span>
+        <span class="chip st-chip">${esc(STATUS_LBL[e.situacao] || "Sem status")}</span></li>`;
+    }).join("");
+    html += `<article class="glass dd-card"><div class="dd-h">${icBadge(typeIcon(c), "t-petrol")}<div><b>${esc(c.title)}</b><small>Cliente: ${esc(clienteOf(c) || "Não registrado no Trello")}</small></div></div>
+      <ul class="dd-list">${rows}</ul>
+      <button type="button" class="btn primary dd-go" data-chk="${esc(c.id)}">${svgI("list-checks")}Ver etapas do projeto</button></article>`;
+  }
+  if (other.length) html += `<section><h3>Reuniões e outras datas</h3><div class="tasks one">${other.map((x) => taskCard(x, eqTasks.indexOf(x))).join("")}</div></section>`;
+  $("sheet-body").innerHTML = html || `<p class="muted">Sem demandas neste dia.</p>`;
+}
+function renderChecklist(id) {
+  const c = state.cards.find((x) => x.id === id);
+  if (!c) { $("sheet-name").textContent = "Projeto"; $("sheet-sub").textContent = ""; $("sheet-body").innerHTML = `<p class="muted">Projeto não encontrado no Trello. Atualize os dados.</p>`; return; }
+  if (chkUI.card !== id) chkUI = { card: id, pend: "", busy: false, log: [], err: "", ok: "" };
+  const t = today(), groups = etapaGroups(c), ms = milestonesOf(c, groups), h = healthOf(c), v = viewer();
+  const done = groups.filter((g) => g.done).length, tot = groups.length, pct = tot ? Math.round((done / tot) * 100) : 0;
+  const next = groups.find((g) => !g.done);
+  $("sheet-name").textContent = c.title;
+  $("sheet-sub").textContent = tipoOf(c) || "Projeto";
+  const facts = `<dl class="facts" style="font-size:14px;gap:8px 18px"><dt>Cliente</dt><dd>${esc(clienteOf(c) || "") || MISSING}</dd>
+    <dt>Responsável</dt><dd>${esc(projResp(c)) || MISSING}</dd>
+    ${c.team.length ? `<dt>Equipe</dt><dd>${esc(c.team.map(cap).join(", "))}</dd>` : ""}
+    <dt>Prazo final</dt><dd>${c.dueKey ? `<span${c.dueKey < t && !c.done ? ' class="late-txt"' : ""}>${wdShort(c.dueKey)} ${dmy(c.dueKey)}</span>` : MISSING}</dd>
+    <dt>Status atual</dt><dd>${esc(nice(c.list))} ${healthChip(h)}</dd></dl>`;
+  const prog = tot ? `<section class="glass chk-prog" aria-label="Progresso do projeto">
+      <div class="cp-top"><span class="cp-pct">${pct}%</span><span class="muted">das etapas concluídas</span></div>
+      <div class="cp-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}"><i style="--p:${tot ? done / tot : 0}"></i></div>
+      <div class="cp-stats"><div><small>Etapas concluídas</small><b>${done}/${tot}</b></div><div><small>Próxima etapa</small><b>${next ? esc(next.name) : "Todas concluídas"}</b></div><div><small>Prazo</small><b${next && next.lateDays ? ' class="late-txt"' : ""}>${next ? (next.key ? dm(next.key) + (next.est ? " (est.)" : "") : "Não registrado") : "-"}</b></div></div>
+    </section>` : "";
+  const rows = groups.map((g, i) => {
+    const gid = norm(g.name), open = chkUI.pend === gid, edit = !g.done && canEdit(g.keys) && !chkUI.busy;
+    const st = g.done ? "done" : g.lateDays ? "late" : "todo";
+    const sub = [g.resps.length ? g.resps.join(", ") : "Responsável não registrado", g.key ? `${g.est ? "estimada " : ""}${dm(g.key)}` : "sem prazo registrado"].join(" · ");
+    const tail = g.done ? `<span class="gi-tag ok">Concluída</span>` : g.lateDays ? `<span class="gi-tag late">Atrasada há ${g.lateDays} dia(s) útil(eis)</span>` : `<span class="gi-tag">${esc(g.sit === "em_andamento" ? "Em produção" : g.sit === "aguardando" ? "Esperando aprovação" : "Pendente")}</span>`;
+    const mark = `<span class="gi-mark" aria-hidden="true">${g.done ? svgI("check") : g.lateDays ? svgI("triangle-alert") : ""}</span>`;
+    const label = `${esc(g.name)}${g.done ? '<span class="sr"> (concluída)</span>' : ""}`;
+    const main = edit
+      ? `<button type="button" class="gi-main" data-g="${esc(gid)}" aria-expanded="${open}">${mark}<span class="gi-t"><b>${label}</b><small>${esc(sub)}</small></span>${tail}</button>`
+      : `<div class="gi-main">${mark}<span class="gi-t"><b>${label}</b><small>${esc(sub)}</small></span>${tail}</div>`;
+    const conf = open ? `<div class="gi-conf" role="group" aria-label="Confirmar conclusão"><p><b>Confirmar conclusão desta etapa?</b></p>
+        <p class="muted">${g.inTrello ? `Marca "${esc(g.name)}" no checklist ${CHK_NAME} do card` : chkList(c) ? `Inclui "${esc(g.name)}" no checklist ${CHK_NAME} do card e marca como concluída` : `O card ainda não tem checklist de etapas. O painel cria o checklist ${CHK_NAME} com as ${groups.length} etapas registradas, marca as que já constam como concluídas e marca esta`} e grava um comentário: "Etapa ${esc(g.name)} concluída por ${esc(v ? v.full : "")} em ${dmy(t)} às ${fTime.format(new Date())}." A descrição do card não é alterada.</p>
+        <div class="gi-act"><button class="btn primary" type="button" id="g-ok" data-gok="${esc(gid)}">${svgI("check")}Concluir etapa</button><button class="btn" type="button" id="g-cancel">Cancelar</button></div></div>` : "";
+    const other = !g.done && g.ets.length && canEdit(g.keys) && !chkUI.busy ? `<button type="button" class="lnk gi-more" data-gst="${i}">Outro status</button>` : "";
+    return `<li class="gi ${st}${open ? " open" : ""}">${main}${conf}${other}</li>`;
+  }).join("");
+  const msRows = ms.map((m) => `<li class="gi ms${m.done ? " done" : ""}"><div class="gi-main">${icBadge(m.icon, m.tone, "sm")}<span class="gi-t"><b>${esc(m.name)}</b><small>${m.key ? `${wdShort(m.key)} ${dmy(m.key)}` : "Data não registrada no Trello"} · segue o card no Trello</small></span><span class="gi-tag${m.done ? " ok" : ""}">${m.done ? "Concluída" : "Trello: " + esc(nice(m.card.list))}</span></div></li>`).join("");
+  const lock = groups.some((g) => !g.done && !canEdit(g.keys)) ? `<p class="gi-lock">${svgI("lock")}<span>${esc(lockMsg())}</span></p>` : "";
+  const role = v && v.key ? `<span class="chip">${svgI("user-round")}${esc(v.full)} · ${v.gestao ? "Gestão" : "Equipe"}</span>` : "";
+  const log = chkUI.log.length || chkUI.err || chkUI.ok ? `<ul class="wlog">${chkUI.log.map((x) => `<li class="ok">${svgI("circle-check")}<span>${esc(x)}</span></li>`).join("")}${chkUI.busy ? `<li>${svgI("sparkles")}<span>Gravando no Trello…</span></li>` : ""}</ul>${chkUI.err ? `<div class="errbox" role="alert">${esc(chkUI.err)}</div>` : ""}${chkUI.ok ? `<p class="res" role="status"><span class="okl">${esc(chkUI.ok)}</span></p>` : ""}` : "";
+  const src = !state.etapas ? `<p class="muted">${state.extract === "loading" ? "Lendo as etapas nos cards…" : esc(state.extractErr || "As etapas ainda não foram lidas.")}</p>` : "";
+  $("sheet-body").innerHTML = `<section>${facts}<div class="links" style="margin-top:14px"><a href="${esc(c.url)}" target="_blank" rel="noopener">${svgI("external-link")}Card no Trello</a>${role}</div></section>
+    ${prog}
+    <section><div class="sec-h" style="margin-bottom:10px"><h3 style="margin:0">Checklist de etapas</h3><span class="muted" style="font-size:12.5px">${chkList(c) ? "Sincronizado com o checklist do Trello" : "Etapas lidas da descrição do card"}</span></div>
+      ${src}${lock}${log}
+      ${tot ? `<ol class="glist">${rows}</ol>` : state.etapas ? `<p class="muted">Nenhuma etapa registrada no card. ${MISSING}</p>` : ""}
+      ${msRows ? `<h3 style="margin-top:18px">Marcos do projeto</h3><ol class="glist">${msRows}</ol>` : ""}</section>`;
+}
+async function concludeGroup(id, gid) {
+  const c = state.cards.find((x) => x.id === id);
+  const g = c && etapaGroups(c).find((x) => norm(x.name) === gid);
+  if (!g || g.done || !canEdit(g.keys) || chkUI.busy) return;
+  const v = viewer(), now = new Date();
+  chkUI.busy = true; chkUI.log = []; chkUI.err = ""; chkUI.ok = ""; renderSheet();
+  const log = (x) => { chkUI.log.push(x); renderSheet(); };
+  try {
+    await syncChecklist(c, g.name, true, log);
+    await write(TRELLO, "trelloWriteCard", { action: "add_comment", cardId: c.id, text: `✓ Etapa ${g.name} concluída por ${v.full} em ${dmy(ymd(now))} às ${fTime.format(now)}.\nRegistrado pelo Painel Dayse Lacerda. Checklist ${CHK_NAME} atualizado no card.` });
+    log("Comentário registrado no card (histórico).");
+    for (const e of g.ets) e.sit0 = e.situacao = "concluida";
+    chkUI.pend = ""; chkUI.ok = `${g.name}: concluída e salva no Trello.`;
+    lastSig = "";
+    const mcp = await mcpP; if (mcp && mcp.invalidate) mcp.invalidate().catch(() => {});
+  } catch (err) {
+    const amb = err && (err.code === "server_unavailable" || err.code === "upstream_error" || err.code === "cancelled");
+    chkUI.err = `${mcpMsg(err, TRELLO)}${chkUI.log.length ? " Os passos marcados acima já foram gravados; nada foi desfeito." : ""}${amb ? " A gravação pode ter acontecido: atualize os dados e confira antes de tentar de novo." : ""}`;
+  }
+  chkUI.busy = false;
+  renderAll();
+  renderSheet();
 }
 
 /* ---------- reuniões ---------- */
@@ -2223,6 +2498,8 @@ function renderSources() { renderStatus(); }
 function renderAll() {
   computeEstimates();
   renderStatus(); renderPageErr(); renderGreet(); renderKpis(); renderPrio(); renderReminders(); renderTeam(); renderProjects(); renderEquipe(); renderReunioes();
+  const top = sheetStack[sheetStack.length - 1];
+  if ($("sheet").open && top && top.type !== "task" && !chkUI.busy) renderSheet();
   if (state.loadedAt) painted = true;
 }
 
@@ -2511,6 +2788,7 @@ async function loadAll(forceExtract) {
   }
   btn.disabled = false; btn.classList.remove("busy");
   loading = false;
+  applyChecklists();
   renderAll();
   if (!state.err.trello && mcp) {
     const sig = projectSig();
@@ -2563,19 +2841,38 @@ $("eq-cal").addEventListener("click", (e) => {
   const day = e.target.closest(".day");
   if (day && !day.disabled) {
     state.eq.day = day.dataset.day; renderEquipe();
-    const dl = $("daylist"); if (dl && matchMedia("(max-width:760px)").matches) dl.scrollIntoView({ behavior: smooth(), block: "start" });
+    sheetStack = []; pushSheet({ type: "day", key: day.dataset.day });
     return;
   }
   const task = e.target.closest("[data-task]");
-  if (task) openTask(eqTasks[Number(task.dataset.task)]);
+  if (task) { sheetStack = []; pushSheet({ type: "task", x: eqTasks[Number(task.dataset.task)] }); }
 });
 $("sheet-close").addEventListener("click", () => $("sheet").close());
+$("sheet-back").addEventListener("click", popSheet);
+$("sheet").addEventListener("close", () => { sheetStack = []; sheetTask = null; if (!chkUI.busy) chkUI = { card: "", pend: "", busy: false, log: [], err: "", ok: "" }; });
 $("sheet").addEventListener("click", (e) => { if (e.target === e.currentTarget) e.currentTarget.close(); });
 $("sheet-body").addEventListener("click", (e) => {
   const op = e.target.closest("[data-open-proj]");
   if (op) { $("sheet").close(); openProject(op.dataset.openProj); return; }
-  const idx = $("sheet-body").dataset.task;
-  const x = idx !== "" && idx !== undefined ? eqTasks[Number(idx)] : null;
+  const ck = e.target.closest("[data-chk]");
+  if (ck) { pushSheet({ type: "chk", id: ck.dataset.chk }); return; }
+  const top = sheetStack[sheetStack.length - 1];
+  if (top && top.type === "chk" && !chkUI.busy) {
+    const gb = e.target.closest("[data-g]");
+    if (gb) { chkUI.pend = chkUI.pend === gb.dataset.g ? "" : gb.dataset.g; chkUI.ok = ""; chkUI.err = ""; chkUI.log = []; renderSheet(); const b = $("g-ok"); if (b) b.focus(); return; }
+    if (e.target.closest("#g-cancel")) { const g = chkUI.pend; chkUI.pend = ""; renderSheet(); const b = document.querySelector(`[data-g="${CSS.escape(g)}"]`); if (b) b.focus(); return; }
+    const ok = e.target.closest("#g-ok");
+    if (ok) { concludeGroup(top.id, ok.dataset.gok); return; }
+    const gs = e.target.closest("[data-gst]");
+    if (gs) {
+      const c = state.cards.find((y) => y.id === top.id), g = c && etapaGroups(c)[Number(gs.dataset.gst)];
+      if (g && g.ets[0]) pushSheet({ type: "task", x: { type: "etapa", k: g.lateDays ? "atraso" : "producao", est: g.est, key: g.key || "", title: g.name, sub: c.title, et: g.ets[0] } });
+      return;
+    }
+  }
+  const tk = e.target.closest("[data-task]");
+  if (tk && eqTasks[Number(tk.dataset.task)]) { pushSheet({ type: "task", x: eqTasks[Number(tk.dataset.task)] }); return; }
+  const x = sheetTask;
   if (!x || x.type !== "etapa") return;
   const st = e.target.closest(".st-seg [data-st]");
   if (st) { askStatus(x, st.dataset.st); return; }
@@ -2591,6 +2888,8 @@ function focusMax(text) {
 }
 $("ppage").addEventListener("click", (e) => {
   if (e.target === e.currentTarget || e.target.closest("[data-close]")) { $("ppage").close(); return; }
+  const pc = e.target.closest("#p-chk");
+  if (pc) { sheetStack = []; pushSheet({ type: "chk", id: pc.dataset.id }); return; }
   const up = e.target.closest("#p-update");
   if (up) {
     const c = state.cards.find((x) => x.id === up.dataset.id);

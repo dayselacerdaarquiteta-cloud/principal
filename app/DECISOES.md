@@ -112,3 +112,16 @@ As especificações dos agentes devem ficar em Google Docs nessas pastas e ser a
 - Pasta do ano ou do projeto que já existe é reaproveitada; só as subpastas que faltam são criadas.
 - Se uma etapa falha, a criação para e nada é desfeito. A tela mostra o que já foi criado, para conferir antes de tentar de novo.
 - Responsáveis por etapa e data da apresentação ficam "a definir com o MAX". O painel não inventa essas datas.
+
+## Calendário da equipe com checklist de etapas
+- No calendário da pessoa, cada dia mostra o nome do projeto e as etapas com prazo naquele dia (no celular, pontos coloridos). Tocar no dia abre o painel lateral "Demandas do dia": projeto, cliente, responsável, prazo e status de cada etapa, e o botão "Ver etapas do projeto".
+- "Ver etapas do projeto" abre o checklist: cliente, responsável (linha RESPONSÁVEL PRINCIPAL ou RESPONSÁVEL TÉCNICO do card), equipe, prazo final, status atual, barra de progresso (etapas concluídas / total), próxima etapa e prazo. O mesmo checklist abre pela ficha do projeto (botão "Checklist de etapas").
+- Etapas vêm do texto do card (lidas pelo Claude, sem inventar) e dos itens do checklist do Trello. Uma etapa com dois responsáveis aparece uma vez. Ordem: por prazo.
+- Visual: concluída = círculo verde com ✓; pendente = círculo vazio; atrasada = borda e selo vermelhos com "Atrasada há N dia(s) útil(eis)" (só com prazo registrado, nunca com data estimada).
+- Apresentação e entrega final aparecem como "Marcos do projeto", sem caixa de marcar: seguem o card no Trello.
+- **Sincronização com o Trello:** nenhum card tinha checklist em 24/09/2026. Na primeira conclusão de uma etapa num card, o painel cria o checklist **ETAPAS DO PROJETO** no topo do card com todas as etapas registradas, marca as que já constam como concluídas e marca a etapa concluída. Depois, só marca ou inclui o item. A confirmação avisa isso antes.
+- Cada conclusão grava um comentário no card: "✓ Etapa X concluída por NOME em DD/MM/AAAA às HH:MM." A descrição do card não é alterada e nada é apagado.
+- **Trello como fonte oficial:** se o item do checklist estiver marcado no Trello, a etapa aparece concluída; se estiver desmarcado, aparece pendente, mesmo que o texto do card diga outra coisa. Itens criados direto no checklist também aparecem.
+- A troca de status (A iniciar, Em produção, Esperando aprovação, Concluído) continua em "Outro status". Marcar Concluído também marca o checklist; voltar de Concluído desmarca o item.
+- **Permissões:** a pessoa é identificada pelo nome da conta do claude.ai. Gestão (Dayse) altera qualquer etapa. Equipe conclui só as etapas em que é responsável. Conta não identificada ou fora da equipe: só visualização.
+- Correção: depois da atualização automática a cada 2 minutos, as etapas perdiam a ligação com os cards recarregados. Agora são religadas a cada leitura.

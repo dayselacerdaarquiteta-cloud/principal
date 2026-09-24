@@ -1,153 +1,794 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-23T00:00:00Z",
+  "generatedAt": "2026-09-24T00:00:00Z",
   "title": "Design System: Painel Dayse Lacerda",
   "extensions": {
     "colorMeta": {
-      "ink": { "role": "primary", "displayName": "Grafite", "canonical": "oklch(24.9% 0.008 240.2)", "dark": "#E9EBE8", "tonalRamp": ["#080C0E", "#212528", "#3C4044", "#5A5E62", "#797E82", "#9A9FA3", "#C3C8CC", "#EAEFF3"] },
-      "red": { "role": "secondary", "displayName": "Vermelho Tijolo (entrega final)", "canonical": "oklch(51.9% 0.162 29.3)", "dark": "#E26B5D", "tonalRamp": ["#220000", "#4C0000", "#7E0000", "#A6291F", "#CC4E40", "#F27161", "#FFB0A4", "#FFE9E5"] },
-      "orange": { "role": "secondary", "displayName": "Laranja Terracota (apresentação ou aprovação)", "canonical": "oklch(60.8% 0.142 54.2)", "dark": "#E39A55", "tonalRamp": ["#1C0300", "#3D1800", "#642F00", "#904700", "#BC6110", "#E1833E", "#FFB483", "#FEEADD"] },
-      "orange-text": { "role": "secondary", "displayName": "Laranja Queimado (texto)", "canonical": "oklch(50.8% 0.122 53.0)", "dark": "#E39A55", "tonalRamp": ["#1C0300", "#3D1800", "#652E00", "#914600", "#B5662E", "#D98851", "#FEB485", "#FFEADD"] },
-      "blue": { "role": "secondary", "displayName": "Azul Ardósia (reunião)", "canonical": "oklch(47.4% 0.113 256.6)", "dark": "#83A6DC", "tonalRamp": ["#00072C", "#002251", "#0F3E7A", "#305E9C", "#4F7EBF", "#6FA0E4", "#A4CAFE", "#E5EFFE"] },
-      "green": { "role": "secondary", "displayName": "Verde Musgo (produção)", "canonical": "oklch(52.1% 0.087 155.2)", "dark": "#7DBB92", "tonalRamp": ["#001004", "#002D15", "#074D2B", "#2F6C48", "#508D67", "#71AF87", "#99D9AF", "#C5FFD8"] },
-      "ground": { "role": "neutral", "displayName": "Branco-gelo", "canonical": "oklch(96.9% 0.003 247.9)", "dark": "#141617", "tonalRamp": ["#0A0B0D", "#232426", "#3E4041", "#5C5E5F", "#7C7D7F", "#9D9FA0", "#C5C7C9", "#EDEFF1"] },
-      "surface": { "role": "neutral", "displayName": "Branco Papel", "canonical": "oklch(100% 0 0)", "dark": "#1B1E20", "tonalRamp": ["#0B0B0B", "#242424", "#404040", "#5D5D5D", "#7D7D7D", "#9E9E9E", "#C7C7C7", "#EEEEEE"] },
-      "stone": { "role": "neutral", "displayName": "Cinza Pedra", "canonical": "oklch(48.5% 0.012 238.7)", "dark": "#9EA5A9", "tonalRamp": ["#070C10", "#1F2529", "#3A4145", "#585F64", "#777E84", "#98A0A5", "#C1C9CE", "#E8F0F6"] },
-      "line": { "role": "neutral", "displayName": "Filete", "canonical": "oklch(90.7% 0.008 241.7)", "dark": "#2A2E31", "tonalRamp": ["#080C0E", "#212527", "#3C4043", "#5A5E62", "#797E81", "#9A9FA3", "#C3C8CC", "#EAEFF3"] },
-      "line-strong": { "role": "neutral", "displayName": "Filete Forte", "canonical": "oklch(83.2% 0.011 243.7)", "dark": "#3D4246", "tonalRamp": ["#070C10", "#1F2529", "#3B4145", "#585E64", "#787E84", "#999FA5", "#C1C8CE", "#E8F0F6"] },
-      "wash": { "role": "neutral", "displayName": "Névoa", "canonical": "oklch(94.1% 0.006 239.8)", "dark": "#212527", "tonalRamp": ["#090C0D", "#222427", "#3D4043", "#5B5E61", "#7A7E80", "#9B9FA2", "#C4C8CB", "#EBEFF2"] }
+      "petrol": {
+        "role": "primary",
+        "displayName": "Petróleo",
+        "canonical": "oklch(44.8% 0.066 214.0)",
+        "dark": "#62B6C4",
+        "tonalRamp": [
+          "#00101C",
+          "#002B37",
+          "#004855",
+          "#2A6774",
+          "#4B8895",
+          "#6DA9B8",
+          "#92D0DE",
+          "#BCFBFF"
+        ]
+      },
+      "petrol-soft": {
+        "role": "primary",
+        "displayName": "Petróleo Suave",
+        "canonical": "oklch(44.8% 0.066 214.0)",
+        "dark": "rgba(98,182,196,.15)",
+        "tonalRamp": [
+          "#00101C",
+          "#002B37",
+          "#004855",
+          "#2A6774",
+          "#4B8895",
+          "#6DA9B8",
+          "#92D0DE",
+          "#BCFBFF"
+        ],
+        "note": "Rampa sintetizada a partir do tom base sem alfa; o token real é translúcido."
+      },
+      "on-petrol": {
+        "role": "primary",
+        "displayName": "Sobre Petróleo",
+        "canonical": "oklch(100.0% 0.000 89.9)",
+        "dark": "#0B1318",
+        "tonalRamp": [
+          "#0B0B0B",
+          "#242424",
+          "#404040",
+          "#5D5D5D",
+          "#7D7D7D",
+          "#9E9E9E",
+          "#C4C4C4",
+          "#EEEEEE"
+        ]
+      },
+      "sand": {
+        "role": "secondary",
+        "displayName": "Areia",
+        "canonical": "oklch(70.0% 0.075 78.5)",
+        "dark": "#D6BC8C",
+        "tonalRamp": [
+          "#1B0400",
+          "#371E00",
+          "#553A03",
+          "#755828",
+          "#967848",
+          "#B89968",
+          "#DFBF8D",
+          "#FFE9B6"
+        ]
+      },
+      "sand-soft": {
+        "role": "secondary",
+        "displayName": "Areia Suave",
+        "canonical": "oklch(70.0% 0.075 78.5)",
+        "dark": "rgba(214,188,140,.16)",
+        "tonalRamp": [
+          "#1B0400",
+          "#371E00",
+          "#553A03",
+          "#755828",
+          "#967848",
+          "#B89968",
+          "#DFBF8D",
+          "#FFE9B6"
+        ],
+        "note": "Rampa sintetizada a partir do tom base sem alfa; o token real é translúcido."
+      },
+      "red": {
+        "role": "tertiary",
+        "displayName": "Vermelho Tijolo (entrega final, atraso)",
+        "canonical": "oklch(52.1% 0.158 28.5)",
+        "dark": "#F07B6F",
+        "tonalRamp": [
+          "#2D0000",
+          "#4F0000",
+          "#721D17",
+          "#953E35",
+          "#BA5F53",
+          "#DF8073",
+          "#FFA598",
+          "#FFD0C1"
+        ]
+      },
+      "red-soft": {
+        "role": "tertiary",
+        "displayName": "Vermelho Suave",
+        "canonical": "oklch(52.1% 0.158 28.5)",
+        "dark": "rgba(240,123,111,.14)",
+        "tonalRamp": [
+          "#2D0000",
+          "#4F0000",
+          "#721D17",
+          "#953E35",
+          "#BA5F53",
+          "#DF8073",
+          "#FFA598",
+          "#FFD0C1"
+        ],
+        "note": "Rampa sintetizada a partir do tom base sem alfa; o token real é translúcido."
+      },
+      "orange": {
+        "role": "tertiary",
+        "displayName": "Laranja Terracota (apresentação, aprovação)",
+        "canonical": "oklch(63.1% 0.133 57.4)",
+        "dark": "#EFA25E",
+        "tonalRamp": [
+          "#2A0000",
+          "#4A0600",
+          "#6C2900",
+          "#8E4800",
+          "#B2692A",
+          "#D68A4E",
+          "#FFB074",
+          "#FFDA9D"
+        ]
+      },
+      "orange-text": {
+        "role": "tertiary",
+        "displayName": "Laranja Queimado (texto)",
+        "canonical": "oklch(50.3% 0.115 57.0)",
+        "dark": "#EFA25E",
+        "tonalRamp": [
+          "#290000",
+          "#490800",
+          "#6A2A00",
+          "#8D4902",
+          "#B06A30",
+          "#D48B53",
+          "#FDB178",
+          "#FFDBA1"
+        ]
+      },
+      "orange-soft": {
+        "role": "tertiary",
+        "displayName": "Laranja Suave",
+        "canonical": "oklch(63.1% 0.133 57.4)",
+        "dark": "rgba(239,162,94,.15)",
+        "tonalRamp": [
+          "#2A0000",
+          "#4A0600",
+          "#6C2900",
+          "#8E4800",
+          "#B2692A",
+          "#D68A4E",
+          "#FFB074",
+          "#FFDA9D"
+        ],
+        "note": "Rampa sintetizada a partir do tom base sem alfa; o token real é translúcido."
+      },
+      "blue": {
+        "role": "tertiary",
+        "displayName": "Azul Ardósia (reunião)",
+        "canonical": "oklch(53.9% 0.115 256.5)",
+        "dark": "#8BB0EA",
+        "tonalRamp": [
+          "#00003A",
+          "#001F5A",
+          "#0D3E7B",
+          "#2E5E9D",
+          "#4E7EC1",
+          "#6EA0E5",
+          "#93C7FF",
+          "#BCF2FF"
+        ]
+      },
+      "blue-soft": {
+        "role": "tertiary",
+        "displayName": "Azul Suave",
+        "canonical": "oklch(53.9% 0.115 256.5)",
+        "dark": "rgba(139,176,234,.15)",
+        "tonalRamp": [
+          "#00003A",
+          "#001F5A",
+          "#0D3E7B",
+          "#2E5E9D",
+          "#4E7EC1",
+          "#6EA0E5",
+          "#93C7FF",
+          "#BCF2FF"
+        ],
+        "note": "Rampa sintetizada a partir do tom base sem alfa; o token real é translúcido."
+      },
+      "olive": {
+        "role": "tertiary",
+        "displayName": "Oliva (produção, texto)",
+        "canonical": "oklch(50.5% 0.088 120.2)",
+        "dark": "#AFC174",
+        "tonalRamp": [
+          "#080E00",
+          "#1F2900",
+          "#3A4600",
+          "#576527",
+          "#768547",
+          "#97A767",
+          "#BCCD8C",
+          "#E6F8B5"
+        ]
+      },
+      "olive-fill": {
+        "role": "tertiary",
+        "displayName": "Oliva de Preenchimento",
+        "canonical": "oklch(60.4% 0.103 119.5)",
+        "dark": "#94A85A",
+        "tonalRamp": [
+          "#080E00",
+          "#1F2900",
+          "#3A4600",
+          "#576515",
+          "#76863A",
+          "#97A85B",
+          "#BCCE81",
+          "#E6F9AA"
+        ]
+      },
+      "olive-soft": {
+        "role": "tertiary",
+        "displayName": "Oliva Suave",
+        "canonical": "oklch(50.5% 0.088 120.2)",
+        "dark": "rgba(175,193,116,.15)",
+        "tonalRamp": [
+          "#080E00",
+          "#1F2900",
+          "#3A4600",
+          "#576527",
+          "#768547",
+          "#97A767",
+          "#BCCD8C",
+          "#E6F8B5"
+        ],
+        "note": "Rampa sintetizada a partir do tom base sem alfa; o token real é translúcido."
+      },
+      "bg": {
+        "role": "neutral",
+        "displayName": "Branco Quente",
+        "canonical": "oklch(95.9% 0.006 84.6)",
+        "dark": "#0B1318",
+        "tonalRamp": [
+          "#0C0B08",
+          "#252421",
+          "#413F3C",
+          "#5F5D5A",
+          "#7F7D79",
+          "#A09E9A",
+          "#C6C4C0",
+          "#F0EEEA"
+        ]
+      },
+      "glass": {
+        "role": "neutral",
+        "displayName": "Vidro",
+        "canonical": "oklch(100.0% 0.000 89.9)",
+        "dark": "rgba(255,255,255,.055)",
+        "tonalRamp": [
+          "#0B0B0B",
+          "#242424",
+          "#404040",
+          "#5D5D5D",
+          "#7D7D7D",
+          "#9E9E9E",
+          "#C4C4C4",
+          "#EEEEEE"
+        ],
+        "note": "Rampa sintetizada a partir do tom base sem alfa; o token real é translúcido."
+      },
+      "glass-strong": {
+        "role": "neutral",
+        "displayName": "Vidro Denso",
+        "canonical": "oklch(100.0% 0.000 89.9)",
+        "dark": "rgba(18,30,37,.94)",
+        "tonalRamp": [
+          "#0B0B0B",
+          "#242424",
+          "#404040",
+          "#5D5D5D",
+          "#7D7D7D",
+          "#9E9E9E",
+          "#C4C4C4",
+          "#EEEEEE"
+        ],
+        "note": "Rampa sintetizada a partir do tom base sem alfa; o token real é translúcido."
+      },
+      "glass-line": {
+        "role": "neutral",
+        "displayName": "Filete de Luz",
+        "canonical": "oklch(100.0% 0.000 89.9)",
+        "dark": "rgba(255,255,255,.1)",
+        "tonalRamp": [
+          "#0B0B0B",
+          "#242424",
+          "#404040",
+          "#5D5D5D",
+          "#7D7D7D",
+          "#9E9E9E",
+          "#C4C4C4",
+          "#EEEEEE"
+        ],
+        "note": "Rampa sintetizada a partir do tom base sem alfa; o token real é translúcido."
+      },
+      "glass-edge": {
+        "role": "neutral",
+        "displayName": "Aresta",
+        "canonical": "oklch(25.4% 0.010 248.2)",
+        "dark": "rgba(0,0,0,.35)",
+        "tonalRamp": [
+          "#080C0F",
+          "#202429",
+          "#3C4045",
+          "#595E63",
+          "#797E83",
+          "#9A9FA4",
+          "#BFC5CA",
+          "#EAEFF5"
+        ],
+        "note": "Rampa sintetizada a partir do tom base sem alfa; o token real é translúcido."
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Grafite",
+        "canonical": "oklch(25.4% 0.010 248.2)",
+        "dark": "#ECEFF0",
+        "tonalRamp": [
+          "#080C0F",
+          "#202429",
+          "#3C4045",
+          "#595E63",
+          "#797E83",
+          "#9A9FA4",
+          "#BFC5CA",
+          "#EAEFF5"
+        ]
+      },
+      "ink2": {
+        "role": "neutral",
+        "displayName": "Grafite Médio",
+        "canonical": "oklch(38.3% 0.012 243.1)",
+        "dark": "#C9D0D4",
+        "tonalRamp": [
+          "#070C10",
+          "#1F2529",
+          "#3B4146",
+          "#585F64",
+          "#787E84",
+          "#989FA5",
+          "#BEC5CB",
+          "#E8F0F6"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Cinza de Apoio",
+        "canonical": "oklch(51.1% 0.010 248.0)",
+        "dark": "#9AA5AC",
+        "tonalRamp": [
+          "#080C0F",
+          "#202529",
+          "#3C4045",
+          "#595E63",
+          "#797E83",
+          "#9A9FA4",
+          "#BFC5CA",
+          "#E9EFF5"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Filete",
+        "canonical": "oklch(25.4% 0.010 248.2)",
+        "dark": "rgba(255,255,255,.08)",
+        "tonalRamp": [
+          "#080C0F",
+          "#202429",
+          "#3C4045",
+          "#595E63",
+          "#797E83",
+          "#9A9FA4",
+          "#BFC5CA",
+          "#EAEFF5"
+        ],
+        "note": "Rampa sintetizada a partir do tom base sem alfa; o token real é translúcido."
+      },
+      "hover": {
+        "role": "neutral",
+        "displayName": "Toque",
+        "canonical": "oklch(25.4% 0.010 248.2)",
+        "dark": "rgba(255,255,255,.05)",
+        "tonalRamp": [
+          "#080C0F",
+          "#202429",
+          "#3C4045",
+          "#595E63",
+          "#797E83",
+          "#9A9FA4",
+          "#BFC5CA",
+          "#EAEFF5"
+        ],
+        "note": "Rampa sintetizada a partir do tom base sem alfa; o token real é translúcido."
+      },
+      "gray-soft": {
+        "role": "neutral",
+        "displayName": "Névoa",
+        "canonical": "oklch(25.4% 0.010 248.2)",
+        "dark": "rgba(255,255,255,.06)",
+        "tonalRamp": [
+          "#080C0F",
+          "#202429",
+          "#3C4045",
+          "#595E63",
+          "#797E83",
+          "#9A9FA4",
+          "#BFC5CA",
+          "#EAEFF5"
+        ],
+        "note": "Rampa sintetizada a partir do tom base sem alfa; o token real é translúcido."
+      },
+      "scrim": {
+        "role": "neutral",
+        "displayName": "Véu",
+        "canonical": "oklch(21.3% 0.012 237.3)",
+        "dark": "rgba(0,0,0,.55)",
+        "tonalRamp": [
+          "#070C10",
+          "#1F2529",
+          "#3A4145",
+          "#585F64",
+          "#777E84",
+          "#98A0A5",
+          "#BDC5CB",
+          "#E7F0F6"
+        ],
+        "note": "Rampa sintetizada a partir do tom base sem alfa; o token real é translúcido."
+      },
+      "haze1": {
+        "role": "neutral",
+        "displayName": "Luz Petróleo (fundo)",
+        "canonical": "oklch(44.8% 0.066 214.0)",
+        "dark": "rgba(38,120,140,.34)",
+        "tonalRamp": [
+          "#00101C",
+          "#002B37",
+          "#004855",
+          "#2A6774",
+          "#4B8895",
+          "#6DA9B8",
+          "#92D0DE",
+          "#BCFBFF"
+        ],
+        "note": "Rampa sintetizada a partir do tom base sem alfa; o token real é translúcido."
+      },
+      "haze2": {
+        "role": "neutral",
+        "displayName": "Luz Areia (fundo)",
+        "canonical": "oklch(70.0% 0.075 78.5)",
+        "dark": "rgba(214,188,140,.08)",
+        "tonalRamp": [
+          "#1B0400",
+          "#371E00",
+          "#553A03",
+          "#755828",
+          "#967848",
+          "#B89968",
+          "#DFBF8D",
+          "#FFE9B6"
+        ],
+        "note": "Rampa sintetizada a partir do tom base sem alfa; o token real é translúcido."
+      },
+      "haze3": {
+        "role": "neutral",
+        "displayName": "Luz Oliva (fundo; azul no escuro)",
+        "canonical": "oklch(50.5% 0.088 120.2)",
+        "dark": "rgba(40,70,120,.28)",
+        "tonalRamp": [
+          "#080E00",
+          "#1F2900",
+          "#3A4600",
+          "#576527",
+          "#768547",
+          "#97A767",
+          "#BCCD8C",
+          "#E6F8B5"
+        ],
+        "note": "Rampa sintetizada a partir do tom base sem alfa; o token real é translúcido."
+      },
+      "gridline": {
+        "role": "neutral",
+        "displayName": "Grade de Planta",
+        "canonical": "oklch(25.4% 0.010 248.2)",
+        "dark": "rgba(255,255,255,.03)",
+        "tonalRamp": [
+          "#080C0F",
+          "#202429",
+          "#3C4045",
+          "#595E63",
+          "#797E83",
+          "#9A9FA4",
+          "#BFC5CA",
+          "#EAEFF5"
+        ],
+        "note": "Rampa sintetizada a partir do tom base sem alfa; o token real é translúcido."
+      }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "Só o título da página (\"Hoje\"): leve, grande, tracking negativo." },
-      "headline": { "displayName": "Headline", "purpose": "Título do lembrete em destaque e nome na ficha lateral (24px)." },
-      "title": { "displayName": "Title", "purpose": "Títulos de seção." },
-      "body": { "displayName": "Body", "purpose": "Texto corrente; nomes de pessoa em 600, 16px." },
-      "body-small": { "displayName": "Body small", "purpose": "Linha secundária em pedra: detalhe, status, o que a pessoa faz agora." },
-      "label": { "displayName": "Label (Condensed)", "purpose": "Datas, contadores, dias da tira, legenda e carga, sempre com números tabulares." }
+      "display": {
+        "displayName": "Display",
+        "purpose": "Só a saudação da aba Hoje; nome em petróleo."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Título das abas Projetos, Reuniões e Equipe; capa do projeto em 800."
+      },
+      "metric": {
+        "displayName": "Metric",
+        "purpose": "Número dos indicadores; caixa de data das reuniões em 26px."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Título de seção, título do lembrete, nome na ficha lateral (21px)."
+      },
+      "title-card": {
+        "displayName": "Title card",
+        "purpose": "Nome do projeto nos cards; pessoas em 16px."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Texto corrente; compositor em 16px."
+      },
+      "body-small": {
+        "displayName": "Body small",
+        "purpose": "Fatos, histórico, metadados."
+      },
+      "chip": {
+        "displayName": "Chip",
+        "purpose": "Selos, sugestões, legenda, contadores."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Rótulo de dado em maiúsculas: selo de saúde, dia da semana, mês, cabeçalho de coluna. Nunca kicker acima de título."
+      }
     },
     "shadows": [
-      { "name": "lift", "value": "0 1px 2px rgba(30,34,37,.05), 0 12px 40px rgba(30,34,37,.10)", "purpose": "Somente a ficha lateral flutuante. Escuro: 0 1px 2px rgba(0,0,0,.4), 0 16px 48px rgba(0,0,0,.5)." },
-      { "name": "swatch-outline", "value": "inset 0 0 0 1px var(--line-strong)", "purpose": "Contorno interno de amostra vazia; variantes de 1.5px em vermelho (prazo, atraso) e azul (registro). Não é elevação." },
-      { "name": "scrim", "value": "rgba(24,27,29,.32)", "purpose": "Véu atrás da ficha. Escuro: rgba(0,0,0,.55)." }
+      {
+        "name": "shadow",
+        "value": "0 1px 1px rgba(31,35,39,.03),0 14px 34px -14px rgba(28,48,56,.2)",
+        "purpose": "Vidro em repouso. Escuro: 0 1px 1px rgba(0,0,0,.3),0 18px 40px -16px rgba(0,0,0,.6)."
+      },
+      {
+        "name": "shadow-up",
+        "value": "0 2px 4px rgba(31,35,39,.04),0 24px 48px -18px rgba(28,48,56,.3)",
+        "purpose": "Hover dos cards clicáveis, diálogos, pessoa selecionada. Escuro: 0 2px 4px rgba(0,0,0,.35),0 28px 56px -18px rgba(0,0,0,.7)."
+      },
+      {
+        "name": "glass-stack",
+        "value": "inset 0 1px 0 var(--glass-line),0 0 0 1px var(--glass-edge),var(--shadow)",
+        "purpose": "Composição completa de toda superfície de vidro."
+      },
+      {
+        "name": "accent-glow",
+        "value": "0 10px 22px -10px color-mix(in srgb,var(--petrol) 70%,transparent)",
+        "purpose": "Botão principal; aba ativa e botão flutuante em variações próximas."
+      },
+      {
+        "name": "alert-glow",
+        "value": "inset 0 1px 0 var(--glass-line),0 0 0 1px color-mix(in srgb,var(--red) 35%,transparent),0 18px 40px -18px color-mix(in srgb,var(--red) 45%,transparent)",
+        "purpose": "Card de prioridade atrasado."
+      },
+      {
+        "name": "focus-halo",
+        "value": "0 0 0 4px var(--petrol-soft)",
+        "purpose": "Foco do compositor; 3px no dia selecionado."
+      },
+      {
+        "name": "glass-filter",
+        "value": "blur(20px) saturate(150%)",
+        "purpose": "backdrop-filter do vidro; blur(6px) no véu dos diálogos."
+      }
     ],
     "motion": [
-      { "name": "ease-out", "value": "cubic-bezier(.23,1,.32,1)", "purpose": "Retorno de toque e troca do lembrete." },
-      { "name": "ease-drawer", "value": "cubic-bezier(.32,.72,0,1)", "purpose": "Entrada da ficha lateral (360ms, 40px)." },
-      { "name": "press", "value": "transform: scale(.97) 160ms", "purpose": "Toque em botões (0.94 em icon buttons, 0.995 nas linhas da equipe)." },
-      { "name": "feature-swap", "value": "260ms opacity 0 + blur(3px) + translateY(4px) para repouso", "purpose": "Troca do lembrete em destaque a cada 7s; desligada sob movimento reduzido." },
-      { "name": "state", "value": "160ms ease", "purpose": "Cor de fundo, contorno e texto em hover." }
+      {
+        "name": "ease",
+        "value": "cubic-bezier(.23,1,.32,1)",
+        "purpose": "Padrão para elevação, compressão, entrada e diálogo."
+      },
+      {
+        "name": "ease-drawer",
+        "value": "cubic-bezier(.32,.72,0,1)",
+        "purpose": "Ficha lateral (360ms)."
+      },
+      {
+        "name": "press",
+        "value": "160ms, scale(.97) a scale(.94)",
+        "purpose": "Compressão ao toque em botões, células e cards (.98)."
+      },
+      {
+        "name": "lift",
+        "value": "220ms, translateY(-2px)",
+        "purpose": "Hover dos cards com ponteiro fino."
+      },
+      {
+        "name": "rise",
+        "value": "460ms, translateY(10px) a 0, escalonado 45ms",
+        "purpose": "Entrada dos cards na primeira pintura."
+      },
+      {
+        "name": "pop",
+        "value": "320ms, translateY(14px) scale(.985)",
+        "purpose": "Abertura da página do projeto."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "animation:none; transition:none",
+        "purpose": "Corte total sob prefers-reduced-motion: reduce."
+      }
     ],
     "breakpoints": [
-      { "name": "single-column", "value": "960px" },
-      { "name": "mobile", "value": "560px" }
+      {
+        "name": "stack",
+        "value": "1020px"
+      },
+      {
+        "name": "mobile",
+        "value": "760px"
+      },
+      {
+        "name": "container",
+        "value": "1240px"
+      }
     ]
   },
   "components": [
     {
-      "name": "Button",
-      "kind": "button",
-      "refersTo": "button",
-      "description": "Botão padrão com contorno fino; ações secundárias como Atualizar dados.",
-      "html": "<button class=\"ds-btn\" type=\"button\"><svg viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M13.5 8a5.5 5.5 0 1 1-1.7-4\"/><path d=\"M13.5 2.5v3h-3\"/></svg>Atualizar dados</button>",
-      "css": ".ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:38px;padding:0 14px;border-radius:4px;border:1px solid var(--line-strong,#C2C9CF);background:transparent;color:var(--ink,#1E2225);font-family:\"Sofia Sans\",\"Avenir Next\",system-ui,sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:transform 160ms cubic-bezier(.23,1,.32,1),border-color 160ms ease}.ds-btn svg{width:15px;height:15px}.ds-btn:hover{border-color:var(--ink,#1E2225)}.ds-btn:active{transform:scale(.97)}.ds-btn:focus-visible{outline:2px solid var(--ink,#1E2225);outline-offset:3px}"
-    },
-    {
-      "name": "Primary Button",
+      "name": "Botão principal",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "Uma ação primária por bloco, preenchida em grafite.",
-      "html": "<button class=\"ds-btn-primary\" type=\"button\">Interpretar</button>",
-      "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 14px;border-radius:4px;border:1px solid var(--ink,#1E2225);background:var(--ink,#1E2225);color:var(--ground,#F3F5F7);font-family:\"Sofia Sans\",\"Avenir Next\",system-ui,sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:transform 160ms cubic-bezier(.23,1,.32,1),background-color 160ms ease,border-color 160ms ease}.ds-btn-primary:hover{background:var(--stone,#596065);border-color:var(--stone,#596065)}.ds-btn-primary:active{transform:scale(.97)}.ds-btn-primary:focus-visible{outline:2px solid var(--ink,#1E2225);outline-offset:3px}"
+      "description": "Ação principal: analisar, gerar, confirmar.",
+      "html": "<button class=\"ds-btn ds-btn-primary\"><svg class=\"ds-lu\" viewBox=\"0 0 24 24\"><path d=\"M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z\"/><path d=\"m21.854 2.147-10.94 10.939\"/></svg>Analisar atualização</button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 18px;border-radius:12px;border:1px solid var(--line);background:var(--glass-strong);color:var(--ink);cursor:pointer;font:600 14px var(--f);transition:transform 160ms var(--ease),background-color 160ms ease}.ds-btn-primary{background:var(--petrol);color:var(--on-petrol);border-color:transparent;box-shadow:0 10px 22px -10px color-mix(in srgb,var(--petrol) 70%,transparent)}.ds-btn-primary:hover{filter:brightness(1.08)}.ds-btn:active{transform:scale(.97)}.ds-btn:focus-visible{outline:2px solid var(--petrol);outline-offset:3px}.ds-lu{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}"
     },
     {
-      "name": "Icon Button",
+      "name": "Botão secundário",
       "kind": "button",
-      "refersTo": "icon-button",
-      "description": "Quadrado de 34px para setas do lembrete e fechar a ficha.",
-      "html": "<button class=\"ds-ib\" type=\"button\" aria-label=\"Próximo\"><svg viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><path d=\"m6 3 5 5-5 5\"/></svg></button>",
-      "css": ".ds-ib{width:34px;height:34px;display:grid;place-items:center;border:1px solid var(--line-strong,#C2C9CF);border-radius:4px;background:transparent;color:var(--ink,#1E2225);cursor:pointer;transition:transform 160ms cubic-bezier(.23,1,.32,1),border-color 160ms ease}.ds-ib svg{width:14px;height:14px}.ds-ib:hover{border-color:var(--ink,#1E2225)}.ds-ib:active{transform:scale(.94)}.ds-ib:focus-visible{outline:2px solid var(--ink,#1E2225);outline-offset:3px}"
+      "refersTo": "button-secondary",
+      "description": "Ações de apoio: copiar, cancelar, abrir no Trello.",
+      "html": "<button class=\"ds-btn\">Cancelar</button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 18px;border-radius:12px;border:1px solid var(--line);background:var(--glass-strong);color:var(--ink);cursor:pointer;font:600 14px var(--f);transition:transform 160ms var(--ease),background-color 160ms ease}.ds-btn:hover{background:var(--hover)}.ds-btn:active{transform:scale(.97)}.ds-btn:focus-visible{outline:2px solid var(--petrol);outline-offset:3px}"
     },
     {
-      "name": "Textarea",
-      "kind": "input",
-      "refersTo": "textarea",
-      "description": "Campo de atualização em linguagem natural, com rótulo visível.",
-      "html": "<label class=\"ds-lbl\" for=\"ds-ta\">Digite uma atualização</label><textarea id=\"ds-ta\" class=\"ds-textarea\" placeholder=\"O projeto X foi para detalhamento\"></textarea>",
-      "css": ".ds-lbl{display:block;font-family:\"Sofia Sans\",system-ui,sans-serif;font-size:14px;font-weight:500;margin-bottom:8px;color:var(--ink,#1E2225)}.ds-textarea{width:100%;min-height:104px;resize:vertical;border:1px solid var(--line-strong,#C2C9CF);border-radius:4px;background:var(--surface,#FFFFFF);color:var(--ink,#1E2225);padding:14px 16px;font-family:\"Sofia Sans\",system-ui,sans-serif;font-size:16px;line-height:1.5;transition:border-color 160ms ease}.ds-textarea::placeholder{color:var(--stone,#596065)}.ds-textarea:focus{outline:none;border-color:var(--ink,#1E2225);box-shadow:0 0 0 1px var(--ink,#1E2225)}"
-    },
-    {
-      "name": "Navigation",
+      "name": "Abas",
       "kind": "nav",
-      "description": "Links de texto; o atual em 600 com filete inferior grafite, os indisponíveis em pedra.",
-      "html": "<nav class=\"ds-nav\" aria-label=\"Seções\"><a href=\"#\" aria-current=\"page\">Hoje</a><span>Projetos</span><span>Reuniões</span><span>Equipe</span></nav>",
-      "css": ".ds-nav{display:flex;gap:24px;font-family:\"Sofia Sans\",system-ui,sans-serif;font-size:15px;color:var(--ink,#1E2225)}.ds-nav a,.ds-nav span{text-decoration:none;color:inherit;white-space:nowrap;padding-block:4px;border-bottom:1.5px solid transparent}.ds-nav a[aria-current]{border-color:var(--ink,#1E2225);font-weight:600}.ds-nav span{color:var(--stone,#596065)}.ds-nav a:focus-visible{outline:2px solid var(--ink,#1E2225);outline-offset:3px}"
+      "refersTo": "tab-active",
+      "description": "Navegação principal no desktop, em trilho de pílula.",
+      "html": "<nav class=\"ds-tabs\"><a href=\"#\" aria-current=\"page\">Hoje</a><a href=\"#\">Projetos</a><a href=\"#\">Reuniões</a><a href=\"#\">Equipe</a></nav>",
+      "css": ".ds-tabs{display:inline-flex;gap:4px;padding:4px;border-radius:999px;background:var(--gray-soft);font-family:var(--f)}.ds-tabs a{padding:8px 16px;border-radius:999px;text-decoration:none;font-weight:600;font-size:14px;color:var(--muted);transition:background-color 200ms ease,color 200ms ease}.ds-tabs a:hover:not([aria-current]){color:var(--ink);background:var(--hover)}.ds-tabs a[aria-current=page]{background:var(--petrol);color:var(--on-petrol);box-shadow:0 6px 16px -6px color-mix(in srgb,var(--petrol) 60%,transparent)}.ds-tabs a:focus-visible{outline:2px solid var(--petrol);outline-offset:3px}"
     },
     {
-      "name": "Swatch Legend",
+      "name": "Selos de saúde e chips",
       "kind": "chip",
-      "refersTo": "swatch",
-      "description": "As amostras de demanda com seus rótulos; a cor sempre acompanhada de texto.",
-      "html": "<div class=\"ds-legend\"><span><i class=\"ds-sw ds-entrega\"></i>Entrega final</span><span><i class=\"ds-sw ds-apresentacao\"></i>Apresentação ou aprovação</span><span><i class=\"ds-sw ds-reuniao\"></i>Reunião</span><span><i class=\"ds-sw ds-producao\"></i>Produção</span><span><i class=\"ds-sw ds-prazo\"></i>Prazo em risco</span><span><i class=\"ds-sw ds-atraso\"></i>Atraso</span><span><i class=\"ds-sw\"></i>Sem demanda registrada</span></div>",
-      "css": ".ds-legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:\"Sofia Sans Condensed\",\"Sofia Sans\",sans-serif;font-size:13px;color:var(--stone,#596065)}.ds-legend span{display:inline-flex;align-items:center;gap:7px}.ds-sw{display:inline-block;width:12px;height:16px;border-radius:2px;background:var(--wash,#E8ECEF);box-shadow:inset 0 0 0 1px var(--line-strong,#C2C9CF)}.ds-entrega{background:var(--red,#B3372B);box-shadow:none}.ds-apresentacao{background:var(--orange,#C2671A);box-shadow:none}.ds-reuniao{background:var(--blue,#2E5C9A);box-shadow:none}.ds-producao{background:var(--green,#3B7853);box-shadow:none}.ds-prazo{background:transparent;box-shadow:inset 0 0 0 1.5px var(--red,#B3372B)}.ds-atraso{background:repeating-linear-gradient(135deg,var(--red,#B3372B) 0 2px,transparent 2px 5px);box-shadow:inset 0 0 0 1.5px var(--red,#B3372B)}"
+      "refersTo": "chip",
+      "description": "Saúde do projeto e prioridade nos pares suaves; vermelho sólido só para atraso.",
+      "html": "<div class=\"ds-row\"><span class=\"ds-health ds-late\">Atrasado</span><span class=\"ds-health ds-warn\">Atenção</span><span class=\"ds-health ds-ok\">Saudável</span><span class=\"ds-chip\">Baixa</span><span class=\"ds-est\">estimada</span></div>",
+      "css": ".ds-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-family:var(--f)}.ds-health{display:inline-flex;padding:5px 11px 5px 9px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}.ds-late{background:var(--red);color:#fff}.ds-warn{background:var(--orange-soft);color:var(--orange-text)}.ds-ok{background:var(--olive-soft);color:var(--olive)}.ds-chip{padding:4px 10px;border-radius:999px;font-size:12.5px;font-weight:700;background:var(--gray-soft);color:var(--muted)}.ds-est{font-size:11.5px;font-weight:700;color:var(--muted);border:1px dashed var(--line);border-radius:99px;padding:1px 7px}"
     },
     {
-      "name": "Day Strip Row",
-      "kind": "custom",
-      "refersTo": "swatch-strip",
-      "description": "Assinatura: a linha da pessoa com a tira de 10 dias úteis; a linha inteira abre a ficha.",
-      "html": "<button type=\"button\" class=\"ds-row\"><span><span class=\"ds-name\">Pessoa</span><span class=\"ds-now\">Etapa em andamento, projeto</span></span><span class=\"ds-strip\"><i class=\"ds-s ds-p\"></i><i class=\"ds-s ds-p\"></i><i class=\"ds-s ds-b\"></i><i class=\"ds-s\"></i><i class=\"ds-s ds-o\"></i><i class=\"ds-s ds-p\"></i><i class=\"ds-s\"></i><i class=\"ds-s ds-r\"></i><i class=\"ds-s\"></i><i class=\"ds-s\"></i></span><span class=\"ds-load\">Atenção</span></button>",
-      "css": ".ds-row{display:grid;grid-template-columns:minmax(0,1fr) auto 84px;gap:6px 22px;align-items:center;width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--line,#DCE1E5);padding:16px 0;cursor:pointer;color:var(--ink,#1E2225);font-family:\"Sofia Sans\",system-ui,sans-serif;transition:background-color 160ms ease}.ds-row:hover{background:linear-gradient(90deg,transparent,var(--wash,#E8ECEF) 12%,var(--wash,#E8ECEF) 88%,transparent)}.ds-row:active{transform:scale(.995)}.ds-row:focus-visible{outline:2px solid var(--ink,#1E2225);outline-offset:3px}.ds-name{display:block;font-weight:600;font-size:16px}.ds-now{display:block;font-size:13.5px;color:var(--stone,#596065);margin-top:2px}.ds-strip{display:grid;grid-template-columns:repeat(10,14px);gap:5px}.ds-s{display:block;width:14px;height:20px;border-radius:2px;background:var(--wash,#E8ECEF);box-shadow:inset 0 0 0 1px var(--line-strong,#C2C9CF)}.ds-r{background:var(--red,#B3372B);box-shadow:none}.ds-o{background:var(--orange,#C2671A);box-shadow:none}.ds-b{background:var(--blue,#2E5C9A);box-shadow:none}.ds-p{background:var(--green,#3B7853);box-shadow:none}.ds-load{font-family:\"Sofia Sans Condensed\",\"Sofia Sans\",sans-serif;font-size:14px;text-align:right;color:var(--ink,#1E2225)}"
-    },
-    {
-      "name": "Feature Sample",
-      "kind": "custom",
-      "refersTo": "swatch-feature",
-      "description": "Lembrete em destaque: amostra grande com data condensada, título em Headline e metadados em pedra.",
-      "html": "<div class=\"ds-feature\"><div class=\"ds-sample\"><span class=\"ds-big\"></span><span class=\"ds-cap\"><b>24/09</b>qui</span></div><div><div class=\"ds-ftitle\">Apresentação do projeto</div><div class=\"ds-fmeta\"><span class=\"ds-k\">Reunião, hoje.</span> 15h, Google Calendar</div></div></div>",
-      "css": ".ds-feature{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 24px;align-items:start;font-family:\"Sofia Sans\",system-ui,sans-serif;color:var(--ink,#1E2225)}.ds-sample{display:flex;flex-direction:column;gap:8px}.ds-big{display:block;width:64px;height:92px;border-radius:3px;background:var(--orange,#C2671A)}.ds-cap{font-family:\"Sofia Sans Condensed\",\"Sofia Sans\",sans-serif;font-size:13px;color:var(--stone,#596065);line-height:1.25}.ds-cap b{display:block;color:var(--ink,#1E2225);font-weight:600;font-size:15px}.ds-ftitle{font-size:clamp(24px,2.6vw,32px);font-weight:500;line-height:1.18;letter-spacing:-.012em}.ds-fmeta{font-size:15px;color:var(--stone,#596065)}.ds-k{font-family:\"Sofia Sans Condensed\",\"Sofia Sans\",sans-serif;color:var(--ink,#1E2225);font-weight:600}"
-    },
-    {
-      "name": "Before and After Card",
+      "name": "Card de vidro (prioridade)",
       "kind": "card",
-      "description": "Único contêiner com caixa: a operação a confirmar, com colunas antes e depois.",
-      "html": "<div class=\"ds-op\"><div class=\"ds-op-h\"><b>Mover card</b><span class=\"ds-tag\">Pronto para gravar</span></div><div class=\"ds-ba\"><div><h4>Antes</h4><dl><dt>Lista</dt><dd>Em andamento</dd></dl></div><div><h4>Depois</h4><dl><dt>Lista</dt><dd class=\"ds-chg\">Detalhamento</dd></dl></div></div></div>",
-      "css": ".ds-op{border:1px solid var(--line,#DCE1E5);border-radius:4px;background:var(--surface,#FFFFFF);color:var(--ink,#1E2225);font-family:\"Sofia Sans\",system-ui,sans-serif}.ds-op-h{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line,#DCE1E5)}.ds-op-h b{font-weight:600}.ds-tag{font-size:12.5px;color:var(--green,#3B7853);font-weight:600}.ds-ba{display:grid;grid-template-columns:1fr 1fr}.ds-ba>div{padding:14px 16px}.ds-ba>div+div{border-left:1px solid var(--line,#DCE1E5)}.ds-ba h4{margin:0 0 8px;font-size:13px;font-weight:500;color:var(--stone,#596065)}.ds-ba dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:5px 12px;font-size:14px}.ds-ba dt{color:var(--stone,#596065)}.ds-ba dd{margin:0}.ds-chg{font-weight:600}"
+      "refersTo": "card-glass",
+      "description": "Card clicável de primeiro nível; sobe no hover.",
+      "html": "<button class=\"ds-glass ds-pcard\"><span class=\"ds-h\">Nome do projeto</span><span class=\"ds-sub\">Etapa em andamento</span><dl class=\"ds-facts\"><dt>Prazo</dt><dd>Não registrado no Trello</dd></dl></button>",
+      "css": ".ds-glass{position:relative;background:var(--glass);-webkit-backdrop-filter:blur(20px) saturate(150%);backdrop-filter:blur(20px) saturate(150%);border:1px solid var(--glass-line);border-radius:var(--r);box-shadow:inset 0 1px 0 var(--glass-line),0 0 0 1px var(--glass-edge),var(--shadow)}.ds-pcard{display:flex;flex-direction:column;gap:6px;padding:18px;text-align:left;color:var(--ink);font:15px/1.55 var(--f);cursor:pointer;width:280px;transition:transform 220ms var(--ease),box-shadow 220ms var(--ease)}.ds-pcard:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 var(--glass-line),0 0 0 1px var(--glass-edge),var(--shadow-up)}.ds-pcard:active{transform:scale(.98)}.ds-pcard:focus-visible{outline:2px solid var(--petrol);outline-offset:3px}.ds-h{font-size:17px;font-weight:750;line-height:1.25}.ds-sub{font-size:13.5px;color:var(--muted)}.ds-facts{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:6px 0 0;font-size:13.5px}.ds-facts dt{color:var(--muted);font-weight:500}.ds-facts dd{margin:0;font-weight:600}"
+    },
+    {
+      "name": "Indicador",
+      "kind": "card",
+      "refersTo": "card-glass",
+      "description": "Um dos quatro indicadores da aba Hoje.",
+      "html": "<button class=\"ds-glass ds-kpi\"><span class=\"ds-ic\"><svg viewBox=\"0 0 24 24\"><path d=\"M8 2v4\"/><path d=\"M16 2v4\"/><rect width=\"18\" height=\"18\" x=\"3\" y=\"4\" rx=\"2\"/><path d=\"M3 10h18\"/></svg></span><span><b>3</b><small>reuniões em 7 dias</small></span></button>",
+      "css": ".ds-glass{position:relative;background:var(--glass);-webkit-backdrop-filter:blur(20px) saturate(150%);backdrop-filter:blur(20px) saturate(150%);border:1px solid var(--glass-line);border-radius:var(--r);box-shadow:inset 0 1px 0 var(--glass-line),0 0 0 1px var(--glass-edge),var(--shadow)}.ds-kpi{display:flex;align-items:center;gap:14px;padding:16px 18px;text-align:left;color:var(--ink);font-family:var(--f);cursor:pointer;min-width:240px;transition:transform 220ms var(--ease),box-shadow 220ms var(--ease)}.ds-kpi:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 var(--glass-line),0 0 0 1px var(--glass-edge),var(--shadow-up)}.ds-kpi:focus-visible{outline:2px solid var(--petrol);outline-offset:3px}.ds-kpi b{display:block;font-size:30px;font-weight:800;letter-spacing:-.02em;line-height:1;font-variant-numeric:tabular-nums}.ds-kpi small{display:block;font-size:13px;color:var(--muted);font-weight:600;margin-top:4px}.ds-ic{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--blue-soft);color:var(--blue)}.ds-ic svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}"
+    },
+    {
+      "name": "Compositor do MAX",
+      "kind": "input",
+      "refersTo": "input-composer",
+      "description": "Campo de atualização em linguagem natural, dentro do painel de vidro.",
+      "html": "<div class=\"ds-composer\"><textarea placeholder=\"Digite uma atualização do escritório…\"></textarea></div>",
+      "css": ".ds-composer{border:1px solid var(--line);border-radius:16px;background:var(--glass-strong);padding:6px 6px 6px 14px;width:320px;transition:border-color 200ms ease,box-shadow 200ms ease}.ds-composer:focus-within{border-color:color-mix(in srgb,var(--petrol) 60%,transparent);box-shadow:0 0 0 4px var(--petrol-soft)}.ds-composer textarea{border:0;background:transparent;resize:none;min-height:66px;padding:8px 0 0;font:16px/1.45 var(--f);color:var(--ink);outline:none;width:100%}.ds-composer textarea::placeholder{color:var(--muted)}"
+    },
+    {
+      "name": "Segmentado",
+      "kind": "custom",
+      "refersTo": "segmented-selected",
+      "description": "Ativos e Concluídos na aba Projetos.",
+      "html": "<div class=\"ds-seg\" role=\"radiogroup\"><button role=\"radio\" aria-checked=\"true\">Ativos</button><button role=\"radio\" aria-checked=\"false\">Concluídos</button></div>",
+      "css": ".ds-seg{display:inline-flex;padding:4px;border-radius:999px;background:var(--gray-soft);gap:2px}.ds-seg button{border:0;background:transparent;border-radius:999px;padding:0 16px;min-height:36px;cursor:pointer;font:700 13.5px var(--f);color:var(--muted);transition:background-color 180ms ease,color 180ms ease}.ds-seg button[aria-checked=true]{background:var(--glass-strong);color:var(--ink);box-shadow:0 4px 12px -6px rgba(0,0,0,.25)}.ds-seg button:focus-visible{outline:2px solid var(--petrol);outline-offset:3px}"
+    },
+    {
+      "name": "Capa de projeto",
+      "kind": "custom",
+      "refersTo": "card-glass",
+      "description": "Capa tipográfica por tipo de projeto, com grade diagonal e ícone em vidro.",
+      "html": "<div class=\"ds-cover\"><span class=\"ds-cv-ic\"><svg viewBox=\"0 0 24 24\"><path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\"/><path d=\"M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/></svg></span></div>",
+      "css": ".ds-cover{position:relative;width:290px;height:118px;border-radius:20px 20px 0 0;display:flex;align-items:flex-end;padding:14px 16px;overflow:hidden;background:linear-gradient(135deg,#1F5E6B,#2E3B44)}.ds-cover::after{content:\"\";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.14) 1px,transparent 1px);background-size:22px 22px;-webkit-mask-image:linear-gradient(120deg,transparent 30%,#000);mask-image:linear-gradient(120deg,transparent 30%,#000)}.ds-cv-ic{position:relative;z-index:1;width:54px;height:54px;border-radius:16px;display:grid;place-items:center;background:rgba(255,255,255,.18);color:#fff;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.28)}.ds-cv-ic svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}"
     }
   ],
   "narrative": {
-    "northStar": "O Mostruário Silencioso",
-    "overview": "O painel é lido como um mostruário de acabamentos de um escritório de arquitetura: um fundo calmo, frio e quase branco, tinta grafite, filetes finos, e cor apenas em pequenas amostras retangulares. Cada demanda do dia é uma amostra; a semana de cada pessoa é uma tira de dez amostras, uma por dia útil. Todo o resto (texto, controles, divisões) fica em escala de cinzas azulados para que a cor tenha significado e nunca decoração.\n\nA densidade é de ferramenta de trabalho, não de vitrine: linhas de lista separadas por filetes, sem cartões em volta de cada bloco, sem barra lateral, títulos em caixa normal. A hierarquia vem do peso e do tamanho de uma única família tipográfica (Sofia Sans), com a largura condensada reservada a números, datas e rótulos. O único gesto grande é o \"Hoje\" em peso leve e corpo enorme, que ancora a página.\n\nO movimento é curto e funcional: o lembrete em destaque troca com esmaecimento e leve desfoque, a ficha da pessoa entra com curva de gaveta, e controles cedem com leve redução de escala ao toque. Tudo respeita `prefers-reduced-motion`. O sistema tem modo escuro completo, por preferência do sistema ou por `data-theme=\"dark\"`.",
+    "northStar": "Vidro sobre a prancheta",
+    "overview": "O painel é uma mesa de trabalho de arquitetura vista através de vidro fosco. Ao fundo, três focos de luz ambiente (petróleo no alto à esquerda, areia no alto à direita, oliva embaixo) e uma grade de planta de 56px que se dissolve para baixo. Por cima, painéis de vidro com desfoque de 20px, filete claro na borda superior e sombra longa e macia. O conteúdo é operacional e denso; o vidro dá a sensação premium sem roubar a leitura.\n\nUma única família (Manrope) carrega tudo, com a hierarquia feita por peso (750 e 800 nos títulos) e tamanho, e números tabulares em todo o painel. O petróleo é a voz da interface (seleção, foco, ação principal); as quatro cores de demanda da direção (vermelho, laranja, azul, oliva) marcam o tipo de compromisso e nunca decoram. O tema claro é branco quente; o tema escuro é petróleo profundo, com as mesmas regras e tons clareados.\n\nA densidade é de painel: grades de cards com 14px de intervalo, seções separadas por 24 a 32px, tudo a um toque. No celular, as abas descem para uma doca de vidro no rodapé e o MAX vira um botão flutuante.",
     "keyCharacteristics": [
-      "Cor só nas amostras de demanda; interface em grafite, pedra e filetes.",
-      "Uma família tipográfica, com a versão condensada para números.",
-      "Linhas e filetes em vez de caixas; superfícies planas.",
-      "Cantos quase retos (2 a 4px) em tudo que é da página.",
-      "Movimento curto, com curvas de saída suaves, desligado sob movimento reduzido."
+      "Vidro fosco (`blur(20px) saturate(150%)`) sobre luz ambiente e grade de planta, nunca sobre fundo chapado.",
+      "Cantos generosos e consistentes: 20px nos cards, 12px nos controles, pílulas nos filtros e selos.",
+      "Uma família tipográfica, pesos altos nos títulos, números tabulares.",
+      "Petróleo como único acento de interação; cores de demanda só com significado.",
+      "Elevação que responde: o card sobe 2px e a sombra se alonga no hover com ponteiro fino.",
+      "Tema escuro completo por `prefers-color-scheme` e `[data-theme=\"dark\"]`."
     ],
     "rules": [
-      { "name": "The Pigment Rule", "body": "Vermelho, laranja, azul e verde significam tipo de demanda e nada mais. Nunca usar uma delas como cor de marca, fundo de seção, botão ou enfeite.", "section": "colors" },
-      { "name": "The Text-Safe Orange Rule", "body": "O laranja de amostra (`orange`) não é cor de texto. Texto laranja usa sempre `orange-text`.", "section": "colors" },
-      { "name": "The One Family Rule", "body": "Só Sofia Sans e Sofia Sans Condensed. Hierarquia por peso e tamanho, nunca por uma segunda família.", "section": "typography" },
-      { "name": "The Numbers Are Condensed Rule", "body": "Todo número, data ou contador que o olho compara usa a condensada com `tabular-nums lining-nums`.", "section": "typography" },
-      { "name": "The Sentence Case Rule", "body": "Títulos, rótulos e botões em caixa normal. Nada em caixa alta.", "section": "typography" },
-      { "name": "The Only-What-Floats Rule", "body": "Sombra de elevação só em camadas sobrepostas à página (a ficha). Nada que esteja no fluxo da página ganha sombra.", "section": "elevation" }
+      {
+        "name": "A Regra do Petróleo Único",
+        "body": "Seleção, foco e ação principal são sempre petróleo. Nenhuma cor de demanda assume papel de interação.",
+        "section": "colors"
+      },
+      {
+        "name": "A Regra das Quatro Demandas",
+        "body": "Vermelho é entrega, laranja é apresentação ou aprovação, azul é reunião, oliva é produção. A mesma cor significa a mesma coisa no calendário, nos selos, na legenda e nos ícones.",
+        "section": "colors"
+      },
+      {
+        "name": "A Regra do Par Texto e Preenchimento",
+        "body": "Laranja e oliva têm dois tons: o escuro (`--orange-text`, `--olive`) para texto e ícone, o claro (`--orange`, `--olive-fill`) para barras, pontos e trilhos. Nunca troque os papéis.",
+        "section": "colors"
+      },
+      {
+        "name": "A Regra da Voz Única",
+        "body": "Uma família só. Contraste vem de peso (400 contra 750 e 800) e de tamanho, nunca de uma segunda fonte.",
+        "section": "typography"
+      },
+      {
+        "name": "A Regra do Número Tabular",
+        "body": "Todo número do painel usa algarismos tabulares, para que datas e contagens fiquem alinhadas em colunas e grades.",
+        "section": "typography"
+      },
+      {
+        "name": "A Regra do Vidro com Chão",
+        "body": "Todo vidro tem fallback: sem suporte a `backdrop-filter` ou com `prefers-reduced-transparency: reduce`, a superfície vira `--glass-strong` opaco o bastante para ler.",
+        "section": "elevation"
+      },
+      {
+        "name": "A Regra do Vidro que não Empilha",
+        "body": "Dentro de um painel de vidro, os blocos internos usam `--glass-strong` com filete `--line`, nunca outro `.glass` com desfoque.",
+        "section": "elevation"
+      },
+      {
+        "name": "A Regra da Elevação que Responde",
+        "body": "O card fica em `--shadow` em repouso; sobe 2px e passa a `--shadow-up` só no hover com ponteiro fino, em 220ms. No toque, só a compressão (`scale(.98)`).",
+        "section": "elevation"
+      }
     ],
     "dos": [
-      "Do colocar cor apenas em amostras e em raros textos de estado, sempre com o significado fixo de demanda.",
-      "Do separar conteúdo com filetes de 1px (`line`) e respiro, em vez de caixas.",
-      "Do usar Sofia Sans Condensed com números tabulares para toda data, contador e dia.",
-      "Do manter cantos entre 2px e 4px em tudo que está no fluxo da página.",
-      "Do limitar hover a `(hover:hover) and (pointer:fine)` e dar a todo controle um retorno de toque em escala (0.94 a 0.97) em 160ms.",
-      "Do desligar animações e a rotação do lembrete sob `prefers-reduced-motion`.",
-      "Do definir cada novo valor de cor nos dois modos, claro e escuro."
+      "**Do** colocar todo card e painel de primeiro nível em vidro (`--glass`, desfoque de 20px, raio de 20px, brilho interno, aresta e `--shadow`) sobre o fundo de luz ambiente e grade.",
+      "**Do** usar petróleo para toda seleção, foco e ação principal, e as quatro cores de demanda só com o significado fixado pela direção.",
+      "**Do** usar o par suave (`-soft` de fundo e tom cheio no texto) para estados; reservar o vermelho sólido para atraso.",
+      "**Do** marcar datas calculadas pelo painel com contorno tracejado e a palavra \"estimada\".",
+      "**Do** manter os fallbacks do vidro, o foco visível de 2px e o corte total de animação em `prefers-reduced-motion`.",
+      "**Do** repetir cada token no tema escuro; nada de cor fixa que não mude com o tema, salvo sobre as capas de projeto, que são escuras nos dois temas."
     ],
     "donts": [
-      "Don't usar vermelho, laranja, azul ou verde como cor de marca, fundo ou decoração.",
-      "Don't usar `orange` como cor de texto; use `orange-text`.",
-      "Don't colocar sombra em elementos do fluxo da página; a sombra Lift é exclusiva de camadas flutuantes.",
-      "Don't envolver seções ou itens de lista em cartões; o único contêiner com caixa é o de antes e depois.",
-      "Don't introduzir uma segunda família tipográfica nem títulos em caixa alta.",
-      "Don't deixar a cor ser o único portador de significado; toda amostra tem texto ou `title`."
+      "**Don't** empilhar vidro desfocado dentro de vidro; blocos internos são `--glass-strong`.",
+      "**Don't** usar `--sand` como cor de texto ou de ícone sobre fundo claro; ele não chega a 3:1. Areia é luz e degradê.",
+      "**Don't** fixar `#fff` sobre `--red` ou `--petrol`: no tema escuro esses tons clareiam e o branco cai abaixo de AA. Use `--on-petrol` ou um par próprio.",
+      "**Don't** usar laranja ou oliva de preenchimento (`--orange`, `--olive-fill`) como texto.",
+      "**Don't** pôr imagem de banco ou ilustração na capa de projeto; a capa é tipográfica até existir render real do projeto.",
+      "**Don't** criar rótulo em maiúsculas espaçadas acima de título como chamada (kicker). O rótulo em maiúsculas é para dado: selo, dia da semana, cabeçalho de coluna.",
+      "**Don't** mostrar carga da equipe em porcentagem; são três segmentos (Normal, Atenção, Crítica)."
     ]
   }
 }

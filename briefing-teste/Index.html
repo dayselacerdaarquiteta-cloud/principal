@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <base target="_top">
+    <meta charset="utf-8">
+    <style>
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        padding: 24px 16px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        color: #222;
+        background: #f5f5f5;
+      }
+      main {
+        max-width: 480px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 24px 20px;
+        border-radius: 8px;
+      }
+      h1 { font-size: 20px; margin: 0 0 20px; }
+      label { display: block; font-weight: bold; margin: 16px 0 6px; }
+      input, select, button {
+        width: 100%;
+        font-size: 16px; /* 16px evita o zoom automático no iPhone */
+        padding: 12px;
+        border: 1px solid #bbb;
+        border-radius: 6px;
+        background: #fff;
+      }
+      button {
+        margin-top: 24px;
+        border: none;
+        background: #333;
+        color: #fff;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      button:disabled { opacity: 0.6; cursor: wait; }
+      #erro { color: #b00020; margin-top: 12px; }
+      #obrigado { font-size: 18px; }
+      [hidden] { display: none !important; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Briefing — Dayse Lacerda Arquitetura</h1>
+
+      <form id="formulario">
+        <label for="nome">Nome</label>
+        <input id="nome" name="nome" type="text" autocomplete="name" required>
+
+        <label for="tipo">Tipo de projeto</label>
+        <select id="tipo" name="tipo" required>
+          <option value="">Selecione...</option>
+          <option>Arquitetônico</option>
+          <option>Interiores</option>
+          <option>Arquitetônico + Interiores</option>
+          <option>Reforma</option>
+          <option>Outro</option>
+        </select>
+
+        <label for="endereco">Endereço da obra</label>
+        <input id="endereco" name="endereco" type="text" autocomplete="street-address" required>
+
+        <button id="enviar" type="submit">Enviar</button>
+        <p id="erro" hidden></p>
+      </form>
+
+      <p id="obrigado" hidden>Obrigado! Recebemos suas respostas.</p>
+    </main>
+
+    <script>
+      var form = document.getElementById('formulario');
+      var botao = document.getElementById('enviar');
+      var erro = document.getElementById('erro');
+
+      form.addEventListener('submit', function (evento) {
+        evento.preventDefault();
+        erro.hidden = true;
+
+        var dados = {
+          nome: form.nome.value.trim(),
+          tipo: form.tipo.value,
+          endereco: form.endereco.value.trim()
+        };
+        if (!dados.nome || !dados.tipo || !dados.endereco) {
+          mostrarErro('Preencha todos os campos.');
+          return;
+        }
+
+        botao.disabled = true;
+        botao.textContent = 'Enviando...';
+
+        google.script.run
+          .withSuccessHandler(function () {
+            form.hidden = true;
+            document.getElementById('obrigado').hidden = false;
+          })
+          .withFailureHandler(function () {
+            botao.disabled = false;
+            botao.textContent = 'Enviar';
+            mostrarErro('Não foi possível enviar. Tente novamente.');
+          })
+          .salvarBriefing(dados);
+      });
+
+      function mostrarErro(texto) {
+        erro.textContent = texto;
+        erro.hidden = false;
+      }
+    </script>
+  </body>
+</html>

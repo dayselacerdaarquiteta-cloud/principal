@@ -144,3 +144,8 @@ As especificações dos agentes devem ficar em Google Docs nessas pastas e ser a
 - Correção: o texto do botão "Novo projeto" ficava escuro no tema claro; agora é branco nos dois temas.
 - Entrega hoje: quando o prazo oficial do projeto é hoje, o card fica em verde oliva (capa, contorno e fundo) nas abas Projetos e Hoje, com o selo "Entrega hoje". Tem prioridade sobre "Atenção"; "Atrasado" continua vermelho.
 - Lembretes (aba Hoje): card inteiro em petróleo profundo, a cor da marca, com a grade de planta sutil das capas e textos claros; o tipo do lembrete aparece em areia. Separa o card das Prioridades do dia, que continuam em vidro claro.
+- Equipe: ao escolher uma pessoa, aparece acima do calendário o card "O dia de NOME", em tom areia, só com o dia atual:
+  - Atrasadas: etapas da pessoa com prazo registrado vencido, com os dias úteis de atraso.
+  - Para hoje: etapas com prazo hoje (registrado ou estimado), entregas e prazos oficiais de hoje dos projetos da pessoa, e reuniões de hoje.
+  - Em produção: etapas da pessoa marcadas como em andamento, com o próximo prazo.
+  - Tocar num item abre a mesma ficha do calendário (status e "Ver etapas do projeto"). Sem nada registrado, o card diz isso; não inventa tarefas.

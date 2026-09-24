@@ -613,6 +613,31 @@ dialog.chatd[open]{display:flex}
 .chat-f .btn.stop{background:var(--ink);color:var(--bg)}
 @media (max-width:560px){dialog.chatd{width:100%;max-width:100%;height:100dvh;max-height:100dvh;border-radius:0}.chat-t p{display:none}.chat-f .btn span{display:none}.chat-f .btn{width:46px;padding:0;justify-content:center}.msg.max .bub{max-width:92%}.chat-b{padding:18px 14px}}
 .op-act{padding:0 14px 14px}
+/* card do dia da pessoa (aba Equipe) */
+.dayc{--dc1:color-mix(in srgb,var(--sand) 38%,var(--bg));--dc2:color-mix(in srgb,var(--sand) 62%,var(--bg));position:relative;margin-bottom:22px;padding:20px 22px 22px;border-radius:var(--r);background:linear-gradient(150deg,var(--dc1),var(--dc2));border:1px solid color-mix(in srgb,var(--sand) 55%,transparent);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 22px 46px -26px color-mix(in srgb,var(--sand) 90%,transparent);color:var(--ink)}
+.dc-h{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}
+.dc-k{display:flex;align-items:center;gap:6px;margin:0 0 2px;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:color-mix(in srgb,var(--ink) 62%,var(--sand))}
+.dc-k .lu{width:14px;height:14px}
+.dayc h2{font-size:21px;font-weight:800;letter-spacing:-.01em}
+.dc-n{min-width:38px;height:38px;padding:0 10px;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:17px;background:rgba(255,255,255,.55);color:var(--ink)}
+.dc-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px 18px;align-items:start}
+.dc-g h3{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin:0 0 8px;color:color-mix(in srgb,var(--ink) 70%,var(--sand))}
+.dc-g h3 span{font-size:11.5px;padding:1px 8px;border-radius:99px;background:rgba(255,255,255,.5);color:var(--ink)}
+.dc-g.g-late h3{color:var(--red)}
+.dc-g ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.dc-row{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px;align-items:center;width:100%;padding:11px 12px;border-radius:14px;border:1px solid rgba(255,255,255,.5);background:rgba(255,255,255,.6);text-align:left;font:inherit;color:inherit;cursor:pointer;transition:transform 160ms var(--ease),background-color 160ms ease}
+.dc-row:active{transform:scale(.98)}
+@media (hover:hover) and (pointer:fine){.dc-row:hover{background:rgba(255,255,255,.82)}}
+.dc-row .ic{grid-row:span 2}
+.dc-t{display:flex;flex-direction:column;gap:1px;min-width:0}.dc-t b{font-weight:700;line-height:1.3}.dc-t small{font-size:12.5px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dc-meta{grid-column:2;font-size:12px;font-weight:700;color:color-mix(in srgb,var(--ink) 60%,var(--sand))}
+.dc-meta.late{color:var(--red)}
+.g-late .dc-row{border-color:color-mix(in srgb,var(--red) 40%,transparent);box-shadow:inset 3px 0 0 var(--red)}
+.dc-empty{margin:0;font-size:14px;color:color-mix(in srgb,var(--ink) 70%,var(--sand))}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .dayc{--dc1:color-mix(in srgb,var(--sand) 16%,var(--bg));--dc2:color-mix(in srgb,var(--sand) 28%,var(--bg));box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 22px 46px -26px rgba(0,0,0,.7)}:root:not([data-theme="light"]) .dc-row{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1)}:root:not([data-theme="light"]) .dc-n,:root:not([data-theme="light"]) .dc-g h3 span{background:rgba(255,255,255,.1)}}
+:root[data-theme="dark"] .dayc{--dc1:color-mix(in srgb,var(--sand) 16%,var(--bg));--dc2:color-mix(in srgb,var(--sand) 28%,var(--bg));box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 22px 46px -26px rgba(0,0,0,.7)}
+:root[data-theme="dark"] .dc-row{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1)}
+:root[data-theme="dark"] .dc-n,:root[data-theme="dark"] .dc-g h3 span{background:rgba(255,255,255,.1)}
 [hidden]{display:none!important}
 .wiz .links{margin-bottom:18px}
 .wdone{display:flex;align-items:center;gap:16px;margin-bottom:18px}
@@ -803,12 +828,13 @@ dialog.chatd[open]{display:flex}
   </section>
 
   <section class="view" id="v-equipe" aria-label="Equipe" hidden>
-    <div class="page-h"><div><h1>Equipe</h1><p>Toque numa pessoa para ver todas as entregas dela no mês.</p></div></div>
+    <div class="page-h"><div><h1>Equipe</h1><p>Toque numa pessoa para ver o dia de hoje e as entregas dela no mês.</p></div></div>
     <div class="eq-people" id="eq-list"><div class="skel" style="min-height:90px"></div><div class="skel" style="min-height:90px"></div></div>
+    <section class="dayc" id="eq-today" aria-live="polite" hidden></section>
     <section class="glass calw" id="eq-cal" aria-live="polite"></section>
   </section>
 
-  <p class="foot">Dados do Trello (quadro ESCRITÓRIO DAYSE LACERDA), do Google Calendar e do Google Drive, lidos ao abrir e a cada 2 minutos. Um projeto só conta como concluído na lista CONCLUÍDO. Dias úteis: segunda a sexta, sem feriados nacionais; feriados de João Pessoa ainda não entram. Datas marcadas como estimadas são calculadas pelo painel a partir do início do projeto e das durações escritas no card, em dias úteis; não são gravadas no Trello. Nada é gravado sem a sua confirmação, e cada alteração vira um comentário datado no card. <b class="ver">Versão 21 do painel (24/09/2026).</b></p>
+  <p class="foot">Dados do Trello (quadro ESCRITÓRIO DAYSE LACERDA), do Google Calendar e do Google Drive, lidos ao abrir e a cada 2 minutos. Um projeto só conta como concluído na lista CONCLUÍDO. Dias úteis: segunda a sexta, sem feriados nacionais; feriados de João Pessoa ainda não entram. Datas marcadas como estimadas são calculadas pelo painel a partir do início do projeto e das durações escritas no card, em dias úteis; não são gravadas no Trello. Nada é gravado sem a sua confirmação, e cada alteração vira um comentário datado no card. <b class="ver">Versão 22 do painel (24/09/2026).</b></p>
 </main>
 
 <nav class="dock glass" aria-label="Seções">
@@ -1907,6 +1933,53 @@ function taskCard(x, idx) {
   return `<button type="button" class="glass task lift press" data-task="${idx}">${icBadge(icon, tone, "sm")}<span><b>${esc(x.title)}</b><small>${esc(x.sub)}</small></span>
     <span class="chips">${x.key ? `<span class="chip">${svgI("clock")}${dm(x.key)}</span>` : `<span class="chip">Sem data</span>`}<span class="chip st-chip">${esc(taskStatusTxt(x))}</span>${pr ? `<span class="chip ${pr[1]}">Prioridade ${pr[0].toLowerCase()}</span>` : ""}${x.est ? `<span class="est" style="margin:0">estimada</span>` : ""}</span></button>`;
 }
+function personToday(p) {
+  const t = today(), P = p.key, late = [], hoje = [], prod = [];
+  for (const e of state.etapas || []) {
+    if (!e.keys.includes(P) || e.card.done || e.situacao === "concluida") continue;
+    const k = dataOf(e), x = { type: "etapa", key: k || "", title: e.etapa, sub: e.card.title, et: e, est: !!e.est && !e.prazo };
+    if (e.prazo && e.prazo < t) late.push({ ...x, k: "atraso", days: bdBetween(e.prazo, t) });
+    else if (k === t) hoje.push({ ...x, k: "producao" });
+    else if (e.situacao === "em_andamento") prod.push({ ...x, k: "producao" });
+  }
+  for (const c of state.cards) {
+    if (c.done || c.dueKey !== t || c.coveredBy || !(c.kind === "projeto" || c.kind === "entrega") || !teamOf(c).map(norm).includes(P)) continue;
+    hoje.push({ type: "entrega", k: "entrega", key: t, title: c.kind === "entrega" ? "Entrega final" : "Prazo oficial", sub: c.title, card: c });
+  }
+  for (const m of meetings(t, t)) {
+    if (!(m.team || []).map(norm).includes(P)) continue;
+    const ap = isApres((m.card ? m.card.name : "") + " " + m.title);
+    hoje.push({ type: "reuniao", k: ap ? "apresentacao" : "reuniao", key: t, title: ap ? "Apresentação" : "Reunião", sub: m.title + (m.time ? ", às " + m.time : ""), m });
+  }
+  late.sort((a, b) => b.days - a.days);
+  prod.sort((a, b) => (a.key || "9999").localeCompare(b.key || "9999"));
+  return { late, hoje, prod };
+}
+let dayItems = [];
+function renderPersonToday(p) {
+  const box = $("eq-today"), t = today();
+  if (!p) { box.hidden = true; return; }
+  const d = personToday(p);
+  dayItems = [...d.late, ...d.hoje, ...d.prod];
+  const first = p.full.split(/\s+/)[0];
+  const row = (x) => {
+    const i = dayItems.indexOf(x);
+    const icon = x.type === "entrega" ? "flag" : x.type === "reuniao" ? (x.k === "apresentacao" ? "presentation" : "calendar-days") : x.k === "atraso" ? "triangle-alert" : "sparkles";
+    const tone = x.k === "atraso" ? "t-crit" : x.type === "entrega" ? "t-red" : x.k === "apresentacao" ? "t-orange" : x.type === "reuniao" ? "t-blue" : "t-olive";
+    const meta = x.k === "atraso" ? `<span class="dc-meta late">Atrasada há ${x.days} dia(s) útil(eis)</span>`
+      : x.type === "etapa" && x.key && x.key !== t ? `<span class="dc-meta">Prazo ${dm(x.key)}${x.est ? " (est.)" : ""}</span>`
+      : x.type === "etapa" && x.key === t ? `<span class="dc-meta">Vence hoje</span>`
+      : x.type === "etapa" ? `<span class="dc-meta">Sem prazo registrado</span>` : "";
+    return `<li><button type="button" class="dc-row" data-day-item="${i}">${icBadge(icon, tone, "sm")}<span class="dc-t"><b>${esc(x.title)}</b><small>${esc(x.sub)}</small></span>${meta}</button></li>`;
+  };
+  const group = (label, cls, list) => list.length ? `<div class="dc-g ${cls}"><h3>${label}<span>${list.length}</span></h3><ul>${list.map(row).join("")}</ul></div>` : "";
+  const total = dayItems.length;
+  const note = !state.etapas ? `<p class="dc-empty">${state.extract === "loading" ? "Lendo as etapas nos cards…" : "As etapas ainda não foram lidas."} Entregas e reuniões já aparecem.</p>` : "";
+  box.innerHTML = `<div class="dc-h"><div><p class="dc-k">${svgI("calendar-days")}Hoje · ${esc(cap(wdShort(t)))} ${dmy(t)}</p><h2>O dia de ${esc(first)}</h2></div><span class="dc-n" aria-label="${total} item(ns)">${total}</span></div>
+    ${note}
+    ${total ? `<div class="dc-cols">${group("Atrasadas", "g-late", d.late)}${group("Para hoje", "g-today", d.hoje)}${group("Em produção", "g-prod", d.prod)}</div>` : state.etapas ? `<p class="dc-empty">Nada registrado no Trello para ${esc(first)} hoje: nenhuma etapa vencendo, atrasada ou em produção, nem entrega ou reunião.</p>` : ""}`;
+  box.hidden = false;
+}
 let eqTasks = [];
 function renderEquipe() {
   const list = $("eq-list"), cal = $("eq-cal");
@@ -1918,6 +1991,7 @@ function renderEquipe() {
   if (!state.eq.month) state.eq.month = today().slice(0, 7);
   list.innerHTML = ps.map((p, i) => personCard(p, i, p.key === state.eq.person)).join("");
   const p = ps.find((x) => x.key === state.eq.person);
+  renderPersonToday(p);
   const ym = state.eq.month, [Y, M] = ym.split("-").map(Number);
   const first = `${ym}-01`, t = today();
   const start = addDays(first, -((k2d(first).getUTCDay() + 6) % 7));
@@ -3120,6 +3194,11 @@ $("eq-list").addEventListener("click", (e) => {
   const b = e.target.closest(".person"); if (!b) return;
   state.eq.person = b.dataset.p; state.eq.day = ""; renderEquipe();
   if (matchMedia("(max-width:760px)").matches) $("eq-cal").scrollIntoView({ behavior: smooth(), block: "start" });
+});
+$("eq-today").addEventListener("click", (e) => {
+  const b = e.target.closest("[data-day-item]"); if (!b) return;
+  const x = dayItems[Number(b.dataset.dayItem)]; if (!x) return;
+  sheetStack = []; pushSheet({ type: "task", x });
 });
 $("eq-cal").addEventListener("click", (e) => {
   const mon = e.target.closest("[data-mon]");

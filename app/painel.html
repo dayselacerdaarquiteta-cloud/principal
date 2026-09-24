@@ -639,6 +639,27 @@ dialog.chatd[open]{display:flex}
 :root[data-theme="dark"] .dc-row{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1)}
 :root[data-theme="dark"] .dc-n,:root[data-theme="dark"] .dc-g h3 span{background:rgba(255,255,255,.1)}
 [hidden]{display:none!important}
+/* computador: lembretes em faixa larga, prioridades e MAX lado a lado */
+@media (min-width:1021px){
+  .hoje-grid{grid-template-areas:"rem rem" "prio max";row-gap:28px}
+  .prio-sec{grid-area:prio}
+  .side{display:contents}
+  .side>.rem{grid-area:rem}
+  .side>.max{grid-area:max}
+  .rem{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);grid-template-areas:"h s" "f s" "c s";column-gap:36px;align-items:start;padding:22px 26px}
+  .rem .sec-h{grid-area:h}
+  .rem .feature{grid-area:f}
+  .rem .rem-ctl{grid-area:c}
+  .rem #rem-all{display:none!important}
+  .rem .rem-side{grid-area:s;align-self:stretch;display:flex;flex-direction:column;min-height:0;border-left:1px solid rgba(255,255,255,.16);padding-left:30px}
+  .rem .rem-lh{display:block}
+  .rem .rem-side #rem-list[hidden]{display:block!important}
+  .rem .rem-list{margin:0;border-top:0;max-height:252px;overflow:auto;overscroll-behavior:contain;padding-right:6px;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.3) transparent;-webkit-mask-image:linear-gradient(#000 calc(100% - 36px),transparent);mask-image:linear-gradient(#000 calc(100% - 36px),transparent);padding-bottom:28px}
+  .rem .rem-list li{padding:10px 0}
+  .rem .rem-list li:last-child{border-bottom:0}
+}
+.rem-lh{display:none;margin:0 0 6px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.66)}
+
 .wiz .links{margin-bottom:18px}
 .wdone{display:flex;align-items:center;gap:16px;margin-bottom:18px}
 .wiz-f{position:sticky;bottom:0;display:flex;align-items:center;gap:10px;padding:14px 24px calc(16px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);background:var(--glass-strong)}
@@ -731,7 +752,7 @@ dialog.chatd[open]{display:flex}
     </div>
     <div class="kpis" id="kpis"><div class="skel" style="min-height:78px"></div><div class="skel" style="min-height:78px"></div><div class="skel" style="min-height:78px"></div><div class="skel" style="min-height:78px"></div></div>
     <div class="hoje-grid">
-      <section aria-labelledby="h-prio">
+      <section class="prio-sec" aria-labelledby="h-prio">
         <div class="sec-h"><h2 id="h-prio">Prioridades do dia</h2><button class="lnk" type="button" data-go="projetos">Ver todos os projetos <svg class="lu" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></button></div>
         <div class="prio-grid" id="prio"><div class="skel"></div><div class="skel"></div></div>
       </section>
@@ -745,7 +766,7 @@ dialog.chatd[open]{display:flex}
             <button class="rbtn" id="rem-next" type="button" aria-label="Próximo lembrete"><svg class="lu" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
           </div>
           <button class="lnk" id="rem-all" type="button" aria-expanded="false" hidden>Ver todos</button>
-          <ol class="rem-list" id="rem-list" hidden></ol>
+          <div class="rem-side"><p class="rem-lh">Todos os lembretes</p><ol class="rem-list" id="rem-list" hidden></ol></div>
         </section>
 
         <section class="glass max" id="max" aria-labelledby="h-max">
@@ -834,7 +855,7 @@ dialog.chatd[open]{display:flex}
     <section class="glass calw" id="eq-cal" aria-live="polite"></section>
   </section>
 
-  <p class="foot">Dados do Trello (quadro ESCRITÓRIO DAYSE LACERDA), do Google Calendar e do Google Drive, lidos ao abrir e a cada 2 minutos. Um projeto só conta como concluído na lista CONCLUÍDO. Dias úteis: segunda a sexta, sem feriados nacionais; feriados de João Pessoa ainda não entram. Datas marcadas como estimadas são calculadas pelo painel a partir do início do projeto e das durações escritas no card, em dias úteis; não são gravadas no Trello. Nada é gravado sem a sua confirmação, e cada alteração vira um comentário datado no card. <b class="ver">Versão 23 do painel (24/09/2026).</b></p>
+  <p class="foot">Dados do Trello (quadro ESCRITÓRIO DAYSE LACERDA), do Google Calendar e do Google Drive, lidos ao abrir e a cada 2 minutos. Um projeto só conta como concluído na lista CONCLUÍDO. Dias úteis: segunda a sexta, sem feriados nacionais; feriados de João Pessoa ainda não entram. Datas marcadas como estimadas são calculadas pelo painel a partir do início do projeto e das durações escritas no card, em dias úteis; não são gravadas no Trello. Nada é gravado sem a sua confirmação, e cada alteração vira um comentário datado no card. <b class="ver">Versão 24 do painel (24/09/2026).</b></p>
 </main>
 
 <nav class="dock glass" aria-label="Seções">

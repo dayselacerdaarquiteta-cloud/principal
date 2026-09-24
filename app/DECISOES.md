@@ -149,3 +149,4 @@ As especificações dos agentes devem ficar em Google Docs nessas pastas e ser a
   - Para hoje: etapas com prazo hoje (registrado ou estimado), entregas e prazos oficiais de hoje dos projetos da pessoa, e reuniões de hoje.
   - Em produção: etapas da pessoa marcadas como em andamento, com o próximo prazo.
   - Tocar num item abre a mesma ficha do calendário (status e "Ver etapas do projeto"). Sem nada registrado, o card diz isso; não inventa tarefas.
+- Aba Hoje no computador (tela acima de 1020px): Lembretes vira uma faixa na largura toda logo abaixo dos indicadores, com o lembrete em destaque à esquerda e "Todos os lembretes" sempre visível à direita (com rolagem). Abaixo, Prioridades do dia à esquerda e Fale com o MAX à direita. No celular a ordem continua a mesma.

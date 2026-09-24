@@ -143,3 +143,4 @@ As especificações dos agentes devem ficar em Google Docs nessas pastas e ser a
 - Os demais mantêm a capa pela cor do tipo de projeto.
 - Correção: o texto do botão "Novo projeto" ficava escuro no tema claro; agora é branco nos dois temas.
 - Entrega hoje: quando o prazo oficial do projeto é hoje, o card fica em verde oliva (capa, contorno e fundo) nas abas Projetos e Hoje, com o selo "Entrega hoje". Tem prioridade sobre "Atenção"; "Atrasado" continua vermelho.
+- Lembretes (aba Hoje): card inteiro em petróleo profundo, a cor da marca, com a grade de planta sutil das capas e textos claros; o tipo do lembrete aparece em areia. Separa o card das Prioridades do dia, que continuam em vidro claro.

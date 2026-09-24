@@ -202,7 +202,20 @@ h1,h2,h3,h4{margin:0;text-wrap:balance;letter-spacing:-.01em}
 .h-done{background:var(--gray-soft);color:var(--ink2)}
 
 /* lembretes */
-.rem{padding:20px}
+.rem{padding:20px;background:linear-gradient(150deg,var(--brand1),var(--brand2));color:#fff;border-color:rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 24px 50px -24px color-mix(in srgb,var(--brand2) 80%,transparent)}
+.rem::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:24px 24px;-webkit-mask-image:linear-gradient(160deg,#000,transparent 75%);mask-image:linear-gradient(160deg,#000,transparent 75%)}
+.rem>*{position:relative;z-index:1}
+.rem h2{color:#fff}.rem .sec-h .n{color:rgba(255,255,255,.7)}
+.rem .ic{background:rgba(255,255,255,.14);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.16)}
+.rem .f-kind{color:#F2D9A6!important}
+.rem .f-title,.rem .f-title a,.rem .rem-list a{color:#fff}
+.rem .f-meta,.rem .rem-list small,.rem .empty{color:rgba(255,255,255,.74)}
+.rem .dots button{background:rgba(255,255,255,.3)}.rem .dots button[aria-current="true"]{background:#fff}
+.rem .rbtn{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.22);color:#fff}
+.rem .lnk{color:#F2D9A6}
+.rem .rem-list{border-top-color:rgba(255,255,255,.16)}.rem .rem-list li{border-bottom-color:rgba(255,255,255,.16)}
+.rem .skel{background:rgba(255,255,255,.1)}
+.rem :focus-visible{outline-color:#fff}
 .rem .sec-h{margin-bottom:12px}
 .feature{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 16px;align-items:start;min-height:118px}
 .feature .ic.big{grid-row:span 3}
@@ -795,7 +808,7 @@ dialog.chatd[open]{display:flex}
     <section class="glass calw" id="eq-cal" aria-live="polite"></section>
   </section>
 
-  <p class="foot">Dados do Trello (quadro ESCRITÓRIO DAYSE LACERDA), do Google Calendar e do Google Drive, lidos ao abrir e a cada 2 minutos. Um projeto só conta como concluído na lista CONCLUÍDO. Dias úteis: segunda a sexta, sem feriados nacionais; feriados de João Pessoa ainda não entram. Datas marcadas como estimadas são calculadas pelo painel a partir do início do projeto e das durações escritas no card, em dias úteis; não são gravadas no Trello. Nada é gravado sem a sua confirmação, e cada alteração vira um comentário datado no card. <b class="ver">Versão 20 do painel (24/09/2026).</b></p>
+  <p class="foot">Dados do Trello (quadro ESCRITÓRIO DAYSE LACERDA), do Google Calendar e do Google Drive, lidos ao abrir e a cada 2 minutos. Um projeto só conta como concluído na lista CONCLUÍDO. Dias úteis: segunda a sexta, sem feriados nacionais; feriados de João Pessoa ainda não entram. Datas marcadas como estimadas são calculadas pelo painel a partir do início do projeto e das durações escritas no card, em dias úteis; não são gravadas no Trello. Nada é gravado sem a sua confirmação, e cada alteração vira um comentário datado no card. <b class="ver">Versão 21 do painel (24/09/2026).</b></p>
 </main>
 
 <nav class="dock glass" aria-label="Seções">

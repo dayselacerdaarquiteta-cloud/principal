@@ -251,6 +251,62 @@ textarea:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 1px var(--i
 .facts dd{margin:0}
 .pend{margin:0;padding-left:18px;font-size:14.5px;display:flex;flex-direction:column;gap:6px}
 
+/* equipe */
+.eq{display:grid;grid-template-columns:240px minmax(0,1fr);gap:32px 56px;padding-block:32px 8px;align-items:start}
+.eq-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.eq-p{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:14px 4px;cursor:pointer;font-size:16px;color:var(--ink);transition:background-color 160ms ease}
+.eq-p:active{transform:scale(.99)}
+.eq-p[aria-current="true"]{font-weight:600}
+.eq-p[aria-current="true"]::after{content:"";width:6px;height:6px;background:var(--ink);border-radius:1px;flex:none}
+.eq-p .n{font-family:var(--f-num);font-size:13px;color:var(--stone);font-weight:400;margin-left:auto}
+@media (hover:hover) and (pointer:fine){.eq-p:hover{background:var(--wash)}}
+.cal-h{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.cal-h h2{font-size:22px;font-weight:500;letter-spacing:-.01em}
+.cal-h h2 span{color:var(--stone);font-weight:400}
+.cal-nav{display:flex;align-items:center;gap:8px}
+.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.cal .wd{font-family:var(--f-num);font-size:13px;color:var(--stone);padding:8px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.day{min-height:96px;padding:6px 6px 8px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:none;border-top:0;border-left:0;text-align:left;display:flex;flex-direction:column;gap:4px;cursor:pointer;color:var(--ink);font:inherit;min-width:0;transition:background-color 160ms ease}
+.day[disabled]{cursor:default}
+.day.out{color:var(--stone);background:var(--wash);opacity:.55}
+.day.off .dn{color:var(--stone)}
+.day .dn{font-family:var(--f-num);font-size:14px}
+.day.today .dn{font-weight:700;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1.5px}
+.day[aria-pressed="true"]{box-shadow:inset 0 0 0 2px var(--ink)}
+@media (hover:hover) and (pointer:fine){.day:not([disabled]):hover{background:var(--wash)}}
+.chip{display:flex;align-items:center;gap:5px;font-size:12px;line-height:1.25;min-width:0}
+.chip .sw{width:7px;height:11px}
+.chip span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chip.more{color:var(--stone);font-family:var(--f-num)}
+.dots{display:none;gap:3px;flex-wrap:wrap}
+.dots .sw{width:7px;height:10px}
+.daylist{margin-top:22px}
+.daylist h3{font-size:16px;margin-bottom:8px}
+.task{display:grid;grid-template-columns:12px minmax(0,1fr) auto;gap:4px 14px;align-items:center;width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--line);padding:13px 0;cursor:pointer;color:inherit;font-size:14.5px}
+.task:active{transform:scale(.995)}
+.task .sw{width:10px;height:14px}
+.task small{display:block;color:var(--stone);font-size:13px}
+.task .st{font-family:var(--f-num);font-size:13px;color:var(--stone);text-align:right}
+@media (hover:hover) and (pointer:fine){.task:hover{background:linear-gradient(90deg,transparent,var(--wash) 10%,var(--wash) 90%,transparent)}}
+.st-seg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.st-seg button{min-height:44px;border:1px solid var(--line-strong);border-radius:var(--r);background:transparent;cursor:pointer;font-size:14px;font-weight:500;color:var(--ink);display:flex;align-items:center;gap:8px;padding:0 12px;transition:transform 160ms var(--ease-out),border-color 160ms ease,background-color 160ms ease}
+.st-seg button:active{transform:scale(.97)}
+.st-seg button[aria-checked="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.st-seg button.picked{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+.st-confirm{margin-top:14px;padding:14px 16px;border:1px solid var(--line);border-radius:var(--r);display:flex;flex-direction:column;gap:12px;font-size:14.5px}
+.st-confirm .row2{display:flex;gap:8px;flex-wrap:wrap}
+
+/* reuniões */
+.mt{display:grid;grid-template-columns:12px 64px minmax(0,1fr) auto;gap:4px 14px;align-items:baseline;width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--line);padding:13px 0;color:inherit;font-size:14.5px;cursor:pointer}
+.mt .sw{width:10px;height:14px;align-self:center}
+.mt small{display:block;color:var(--stone);font-size:13px}
+.mt .when{font-family:var(--f-num);color:var(--stone);font-size:13.5px}
+.mt .tag{text-align:right}
+.ata{margin-top:22px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);padding:18px 20px;display:flex;flex-direction:column;gap:18px;font-size:14.5px}
+.ata h3{font-size:15px;margin-bottom:6px}
+.ata ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:5px}
+.ata .ok{color:var(--green);font-weight:600}.ata .no{color:var(--red);font-weight:600}.ata .pd{color:var(--orange-text);font-weight:600}
+
 /* ficha da pessoa */
 dialog.sheet{border:0;padding:0;margin:0 0 0 auto;height:100%;max-height:100%;width:min(540px,100%);background:var(--surface);color:var(--ink);box-shadow:var(--lift)}
 dialog.sheet::backdrop{background:var(--scrim)}
@@ -283,6 +339,14 @@ dialog.sheet::backdrop{background:var(--scrim)}
   .opening{padding-block:36px 32px}
 }
 @media (max-width:860px){
+  .eq{grid-template-columns:1fr;gap:20px}
+  .eq-list{flex-direction:row;overflow-x:auto;border-top:0;border-bottom:1px solid var(--line);scrollbar-width:none;gap:4px}
+  .eq-list::-webkit-scrollbar{display:none}
+  .eq-p{border-bottom:2px solid transparent;padding:10px 12px;white-space:nowrap;width:auto}
+  .eq-p[aria-current="true"]{border-bottom-color:var(--ink)}
+  .eq-p[aria-current="true"]::after,.eq-p .n{display:none}
+  .day{min-height:58px;padding:5px 4px}
+  .chip{display:none}.dots{display:flex}
   .phead{display:none}
   .prow{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"name date" "st st" "team team" "etapa etapa" "strip strip";gap:6px 16px}
   .prow .c-name{grid-area:name}.prow .c-st{grid-area:st}.prow .c-team{grid-area:team}.prow .c-due{grid-area:date;text-align:right}.prow .c-et{grid-area:etapa}.prow .c-strip{grid-area:strip;margin-top:4px}
@@ -312,8 +376,8 @@ dialog.sheet::backdrop{background:var(--scrim)}
     <nav class="nav" aria-label="Seções">
       <a href="#hoje" data-view="hoje" aria-current="page">Hoje</a>
       <a href="#projetos" data-view="projetos">Projetos</a>
-      <span title="Chega na fase 4">Reuniões</span>
-      <span title="Chega na fase 5">Equipe</span>
+      <a href="#reunioes" data-view="reunioes">Reuniões</a>
+      <a href="#equipe" data-view="equipe">Equipe</a>
     </nav>
     <div class="status">
       <span id="status-line" aria-live="polite">Lendo Trello e Calendar…</span>
@@ -405,6 +469,52 @@ dialog.sheet::backdrop{background:var(--scrim)}
         </div>
       </section>
     </div>
+
+    <div class="view" id="v-equipe" hidden>
+      <section class="opening" aria-label="Equipe">
+        <div>
+          <h1>Equipe</h1>
+          <div class="date">Toque num nome para ver o calendário do mês.</div>
+        </div>
+      </section>
+      <div class="eq">
+        <nav class="eq-list" id="eq-list" aria-label="Integrantes"><div class="skel"></div><div class="skel"></div></nav>
+        <section class="eq-cal" id="eq-cal" aria-live="polite"></section>
+      </div>
+    </div>
+
+    <div class="view" id="v-reunioes" hidden>
+      <section class="opening" aria-label="Reuniões">
+        <div>
+          <h1>Reuniões</h1>
+          <div class="date" id="re-count">&nbsp;</div>
+        </div>
+      </section>
+      <div class="body">
+        <section aria-labelledby="h-re-next">
+          <div class="section-h"><h2 id="h-re-next">Próximas reuniões</h2><span class="num muted">30 dias</span></div>
+          <div id="re-next"><div class="skel"></div><div class="skel"></div></div>
+        </section>
+        <section aria-labelledby="h-re-prev">
+          <div class="section-h"><h2 id="h-re-prev">Reuniões anteriores</h2><span class="num muted">60 dias</span></div>
+          <div id="re-prev"><div class="skel"></div><div class="skel"></div></div>
+        </section>
+      </div>
+      <section class="update" aria-labelledby="h-ata">
+        <div>
+          <h2 id="h-ata">Gerar ata</h2>
+          <p>Cole a transcrição ou as anotações da reunião. O Claude separa decisões, aprovações, pendências, responsáveis e impactos. Uma aprovação só entra como aprovada quando o texto mostra confirmação clara do cliente.</p>
+        </div>
+        <form id="ata-form" autocomplete="off">
+          <label class="fld" style="margin-bottom:14px"><span>Reunião</span><select id="ata-meeting"><option value="">Escolha a reunião</option></select></label>
+          <label class="lbl" for="ata-text">Transcrição ou anotações</label>
+          <textarea id="ata-text" placeholder="Cole aqui o texto da reunião" style="min-height:160px"></textarea>
+          <div class="u-row"><span class="muted" id="ata-hint">Nada é gravado sem a sua confirmação.</span><button class="btn primary" id="ata-go" type="submit">Gerar ata</button></div>
+          <div id="ata-out"></div>
+        </form>
+      </section>
+    </div>
+
 
     <section class="update" aria-labelledby="h-upd">
       <div>
@@ -989,6 +1099,7 @@ function openPerson(key) {
   const prio = state.etapas
     ? (d.prio.length ? `<ol class="prio">${d.prio.map((e) => `<li><span>${esc(e.etapa)}, ${esc(e.card.title)}<small>${e.prazo ? (e.prazo < t ? `Atrasada desde ${dmy(e.prazo)}` : `Até ${esc(wdShort(e.prazo))} ${dmy(e.prazo)}`) : "Em andamento, sem prazo de etapa registrado"}</small></span></li>`).join("")}</ol>` : `<p class="muted">Sem etapas com prazo registrado.</p>`)
     : `<p class="muted">Disponível depois da leitura das etapas.</p>`;
+  $("sheet-body").dataset.task = "";
   $("sheet-body").innerHTML = `<section><h3>Próximos 10 dias úteis</h3>${big}</section><section><h3>Prioridades</h3>${prio}</section><section><h3>Tarefas</h3>${tarefas}</section><section><h3>Entregas</h3>${entregas}</section><section><h3>Reuniões</h3>${reun}</section>`;
   const dlg = $("sheet");
   if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", "");
@@ -1159,6 +1270,7 @@ function openProject(id) {
   const pend = !state.etapas ? `<p class="muted">Disponível depois da leitura das etapas.</p>` : pl && pl.length ? `<ul class="pend">${pl.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : `<p class="muted">Nenhuma pendência em aberto registrada no card.</p>`;
   const hist = historyOf(c);
   const histHTML = hist.length ? `<ol class="hist">${hist.map((h) => `<li><div class="h-head"><span class="num">${h.key ? dmy(h.key) : ""}</span>${esc(h.head)}</div>${h.body ? `<p class="h-body">${esc(h.body)}</p>` : ""}</li>`).join("")}</ol>` : `<p class="muted">Nenhuma atualização datada no card.</p>`;
+  $("sheet-body").dataset.task = "";
   $("sheet-body").innerHTML = `<section>${links}</section>
     <section><h3>Datas</h3><dl class="facts">${facts.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${v}</dd>`).join("")}</dl></section>
     <section><h3>Etapas</h3>${etapas}</section>
@@ -1169,16 +1281,253 @@ function openProject(id) {
   $("sheet-body").scrollTop = 0;
 }
 
+/* ================= equipe: calendário ================= */
+const STATUS = [["nao_iniciada", "A iniciar"], ["em_andamento", "Em produção"], ["aguardando", "Esperando aprovação"], ["concluida", "Concluído"]];
+const STATUS_LBL = Object.fromEntries(STATUS);
+const MONTHS = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+state.eq = { person: "", month: "", day: "" };
+function personTasks(p, from, to) {
+  const P = p.key, out = [];
+  for (const e of state.etapas || []) {
+    if (!e.keys.includes(P) || !e.prazo || e.card.done || e.prazo < from || e.prazo > to) continue;
+    out.push({ type: "etapa", k: e.situacao === "concluida" ? "done" : e.prazo < today() ? "atraso" : "producao", key: e.prazo, title: e.etapa, sub: e.card.title, et: e });
+  }
+  for (const c of state.cards) {
+    if (c.done || !c.dueKey || c.dueKey < from || c.dueKey > to || c.coveredBy || !(c.kind === "projeto" || c.kind === "entrega")) continue;
+    if (!teamOf(c).map(norm).includes(P)) continue;
+    out.push({ type: "entrega", k: "entrega", key: c.dueKey, title: c.kind === "entrega" ? "Entrega final" : "Prazo oficial", sub: c.title, card: c });
+  }
+  for (const m of meetings(from, to)) {
+    if (!(m.team || []).map(norm).includes(P)) continue;
+    const ap = isApres((m.card ? m.card.name : "") + " " + m.title);
+    out.push({ type: "reuniao", k: ap ? "apresentacao" : "reuniao", key: m.key, title: ap ? "Apresentação" : "Reunião", sub: m.title + (m.time ? ", às " + m.time : ""), m });
+  }
+  const order = { entrega: 0, apresentacao: 1, reuniao: 2, atraso: 3, producao: 4, done: 5 };
+  return out.sort((a, b) => a.key.localeCompare(b.key) || order[a.k] - order[b.k]);
+}
+function taskStatusTxt(t) {
+  if (t.type === "etapa") return STATUS_LBL[t.et.situacao] || "Sem status";
+  if (t.type === "entrega") return nice(t.card.list);
+  return t.m && t.m.src ? t.m.src.join(" e ") : "";
+}
+let eqTasks = [];
+function renderEquipe() {
+  const list = $("eq-list"), cal = $("eq-cal");
+  if (!state.loadedAt) return;
+  if (state.err.trello) { list.innerHTML = ""; cal.innerHTML = `<div class="empty">${esc(mcpMsg(state.err.trello, TRELLO))}</div>`; return; }
+  const ps = people();
+  if (!ps.length) { list.innerHTML = `<div class="empty">Nenhum integrante nos títulos dos cards.</div>`; cal.innerHTML = ""; return; }
+  if (!state.eq.person || !ps.some((p) => p.key === state.eq.person)) state.eq.person = ps[0].key;
+  if (!state.eq.month) state.eq.month = today().slice(0, 7);
+  list.innerHTML = ps.map((p) => `<button type="button" class="eq-p" data-p="${esc(p.key)}" aria-current="${p.key === state.eq.person}">${esc(p.full)}<span class="n">${personData(p).projetos.length}</span></button>`).join("");
+  const p = ps.find((x) => x.key === state.eq.person);
+  const ym = state.eq.month, [Y, M] = ym.split("-").map(Number);
+  const first = `${ym}-01`, t = today();
+  const start = addDays(first, -((k2d(first).getUTCDay() + 6) % 7));
+  const lastDay = new Date(Date.UTC(Y, M, 0)).toISOString().slice(0, 10);
+  const end = addDays(lastDay, (7 - k2d(lastDay).getUTCDay()) % 7);
+  eqTasks = personTasks(p, start, end);
+  const byDay = new Map();
+  for (const x of eqTasks) { if (!byDay.has(x.key)) byDay.set(x.key, []); byDay.get(x.key).push(x); }
+  let cells = "", d = start, guard = 0;
+  while (d <= end && guard++ < 50) {
+    const items = byDay.get(d) || [], out = d.slice(0, 7) !== ym, off = !isBD(d);
+    const chips = items.slice(0, 3).map((x) => `<span class="chip"><i class="sw ${x.k}"></i><span>${esc(x.type === "etapa" ? x.title : x.sub)}</span></span>`).join("") + (items.length > 3 ? `<span class="chip more">+${items.length - 3}</span>` : "");
+    const dots = items.length ? `<span class="dots">${items.slice(0, 6).map((x) => `<i class="sw ${x.k}"></i>`).join("")}</span>` : "";
+    const label = `${d.slice(8, 10)} de ${MONTHS[Number(d.slice(5, 7)) - 1]}: ${items.length ? items.length + " tarefa(s)" : "sem tarefas"}`;
+    cells += `<button type="button" class="day${out ? " out" : ""}${off ? " off" : ""}${d === t ? " today" : ""}" data-day="${d}" aria-pressed="${d === state.eq.day}" aria-label="${esc(label)}"${items.length ? "" : " disabled"}><span class="dn">${Number(d.slice(8, 10))}</span>${chips}${dots}</button>`;
+    d = addDays(d, 1);
+  }
+  const wds = ["seg", "ter", "qua", "qui", "sex", "sáb", "dom"].map((w) => `<div class="wd" aria-hidden="true">${w}</div>`).join("");
+  const sel = state.eq.day && byDay.get(state.eq.day);
+  let dayHTML;
+  if (!state.etapas && state.extract !== "ok") dayHTML = `<p class="muted">${state.extract === "loading" ? "Lendo as etapas nos cards…" : esc(state.extractErr || "As etapas ainda não foram lidas.")} Entregas e reuniões já aparecem no calendário.</p>`;
+  else dayHTML = "";
+  if (sel && sel.length) {
+    dayHTML += `<h3>${esc(wdShort(state.eq.day))}, ${Number(state.eq.day.slice(8, 10))} de ${MONTHS[Number(state.eq.day.slice(5, 7)) - 1]}</h3>` +
+      sel.map((x) => `<button type="button" class="task" data-task="${eqTasks.indexOf(x)}"><i class="sw ${x.k}"></i><span>${esc(x.type === "etapa" ? x.title : x.title)}<small>${esc(x.sub)}</small></span><span class="st">${esc(taskStatusTxt(x))}</span></button>`).join("");
+  } else if (!dayHTML) dayHTML = `<p class="muted">Toque num dia marcado para ver as tarefas.</p>`;
+  const nodate = (state.etapas || []).filter((e) => e.keys.includes(p.key) && !e.prazo && !e.card.done && e.situacao !== "concluida");
+  const nodateHTML = nodate.length ? `<div class="daylist"><h3>Tarefas sem data registrada</h3>${nodate.map((e) => { eqTasks.push({ type: "etapa", k: e.situacao === "em_andamento" ? "producao" : e.situacao === "aguardando" ? "wait" : "", key: "", title: e.etapa, sub: e.card.title, et: e }); const x = eqTasks[eqTasks.length - 1]; return `<button type="button" class="task" data-task="${eqTasks.length - 1}"><i class="sw ${x.k}"></i><span>${esc(e.etapa)}<small>${esc(e.card.title)}</small></span><span class="st">${esc(STATUS_LBL[e.situacao] || "Sem status")}</span></button>`; }).join("")}</div>` : "";
+  cal.innerHTML = `<div class="cal-h"><h2>${esc(p.full)} <span>${MONTHS[M - 1]} de ${Y}</span></h2>
+      <div class="cal-nav"><button class="ib" type="button" data-mon="-1" aria-label="Mês anterior"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3 5 8l5 5"/></svg></button>
+      <button class="btn" type="button" data-mon="0">Hoje</button>
+      <button class="ib" type="button" data-mon="1" aria-label="Próximo mês"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m6 3 5 5-5 5"/></svg></button></div></div>
+    <div class="cal">${wds}${cells}</div>
+    <div class="legend" aria-label="Legenda do calendário"><span><i class="sw entrega"></i>Entrega final</span><span><i class="sw apresentacao"></i>Apresentação ou aprovação</span><span><i class="sw reuniao"></i>Reunião</span><span><i class="sw producao"></i>Produção (prazo da etapa)</span><span><i class="sw atraso"></i>Etapa atrasada</span><span><i class="sw done"></i>Concluída</span></div>
+    <div class="daylist" id="daylist">${dayHTML}</div>${nodateHTML}`;
+}
+function openTask(x) {
+  const t = today();
+  $("sheet-name").textContent = x.type === "etapa" ? x.title : `${x.title}: ${x.sub}`;
+  $("sheet-sub").textContent = x.type === "etapa" ? x.sub : x.key ? `${wdShort(x.key)} ${dmy(x.key)}` : "";
+  let body = "";
+  if (x.type === "etapa") {
+    const e = x.et;
+    body += `<section><dl class="facts"><dt>Projeto</dt><dd><a href="${esc(e.card.url)}" target="_blank" rel="noopener">${esc(e.card.title)}</a></dd>
+      <dt>Responsável</dt><dd>${e.resp ? esc(e.resp) : MISSING}</dd>
+      <dt>Prazo da etapa</dt><dd>${e.prazo ? `<span class="pc-date${e.prazo < t && e.situacao !== "concluida" ? " late" : ""}">${wdShort(e.prazo)} ${dmy(e.prazo)}</span>` : MISSING}</dd>
+      <dt>Status atual</dt><dd id="st-now">${esc(STATUS_LBL[e.situacao] || "Não registrado no Trello")}</dd></dl></section>
+      <section><h3>Marcar status</h3><div class="st-seg" role="radiogroup" aria-label="Status da tarefa">${STATUS.map(([v, l]) => `<button type="button" role="radio" data-st="${v}" aria-checked="${v === e.situacao}">${v === "concluida" ? '<i class="sw done"></i>' : v === "em_andamento" ? '<i class="sw producao"></i>' : v === "aguardando" ? '<i class="sw wait"></i>' : '<i class="sw"></i>'}${esc(l)}</button>`).join("")}</div>
+      <div id="st-confirm"></div></section>`;
+  } else if (x.type === "entrega") {
+    body += `<section><dl class="facts"><dt>Projeto</dt><dd><a href="${esc(x.card.url)}" target="_blank" rel="noopener">${esc(x.sub)}</a></dd><dt>Data</dt><dd>${dmy(x.key)}</dd><dt>Lista no Trello</dt><dd>${esc(nice(x.card.list))}</dd></dl></section>
+      <p class="muted">Entregas seguem a lista do card no Trello. Para mudar, use "Registrar atualização".</p>`;
+  } else {
+    const m = x.m;
+    body += `<section><dl class="facts"><dt>Data</dt><dd>${wdShort(m.key)} ${dmy(m.key)}</dd><dt>Horário</dt><dd>${m.time ? esc(m.time) : MISSING}</dd><dt>Fonte</dt><dd>${esc(m.src.join(" e "))}</dd></dl></section>
+      ${m.url ? `<p><a href="${esc(m.url)}" target="_blank" rel="noopener">Abrir ${m.card ? "card no Trello" : "evento no Calendar"}</a></p>` : ""}`;
+  }
+  $("sheet-body").innerHTML = body;
+  $("sheet-body").dataset.task = String(eqTasks.indexOf(x));
+  const dlg = $("sheet");
+  if (!dlg.open) { if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", ""); }
+}
+function askStatus(x, novo) {
+  const e = x.et, box = $("st-confirm");
+  document.querySelectorAll(".st-seg [data-st]").forEach((b) => b.classList.toggle("picked", b.dataset.st === novo && novo !== e.situacao));
+  if (novo === e.situacao) { box.innerHTML = `<p class="muted" style="margin-top:12px">Esse já é o status registrado.</p>`; return; }
+  box.innerHTML = `<div class="st-confirm"><div><b>Antes:</b> ${esc(STATUS_LBL[e.situacao] || "Não registrado")}<br><b>Depois:</b> ${esc(STATUS_LBL[novo])}</div>
+    <div class="muted">Fica registrado como comentário no card "${esc(e.card.title)}". O texto do card não é apagado.</div>
+    <div class="row2"><button class="btn primary" type="button" id="st-ok" data-st="${novo}">Confirmar e salvar</button><button class="btn" type="button" id="st-cancel">Cancelar</button></div></div>`;
+}
+async function saveStatus(x, novo) {
+  const e = x.et, antigo = e.situacao, ok = $("st-ok");
+  if (ok) { ok.disabled = true; ok.textContent = "Salvando…"; }
+  try {
+    await write(TRELLO, "trelloWriteCard", { action: "add_comment", cardId: e.card.id, text: `${auditHeader()}\nETAPA: ${e.etapa}${e.resp ? " (" + e.resp + ")" : ""}\nStatus da etapa: ${STATUS_LBL[antigo] || "não registrado"} → ${STATUS_LBL[novo]}` });
+    e.situacao = novo;
+    lastSig = "";
+    renderAll();
+    openTask(x);
+    $("st-confirm").innerHTML = `<p class="res" style="margin-top:12px"><span class="okl">Salvo no Trello: ${esc(STATUS_LBL[novo])}.</span></p>`;
+  } catch (err) {
+    const amb = err && (err.code === "server_unavailable" || err.code === "upstream_error" || err.code === "cancelled");
+    $("st-confirm").innerHTML = `<div class="errbox">${esc(mcpMsg(err, TRELLO))}${amb ? " A gravação pode ter acontecido: atualize os dados e confira antes de tentar de novo." : ""}</div>`;
+  }
+}
+
+/* ================= reuniões ================= */
+let reItems = [];
+function renderReunioes() {
+  if (!state.loadedAt) return;
+  const t = today();
+  if (state.err.trello && state.err.cal) { $("re-next").innerHTML = $("re-prev").innerHTML = `<div class="empty">Sem acesso ao Trello e ao Calendar.</div>`; return; }
+  reItems = [];
+  const next = meetings(t, addDays(t, 30));
+  const row = (m, tag) => { reItems.push(m); const ap = isApres((m.card ? m.card.name : "") + " " + m.title); return `<button type="button" class="mt" data-re="${reItems.length - 1}"><i class="sw ${ap ? "apresentacao" : "reuniao"}"></i><span class="when">${esc(wdShort(m.key))} ${dm(m.key)}</span><span>${esc(m.title)}<small>${m.time ? "Às " + esc(m.time) : "Horário não registrado"}. ${esc((m.src || ["Trello"]).join(" e "))}</small></span><span class="tag">${tag}</span></button>`; };
+  $("re-next").innerHTML = next.length ? next.map((m) => row(m, isApres((m.card ? m.card.name : "") + " " + m.title) ? "Apresentação" : "Reunião")).join("") : `<div class="empty">Nenhuma reunião nos próximos 30 dias no Trello ou no Calendar.</div>`;
+  const prev = state.cards.filter((c) => c.kind === "reuniao" && c.dueKey && c.dueKey < t && c.dueKey >= addDays(t, -60)).sort((a, b) => b.dueKey.localeCompare(a.dueKey));
+  const hasAta = (c) => /\bATA\b/i.test(c.desc) || c.comments.some((x) => /\bATA\b/i.test(x.text));
+  $("re-prev").innerHTML = prev.length ? prev.map((c) => row({ key: c.dueKey, time: meetingTime(c), title: c.title, card: c, url: c.url, src: ["Trello"] }, hasAta(c) ? `<span class="tag ok">Ata registrada</span>` : `<span class="tag crit">Sem ata</span>`)).join("") : `<div class="empty">Nenhuma reunião registrada no Trello nos últimos 60 dias.</div>`;
+  $("re-count").textContent = `${next.length} nos próximos 30 dias, ${prev.filter((c) => !hasAta(c)).length} sem ata registrada`;
+  const opts = state.cards.filter((c) => c.kind === "reuniao" && c.dueKey && c.dueKey >= addDays(t, -30) && c.dueKey <= addDays(t, 7)).sort((a, b) => b.dueKey.localeCompare(a.dueKey));
+  const selEl = $("ata-meeting"), cur = selEl.value;
+  const html = `<option value="">Escolha a reunião</option>` + opts.map((c) => `<option value="${esc(c.id)}">${dm(c.dueKey)} ${esc(c.title)}</option>`).join("");
+  if (selEl.innerHTML !== html) { selEl.innerHTML = html; selEl.value = cur; }
+}
+function openMeeting(m) {
+  const c = m.card;
+  $("sheet-name").textContent = m.title;
+  $("sheet-sub").textContent = `${wdShort(m.key)} ${dmy(m.key)}${m.time ? ", às " + m.time : ""}`;
+  const proj = c && c.project;
+  let body = `<section><div class="p-links">${m.url ? `<a href="${esc(m.url)}" target="_blank" rel="noopener">${c ? "Card no Trello" : "Evento no Calendar"}</a>` : ""}${proj ? `<a href="${esc(proj.url)}" target="_blank" rel="noopener">Projeto: ${esc(proj.title)}</a>` : ""}</div></section>`;
+  if (c) {
+    body += `<section><h3>Registro no card</h3>${c.desc ? `<p class="h-body" style="white-space:pre-line;font-size:14px;color:var(--ink)">${esc(c.desc)}</p>` : `<p class="muted">Card sem descrição.</p>`}</section>`;
+    if (c.comments.length) body += `<section><h3>Comentários</h3><ol class="hist">${c.comments.map((x) => `<li><div class="h-head"><span class="num">${x.at ? dmy(ymd(new Date(x.at))) : ""}</span></div><p class="h-body">${esc(x.text)}</p></li>`).join("")}</ol></section>`;
+  } else body += `<p class="muted">Esta reunião está só no Google Calendar. Não há card no Trello.</p>`;
+  $("sheet-body").innerHTML = body;
+  $("sheet-body").dataset.task = "";
+  const dlg = $("sheet");
+  if (!dlg.open) { if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", ""); }
+}
+let ata = null;
+function ataPrompt(c, text) {
+  return `Você organiza a ata de uma reunião do escritório Dayse Lacerda Arquitetura (João Pessoa/PB), seguindo as regras da gerente de reuniões MÁRCIA.
+Reunião: ${c ? `${c.name}, em ${dmy(c.dueKey)}` : "não informada"}.
+Descarte saudações, conversa informal e repetições. Use SOMENTE o texto abaixo. Nunca invente decisões, aprovações, responsáveis ou prazos.
+Uma aprovação só é "aprovado" quando o texto mostra confirmação clara do cliente. "Gostei", "achei bonito" ou "vou pensar" não é aprovação: use "pendente".
+Responsável ou prazo que o texto não diz fica null.
+
+Texto da reunião:
+"""${text.slice(0, 20000)}"""
+
+Responda apenas JSON:
+{"resumo":"2 a 3 frases","decisoes":[{"texto":"","responsavel":null}],"aprovacoes":[{"item":"","situacao":"aprovado|nao_aprovado|pendente","evidencia":"trecho curto do texto"}],"pendencias":[{"texto":"","responsavel":null,"prazo":null}],"alteracoes":[{"ambiente":null,"texto":""}],"impactos":[{"area":"briefing|prazo|projeto|revisao","texto":""}],"alertas":[{"agente":"LUISA|MAX|CHARLES","texto":""}]}`;
+}
+const arr = (v) => (Array.isArray(v) ? v.filter((x) => x && typeof x === "object") : []);
+const SITU = { aprovado: ["ok", "Aprovado"], nao_aprovado: ["no", "Não aprovado"], pendente: ["pd", "Pendente"] };
+function ataText(a, c) {
+  const L = [`ATA PROCESSADA (via painel)${c ? " - " + c.name : ""}`, "", `RESUMO: ${a.resumo || "-"}`];
+  const sec = (h, items, f) => { if (items.length) { L.push("", h); items.forEach((x, i) => L.push(`${i + 1}. ${f(x)}`)); } };
+  sec("DECISÕES:", a.decisoes, (x) => `${x.texto}${x.responsavel ? " (" + x.responsavel + ")" : ""}`);
+  sec("APROVAÇÕES:", a.aprovacoes, (x) => `${(SITU[x.situacao] || SITU.pendente)[1]}: ${x.item}`);
+  sec("ALTERAÇÕES:", a.alteracoes, (x) => `${x.ambiente ? x.ambiente + ": " : ""}${x.texto}`);
+  sec("PENDÊNCIAS:", a.pendencias, (x) => `☐ ${x.texto} (responsável: ${x.responsavel || "Necessário confirmar"}; prazo: ${x.prazo || "Necessário confirmar"})`);
+  sec("IMPACTOS:", a.impactos, (x) => `${x.area}: ${x.texto}`);
+  sec("SINALIZAR:", a.alertas, (x) => `${x.agente}: ${x.texto}`);
+  return L.join("\n");
+}
+function renderAta() {
+  const box = $("ata-out");
+  if (!ata) { box.innerHTML = ""; return; }
+  if (ata.status === "thinking") { box.innerHTML = `<p class="muted" style="margin-top:16px">Organizando a ata com o Claude…</p>`; return; }
+  if (ata.status === "error") { box.innerHTML = `<div class="errbox">${esc(ata.error)}</div>`; return; }
+  const a = ata.data, c = ata.card;
+  const li = (items, f, empty) => (items.length ? `<ul>${items.map((x) => `<li>${f(x)}</li>`).join("")}</ul>` : `<p class="muted">${empty}</p>`);
+  const need = `<span class="miss">Necessário confirmar</span>`;
+  const hasApproved = a.aprovacoes.some((x) => x.situacao === "aprovado");
+  box.innerHTML = `<div class="ata">
+    <div><h3>Resumo</h3><p style="margin:0">${esc(a.resumo || "-")}</p></div>
+    <div><h3>Decisões</h3>${li(a.decisoes, (x) => `${esc(x.texto)}${x.responsavel ? ` <span class="muted">(${esc(x.responsavel)})</span>` : ""}`, "Nenhuma decisão identificada.")}</div>
+    <div><h3>Aprovações</h3>${li(a.aprovacoes, (x) => { const s = SITU[x.situacao] || SITU.pendente; return `<span class="${s[0]}">${s[1]}:</span> ${esc(x.item)}${x.evidencia ? `<br><small class="muted">"${esc(x.evidencia)}"</small>` : ""}`; }, "Nenhuma aprovação identificada.")}</div>
+    <div><h3>Alterações</h3>${li(a.alteracoes, (x) => `${x.ambiente ? `<b>${esc(x.ambiente)}:</b> ` : ""}${esc(x.texto)}`, "Nenhuma alteração identificada.")}</div>
+    <div><h3>Pendências e responsáveis</h3>${li(a.pendencias, (x) => `${esc(x.texto)}<br><small class="muted">Responsável: ${x.responsavel ? esc(x.responsavel) : need}. Prazo: ${x.prazo ? esc(x.prazo) : need}.</small>`, "Nenhuma pendência identificada.")}</div>
+    <div><h3>Impactos</h3>${li(a.impactos, (x) => `<b>${esc(x.area)}:</b> ${esc(x.texto)}`, "Nenhum impacto identificado.")}</div>
+    ${a.alertas.length ? `<div><h3>Sinalizar aos agentes</h3>${li(a.alertas, (x) => `<b>${esc(x.agente)}:</b> ${esc(x.texto)}`, "")}</div>` : ""}
+    ${ata.saved ? `<p class="res"><span class="okl">Ata salva como comentário no card da reunião.</span></p>` : `
+    ${c && hasApproved ? `<label class="check" style="border:0;padding:0"><input type="checkbox" id="ata-crit"><span>Confirmo que as aprovações marcadas como aprovadas foram confirmadas claramente pelo cliente.</span></label>` : ""}
+    <div class="u-row" style="margin-top:0"><button class="btn" type="button" id="ata-copy">Copiar ata</button>${c ? `<button class="btn primary" type="button" id="ata-save"${hasApproved ? " disabled" : ""}>Salvar no card da reunião</button>` : `<span class="muted">Escolha a reunião para salvar no card.</span>`}</div>
+    <p class="muted" style="margin:0">Salvar no Drive (pasta de atas do projeto) fica para quando a pasta for definida.</p>`}
+    <div id="ata-msg"></div></div>`;
+}
+async function genAta() {
+  const text = $("ata-text").value.trim();
+  if (!text) return;
+  const sample = await sampleP;
+  const c = state.cards.find((x) => x.id === $("ata-meeting").value) || null;
+  if (!sample) { ata = { status: "error", error: "O uso do Claude não está disponível nesta visualização." }; renderAta(); return; }
+  ata = { status: "thinking" }; renderAta(); $("ata-go").disabled = true;
+  try {
+    const r = await sample.json(ataPrompt(c, text), { cache: false });
+    const data = { resumo: typeof r.resumo === "string" ? r.resumo : "", decisoes: arr(r.decisoes), aprovacoes: arr(r.aprovacoes), pendencias: arr(r.pendencias), alteracoes: arr(r.alteracoes), impactos: arr(r.impactos), alertas: arr(r.alertas) };
+    ata = { status: "ok", data, card: c, saved: false };
+  } catch (e) { ata = { status: "error", error: sampleMsg(e) }; }
+  $("ata-go").disabled = false; renderAta();
+}
+async function saveAta() {
+  if (!ata || !ata.card) return;
+  const b = $("ata-save"); b.disabled = true; b.textContent = "Salvando…";
+  try {
+    await write(TRELLO, "trelloWriteCard", { action: "add_comment", cardId: ata.card.id, text: `${auditHeader()}\n\n${ataText(ata.data, ata.card)}` });
+    ata.saved = true; renderAta(); lastSig = "";
+  } catch (e) {
+    const amb = e && (e.code === "server_unavailable" || e.code === "upstream_error" || e.code === "cancelled");
+    $("ata-msg").innerHTML = `<div class="errbox">${esc(mcpMsg(e, TRELLO))}${amb ? " A gravação pode ter acontecido: atualize os dados e confira antes de tentar de novo." : ""}</div>`;
+    b.disabled = false; b.textContent = "Salvar no card da reunião";
+  }
+}
+
+const VIEWS = ["hoje", "projetos", "reunioes", "equipe"];
 function showView(v) {
-  state.view = v === "projetos" ? "projetos" : "hoje";
-  $("v-hoje").hidden = state.view !== "hoje";
-  $("v-projetos").hidden = state.view !== "projetos";
+  state.view = VIEWS.includes(v) ? v : "hoje";
+  for (const k of VIEWS) $("v-" + k).hidden = state.view !== k;
   document.querySelectorAll(".nav a[data-view]").forEach((a) => { if (a.dataset.view === state.view) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
   renderStatus();
 }
 
 function renderSources() { renderStatus(); }
-function renderAll() { renderStatus(); renderPageErr(); renderReminders(); renderAlerts(); renderTeam(); renderProjects(); }
+function renderAll() { renderStatus(); renderPageErr(); renderReminders(); renderAlerts(); renderTeam(); renderProjects(); renderEquipe(); renderReunioes(); }
 
 /* ================= atualização inteligente ================= */
 let plan = null;
@@ -1505,7 +1854,7 @@ $("sheet-body").addEventListener("click", (e) => {
   ta.scrollIntoView({ behavior: reduce.matches ? "auto" : "smooth", block: "center" });
   ta.focus({ preventScroll: true });
 });
-const routeFromHash = () => showView(location.hash === "#projetos" ? "projetos" : "hoje");
+const routeFromHash = () => showView((location.hash || "#hoje").slice(1));
 window.addEventListener("hashchange", routeFromHash);
 document.querySelectorAll(".nav a[data-view]").forEach((a) => a.addEventListener("click", (e) => {
   e.preventDefault();
@@ -1513,6 +1862,40 @@ document.querySelectorAll(".nav a[data-view]").forEach((a) => a.addEventListener
   showView(a.dataset.view);
 }));
 routeFromHash();
+$("eq-list").addEventListener("click", (e) => { const b = e.target.closest(".eq-p"); if (!b) return; state.eq.person = b.dataset.p; state.eq.day = ""; renderEquipe(); if (matchMedia("(max-width:860px)").matches) $("eq-cal").scrollIntoView({ behavior: reduce.matches ? "auto" : "smooth", block: "start" }); });
+$("eq-cal").addEventListener("click", (e) => {
+  const mon = e.target.closest("[data-mon]");
+  if (mon) {
+    const n = Number(mon.dataset.mon);
+    if (n === 0) { state.eq.month = today().slice(0, 7); state.eq.day = today(); }
+    else { const [y, m] = state.eq.month.split("-").map(Number); const d = new Date(Date.UTC(y, m - 1 + n, 1)); state.eq.month = d.toISOString().slice(0, 7); state.eq.day = ""; }
+    renderEquipe(); return;
+  }
+  const day = e.target.closest(".day");
+  if (day && !day.disabled) { state.eq.day = day.dataset.day; renderEquipe(); const dl = $("daylist"); if (dl && matchMedia("(max-width:860px)").matches) dl.scrollIntoView({ behavior: reduce.matches ? "auto" : "smooth", block: "start" }); return; }
+  const task = e.target.closest(".task");
+  if (task) openTask(eqTasks[Number(task.dataset.task)]);
+});
+$("sheet-body").addEventListener("click", (e) => {
+  const idx = $("sheet-body").dataset.task;
+  const x = idx !== "" && idx !== undefined ? eqTasks[Number(idx)] : null;
+  if (!x || x.type !== "etapa") return;
+  const st = e.target.closest(".st-seg [data-st]");
+  if (st) { askStatus(x, st.dataset.st); return; }
+  if (e.target.id === "st-ok") saveStatus(x, e.target.dataset.st);
+  if (e.target.id === "st-cancel") { $("st-confirm").innerHTML = ""; document.querySelectorAll(".st-seg .picked").forEach((b) => b.classList.remove("picked")); }
+});
+["re-next", "re-prev"].forEach((id) => $(id).addEventListener("click", (e) => { const b = e.target.closest(".mt"); if (b) openMeeting(reItems[Number(b.dataset.re)]); }));
+$("ata-form").addEventListener("submit", (e) => { e.preventDefault(); genAta(); });
+$("ata-out").addEventListener("change", (e) => { if (e.target.id === "ata-crit") $("ata-save").disabled = !e.target.checked; });
+$("ata-out").addEventListener("click", async (e) => {
+  if (e.target.id === "ata-save") saveAta();
+  if (e.target.id === "ata-copy") {
+    const txt = ataText(ata.data, ata.card);
+    try { await navigator.clipboard.writeText(txt); e.target.textContent = "Ata copiada"; }
+    catch (_) { $("ata-msg").innerHTML = `<textarea readonly id="ata-copybox" style="min-height:160px;margin-top:4px">${esc(txt)}</textarea><p class="muted">Não foi possível copiar direto. O texto está selecionado acima: use Copiar do seu aparelho.</p>`; const b = $("ata-copybox"); b.focus(); b.select(); }
+  }
+});
 $("sheet-close").addEventListener("click", () => $("sheet").close());
 $("sheet").addEventListener("click", (e) => { if (e.target === e.currentTarget) e.currentTarget.close(); });
 

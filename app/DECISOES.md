@@ -72,3 +72,17 @@ As especificações dos agentes devem ficar em Google Docs nessas pastas e ser a
 - Ficha: links do Trello e do Drive, datas (início, prazos, apresentação e entrega final dos cards ligados), etapas, pendências (lidas pelo Claude, só as que o texto trata como em aberto) e histórico (blocos datados da descrição e comentários, copiados do card, do mais recente para o mais antigo).
 - Drive: só leitura. A pasta é procurada em ESC. DAYSE LACERDA / ano. O link só aparece quando o cliente e o tipo da pasta batem com o card; na dúvida, mostra "Pasta não encontrada no Drive".
 - As pastas do Drive são lidas ao abrir o painel e ao tocar em "Atualizar dados", não a cada 2 minutos.
+
+## Aba Equipe
+- Lista os integrantes (nomes dos títulos dos cards de projeto). Ao tocar num nome, abre o calendário do mês da pessoa.
+- No calendário entram: prazo de cada etapa da pessoa (verde; hachura se atrasada; preto se concluída), entrega final e prazo oficial dos projetos da pessoa (vermelho), apresentações (laranja) e reuniões (azul).
+- Tocar no dia mostra as tarefas; tocar na tarefa abre a ficha com os quatro status: A iniciar, Em produção, Esperando aprovação, Concluído.
+- Trocar o status pede confirmação (antes e depois) e grava um comentário datado no card do projeto. A descrição do card não é alterada. Na próxima leitura, o Claude considera esse comentário como a situação mais recente da etapa.
+- Etapas sem data aparecem abaixo do calendário, em "Tarefas sem data registrada", com a mesma troca de status.
+- Status só vale para etapas. Entregas e reuniões seguem o card no Trello.
+
+## Aba Reuniões
+- Próximas reuniões (30 dias) do Trello e do Calendar; reuniões anteriores (60 dias) dos cards do Trello, com a marca "Ata registrada" ou "Sem ata".
+- Gerador de atas: o Claude organiza resumo, decisões, aprovações (aprovado, não aprovado, pendente, com o trecho que comprova), alterações, pendências com responsável e prazo, impactos e sinalizações para LUISA, MAX e CHARLES. Nada inventado; o que falta aparece como "Necessário confirmar".
+- A ata pode ser copiada ou salva como comentário no card da reunião. Se houver aprovação marcada como aprovada, salvar exige confirmar que o cliente aprovou claramente.
+- Salvar a ata no Drive fica pendente até definir a pasta de atas (00_REUNIOES/03_ATAS ainda não existe nos projetos).

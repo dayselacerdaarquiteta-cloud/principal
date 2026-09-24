@@ -115,7 +115,7 @@ As especificações dos agentes devem ficar em Google Docs nessas pastas e ser a
 
 ## Calendário da equipe com checklist de etapas
 - No calendário da pessoa, cada dia mostra o nome do projeto e as etapas com prazo naquele dia (no celular, pontos coloridos). Tocar no dia abre o painel lateral "Demandas do dia": projeto, cliente, responsável, prazo e status de cada etapa, e o botão "Ver etapas do projeto".
-- "Ver etapas do projeto" abre o checklist: cliente, responsável (linha RESPONSÁVEL PRINCIPAL ou RESPONSÁVEL TÉCNICO do card), equipe, prazo final, status atual, barra de progresso (etapas concluídas / total), próxima etapa e prazo. O mesmo checklist abre pela ficha do projeto (botão "Checklist de etapas").
+- "Ver etapas do projeto" abre o checklist: cliente, responsável (linha RESPONSÁVEL PRINCIPAL ou RESPONSÁVEL TÉCNICO do card), equipe, prazo final, status atual, barra de progresso (etapas concluídas / total), próxima etapa e prazo. O mesmo checklist fica dentro da ficha do projeto (aba Projetos), logo abaixo da linha do tempo, com as mesmas ações. Ele substitui a antiga lista de etapas da ficha.
 - Etapas vêm do texto do card (lidas pelo Claude, sem inventar) e dos itens do checklist do Trello. Uma etapa com dois responsáveis aparece uma vez. Ordem: por prazo.
 - Visual: concluída = círculo verde com ✓; pendente = círculo vazio; atrasada = borda e selo vermelhos com "Atrasada há N dia(s) útil(eis)" (só com prazo registrado, nunca com data estimada).
 - Apresentação e entrega final aparecem como "Marcos do projeto", sem caixa de marcar: seguem o card no Trello.
@@ -125,3 +125,5 @@ As especificações dos agentes devem ficar em Google Docs nessas pastas e ser a
 - A troca de status (A iniciar, Em produção, Esperando aprovação, Concluído) continua em "Outro status". Marcar Concluído também marca o checklist; voltar de Concluído desmarca o item.
 - **Permissões:** a pessoa é identificada pelo nome da conta do claude.ai. Gestão (Dayse) altera qualquer etapa. Equipe conclui só as etapas em que é responsável. Conta não identificada ou fora da equipe: só visualização.
 - Correção: depois da atualização automática a cada 2 minutos, as etapas perdiam a ligação com os cards recarregados. Agora são religadas a cada leitura.
+- **Etapas guardadas no aparelho:** depois da primeira leitura, as etapas ficam salvas no navegador de cada pessoa. Ao abrir o painel, aparecem na hora. O Claude só lê de novo os cards quando algum card de projeto mudou (lista, prazo, descrição ou comentários); enquanto isso, o painel mostra "Conferindo se há etapas novas no card…". As marcações do checklist vêm sempre do Trello, a cada leitura.
+- O rodapé mostra a versão do painel, para conferir no celular se a versão aberta é a mais recente.

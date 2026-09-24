@@ -548,6 +548,7 @@ button.gi-main{cursor:pointer}
 .gi-lock{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--muted);margin:0 0 10px;padding:10px 12px;border-radius:12px;background:var(--gray-soft)}
 .gi-lock .lu{width:15px;height:15px;flex:none;margin-top:2px}
 @media (max-width:560px){.gi-main{grid-template-columns:auto minmax(0,1fr)}.gi-tag{grid-column:2;justify-self:start}.gi-conf{padding-left:14px}.gi-more{margin-left:14px}.cp-stats{grid-template-columns:1fr 1fr}.cp-stats div:nth-child(2){grid-column:1/-1;order:3}.dd-row{grid-template-columns:auto minmax(0,1fr)}.dd-row .chip{grid-column:2;justify-self:start}}
+.p-chk{display:flex;flex-direction:column;gap:22px}
 [hidden]{display:none!important}
 .wiz .links{margin-bottom:18px}
 .wdone{display:flex;align-items:center;gap:16px;margin-bottom:18px}
@@ -746,7 +747,7 @@ button.gi-main{cursor:pointer}
     <section class="glass calw" id="eq-cal" aria-live="polite"></section>
   </section>
 
-  <p class="foot">Dados do Trello (quadro ESCRITÓRIO DAYSE LACERDA), do Google Calendar e do Google Drive, lidos ao abrir e a cada 2 minutos. Um projeto só conta como concluído na lista CONCLUÍDO. Dias úteis: segunda a sexta, sem feriados nacionais; feriados de João Pessoa ainda não entram. Datas marcadas como estimadas são calculadas pelo painel a partir do início do projeto e das durações escritas no card, em dias úteis; não são gravadas no Trello. Nada é gravado sem a sua confirmação, e cada alteração vira um comentário datado no card.</p>
+  <p class="foot">Dados do Trello (quadro ESCRITÓRIO DAYSE LACERDA), do Google Calendar e do Google Drive, lidos ao abrir e a cada 2 minutos. Um projeto só conta como concluído na lista CONCLUÍDO. Dias úteis: segunda a sexta, sem feriados nacionais; feriados de João Pessoa ainda não entram. Datas marcadas como estimadas são calculadas pelo painel a partir do início do projeto e das durações escritas no card, em dias úteis; não são gravadas no Trello. Nada é gravado sem a sua confirmação, e cada alteração vira um comentário datado no card. <b class="ver">Versão 17 do painel (24/09/2026).</b></p>
 </main>
 
 <nav class="dock glass" aria-label="Seções">
@@ -1052,6 +1053,34 @@ Cards:
 
 ${blocks}`;
 }
+/* etapas guardadas no aparelho: abrem na hora; o Trello continua sendo a fonte */
+const ET_KEY = "painel-dl.etapas.v1";
+const cardSig = (c) => c.list + "|" + c.dueKey + "|" + c.desc.length + ":" + c.comments.length;
+function saveEtapasCache() {
+  try {
+    const cards = {};
+    for (const c of state.cards.filter((x) => x.kind === "projeto" && !x.done)) cards[c.id] = { sig: cardSig(c), etapas: [], pend: (state.pend && state.pend.get(c.id)) || [] };
+    for (const e of state.etapas || []) if (cards[e.card.id]) cards[e.card.id].etapas.push({ etapa: e.etapa, resp: e.resp, keys: e.keys, prazo: e.prazo, dur: e.dur, sit0: e.sit0 });
+    localStorage.setItem(ET_KEY, JSON.stringify({ at: Date.now(), cards }));
+  } catch (_) {}
+}
+function loadEtapasCache() {
+  let data = null;
+  try { data = JSON.parse(localStorage.getItem(ET_KEY) || "null"); } catch (_) { return false; }
+  if (!data || !data.cards) return false;
+  const projs = state.cards.filter((c) => c.kind === "projeto" && !c.done);
+  const etapas = [], pend = new Map();
+  let fresh = projs.length > 0;
+  for (const c of projs) {
+    const d = data.cards[c.id];
+    if (!d) { fresh = false; continue; }
+    if (d.sig !== cardSig(c)) fresh = false;
+    for (const e of d.etapas || []) if (e && typeof e.etapa === "string") etapas.push({ card: c, etapa: e.etapa, resp: e.resp || "", keys: Array.isArray(e.keys) ? e.keys : [], prazo: isKey(e.prazo) ? e.prazo : null, dur: e.dur || null, situacao: e.sit0 || "nao_informada", sit0: e.sit0 || "nao_informada" });
+    if (Array.isArray(d.pend) && d.pend.length) pend.set(c.id, d.pend);
+  }
+  state.etapas = etapas; state.pend = pend;
+  return fresh;
+}
 async function runExtraction(force) {
   const sample = await sampleP;
   const projs = state.cards.filter((c) => c.kind === "projeto" && !c.done);
@@ -1079,6 +1108,7 @@ async function runExtraction(force) {
     }
     state.extract = "ok";
     applyChecklists();
+    saveEtapasCache();
   } catch (e) {
     state.extract = "err"; state.extractErr = sampleMsg(e);
   }
@@ -1731,10 +1761,6 @@ function openProject(id) {
     ...linked.filter((x) => x.kind === "reuniao").map((x) => [/APRESENTA/.test(norm(x.name)) ? "Apresentação" : "Reunião", dd(x.dueKey)]),
     ...linked.filter((x) => x.kind === "entrega").map((x) => ["Entrega final", dd(x.dueKey)]),
   ];
-  const etList = c.done && !ets.length ? `<p class="muted">Projeto concluído. As etapas de projetos concluídos não são lidas.</p>`
-    : !state.etapas ? `<p class="muted">${esc(state.extractErr || "As etapas ainda não foram lidas.")}</p>`
-    : ets.length ? `<ul class="rows">${ets.map((e) => { const k = dataOf(e); return `<li><span class="d${k && k < t && e.situacao !== "concluida" ? " late" : ""}">${k ? dm(k) : "sem data"}</span><span>${esc(e.etapa)}<small>${esc(SIT_TXT[e.situacao] || "")}${e.resp ? ", " + esc(e.resp) : ""}${!k ? ". Prazo não registrado no Trello" : ""}</small></span>${e.est ? `<span class="est">estimada</span>` : "<span></span>"}</li>`; }).join("")}</ul>`
-    : `<p class="muted">Nenhuma etapa registrada na descrição do card.</p>`;
   const pl = state.pend && state.pend.get(c.id);
   const pend = !state.etapas ? `<p class="muted">Disponível depois da leitura das etapas.</p>` : pl && pl.length ? `<ul class="pend">${pl.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : `<p class="muted">Nenhuma pendência em aberto registrada no card.</p>`;
   const hist = historyOf(c);
@@ -1754,12 +1780,12 @@ function openProject(id) {
     </div>
     <div class="pg-body">
       <section><h3>Linha do tempo</h3><div class="timeline">${phases.map((p) => `<div class="tl s-${p.s}"><span class="nd">${svgI(PH_ICON[p.s])}</span><span class="tx"><b>${esc(p.name)}</b><small>${esc(p.txt)}</small></span></div>`).join("")}</div></section>
-      <div class="links"><a href="${esc(c.url)}" target="_blank" rel="noopener">${svgI("external-link")}Card no Trello</a>${driveBtn}<button type="button" id="p-chk" data-id="${esc(c.id)}">${svgI("list-checks")}Checklist de etapas</button><button type="button" id="p-update" data-id="${esc(c.id)}">${svgI("sparkles")}Falar com o MAX sobre este projeto</button></div>
+      <div class="p-chk" id="p-chkbox" data-id="${esc(c.id)}">${c.done && !etapaGroups(c).length ? `<section><h3>Checklist de etapas</h3><p class="muted">Projeto concluído. As etapas de projetos concluídos não são lidas.</p></section>` : chkSectionHTML(c, true)}</div>
+      <div class="links"><a href="${esc(c.url)}" target="_blank" rel="noopener">${svgI("external-link")}Card no Trello</a>${driveBtn}<button type="button" id="p-update" data-id="${esc(c.id)}">${svgI("sparkles")}Falar com o MAX sobre este projeto</button></div>
       <div class="two">
         <section><h3>Datas</h3><dl class="facts" style="font-size:14.5px;gap:10px 18px">${datas.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${v}</dd>`).join("")}</dl></section>
         <section><h3>Pendências</h3>${pend}</section>
       </div>
-      <section><h3>Etapas</h3>${etList}</section>
       <section><h3>Histórico</h3>${histHTML}</section>
     </div>`;
   const dlg = $("ppage");
@@ -2037,20 +2063,11 @@ function renderDay(key) {
   if (other.length) html += `<section><h3>Reuniões e outras datas</h3><div class="tasks one">${other.map((x) => taskCard(x, eqTasks.indexOf(x))).join("")}</div></section>`;
   $("sheet-body").innerHTML = html || `<p class="muted">Sem demandas neste dia.</p>`;
 }
-function renderChecklist(id) {
-  const c = state.cards.find((x) => x.id === id);
-  if (!c) { $("sheet-name").textContent = "Projeto"; $("sheet-sub").textContent = ""; $("sheet-body").innerHTML = `<p class="muted">Projeto não encontrado no Trello. Atualize os dados.</p>`; return; }
-  if (chkUI.card !== id) chkUI = { card: id, pend: "", busy: false, log: [], err: "", ok: "" };
-  const t = today(), groups = etapaGroups(c), ms = milestonesOf(c, groups), h = healthOf(c), v = viewer();
+function chkSectionHTML(c, inPage) {
+  if (chkUI.card !== c.id) chkUI = { card: c.id, pend: "", busy: false, log: [], err: "", ok: "" };
+  const t = today(), groups = etapaGroups(c), ms = milestonesOf(c, groups), v = viewer();
   const done = groups.filter((g) => g.done).length, tot = groups.length, pct = tot ? Math.round((done / tot) * 100) : 0;
   const next = groups.find((g) => !g.done);
-  $("sheet-name").textContent = c.title;
-  $("sheet-sub").textContent = tipoOf(c) || "Projeto";
-  const facts = `<dl class="facts" style="font-size:14px;gap:8px 18px"><dt>Cliente</dt><dd>${esc(clienteOf(c) || "") || MISSING}</dd>
-    <dt>Responsável</dt><dd>${esc(projResp(c)) || MISSING}</dd>
-    ${c.team.length ? `<dt>Equipe</dt><dd>${esc(c.team.map(cap).join(", "))}</dd>` : ""}
-    <dt>Prazo final</dt><dd>${c.dueKey ? `<span${c.dueKey < t && !c.done ? ' class="late-txt"' : ""}>${wdShort(c.dueKey)} ${dmy(c.dueKey)}</span>` : MISSING}</dd>
-    <dt>Status atual</dt><dd>${esc(nice(c.list))} ${healthChip(h)}</dd></dl>`;
   const prog = tot ? `<section class="glass chk-prog" aria-label="Progresso do projeto">
       <div class="cp-top"><span class="cp-pct">${pct}%</span><span class="muted">das etapas concluídas</span></div>
       <div class="cp-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}"><i style="--p:${tot ? done / tot : 0}"></i></div>
@@ -2068,29 +2085,63 @@ function renderChecklist(id) {
       : `<div class="gi-main">${mark}<span class="gi-t"><b>${label}</b><small>${esc(sub)}</small></span>${tail}</div>`;
     const conf = open ? `<div class="gi-conf" role="group" aria-label="Confirmar conclusão"><p><b>Confirmar conclusão desta etapa?</b></p>
         <p class="muted">${g.inTrello ? `Marca "${esc(g.name)}" no checklist ${CHK_NAME} do card` : chkList(c) ? `Inclui "${esc(g.name)}" no checklist ${CHK_NAME} do card e marca como concluída` : `O card ainda não tem checklist de etapas. O painel cria o checklist ${CHK_NAME} com as ${groups.length} etapas registradas, marca as que já constam como concluídas e marca esta`} e grava um comentário: "Etapa ${esc(g.name)} concluída por ${esc(v ? v.full : "")} em ${dmy(t)} às ${fTime.format(new Date())}." A descrição do card não é alterada.</p>
-        <div class="gi-act"><button class="btn primary" type="button" id="g-ok" data-gok="${esc(gid)}">${svgI("check")}Concluir etapa</button><button class="btn" type="button" id="g-cancel">Cancelar</button></div></div>` : "";
+        <div class="gi-act"><button class="btn primary" type="button" data-gok="${esc(gid)}">${svgI("check")}Concluir etapa</button><button class="btn" type="button" data-gcancel>Cancelar</button></div></div>` : "";
     const other = !g.done && g.ets.length && canEdit(g.keys) && !chkUI.busy ? `<button type="button" class="lnk gi-more" data-gst="${i}">Outro status</button>` : "";
     return `<li class="gi ${st}${open ? " open" : ""}">${main}${conf}${other}</li>`;
   }).join("");
   const msRows = ms.map((m) => `<li class="gi ms${m.done ? " done" : ""}"><div class="gi-main">${icBadge(m.icon, m.tone, "sm")}<span class="gi-t"><b>${esc(m.name)}</b><small>${m.key ? `${wdShort(m.key)} ${dmy(m.key)}` : "Data não registrada no Trello"} · segue o card no Trello</small></span><span class="gi-tag${m.done ? " ok" : ""}">${m.done ? "Concluída" : "Trello: " + esc(nice(m.card.list))}</span></div></li>`).join("");
   const lock = groups.some((g) => !g.done && !canEdit(g.keys)) ? `<p class="gi-lock">${svgI("lock")}<span>${esc(lockMsg())}</span></p>` : "";
-  const role = v && v.key ? `<span class="chip">${svgI("user-round")}${esc(v.full)} · ${v.gestao ? "Gestão" : "Equipe"}</span>` : "";
   const log = chkUI.log.length || chkUI.err || chkUI.ok ? `<ul class="wlog">${chkUI.log.map((x) => `<li class="ok">${svgI("circle-check")}<span>${esc(x)}</span></li>`).join("")}${chkUI.busy ? `<li>${svgI("sparkles")}<span>Gravando no Trello…</span></li>` : ""}</ul>${chkUI.err ? `<div class="errbox" role="alert">${esc(chkUI.err)}</div>` : ""}${chkUI.ok ? `<p class="res" role="status"><span class="okl">${esc(chkUI.ok)}</span></p>` : ""}` : "";
   const src = !state.etapas ? `<p class="muted">${state.extract === "loading" ? "Lendo as etapas nos cards…" : esc(state.extractErr || "As etapas ainda não foram lidas.")}</p>` : "";
-  $("sheet-body").innerHTML = `<section>${facts}<div class="links" style="margin-top:14px"><a href="${esc(c.url)}" target="_blank" rel="noopener">${svgI("external-link")}Card no Trello</a>${role}</div></section>
-    ${prog}
-    <section><div class="sec-h" style="margin-bottom:10px"><h3 style="margin:0">Checklist de etapas</h3><span class="muted" style="font-size:12.5px">${chkList(c) ? "Sincronizado com o checklist do Trello" : "Etapas lidas da descrição do card"}</span></div>
-      ${src}${lock}${log}
+  const upd = state.extract === "loading" && state.etapas ? `<p class="muted" style="font-size:12.5px;margin:0 0 8px">Conferindo se há etapas novas no card…</p>` : "";
+  return `${prog}<section><div class="sec-h" style="margin-bottom:10px"><h3 style="margin:0">Checklist de etapas</h3><span class="muted" style="font-size:12.5px">${chkList(c) ? "Sincronizado com o checklist do Trello" : "Etapas lidas da descrição do card"}</span></div>
+      ${src}${upd}${lock}${log}
       ${tot ? `<ol class="glist">${rows}</ol>` : state.etapas ? `<p class="muted">Nenhuma etapa registrada no card. ${MISSING}</p>` : ""}
       ${msRows ? `<h3 style="margin-top:18px">Marcos do projeto</h3><ol class="glist">${msRows}</ol>` : ""}</section>`;
+}
+function renderChecklist(id) {
+  const c = state.cards.find((x) => x.id === id);
+  if (!c) { $("sheet-name").textContent = "Projeto"; $("sheet-sub").textContent = ""; $("sheet-body").innerHTML = `<p class="muted">Projeto não encontrado no Trello. Atualize os dados.</p>`; return; }
+  const t = today(), h = healthOf(c), v = viewer();
+  $("sheet-name").textContent = c.title;
+  $("sheet-sub").textContent = tipoOf(c) || "Projeto";
+  const facts = `<dl class="facts" style="font-size:14px;gap:8px 18px"><dt>Cliente</dt><dd>${esc(clienteOf(c) || "") || MISSING}</dd>
+    <dt>Responsável</dt><dd>${esc(projResp(c)) || MISSING}</dd>
+    ${c.team.length ? `<dt>Equipe</dt><dd>${esc(c.team.map(cap).join(", "))}</dd>` : ""}
+    <dt>Prazo final</dt><dd>${c.dueKey ? `<span${c.dueKey < t && !c.done ? ' class="late-txt"' : ""}>${wdShort(c.dueKey)} ${dmy(c.dueKey)}</span>` : MISSING}</dd>
+    <dt>Status atual</dt><dd>${esc(nice(c.list))} ${healthChip(h)}</dd></dl>`;
+  const role = v && v.key ? `<span class="chip">${svgI("user-round")}${esc(v.full)} · ${v.gestao ? "Gestão" : "Equipe"}</span>` : "";
+  $("sheet-body").innerHTML = `<section>${facts}<div class="links" style="margin-top:14px"><a href="${esc(c.url)}" target="_blank" rel="noopener">${svgI("external-link")}Card no Trello</a>${role}</div></section>
+    ${chkSectionHTML(c, false)}`;
+}
+function rerenderChk() {
+  const top = sheetStack[sheetStack.length - 1];
+  if ($("sheet").open && top && top.type === "chk") renderSheet();
+  const box = $("p-chkbox");
+  if (box && $("ppage").open) { const c = state.cards.find((x) => x.id === box.dataset.id); if (c) box.innerHTML = chkSectionHTML(c, true); }
+}
+function chkClick(e, id) {
+  if (chkUI.busy) return false;
+  const gb = e.target.closest("[data-g]");
+  if (gb) { chkUI.pend = chkUI.pend === gb.dataset.g ? "" : gb.dataset.g; chkUI.ok = ""; chkUI.err = ""; chkUI.log = []; rerenderChk(); const b = gb.closest(".glist") && document.querySelector(`[data-gok="${CSS.escape(gb.dataset.g)}"]`); if (b) b.focus(); return true; }
+  if (e.target.closest("[data-gcancel]")) { const g = chkUI.pend; chkUI.pend = ""; rerenderChk(); const b = document.querySelector(`[data-g="${CSS.escape(g)}"]`); if (b) b.focus(); return true; }
+  const ok = e.target.closest("[data-gok]");
+  if (ok) { concludeGroup(id, ok.dataset.gok); return true; }
+  const gs = e.target.closest("[data-gst]");
+  if (gs) {
+    const c = state.cards.find((y) => y.id === id), g = c && etapaGroups(c)[Number(gs.dataset.gst)];
+    if (g && g.ets[0]) { if (!$("sheet").open) sheetStack = []; pushSheet({ type: "task", x: { type: "etapa", k: g.lateDays ? "atraso" : "producao", est: g.est, key: g.key || "", title: g.name, sub: c.title, et: g.ets[0] } }); }
+    return true;
+  }
+  return false;
 }
 async function concludeGroup(id, gid) {
   const c = state.cards.find((x) => x.id === id);
   const g = c && etapaGroups(c).find((x) => norm(x.name) === gid);
   if (!g || g.done || !canEdit(g.keys) || chkUI.busy) return;
   const v = viewer(), now = new Date();
-  chkUI.busy = true; chkUI.log = []; chkUI.err = ""; chkUI.ok = ""; renderSheet();
-  const log = (x) => { chkUI.log.push(x); renderSheet(); };
+  chkUI.busy = true; chkUI.log = []; chkUI.err = ""; chkUI.ok = ""; rerenderChk();
+  const log = (x) => { chkUI.log.push(x); rerenderChk(); };
   try {
     await syncChecklist(c, g.name, true, log);
     await write(TRELLO, "trelloWriteCard", { action: "add_comment", cardId: c.id, text: `✓ Etapa ${g.name} concluída por ${v.full} em ${dmy(ymd(now))} às ${fTime.format(now)}.\nRegistrado pelo Painel Dayse Lacerda. Checklist ${CHK_NAME} atualizado no card.` });
@@ -2105,7 +2156,7 @@ async function concludeGroup(id, gid) {
   }
   chkUI.busy = false;
   renderAll();
-  renderSheet();
+  rerenderChk();
 }
 
 /* ---------- reuniões ---------- */
@@ -2500,6 +2551,7 @@ function renderAll() {
   renderStatus(); renderPageErr(); renderGreet(); renderKpis(); renderPrio(); renderReminders(); renderTeam(); renderProjects(); renderEquipe(); renderReunioes();
   const top = sheetStack[sheetStack.length - 1];
   if ($("sheet").open && top && top.type !== "task" && !chkUI.busy) renderSheet();
+  if ($("ppage").open && $("p-chkbox") && !chkUI.busy) rerenderChk();
   if (state.loadedAt) painted = true;
 }
 
@@ -2792,6 +2844,8 @@ async function loadAll(forceExtract) {
   renderAll();
   if (!state.err.trello && mcp) {
     const sig = projectSig();
+    if (!state.etapas && !forceExtract && loadEtapasCache()) { lastSig = sig; state.extract = "ok"; applyChecklists(); renderAll(); return; }
+    if (state.etapas && !lastSig) { applyChecklists(); renderAll(); }
     if (forceExtract || sig !== lastSig || !state.etapas) { lastSig = sig; runExtraction(forceExtract); }
   }
 }
@@ -2857,19 +2911,7 @@ $("sheet-body").addEventListener("click", (e) => {
   const ck = e.target.closest("[data-chk]");
   if (ck) { pushSheet({ type: "chk", id: ck.dataset.chk }); return; }
   const top = sheetStack[sheetStack.length - 1];
-  if (top && top.type === "chk" && !chkUI.busy) {
-    const gb = e.target.closest("[data-g]");
-    if (gb) { chkUI.pend = chkUI.pend === gb.dataset.g ? "" : gb.dataset.g; chkUI.ok = ""; chkUI.err = ""; chkUI.log = []; renderSheet(); const b = $("g-ok"); if (b) b.focus(); return; }
-    if (e.target.closest("#g-cancel")) { const g = chkUI.pend; chkUI.pend = ""; renderSheet(); const b = document.querySelector(`[data-g="${CSS.escape(g)}"]`); if (b) b.focus(); return; }
-    const ok = e.target.closest("#g-ok");
-    if (ok) { concludeGroup(top.id, ok.dataset.gok); return; }
-    const gs = e.target.closest("[data-gst]");
-    if (gs) {
-      const c = state.cards.find((y) => y.id === top.id), g = c && etapaGroups(c)[Number(gs.dataset.gst)];
-      if (g && g.ets[0]) pushSheet({ type: "task", x: { type: "etapa", k: g.lateDays ? "atraso" : "producao", est: g.est, key: g.key || "", title: g.name, sub: c.title, et: g.ets[0] } });
-      return;
-    }
-  }
+  if (top && top.type === "chk" && chkClick(e, top.id)) return;
   const tk = e.target.closest("[data-task]");
   if (tk && eqTasks[Number(tk.dataset.task)]) { pushSheet({ type: "task", x: eqTasks[Number(tk.dataset.task)] }); return; }
   const x = sheetTask;
@@ -2888,8 +2930,8 @@ function focusMax(text) {
 }
 $("ppage").addEventListener("click", (e) => {
   if (e.target === e.currentTarget || e.target.closest("[data-close]")) { $("ppage").close(); return; }
-  const pc = e.target.closest("#p-chk");
-  if (pc) { sheetStack = []; pushSheet({ type: "chk", id: pc.dataset.id }); return; }
+  const box = e.target.closest("#p-chkbox");
+  if (box && chkClick(e, box.dataset.id)) return;
   const up = e.target.closest("#p-update");
   if (up) {
     const c = state.cards.find((x) => x.id === up.dataset.id);
